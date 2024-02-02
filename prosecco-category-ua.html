@@ -1,0 +1,1010 @@
+
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 10% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 650px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup{
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+
+
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Історія виникнення ігристого вина Просекко тісно пов'язана з регіоном Венето у північній Італії. Ще в давнину тут були виноградники, а на землях процвітало виноробство. Але спочатку Просеко не було ігристим. Переломним моментом
+                    стала поява методу «шармат» — вторинного бродіння у пляшках, який дозволяв надавати вину ігристості. Його вигадав учений Федеріко Мартінотті. У 1969 році в Італії була створена організація DOC Prosecco, яка встановлювала правила
+                    виробництва та якість вина. Тому технічно всі італійські вина, виготовлені методом «шармат», мають приставку Просеко. Купити справжнє італійське ігристе вино Prosecco в Україні можна в інтернет-магазині Маудау за найвигіднішими
+                    цінами.
+                </p>
+                <h2>Характеристики Просекко</h2>
+                <p>
+                    Багато хто помилково плутає шампанське та просеко. Попри зовнішню схожість, ці напої відрізняються сортами винограду, процесом виробництва та смаком. На відміну від класичних вин категорії Champagne, Prosecco виробляється з сорту
+                    винограду Glera, який надає вину свіжого та фруктового аромату з нотками зелених яблук та цитрусових. Традиційне шампанське роблять із сортів Піно Нуар та Піно Меньє. Розглянемо інші характеристики ігристого.
+                </p>
+                <h3>Сорти винограду</h3>
+                <p>
+                    Як ми вже написали, основний сорт винограду для Просеко — Glera. Додатково до нього винороби можуть додавати невеликі кількості інших сортів: Verdiso, Bianchetta Trevigiana, Perera та Glera Lunga, щоб додати складність та
+                    різноманітність смаків.
+                </p>
+                <h3>Технологія виробництва</h3>
+                <p>
+                    Prosecco виробляється з використанням методу «шармат» (Charmat method), також відомого як технологія «торгівельних баків». На відміну від традиційної ферментації в пляшках, при такому процесі виробництва вторинне бродіння
+                    відбувається у спеціальних сталевих нержавіючих баках під контрольованими тиском і температурою. Це дозволяє зберегти свіжість та фруктові аромати вина.
+                </p>
+                <h3>Аромат</h3>
+                <p>
+                    Якщо ви раніше пробували Просеко, то ні з чим не сплутаєте його свіжий фруктовий аромат із відтінками зелених яблук, груш, цитрусових, персика та квіткових нот. Запах може бути інтенсивним та приємно ароматним, при цьому
+                    зберігається певна делікатність.
+                </p>
+                <h3>Смак</h3>
+                <p>
+                    Залежно від рівня цукру винороби виділяють декілька видів вина: сухі (brut, extra brut) та солодші (extra dry, dry). Сухі види ігристого відрізняються високою кислотністю, яка надає напою жвавість і робить його освіжаючим. Солодкі
+                    сорти відрізняються легкістю та свіжістю. Смак Prosecco може бути фруктовим, з нотами зелених яблук, цитрусових, груш та білих квітів, з ніжною мінеральністю та м'якими бульбашками.
+                </p>
+                <h2>Як вибрати ігристе вино Просекко</h2>
+                <p>У величезному виборі ігристих вин Просеко можна розгубитися. Якщо ви хочете поповнити свою домашню колекцію гарним італійським ігристим або презентувати пляшечку знайомому, звертайте увагу на такі параметри:</p>
+                <ol>
+                    <li>Смак і аромат — вибір залежить від особистих уподобань. Вина з маркуванням «brut» або «extra brut» підійдуть як доповнення до вечері, а солодкі «extra dry» або «dry» урізноманітнять десерт.</li>
+                    <li>Ціна — вартість може змінюватись в залежності від виробника, регіону, але для будь-якого бюджету ви зможете підібрати відмінне вино.</li>
+                    <li>
+                        Регіон виробництва — класичним вважається походження в провінції Венето, але в межах цього регіону існують різні підрегіони, які можуть впливати на стиль та якість вина. Наприклад, напій з Valdobbiadene DOCG вважається
+                        престижним.
+                    </li>
+                    <li>Марка та рік виробництва — чим старше буде вино, тим глибшим і цікавішим буде смак.</li>
+                </ol>
+                <p>Зберігати шампанське Просеко потрібно за температури 7–13 градусів Цельсія в темному місці. Не варто залишати вино «визрівати», цей вид алкоголю потрібно вживати в молодому віці не старше 1-2 років після виробництва.</p>
+                <p>
+                    Шампанське Prosecco вважається універсальним ігристим, тому чудово поєднується з різними стравами: легкими закусками, сирами, морепродуктами, свіжими овочами та фруктами. Часто подається як аперитив і може бути відмінним
+                    компаньйоном для десертів на основі ягід і шоколаду.
+                </p>
+                <h2>Чому вигідно купити ігристе вино Просеко в маркеті алкогольних штук Maudau</h2>
+                <p>
+                    Великий вибір італійських оригінальних вин Просеко можна знайти лише у маркеті Maudau. Доставка замовлення по Україні, вигідні ціни, оплата при отриманні — те, за що нас вибирають покупці. А якщо важко визначитися з вибором,
+                    онлайн-менеджер допоможе.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Aperol Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Aperol_Spritz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Aperol Spritz</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/vyd_133=sylnohazovana" target="_blank">Содова</a></li>
+                            <li>Апельсин</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Aperol Spritz — найпопулярніший коктейль на основі біттера Aperol. Його фірмова трав'яна гіркуватість ідеально поєднується з просекко та цитрусовими.
+                        </div>
+                        <a class="pop-button" href="#popup1">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Беліні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Belini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Беліні</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy" target="_blank">Цукровий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/product/fruktove-piure-monin-persyk-1-l" target="_blank">Персикове пюре</a></li>
+                            <li>Персик</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Белліні — це м'який солодкий коктейль з ігристого вина, сиропу та персикового пюре. Вживати напій краще відразу після приготування.
+                        </div>
+                        <a class="pop-button" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Мартіні рояле" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Royale.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мартіні рояле</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile" target="_blank">Білий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовий сік</a></li>
+                            <li>Лайм</li>
+                            <li>М'ята</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Мартіні роялі — яскравий освіжальний тандем ігристого вина та білого вермуту. Лайм і м'ята залишають приємний післясмак із нотками цитруса і трав.
+                        </div>
+                        <a class="pop-button" href="#popup3">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Френч 75" src="https://photo.maudau.com.ua/Landing/cocktails/incat/French_75.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Френч 75</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin" target="_blank">Лондонський сухий джин</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy" target="_blank">Цукровий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Френч 75 — елегантний коктейль із кисло-солодким освіжальним смаком. Джин привносить у напій легкі ялівцеві нотки, а лимонний сік додає цитрусового відтінку.
+                        </div>
+                        <a class="pop-button" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Мімоза" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Mimosa.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мімоза</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновий сік</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Простий цитрусовий коктейль на основі ігристого вина. Назва «Мімоза» навіяна золотисто-жовтим відтінком напою, що нагадує цю квітку.
+                        </div>
+                        <a class="pop-button" href="#popup5">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Россіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Rossini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Россіні</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/product/fruktove-piure-monin-polunytsia-1-l" target="_blank">Полуничне пюре</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Россіні — коктейль із приємним ягідним смаком та оптимальним балансом солодкої та кислої частини. Названо на честь італійського композитора Россіні. Подається як літній десертний напій.
+                        </div>
+                        <a class="pop-button" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Північне сяйво" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Northern_Lights.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Північне сяйво</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/horilka/smak_5=hreipfrut-2" target="_blank">Грейпфрутова горілка</a></li>
+                            <li>Розмарин</li>
+                            <li><a href="https://maudau.com.ua/category/med" target="_blank">Мед</a></li>
+                            <li>Лимонна цедра</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Північне сяйво — напій з оригінальною назвою та смаком. Був новорічним варіантом, але зараз його п'ють незалежно від пори року. Жорстких пропорцій немає, проте найчастіше горілку та ігристе міксують у співвідношенні 1/3 або 1/4.
+                        </div>
+                        <a class="pop-button" href="#popup7">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Роял Дрім" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Royal_Dream.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Роял Дрім</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/horilka/smak_5=hreipfrut-2" target="_blank">Полуничний сироп</a></li>
+                            <li>Апельсин</li>
+                            <li>Полуниця</li>
+                            <li>Цукровий пісок</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Royal Dreams — незвичайний насичений напій на основі просекко з полуничним сиропом і пюре. Характерне поєднання ягід та ігристого вина надає йому незабутнього смаку та аромату.
+                        </div>
+                        <a class="pop-button" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Мулен Руж" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Moulin_Rouge.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мулен Руж</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/product/fruktove-piure-monin-malyna-1-l" target="_blank">Малинове пюре</a></li>
+                            <li><a href="https://maudau.com.ua/product/fruktove-piure-monin-lichi-1-l" target="_blank">Пюре лічі</a></li>
+                            <li>Малина</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Мулен Руж — ефектний коктейль, названий на честь легендарного французького кабаре. Поєднання кальвадосу, просекко та ягідного пюре дарує йому незабутній смак.
+                        </div>
+                        <a class="pop-button" href="#popup9">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Шампань коктейль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Shampan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Шампань коктейль</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura" target="_blank">Ангостура біттер</a></li>
+                            <li>Тростинний цукор у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Шампань — пікантний багатошаровий напій із фруктовими нотками. Його смак поступово змінюється: від кислинки просекко до солодко-гіркого присмаку біттера з цукром.
+                        </div>
+                        <a class="pop-button" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100 г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">70 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">1.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Aperol Spritz</h2>
+		<a class="close" href="#cocktail-item-1">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>100 мл біттера Апероль</li>
+                <li>100 мл просекко</li>
+                <li>20 мл содової або тоніка</li>
+                <li>30 г апельсину</li>
+                <li>лід у кубиках</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у келих кубики льоду.<br>
+                2. Налийте 100 мл просекко або іншого сухого ігристого вина.<br>
+                3. Додайте 100 мл Апероля.<br>
+                4. Влийте содову та перемішайте коктейльною ложечкою.<br>
+                5. Прикрасьте скибочкою апельсина.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Беліні</h2>
+		<a class="close" href="#cocktail-item-2">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>100 мл просекко</li>
+                <li>10 мл цукрового сиропу</li>
+                <li>10 мл лимонного соку</li>
+                <li>20 г персикового пюре</li>
+                <li>10 г персика</li>
+                <li>лід у кубиках</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть в ємність для змішування 4 коктейльні ложки персикового пюре.<br>
+                2. Додайте лимонний сік, цукровий сироп і половину просекко (50 мл).<br>
+                3. Наповніть ємність кубиками льоду та розмішайте коктейльною ложечкою.<br>
+                4. Перелийте напій через коктейльне ситечко у високий келих для шампанського.<br>
+                5. Долийте другу половину просекко (50 мл) догори.<br>
+                6. Прикрасьте келих часточкою персика.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Мартіні рояле</h2>
+		<a class="close" href="#cocktail-item-3">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>100 мл просекко</li>
+                <li>100 мл білого вермуту</li>
+                <li>15 мл лаймового соку</li>
+                <li>20 г лайма</li>
+                <li>гілочка м'яти</li>
+                <li>кубики льоду</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть кулястий келих кубиками льоду на 2/3.<br>
+                2. Налийте 100 мл білого вермуту та лаймовий сік.<br>
+                3. Додайте 100 мл просекко та обережно розмішайте барною ложкою.<br>
+                4. Опустіть у келих часточки лайма.<br>
+                5. Струсіть гілочку м'яти і покладіть поверх напою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Френч 75</h2>
+		<a class="close" href="#cocktail-item-4">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>30 мл сухого джину</li>
+                <li>60 мл просекко</li>
+                <li>15 мл цукрового сиропу</li>
+                <li>15 мл лимонного соку</li>
+                <li>лід у кубиках</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Налийте в шейкер 30 мл джину, лимонний сік і цукровий сироп.<br>
+                2. Додайте кубики льоду та струсіть шейкер.<br>
+                3. Перелийте через ситечко в келих для шампанського або коктейльну чарку.<br>
+                4. Влийте просекко та акуратно перемішайте коктейльною ложкою.<br>
+                5. За бажанням прикрасьте лимонною цедрою або коктейльною вишнею.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Мімоза</h2>
+		<a class="close" href="#cocktail-item-5">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>50 мл просекко</li>
+                <li>50 мл апельсинового соку</li>
+                <li>1-2 часточки апельсина</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Охолодіть високий келих льодом або в морозильній камері.<br>
+                2. Налийте в охолоджену ємність 50 мл апельсинового соку.<br>
+                3. Додайте 50 мл просекко до верху флюте.<br>
+                4. Обережно перемішайте ложечкою із довгою ручкою.<br>
+                5. Прикрасьте келих цедрою або часточками апельсина.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Россіні</h2>
+		<a class="close" href="#cocktail-item-6">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>120 мл просекко</li>
+                <li>50 г полуничного пюре або полуниці</li>
+                <li>5–7 г цукру (за бажанням)</li>
+                <li>кубики льоду</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Збийте у блендері полуничне пюре (або полуницю) з цукром.<br>
+                2. Перекладіть суміш у склянку та додайте кубики льоду.<br>
+                3. Долийте 120 мл просекко та розмішайте барною ложкою.<br>
+                4. Пропустіть напій через стрейнер в охолоджений келих для шампанського.<br>
+                5. Прикрасьте краї келиха ягідками полуниці.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Північне сяйво</h2>
+		<a class="close" href="#cocktail-item-7">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>100 мл просекко</li>
+                <li>40 мл грейпфрутової горілки</li>
+                <li>5 г розмарину</li>
+                <li>15 мл меду</li>
+                <li>лимонна цедра</li>
+                <li>лід у кубиках</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у склянку для змішування гілочку розмарину і подавіть барною ступкою.<br>
+                2. Додайте 15 мл меду та 40 мл грейпфрутової горілки.<br>
+                3. Наповніть склянку кубиками льоду та обережно розмішайте.<br>
+                4. Перелийте напій через барний стрейнер в охолоджений келих.<br>
+                5. Постійно помішуючи коктейльною ложкою, влийте тонким струмком 100 мл просекко.<br>
+                6. Прикрасьте коктейль лимонною цедрою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Роял Дрім</h2>
+		<a class="close" href="#cocktail-item-8">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>200 мл просекко</li>
+                <li>20 мл полуничного сиропу</li>
+                <li>100 г полуниці</li>
+                <li>2 г цукрового піску</li>
+                <li>кружок апельсина</li>
+                <li>кубики льоду</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Зробіть на келиху-харрикейні облямівку із цукру та повністю заповніть його льодом.<br>
+                2. Покладіть у блендер полуницю та 20 мл сиропу. Збийте.<br>
+                3. Перелийте пюре із блендера в келих.<br>
+                4. Налийте догори просекко та обережно розмішайте довгою ложкою.<br>
+                5. Прикрасьте напій кругляшком апельсина та половинками полуниці на шпажці.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Мулен Руж</h2>
+		<a class="close" href="#cocktail-item-9">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>75 мл просекко</li>
+                <li>10 мл кальвадосу</li>
+                <li>30 г малинового пюре</li>
+                <li>50 г пюре лічі</li>
+                <li>1-2 ягідки малини</li>
+                <li>лід у кубиках</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у ємність для змішування пюре малини та лічі.<br>
+                2. Додайте 75 мл просекко та 10 мл кальвадосу.<br>
+                3. Наповніть склянку кубиками льоду й обережно розмішайте високою ложечкою.<br>
+                4. Перелийте коктейль через сито-стрейнер у заздалегідь охолоджений високий келих-флюте.<br>
+                5. Прикрасьте малиною на коктейльній шпажці.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+	<div class="popup">
+		<h2 class="popup-cocktail-header">Як приготувати Шампань коктейль</h2>
+		<a class="close" href="#cocktail-item-10">&times;</a>
+		<div class="popup-cocktail-content">
+			<ul>
+                <li>120 мл просекко</li>
+                <li>30 мл коньяку Hennessy</li>
+                <li>3–5 крапель біттера Ангостура</li>
+                <li>1 кубик тростинного цукру</li>
+            </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть кубик тростинного цукру в заздалегідь охолоджений келих-флюте.<br>
+                2. Накапайте на цукор біттер Ангостура та зачекайте до повного всмоктування.<br>
+                3. Додайте 30 мл коньяку Hennessy.<br>
+                4. Долийте 120 мл просекко до країв, але акуратно — буде багато піни.<br>
+                5. Не перемішуйте, щоб смак напою поступово змінювався від просекко до підсолодженого біттера.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Зачинити</a>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
