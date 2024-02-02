@@ -1,0 +1,1066 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+    .tabset .tab-panels {
+        border-top-style: solid;
+        border-bottom-width: 1px;
+        border-color: #e9ebee;
+    }
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 10% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 650px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup{
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+
+
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Мир виски — огромен. Множество классификаций, сортов, регионов происхождения — запутаться в разнообразии легко, особенно новичку. Даже написание отличается в зависимости от страны. Если напиток изготовили в Шотландии, Японии или
+                    Канаде, используют вариант «whisky». Дистиллят, произведенный в Ирландии или США, маркируют как «whiskey».
+                </p>
+                <h2>Что такое виски</h2>
+                <p>
+                    Виски — крепкий спиртной напиток, который готовят посредством сбраживания и перегонки зернового сусла. В основе — ячмень или кукуруза, хотя также используют рожь и пшеницу. Поскольку спирт выдерживают в дубовых бочках, он
+                    приобретает светло-золотистый оттенок. Со временем он меняется на темно-коричневый. Содержание сахара в готовом продукте близится к нулю.
+                </p>
+                <p>
+                    В отдельных странах производство контролируют строгими законами. Например, если покупаете оригинальный виски из Шотландии, он гарантировано будет произведен в одном из пяти разрешенных законом регионов: Хайленд, Лоулендс, Спейсайд,
+                    Айлей, Острова.
+                </p>
+                <h2>История появления виски</h2>
+                <p>Первые упоминания о выпуске зерновых спиртов датируются 1405 годом. Тогда о виски заговорили в «Ирландских анналах Клонмакнойза», связанных с монахами.</p>
+                <p>
+                    Позже историки обнаружили записи в Шотландии, сделанные в 1494 году в казначейских реестрах. В это время виски называли «aqua vitae», что в переводе означает «живая вода». Продукт позиционировали как лекарство. Первую монополию на
+                    выпуск виски выдали Гильдии хирургов и цирюльников в Эдинбурге в 1505 году.
+                </p>
+                <p>
+                    Массовое производства зернового спирта наладили в 1536–1541 гг., когда Генрих VIII распустил монастыри. Монахи искали новый способ заработка на жизнь. Климат не способствовал выращиванию винограда, поэтому они сконцентрировали
+                    усилия на культивации зерновых культур.
+                </p>
+                <h2>Особенности производства виски</h2>
+                <p>Процесс изготовления стандартизирован. Он состоит из шести основных этапов, однако может меняться в зависимости от региона происхождения и выпускаемого стиля. Вот как выглядит производство виски:</p>
+                <ol>
+                    <li>
+                        Соложение. Зерно смешивают с теплой водой и раскладывают на полу солодовни. Когда оно прорастает, высвобождается фермент, который способствует превращению крахмала в сахар. Последний этап соложения — сушка в печах или на
+                        открытом воздухе.
+                    </li>
+                    <li>Затирание. Размолотое солодовое зерно (пюре) помещают в заторный чан, где его смешивают с горячей водой. На выходе получают зерновой затор с высоким содержанием сахара.</li>
+                    <li>Ферментация. Зерновой затор вступает в контакт с дрожжами. Они превращают оставшийся в жидкости сахар в спирт. Брожение проходит в крупных металлических резервуарах. Зачастую процесс длится 3–7 дней.</li>
+                    <li>
+                        Дистилляция. Жидкость, которую называют «дистилляционным пивом» из-за сходства с пенным напитком, перекачивают в дистиллятор. Среди распространенных форм — медный перегонный куб и колонна непрерывного действия. Каждый агрегат
+                        повышает процент алкоголя, при этом удаляя нежелательные примеси.
+                    </li>
+                    <li>Выдержка. Новый зерновой виски помещают в дубовую бочку, где он впитывает вкус и аромат. Там спирт проводит не менее трех лет. Нередко повторно используют тару из-под бурбона, хереса, портвейна, саке.</li>
+                    <li>
+                        Розлив по бутылкам. По достижению зрелости спирт из разных бочек смешивают. Готовый виски с уникальным вкусо-ароматическим профилем разливают по стеклянным бутылкам и отправляют в продажу. Иногда на финальной стадии прибегают к
+                        холодной фильтрации, что предотвращает появление мутного осадка.
+                    </li>
+                </ol>
+                <h3>Географические различия в технологии</h3>
+                <p>
+                    Исторически дистиллят изготавливают в Шотландии и Ирландии. Шотландские производители используют для сушки солода торф, который придает спирту характерный дымный оттенок. Винокурни из Ирландии прибегают к тройной перегонке, что
+                    смягчает вкус. Если решили купить виски в интернет-магазине MAUDAU и просматриваете один из фильтров, то окажется, что дистиллят производят не только в этих странах. Качественную продукцию также можно найти в:
+                </p>
+                <ul>
+                    <li>Японии;</li>
+                    <li>США;</li>
+                    <li>Канаде;</li>
+                    <li>Индии;</li>
+                    <li>Австралии;</li>
+                    <li>Италии;</li>
+                    <li>Франции;</li>
+                    <li>Молдове;</li>
+                    <li>Грузии.</li>
+                </ul>
+                <p>
+                    Различия кроются в сырье. Шотландия использует ячменный солод. Япония придерживается многовековых шотландских традиций. Ирландия добавляет ячмень, однако также можно купить виски из ржи. Бурбон — кукурузный спирт, который производят
+                    в США. В северных регионах также выпускают ржаной. В Канаде зерновой затор нередко обогащают пшеницей.
+                </p>
+                <h2>Разновидности виски</h2>
+                <p>
+                    Процент алкоголя в напитке варьируется в пределах 40–50. В отдельную категорию выносят продукцию бочковой крепости. Спирт не разбавляют водой, поэтому градус повышается до 52–66%. Основную классификацию виски разработали с учетом
+                    сырья и применяемых методов перегонки:
+                </p>
+                <ol>
+                    <li>Солодовый. В составе — соложеный ячмень, который перегоняют в традиционных медных кубах.</li>
+                    <li>Зерновой. Дистиллят из смеси зерен. Перегонку проводят в колоннах непрерывного действия. Вкус и аромат слабо выражены, поэтому спирт используют в купажах, а не продают как самостоятельный продукт.</li>
+                </ol>
+                <p>Далее — комбинация основных классов. Когда заказываете виски, обращайте внимание на этикетку:</p>
+                <ol>
+                    <li>Односолодовый (Single Malt). Бленд, произведенный в пределах одной винокурни. Состоит из соложеного ячменя.</li>
+                    <li>Однобочковой (Single Barrel). Дистиллят, разлитый из одной бочки. Также встречается отметка «Single Cask». Это виски с высокой стоимостью.</li>
+                    <li>Купажированный односолодовый (Blended Malt). Бленд, смешанный из односолодовых спиртов с разных винокурен. Также используют маркировку «Pure Malt».</li>
+                    <li>Купажированный (Blended). Бленд готовят из смеси солодовых и зерновых спиртов разной выдержки.</li>
+                </ol>
+                <p>
+                    Виски оригинал из Ирландии — Pot Still. Уникальный сорт подразумевает использование соложеного и несоложеного ячменя. Затор перегоняют в крохотных медных горшках. Также можно купить виски Flavoured. Это категория ароматизированных
+                    напитков. Рецептуру обогащают натуральными добавками, например, медом или яблоками.
+                </p>
+                <p>Классификация в США отличается:</p>
+                <ol>
+                    <li>Бурбон (Bourbon). Спирт, выдержанный в новых дубовых бочках. В составе — минимум 51% кукурузных зерен.</li>
+                    <li>Кукурузный (Corn). Дистиллят редко выдерживают. В основе — от 80% сладкой кукурузы.</li>
+                    <li>Ржаной (Rye). Зерновой затор состоит минимум из 51% ржи.</li>
+                    <li>Виски Теннесси (Tennessee Whiskey). Бурбон, изготовленный в штате Теннесси по определенному стандарту.</li>
+                    <li>Мелкопартийный (Small Batch). Напиток, приготовленный из ограниченного количества отобранных бочек.</li>
+                </ol>
+                <h2>Почему выгодно купить виски в MAUDAU</h2>
+                <p>
+                    Интернет-магазин предлагает продукцию с отметкой «Original». Качество подтверждает гарантия. Виски можно купить не только в Киеве, но и с доставкой компанией «Новая Почта» в других городах. От определенной суммы отправку оплачивает
+                    интернет-магазин MAUDAU.
+                </p>
+                <p>Онлайн-каталог регулярно пополняется акционными предложениями. На мелкий опт действует скидка. Во время выбора виски не последнюю роль играет цена, поэтому в ассортименте доступна как бюджетная, так и коллекционная продукция.</p>
+                <h3>Особенности ассортимента MAUDAU</h3>
+                <p>
+                    В онлайн-каталоге представлено свыше 1 500 эксклюзивных позиций, поэтому купить виски в Украине можно на любой вкус. Сгруппируйте продукцию с помощью фильтров. Например, остановитесь на объеме 0,5 или 0,7 л. По желанию закажите
+                    мини-бутылочки или выберите продукт в подарочной упаковке.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Пенициллин" src="https://photo.maudau.com.ua/Landing/cocktails/incat/penicillin.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Пенициллин</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=islay" target="_blank">Односолодовый виски с острова Айла</a></li>
+                            <li>Домашний медово-имбирный сироп</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Пенициллин — оригинальный коктейль на основе односолодового виски. Это пряный имбирный напиток с дымными нотками скотча и привкусом медового сиропа.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Виски кола" src="https://photo.maudau.com.ua/Landing/cocktails/incat/whiskey-cola.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Виски кола</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Виски Jack Daniel’s</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Простой и приятный коктейль, с узнаваемым сладким вкусом газировки и нотками виски в послевкусии. Напиток легко приготовить в домашних условиях.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Крестный отец" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Godfather.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Крестный отец</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3" target="_blank">Ликер Амаретто</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Классический коктейль на базе виски с добавлением амаретто. Названием обязан легендарному произведению «Крестный отец». Имеет миндальный аромат и приятное послевкусие.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Хайбол" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Highball.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Хайбол</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=highland" target="_blank">Односолодовый виски из Хайленда</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=revenevyi" target="_blank">Ревеневый ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=polunytsia-12" target="_blank">Клубничный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda" target="_blank">Содовая</a></li>
+                            <li>Клубника</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Хайбол — энергичный и освежающий коктейль. Крепость виски смягчает сладкий клубничный сироп, а ревень добавляет пикантное послевкусие.
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Виски с вишней" src="https://photo.maudau.com.ua/Landing/cocktails/incat/whiskey-cherry.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Виски с вишней</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=vyshnia-21" target="_blank">Вишневый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Лимон</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Популярный и узнаваемый коктейль с необычным сочетанием вишни и виски. Ягодные нотки прекрасно дополняют крепкий шотландский напиток и сглаживают его горчинку.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кровь и песок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Blood-and-Sand.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кровь и песок</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=vyshnevyi" target="_blank">Вишневый ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Вдохновением для коктейля «Кровь и песок» послужило одноименное немое кино. Сочетание виски, красного вермута и апельсинового сока символизирует песок арены после корриды. Напиток имеет сладкий фруктовый привкус с нотами виски.
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Вишневый сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cherry-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Вишневый сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=vyshnia-21" target="_blank">Вишневый сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Апельсин</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Вишневый сауэр — мягкий фруктовый коктейль, в котором отлично раскрывается вкусовой букет виски. Взбитая белковая пена придает оригинальный вид.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Бульвардье #3" src="https://photo.maudau.com.ua/Landing/cocktails/incat/boulevardier.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бульвардье #3</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li>Красный биттер</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Бульвардье #3 — яркая изысканная вариация на основе виски и вермута. Добавление биттера придает характерную горчинку, а сладкий вкус вермута уравновешивает композицию.
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Марокканский смэш" src="https://photo.maudau.com.ua/Landing/cocktails/incat/moroccan-smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Марокканский смэш</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Апельсин</li>
+                            <li>Лимон</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Сладкий коктейль с нотками марокканской экзотики и теплом южных стран. Комбинация виски и сиропа создает сбалансированный приятный вкус.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ананасовый виски" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pineapple_cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ананасовый виски</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13" target="_blank">Ананасовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Ананас</li>
+                            <li>Лед кубиком</li>
+                        </ul>
+                        <div class="description-text">
+                            Ароматный и дерзкий коктейль с необычным сочетанием виски и ананасового сока. Компоненты гармонично сочетаются и оставляют прекрасное послевкусие.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100 г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Пенициллин</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>60 мл шотландского виски</li>
+                    <li>7 мл односолодового виски с острова Айла</li>
+                    <li>25 мл домашнего медово-имбирного сиропа</li>
+                    <li>25 мл лимонного сока</li>
+                    <li>апельсиновая цедра</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Приготовьте медовый сироп: смешайте воду и мед 1:3, доведите до кипения и проварите 5 минут, снимая пену. Перед добавлением в коктейль охладите до комнатной температуры. Добавьте 10 мл сока из корня имбиря.<br>
+                2. Налейте в шейкер 25 мл лимонного сока и 25 мл медово-имбирного сиропа.<br>
+                3. Добавьте 60 мл шотландского виски.<br>
+                4. Наполните шейкер кубиками льда и взбейте все ингредиенты.<br>
+                5. Перелейте напиток через сито-стрейнер в охлажденный бокал типа рокс.<br>
+                6. Долейте 7 мл односолодового виски с острова Айла. Не перемешивайте.<br>
+                7. Украсьте бокал апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Виски кола</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл виски Jack Daniel's</li>
+                    <li>150 мл колы</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните высокий стакан типа хайбол крупными кубиками льда доверху.<br>
+                2. Налейте 50 мл Jack Daniel’s (или аналогичного американского виски).<br>
+                3. Долейте колу доверху и аккуратно размешайте коктейльной ложечкой. Кола должна быть только что открытой и охлажденной.<br>
+                4. По желанию добавьте в бокал лимонный слайс для цитрусового аромата.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Крестный отец</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл шотландского виски</li>
+                    <li>25 мл ликера Амаретто</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс (или любой бокал олд-фешн) кубиками льда до самого верха.<br>
+                2. Налейте в бокал 25 мл ликера Амаретто и 50 мл шотландского виски.<br>
+                3. Перемешайте барной ложкой. Желательно не дробить лед — это снижает крепость напитка.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Хайбол</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл односолодового виски из Хайленда</li>
+                    <li>5 мл ревеневого ликера</li>
+                    <li>30 мл клубничного сиропа</li>
+                    <li>150 мл содовой</li>
+                    <li>20 г клубники</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните высокий бокал хайбол кубиками льда доверху.<br>
+                2. Налейте 30 мл клубничного сиропа и добавьте 5 мл ревеневого ликера.<br>
+                3. Добавьте 30 мл односолодового виски из Хайленда.<br>
+                4. Доверху долейте содовую и аккуратно размешайте высокой ложечкой.<br>
+                5. Украсьте напиток крупно нарезанной клубникой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Виски с вишней</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл шотландского виски</li>
+                    <li>130 мл вишневого сока</li>
+                    <li>20 мл лимонного сока</li>
+                    <li>20 г лимона (кружок)</li>
+                    <li>коктейльная красная вишня</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал хайбол кубиками льда почти до верха.<br>
+                2. Налейте 20 мл лимонного сока и 50 мл шотландского виски.<br>
+                3. Аккуратно влейте доверху 130 мл вишневого сока и перемешайте коктейльной ложкой.<br>
+                4. Украсьте бокал ломтиком лимона и коктейльной вишней.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кровь и песок</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл шотландского виски</li>
+                    <li>25 мл красного вермута</li>
+                    <li>25 мл вишневого ликера</li>
+                    <li>25 мл апельсинового сока</li>
+                    <li>цедра апельсина</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в шейкер 25 мл апельсинового сока и столько же вишневого ликера.<br>
+                2. Добавьте 25 мл красного вермута и влейте 25 мл виски.<br>
+                3. Заполните шейкер кубиками льда и взбейте все ингредиенты.<br>
+                4. Налейте через стрейнер в охлажденный бокал типа «шампанское блюдце».<br>
+                5. Украсьте по желанию апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Вишневый сауэр</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл шотландского виски</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>30 мл вишневого сока</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>25 мл белка из перепелиного яйца</li>
+                    <li>40 г апельсина</li>
+                    <li>коктейльная вишня</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Доверху наполните бокал-рокс кубиками льда.<br>
+                2. Налейте в шейкер белок перепелиного яйца, 15 мл лимонного и 30 мл вишневого сока.<br>
+                3. Добавьте 20 мл сахарного сиропа и 50 мл шотландского виски.<br>
+                4. Наполните шейкер льдом и тщательно смешайте ингредиенты.<br>
+                5. Перелейте через барное сито в бокал.<br>
+                6. По желанию добавьте дольку апельсина и украсьте коктейльной вишней.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бульвардье #3</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл шотландского виски</li>
+                    <li>30 мл красного вермута</li>
+                    <li>30 мл красного биттера</li>
+                    <li>апельсиновая цедра</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-рокс кубиками льда.<br>
+                2. Налейте в бокал 30 мл красного вермута и 30 мл биттера.<br>
+                3. Добавьте 45 мл шотландского виски и тщательно перемешайте высокой барной ложкой.<br>
+                4. Украсьте апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Марокканский смэш</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл шотландского виски</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>90 г апельсина</li>
+                    <li>40 г лимона</li>
+                    <li>веточка мяты</li>
+                    <li>дробленый лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в рокс 3 кружочка апельсина и 2 кружочка лимона. 2. Хорошенько подавите цитрусовые барным пестиком.<br>
+                2. Наполните бокал доверху дробленым льдом.<br>
+                3. Налейте 20 мл сахарного сиропа.<br>
+                4. Добавьте 50 мл шотландского виски и размешайте коктейльной ложечкой.<br>
+                5. Досыпьте немного льда и украсьте напиток веточкой мяты.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Ананасовый виски</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл шотландского виски</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>40 мл ананасового сока</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>60 г ананаса</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Насыпьте в бокал-рокс кубики льда до верхнего края.<br>
+                2. Налейте в шейкер 15 мл лимонного и 40 мл ананасового сока.<br>
+                3. Добавьте сахарный сироп и 50 мл шотландского виски.<br>
+                4. Наполните шейкер кубиками льда и интенсивно взбейте.<br>
+                5. Процедите напиток через стрейнер в бокал.<br>
+                6. Украсьте коктейль ломтиками ананаса на шпажке.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
