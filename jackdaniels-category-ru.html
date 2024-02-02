@@ -1,0 +1,1057 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 10% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 650px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup{
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+
+
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-1dheshg">
+                <div class="css-qx9h31">
+                    <p>Виски Jack Daniel’s — торговая марка из Теннесси (США). Продукцию выпускают на винокурне Jack Daniel Distillery. С 1956 года ликеро-водочный завод входит в состав международной алкогольной корпорации Brown-Forman.</p>
+                    <p>Тем, кто рассматривает вариант купить виски Джек Дениелс, важно знать, что крепкий спиртной напиток производят по стандартной технологии. Процесс включает несколько важных этапов:</p>
+                    <ul>
+                        <li>подготовку зернового затора;</li>
+                        <li>ферментацию;</li>
+                        <li>дистилляцию;</li>
+                        <li>фильтрацию;</li>
+                        <li>выдержку;</li>
+                        <li>розлив.</li>
+                    </ul>
+                    <p>Зерновой затор для виски Jack Daniel’s Оригинал состоит из 80% кукурузы, 12% ржи, 8% солодового ячменя. Напиток производят в медных перегонных кубах.</p>
+                    <p>
+                        Отличительный момент в приготовлении виски Джек Дениелс — фильтрация с помощью измельченного древесного угля, который получают посредством сжигания сахарного клена. Дополнительный шаг, смягчающий вкусо-ароматическую композицию
+                        готового напитка, называют «процессом округа Линкольн».
+                    </p>
+                    <h2>Краткая историческая сводка</h2>
+                    <p>
+                        История виски Джек Дэниэлс восходит к 1866 году. В то время Джаспер Ньютон Дэниел зарегистрировал винокурню в городке Линчберг, расположенном в штате Теннесси. Позже ликеро-водочный завод переместили ближе к пещере
+                        Кейв-Спринг-Холлоу, наполненной минералами.
+                    </p>
+                    <p>
+                        После преждевременной смерти основателя из-за заражения крови винокурня Jack Daniel’s переходит к племяннику Лему Мотлоу. В 1911–1940 годах на долю компании выпала Великая депрессия и последствия введения сухого закона. Вторая
+                        мировая война заставила ликеро-водочный завод на время закрыться.
+                    </p>
+                    <p>
+                        В 1947 году виски Jack Daniel’s Old No. 7 предложили Фрэнку Синатре. Вскоре артист превратится в пылкого поклонника крепкого спиртного напитка. В 1964–1987 годах флагман торговой марки из малоизвестного локального продукта
+                        трансформировался в международную икону. Дистиллят становится синонимом рок-н-ролла и панка.
+                    </p>
+                    <p>
+                        Новая эпоха в истории виски Джек Дениелс припала на 1988 год. Она связана с приходом мастера-дистиллятора Джимми Бедфорда, который представил Gentleman Jack. Его преемник Джефф Арнетт пополнил портфолио торговой марки острым ржаным
+                        виски и ароматизированной медовой версией. Он также провел модернизацию предприятия, основав собственную бондарную мастерскую. С 2020 года за выпуск продукции Jack Daniel’s отвечает Крис Флетчер.
+                    </p>
+                    <h3>Почему на бутылке виднеется цифра 7</h3>
+                    <p>
+                        Биограф Джаспера Дэниелса считает, что цифра 7 — отсылка к номеру, который присвоили винокурне в момент государственной регистрации. Иная версия гласит, что название культового продукта в ассортименте Jack Daniel’s восходит к 1887
+                        году. Команда выбрала его после визита к другу-торговцу в Таллахоме, который построил прибыльную сеть из семи магазинов.
+                    </p>
+                    <p>То, что цифра 7 стала знаковой для компании, — факт. Например, виски Jack Daniel’s Old No. 7 награжден семью золотыми медалями. Первую присудили на Всемирной выставке в Сент-Луисе, что в штате Миссури.</p>
+                    <h2>Разновидности виски Jack Daniel’s</h2>
+                    <p>
+                        Флагман — Tennessee Old No. 7. Напиток славится интенсивным дымным вкусом, который переплетается с древесными и ванильными аккордами. Его реализуют в разных объемах: от 0,05 до 1 л. Линейки Jack Daniel’s, которые также заслуживают
+                        внимания:
+                    </p>
+                    <ol>
+                        <li>Honey. Первый ароматизированный продукт в коллекции компании. Послевкусие — с медово-карамельной сладостью. Купить виски Jack Daniel’s Honey можно в стандартных объемах — от 0,5 до 1 л.</li>
+                        <li>Apple. Ликер на основе зеленых яблок придает свежести и легкости. Прекрасный вариант для приготовления летнего коктейля.</li>
+                        <li>Gentleman Jack. Проходит двойную фильтрацию, что смягчает вкус. Этот Джек Дениелс доступен в объеме 0,7 л.</li>
+                        <li>Tennessee Fire. Базовый рецепт дополняет ликер с корицей, что привносит согревающий финиш.</li>
+                        <li>Straight Rye. В составе преобладает рожь — свыше 70%. Это придает сухой и острый характер.</li>
+                        <li>Single Barrel. Крепкий спиртной напиток разлит из одной бочки. Дистиллят реализуют в фирменных стеклянных бутылках Bond.</li>
+                    </ol>
+                    <p>Если решили купить виски Джек Дениелс на подарок, обратите внимание на особые выпуски. Например, линейка Dog Saloon посвящена бару, который функционирует с 1892 года на центральной площади Линчберга.</p>
+                    <h2>Как правильно пить</h2>
+                    <p>
+                        На Джек Дениелс цена довольно высокая, поэтому виски зачастую подают отдельно — так правильно раскрывается насыщенный аромат. Крепкий спиртной напиток разливают по тюльпановидным бокалам. Также подойдет стакан с широкими стенками и
+                        толстым дном. Подают при +18–21 ⁰C.
+                    </p>
+                    <p>
+                        Нередко дистиллят добавляют в коктейли по типу Manhattan, Old Fashioned, Whiskey Sour. Виски Джек Дениелс выгодно раскрывается в компании яблочного или лимонного сока. Особого внимания заслуживает подача, которую называют Frank’s
+                        Way. Виски смешивают с холодной водой и подают на камнях, изготовленных из вулканических пород. Они поддерживают комфортную температуру, не влияя на вкусо-ароматический букет.
+                    </p>
+                    <h2>Как отличить настоящий Jack Daniel’s от подделки</h2>
+                    <p>Если заказываете крепкий спиртной напиток в маркете алкогольных штук MAUDAU, пропускайте этот раздел. На страницах — только оригинальная продукция. Убедитесь сами, проверив:</p>
+                    <ol>
+                        <li>Пробку. Виски Джек Дениелс поставляют с пластиковой крышкой, покрытой защитной пленкой. На горлышко наносят культовую надпись — Old No. 7 Brand.</li>
+                        <li>Этикетку. Выполняют на английском языке. Если крепкий спиртной напиток попал в страну легально, поверх наклеивают белую этикетку, где основную информацию дублируют на украинском.</li>
+                        <li>Выпуклости. Название торговой марки наносят на верхние грани стеклянной бутылки. Гравировка выступает над поверхностью.</li>
+                        <li>Уникальный код. На задней этикетке прописан EL-код. По нему определяют номер бочки и дату упаковки.</li>
+                    </ol>
+                    <h3>Сколько стоит Джек Дениелс Оригинал</h3>
+                    <p>
+                        В основном на Jack Daniel’s цена зависит от емкости. Также влияет комплектация подарочной упаковкой. Например, мини-бутылочки объемом 0,05 л обойдутся от 70 грн, а полноразмерная версия на один литр — от 799 грн. Следите за новыми
+                        акциями и не забывайте о скидках на малый опт от маркета алкогольных штук MAUDAU для выгодных покупок.
+                    </p>
+                    <h2>Почему выгодно купить виски Джек Дениелс в Украине в интернет-магазине MAUDAU</h2>
+                    <p>Благодаря налаженному импорту покупатели получают доступ к уникальным предложениям. За доставку отвечает курьер или почтовая служба. От определенной суммы опцию предоставляют бесплатно.</p>
+                </div>                
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Цитрус хайбол" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Citrus-Highball-pro.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Цитрус хайбол</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=diushes" target="_blank">Лимонад Дюшес</a></li>
+                            <li>Лимон</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Цитрус хайбол — сладкий слабоалкогольный коктейль на основе виски и лимонада. Удачное сочетание всего двух ингредиентов делает его простым в приготовлении.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Горящий Генри" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Henry_pro.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Горящий Генри</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Ликер амаретто Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-baileys-salted-caramel-17-07-l" target="_blank">Айриш крим</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Горящий Генри — очень необычный слоеный коктейль с оригинальной подачей. Имеет мягкий сбалансированный вкус и миндально-кремовые нотки.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Нот ин ми" src="https://photo.maudau.com.ua/Landing/cocktails/incat/not-in-me.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Нот ин ми</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vyshnia-10" target="_blank">Вишневый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лаймовые листья</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Яркий сиропный коктейль для веселых вечеринок. Вишнево-лаймовый вкус удачно подчеркивает крепость Jack Daniel’s.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Теннесси кофе кап" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tennessee_coffee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Теннесси кофе кап</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=highland" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Кофейный ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Удивительно вкусный коктейль с Jack Daniel’s и кофейным ликером. Носит название штата Теннесси — известного производителя виски.
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кентукки кулер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Kentucky-Cooler.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кентукки кулер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Абрикосовый ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l" target="_blank">Имбирное пиво</a></li>
+                            <li>Лайм</li>
+                            <li>Корица в палочках</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Кентукки кулер — пряный оригинальный коктейль, гармонично сочетающий виски, ликер и имбирное пиво. Аромат корицы добавляет нотки праздничного настроения.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Джекки" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jackie.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Джекки</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Домашний медово-имбирный сироп</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Джекки — стильный коктейль на основе Jack Daniel’s с добавлением медово-имбирного сиропа. Терпкость виски сглаживается медом, а лимонный сок добавляет напитку цитрусовые нотки.
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Янки" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Yankee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Янки</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Ликер корицы</li>
+                            <li>Вишневый ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Янки — сбалансированный слоеный шот с ягодным вкусом и пряным послевкусием. Название дает отсылку к жителям США, поэтому американский виски Jack Daniel’s тут кстати.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Джем джекпот" src="https://photo.maudau.com.ua/Landing/cocktails/incat/jam-jackpot.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Джем джекпот</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/fruktove-piure-monin-malyna-1-l" target="_blank">Малиновое пюре</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/fruktove-piure-monin-polunytsia-1-l" target="_blank">Клубничное пюре</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7" target="_blank">Инжирный джем</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Джем джекпот — необычное сочетание крепкого виски Jack Daniel’s, ягодного пюре и травяного биттера. Инжир добавляет напитку восточную нотку.
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Спринг грасс тини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Spring-Grass.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Спринг грасс тини</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Яблочный ликер зеленый Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=imbyr-6" target="_blank">Имбирный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Яблоко</li>
+                            <li>Зеленый базилик</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Свежий небанальный коктейль Спринг грасс тини изумляет нотками базилика и зеленых яблок. Крепкий американский виски сглаживается ликером Fruko Schulz.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="БерриМиАп" src="https://photo.maudau.com.ua/Landing/cocktails/incat/berrymeup.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">БерриМиАп</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=jack-daniel-s" target="_blank">Американский виски Jack Daniel’s</a></li>
+                            <li>Ликер Амаретто Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Ежевика</li>
+                            <li>Черника</li>
+                            <li>Вишня</li>
+                            <li>Лаймовые листья</li>
+                            <li><a href="https://maudau.com.ua/category/med" target="_blank">Мед</a></li>
+                            <li><a href="https://maudau.com.ua/product/korytsia-cannamela-palychky-150-h" target="_blank">Корица в палочках</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Коктейль БерриМиАп — настоящий калейдоскоп вкусов и оттенков. Горчинку виски сменяет ягодная свежесть, а мед с корицей придает сладкое послевкусие.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100 г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">20 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Цитрус хайбол</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>150 мл лимонада Дюшес</li>
+                    <li>30 г лимона</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните высокий стакан хайбол кубиками льда до верхнего края. Для заморозки следует брать отфильтрованную или прокипяченную воду.<br>
+                2. Налейте 50 мл Jack Daniel’s (или другого американского виски), затем долейте 150 мл лимонада Дюшес доверху.<br>
+                3. Аккуратно размешайте напиток коктейльной ложкой и украсьте лимонными дольками.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Горящий Генри</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл американского виски Jack Daniel’s</li>
+                    <li>15 мл ликера амаретто Fruko Schulz</li>
+                    <li>15 мл айриш крим</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку первым слоем 15 мл ликера амаретто Fruko Schulz.<br>
+                2. Используйте коктейльную ложку и уложите 15 мл айриш крим.<br>
+                3. Третьим слоем налейте 15 мл американского виски Jack Daniel’s.<br>
+                4. Подожгите напиток и быстро выпейте через трубочку. Не забудьте сделать совместное фото с Горящим Генри!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Нот ин ми</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>50 мл вишневого сиропа</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>15 мл лаймового сока</li>
+                    <li>2 лаймовых листочка</li>
+                    <li>коктейльная вишня</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал рокс кубиками льда доверху.<br>
+                2. Налейте в шейкер 15 мл лаймового сока, 50 мл вишневого и 15 мл сахарного сиропа.<br>
+                3. Добавьте 50 мл американского виски Jack Daniel’s.<br>
+                4. Насыпьте в шейкер кубики льда и все взбейте.<br>
+                5. Перелейте напиток через стрейнер в бокал.<br>
+                6. Украсьте лаймовыми листочками и коктейльной вишней.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Теннесси кофе кап</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>60 мл американского виски Jack Daniel’s</li>
+                    <li>10 мл кофейного ликера Fruko Schulz</li>
+                    <li>25 мл сахарного сиропа</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>25 мл белка перепелиного яйца</li>
+                    <li>апельсиновая цедра</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-кубок кубиками льда доверху.<br>
+                2. Налейте в шейкер белок перепелиного яйца, 30 мл лимонного сока и 25 мл сахарного сиропа.<br>
+                3. Добавьте 10 мл кофейного ликера и 60 мл виски Jack Daniel’s.<br>
+                4. Наполните шейкер кубиками льда и тщательно взбейте. Все ингредиенты должны перемешаться.<br>
+                5. Перелейте через стрейнер в кубок и украсьте апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кентукки кулер</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>25 мл абрикосового ликера Fruko Schulz</li>
+                    <li>100 мл имбирного пива</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>20 г лайма</li>
+                    <li>15 г корицы в палочках</li>
+                    <li>дробленый лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Обдайте кипятком палочки корицы и отложите их на пару минут.<br>
+                2. Положите в хайбол 3 палочки разогретой корицы и наполните доверху дробленым льдом.<br>
+                3. Налейте 10 мл лаймового сока, 25 мл абрикосового ликера и 50 мл виски Jack Daniel’s.<br>
+                4. Долейте 100 мл имбирного пива и аккуратно размешайте барной ложкой.<br>
+                5. Украсьте коктейль небольшими дольками лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Джекки</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>60 мл американского виски Jack Daniel’s</li>
+                    <li>15 мл домашнего медово-имбирного сиропа</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>15 мл белка перепелиного яйца</li>
+                    <li>лимонная цедра</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Приготовьте домашний медово-имбирный сироп: прокипятите мед, очищенную воду и свежий имбирь в пропорциях 500/500/200. Остудите.<br>
+                2. Налейте в шейкер белок, 15 мл лимонного сока, 15 мл медово-имбирного сиропа и 60 мл американского виски.<br>
+                3. Наполните шейкер кубиками льда и тщательно взбейте.<br>
+                4. Перелейте через барное сито в охлажденный коктейльный бокал.<br>
+                5. Выжмите в коктейль лимонную цедру, проведите по краям бокала и опустите в напиток.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Янки</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл американского виски Jack Daniel’s</li>
+                    <li>10 мл ликера корицы</li>
+                    <li>15 мл вишневого ликера Fruko Schulz</li>
+                    <li>15 мл лимонного сока</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку-шот 15 мл вишневого ликера.<br>
+                2. Возьмите высокую коктейльную ложку и уложите слой лимонного сока 15 мл и слой ликера корицы 10 мл.<br>
+                3. Влейте 15 мл американского виски Jack Daniel’s. Оригинальный и вкусный шот готов!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Джем джекпот</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>1 мл биттера Ангостура</li>
+                    <li>30 г малинового пюре</li>
+                    <li>30 г клубничного пюре</li>
+                    <li>5 г инжирного джема</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в шейкер 1 коктейльную ложку инжирного джема и по 30 грамм малинового и клубничного пюре.<br>
+                2. Добавьте 50 мл американского виски Jack Daniel’s и 1 дэш биттера Ангостура.<br>
+                3. Наполните шейкер кубиками льда и взбейте ингредиенты.<br>
+                4. Перелейте напиток через стрейнер в бокал-банку.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Спринг грасс тини</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>20 мл яблочного зеленого ликера Fruko Schulz</li>
+                    <li>10 мл имбирного сиропа</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>60 г зеленого яблока</li>
+                    <li>7 листиков базилика</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в шейкер 5 листиков зеленого базилика, 2 слайса зеленого яблока и подавите пестиком-мадлером.<br>
+                2. Налейте в шейкер 15 мл лимонного сока, 10 мл имбирного сиропа и 20 мл зеленого яблочного ликера.<br>
+                3. Влейте к смеси ликера и сиропа 50 мл виски Jack Daniel’s.<br>
+                4. Наполните шейкер кубиками льда и взбейте.<br>
+                5. Перелейте через ситечко в заранее охлажденный коктейльный бокал.<br>
+                6. Украсьте коктейль веером из яблочных слайсов и листиками базилика.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить БерриМиАп</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul style="column-count: 2;">
+                    <li>50 мл американского виски Jack Daniel’s</li>
+                    <li>5 мл ликера Амаретто Fruko Schulz</li>
+                    <li>2 мл биттера Ангостура</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>6 г ежевики</li>
+                    <li>2 г черники</li>
+                    <li>150 г вишни</li>
+                    <li>2 лаймовых листика</li>
+                    <li>30 мл меда</li>
+                    <li>палочка корицы</li>
+                    <li>коктейльная красная вишня</li>
+                    <li>дробленый лед</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-слинг дробленым льдом доверху.<br>
+                2. Положите в питчер 150 г мелконарезанной вишни без косточек, палочку корицы и 30 мл меда.<br>
+                3. Протомите смесь на медленном огне и доведите до единой консистенции.<br>
+                4. Выключите, затем добавьте 5 мл ликера амаретто и листик лайма. Размешайте напиток барной ложкой.<br>
+                5. Налейте в шейкер 75 мл приготовленного сиропа, 10 мл лаймового сока и 50 мл виски.<br>
+                6. Добавьте 2 дэша биттера Ангостура, наполните шейкер кубиками льда и интенсивно взбейте.<br>
+                7. Перелейте через ситечко в слинг и досыпьте чуть-чуть дробленого льда.<br>
+                8. Украсьте лаймовым листом, ягодками ежевики, черники и коктейльной вишней.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
