@@ -1,0 +1,1087 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup{
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+
+
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Ром — крепкий алкогольный напиток, приготовленный посредством перегонки патоки или чистого сока сахарного тростника. Содержание алкоголя составляет 25–75%. Дистиллят производят в разных уголках мира, но ассоциируется он со странами
+                    Карибского бассейна.
+                </p>
+                <h2>Краткий экскурс в историю</h2>
+                <p>Ром — один из самых древних крепких спиртных напитков. Его основной ингредиент, сахарный тростник, ферментируют с 350 года до н.э. Изначально его применяли как лекарство.</p>
+                <p>
+                    Массовое выращивание сахарного тростника наладили после открытия исследователями островов с подходящим климатом. Позже местные поняли, что побочный продукт изготовления сахара можно перегонять в спирт. Первый выпуск рома на Карибах
+                    состоялся в XVII веке. Этот факт зафиксирован в документах из Барбадоса, датированных 1651 годом. Первый дистиллят содержал примеси, поэтому его называли «адским обжигающим напитком».
+                </p>
+                <p>В конце 1600-х годов ром распространился по Бразилии, Швеции и даже Франции, где он стал разменной монетой. Позже крепкий спиртной напиток оказался в колониальной Северной Америке.</p>
+                <p>Дистиллят производят и употребляют по всему миру. Лучше всего купить ром из Карибов, где придерживаются многовековых производственных стандартов.</p>
+                <h3>Происхождение названия</h3>
+                <p>Точной информации нет, но существует несколько версий:</p>
+                <ul>
+                    <li>от «rumbullion», что в переводе означает «шум и гам»;</li>
+                    <li>от «rummers» — именно так моряки называли большой бокал для алкоголя;</li>
+                    <li>сокращение от «saccharum», что с латинского переводится как «сахар»;</li>
+                    <li>сокращение от французского слова «arome».</li>
+                </ul>
+                <p>Современное название указывает на место изготовления. Например, ром из бывших испанских колоний именуют как «ron», а «rhum» — версия франкоязычных островов.</p>
+                <h2>Как производят ром</h2>
+                <p>
+                    Зачастую используют патоку. Так называют вязкий сладкий сироп, который в избытке остается после изготовления сахара. Реже используют концентрированный сок сахарного тростника. Выбор сырья зависит от региона происхождения. Касательно
+                    самого процесса нет строгих ограничений. Производство рома опирается на традиции и состоит из четырех ключевых этапов:
+                </p>
+                <ol>
+                    <li>Брожение. Зачастую сок или патоку смешивают с коммерческими штаммами дрожжей. Иногда добавляют воду. Производители вроде Bacardi используют «быстрые» дрожжи. Они сокращают время ферментации.</li>
+                    <li>Дистилляция. Проходит либо в медных перегонных кубах, либо в вертикальных колоннах. Если хотите купить ром в Украине с уникальным вкусом, выбор — за малопартийным производством.</li>
+                    <li>Выдержка. Несколько стран выдвигают требования к минимальному сроку созревания. Он составляет 12 месяцев. Спирт выдерживают в емкостях из нержавеющей стали. Иногда используют дубовую тару из-под хереса или бурбона.</li>
+                    <li>Купажирование. Спирт из разных бочек смешивают для получения сбалансированного вкуса.</li>
+                </ol>
+                <p>По желанию светлый ром дополнительно фильтруют для удаления красящего пигмента. Темный подкрашивают карамелью.</p>
+                <h3>Что по вкусу напоминает ром</h3>
+                <p>
+                    Крепкий спиртной напиток имеет приятный сладкий привкус. Иногда его подчеркивают растительные и минеральные оттенки. Часто ощущаются нотки карамели и ванили. Светлый ром раскрывается освежающими аккордами цитрусовых, а темный
+                    окутывает глубокими древесными аккордами.
+                </p>
+                <h3>Разница между ромом и виски</h3>
+                <p>Краткий гайд по различиям:</p>
+                <ol>
+                    <li>Основной ингредиент. Виски изготавливают из зерновых культур, а ром — из сахарного тростника. Производство последнего контролируют не так строго. Это приводит к разнообразию вкусов, ароматов, оттенков.</li>
+                    <li>Выдержка. Ром быстрее созревает, поскольку производится преимущественно в странах с жарким климатом. Виски выдерживают всегда. Ром — по желанию.</li>
+                    <li>Вкус. Виски, произведенный в Шотландии, зачастую сухой, дымный и торфяной. Ром — сладкий.</li>
+                </ol>
+                <h2>Разновидности рома по региону</h2>
+                <p>Если решили заказать ром в интернет-магазине MAUDAU, взгляните на описание. Выделяют три региона производства, основанных на бывших колониях Испании, Англии и Франции. Подробнее о каждом из них:</p>
+                <ol>
+                    <li>Испания. Сюда входят Доминиканская Республика, Куба, Панама и Пуэрто-Рико. Они выпускают легкий ром, который редко выдерживают. Вкус — свежий и хрустящий.</li>
+                    <li>Англия. Представлена Ямайкой, Барбадосом, Бермудами и Австралией. Спирт выдерживают в дубовых бочках от 12 месяцев. Цвет варьируется от янтарного до светло-коричневого. Вкус патоки ярко выражен.</li>
+                    <li>Франция. Это Мартиника, Гаити и Гваделупа. Вкусовая палитра разнообразная, поскольку на винокурнях используют чистый сок сахарного тростника. Выдержка проходит в бочках из-под коньяка.</li>
+                </ol>
+                <p>Когда рассматриваете вариант купить ром в Украине, обращайте внимание на конкретную страну-производителя. Это полезная подсказка касательно вкусо-ароматической композиции.</p>
+                <h2>Сорта по цвету и виды по способу изготовления</h2>
+                <p>Поскольку строгих правил нет, существует простая классификация по цвету и добавкам:</p>
+                <ol>
+                    <li>Белый. Ром по самой низкой цене. Время производства сокращено, поскольку дистиллят не выдерживают. Вкус — сладкий и острый. Светлый сорт в основном используют в коктейлях.</li>
+                    <li>Золотой. Указывает на старение, но минимальное. Легкий по вкусу, но редко подается без добавок.</li>
+                    <li>Темный. Купить ром с пометкой «Añejo» стоит тем, кто ищет лучший вариант для медленного потягивания. Дистиллят выдерживают в повторно обожженных дубовых бочках, что делает вкус глубоким и насыщенным.</li>
+                    <li>Пряный. В основе — золотой ром. Рецепт дополнен натуральными ароматизаторами: карамелью, ванилью, корицей.</li>
+                </ol>
+                <p>
+                    Отдельно выделяют Rhum Agricole. Так называют напиток, произведенный на франкоязычных островах, особенно на Мартинике. В основе — прессованный сахарный тростник. В каждом глотке ощущается терруар. Вкус — острый, с акцентом на травах
+                    и минералах.
+                </p>
+                <h2>Как выбрать ром</h2>
+                <p>Чтобы выбрать настоящий ром, можно опираться на несколько ключевых показателей:</p>
+                <ul>
+                    <li>цвет;</li>
+                    <li>выдержка;</li>
+                    <li>крепость;</li>
+                    <li>регион.</li>
+                </ul>
+                <p>
+                    Цвет варьируется от светло-золотого до темно-коричневого. Оттенок зависит от выдержки, а также использования натурального красителя — карамели. Выдержка способствует раскрытию вкусо-ароматических особенностей. Ром, который провел в
+                    бочке свыше пяти лет, относят к премиум-классу.
+                </p>
+                <h2>Как правильно пить ром</h2>
+                <p>
+                    Выдержанный напиток подают без добавок. По желанию смешивают со льдом. Лучшая закуска — апельсин, посыпанный молотой корицей. Также подходят мандарины, ананас, дыня, свити. В холодную пору ром смешивают с кофе, какао, горячим
+                    шоколадом. Светлые сорта подходят для коктейлей.
+                </p>
+                <h2>Почему выгодно купить ром в MAUDAU</h2>
+                <p>
+                    Маркет алкогольных штук наладил собственный импорт, поэтому предлагает только оригинальную продукцию. Покупатели получают доступ к огромному ассортименту, включая эксклюзивный товар. Особого внимания заслуживают подарочные наборы в
+                    красивой упаковке.
+                </p>
+                <p>
+                    Цена рома зависит от торговой марки, выдержки, объема. Интернет-магазин MAUDAU предлагает скидки на оптовую покупку, что делает шопинг выгодным. Не забывайте о регулярных акциях. Оплатить заказ можно разными способами — банковской
+                    картой, переводом на расчетный счет, наличными. За доставку отвечает курьер или почтовая служба. От определенной суммы опцию предоставляют бесплатно.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Мохито" src="https://photo.maudau.com.ua/Landing/cocktails/incat/mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мохито</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda" target="_blank">Содовая</a></li>
+                            <li>Лайм</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Мохито — классический ромовый коктейль с ярко выраженным кисло-сладким мятным вкусом и цитрусовым послевкусием. Стал символом релакса и беззаботности.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Дайкири" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Daiquiri.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Дайкири</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Дайкири — бодрящий вкусный напиток, с нежным сочетанием белого рома, сахарного сиропа и лайма. Коктейль освежает и одновременно приятно опьяняет — за счет крепости рома.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Май тай" src="https://photo.maudau.com.ua/Landing/cocktails/incat/mai-tai.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Май тай</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=vytrymanyi-anejo" target="_blank">Выдержанный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-dry-orange-apelsyn-15-07-l" target="_blank">Ликер драй оранж De Kuyper</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=myhdal-5" target="_blank">Миндальный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лайм</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Вкусный ледяной напиток с ромовой основой и сладкими сиропами. Разнообразные компоненты составляют гармоничный запоминающийся ансамбль вкусов.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Куба Либре" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cuba-Libre.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Куба Либре</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=zolotyi-6" target="_blank">Золотой ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Лайм</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Легендарный «Куба Либре» — простой и оригинальный коктейль. Его любят за уравновешенное сочетание рома и колы. Лайм отвечает за цитрусовую кислинку.
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Пина колада" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pina-colada.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Пина колада</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi" target="_blank">Темный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=kokos-9" target="_blank">Кокосовый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Ананас</li>
+                            <li>Ананасовые листья</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Пина колада — традиционный карибский лонгдринк, с необычным молочно-кокосовым вкусом и сладковатым фруктовым послевкусием.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Мохито клубничный" src="https://photo.maudau.com.ua/Landing/cocktails/incat/strawberry-mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мохито клубничный</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=polunytsia-12" target="_blank">Клубничный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda" target="_blank">Содовая</a></li>
+                            <li>Лайм</li>
+                            <li>Клубника</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Яркий ароматный коктейль на основе белого рома. Тандем мяты и клубники имеет незабываемый характерный привкус.
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Зомби" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Zombie-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зомби</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi" target="_blank">Темный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=overpruf-overproof-2" target="_blank">Сверхкрепкий ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=korytsia-7" target="_blank">Сироп корицы</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9" target="_blank">Грейпфрутовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Грейпфрут</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Напій з оманливо м'яким солодким смаком і карколомним поєднанням різних видів рому. Соки згладжують міцність алкоголю.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ром Кола" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Rum-Cola.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ром Кола</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Лайм</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Двухкомпонентный тонизирующий коктейль. Сладкая кола гармонично смешивается с приятным ароматом рома, а кислинка лайма завершает композицию.
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ром Коллинз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/rum-collins.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ром Коллинз</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda" target="_blank">Содовая</a></li>
+                            <li>Лайм</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Ром Коллинз — уютный коктейль на основе белого рома. Одна из версий популярного сочетания ром/содовая, подслащенная сахарным сиропом.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ураган" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hurricane.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ураган</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi" target="_blank">Темный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=marakuia-3" target="_blank">Сироп маракуйи</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13" target="_blank">Ананасовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лимон</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Ураган — насыщенный и довольно крепкий лонгдринк с фруктовым вкусом. Сироп маракуйи и гренадин смягчают ромовую комбинацию, а соки добавляют экзотический вайб.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100 г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">231 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.6 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Мохито</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл белого рома</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>100 мл содовой</li>
+                    <li>80 г лайма</li>
+                    <li>5 г мяты (несколько веточек)</li>
+                    <li>дробленый лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в хайбол 3 дольки лайма и подавите толкушкой-мадлером.<br>
+                2. Возьмите 10 листиков мяты между ладонями и встряхните.<br>
+                3. Уложите мяту в бокал и наполните его доверху дробленым льдом.<br>
+                4. Добавьте 15 мл сахарного сиропа и 50 мл белого рома.<br>
+                5. Долейте до краев содовой и аккуратно размешайте барной ложкой.<br>
+                6. Досыпьте еще немного дробленого льда.<br>
+                7. Украсьте напиток веточкой мяты и ломтиком лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Дайкири</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>60 мл белого рома</li>
+                    <li>30 мл лаймового сока</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в шейкер 30 мл лаймового сока и 15 мл сахарного сиропа.<br>
+                2. Добавьте 60 мл белого рома и встряхните.<br>
+                3. Наполните шейкер кубиками льда и хорошенько все взбейте.<br>
+                4. Перелейте коктейль через ситечко-стрейнер в охлажденное шампанское блюдце.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Май тай</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл выдержанного рома</li>
+                    <li>20 мл ликера драй оранж De Kuyper</li>
+                    <li>10 мл сахарного сиропа</li>
+                    <li>10 мл миндального сиропа</li>
+                    <li>20 мл лаймового сока</li>
+                    <li>30 г лайма</li>
+                    <li>веточка мяты</li>
+                    <li>дробленый лед</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-рокс дробленым льдом.<br>
+                2. Налейте в шейкер 20 мл лаймового сока и по 10 мл сиропов: сахарного и миндального.<br>
+                3. Добавьте 20 мл ликера драй оранж и 50 мл выдержанного рома.<br>
+                4. Наполните шейкер кубиками льда и интенсивно взбейте.<br>
+                5. Перелейте через стрейнер в бокал и досыпьте дробленого льда. <br>
+                6. Украсьте коктейль веточкой мяты и кружочком лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Куба Либре</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл золотого рома</li>
+                    <li>140 мл колы</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>20 г лайма</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал хайбол кубиками льда до верхнего края.<br>
+                2. Налейте 10 мл лаймового сока и 50 мл золотого рома.<br>
+                3. Долейте 140 мл колы и аккуратно размешайте коктейльной ложкой с длинной ручкой.<br>
+                4. Украсьте кружочками лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Пина колада</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>60 мл белого рома</li>
+                    <li>15 мл темного рома</li>
+                    <li>40 мл кокосового сиропа</li>
+                    <li>20 мл лаймового сока</li>
+                    <li>1 кг ананаса</li>
+                    <li>ананасовый лист</li>
+                    <li>коктейльная красная вишня</li>
+                    <li>дробленый лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Слайсером вырежьте мякоть ананаса и выжмите из нее сок.<br>
+                2. Налейте в блендер 20 мл лаймового сока и 100 мл свежевыжатого ананасового сока.<br>
+                3. Добавьте туда же 40 мл кокосового сиропа, 15 мл темного и 60 мл белого рома.<br>
+                4. Насыпьте в блендер один барный совок дробленого льда и взбейте.<br>
+                5. Перелейте полученный напиток в бокал-харрикейн.<br>
+                6. Украсьте коктейльной вишней на шпажке и ананасовым листом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Мохито клубничный</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл белого рома</li>
+                    <li>15 мл клубничного сиропа</li>
+                    <li>100 мл содовой</li>
+                    <li>60 г лайма</li>
+                    <li>120 г клубники</li>
+                    <li>5 г мяты</li>
+                    <li>дробленый лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в хайбол 10 листиков мяты и 3 дольки лайма.<br>
+                2. Добавьте 5 крупных ягод клубники и подавите барным пестиком.<br>
+                3. Наполните бокал доверху подробленным льдом.<br>
+                4. Налейте 15 мл клубничного сиропа и 50 мл белого рома.<br>
+                5. Долейте содовую и аккуратно размешайте коктейльной ложкой.<br>
+                6. По необходимости досыпьте дробленого льда.<br>
+                7. Украсьте бокал клубникой и веточкой мяты.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зомби</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл темного рома</li>
+                    <li>30 мл сверхкрепкого рома</li>
+                    <li>30 мл сиропа корицы</li>
+                    <li>45 мл грейпфрутового сока</li>
+                    <li>30 мл лаймового сока</li>
+                    <li>60 г грейпфрута</li>
+                    <li>веточка мяты</li>
+                    <li>дробленый лед</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните тики-бокал дробленым льдом до краев.<br>
+                2. Налейте в шейкер 30 мл лаймового сока, 45 мл грейпфрутового сока и 30 мл сиропа корицы.<br>
+                3. Добавьте 45 мл темного рома и 30 мл сверхкрепкого рома.<br>
+                4. Заполните шейкер кубиками льда и взбейте.<br>
+                5. Аккуратно перелейте через стрейнер в бокал.<br>
+                6. Украсьте напиток веточкой мяты и ломтиком грейпфрута.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Ром Кола</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл белого рома</li>
+                    <li>140 мл колы</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>20 г лайма</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал хайбол кубиками льда до верхнего края.<br>
+                2. Налейте 50 мл белого рома и 10 мл лаймового сока. Вместо лаймового можно взять лимонный сок.<br>
+                3. Долейте колу доверху и аккуратно перемешайте ингредиенты высокой барной ложкой.<br>
+                4. Украсьте напиток 2 кружочками лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Ром Коллинз</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл белого рома</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>15 мл лаймового сока</li>
+                    <li>120 мл содовой</li>
+                    <li>40 г лайма</li>
+                    <li>кубики льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Насыпьте в бокал хайбол до краев кубики льда. Для их приготовления лучше использовать отфильтрованную воду.<br>
+                2. Налейте 15 мл лаймового сока, 15 мл сахарного сиропа и 50 мл белого рома.<br>
+                3. Долейте доверху содовую и размешайте коктейльной ложечкой.<br>
+                4. Украсьте бокал половинкой лайма. По желанию можно добавить коктейльную вишню.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Ураган</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul style="column-count: 2;">
+                    <li>30 мл белого рома</li>
+                    <li>30 мл темного рома</li>
+                    <li>15 мл сиропа маракуйи</li>
+                    <li>5 мл гренадина</li>
+                    <li>60 мл ананасового сока</li>
+                    <li>60 мл апельсинового сока</li>
+                    <li>30 мл лаймового сока</li>
+                    <li>20 г лимона</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните харрикейн доверху кубиками льда.<br>
+                2. Налейте в шейкер соки: 30 мл лаймового, 60 мл апельсинового и 60 мл ананасового.<br>
+                3. Добавьте 15 мл сиропа маракуйи, гренадин, 30 мл темного и 30 мл белого рома.<br>
+                4. Наполните шейкер кубиками льда и тщательно взбейте все ингредиенты.<br>
+                5. Перелейте коктейль через стрейнер в бокал-харрикейн.<br>
+                6. Украсьте напиток лимонным слайсом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
