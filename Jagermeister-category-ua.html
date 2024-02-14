@@ -1,0 +1,1074 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Єгермейстер (Jagermeister) — німецький лікер на основі 56 трав і спецій. Головний завод Mast-Jägermeister SE розташований у мальовничому місті Вольфенбюттель (Німеччина). Напій належить до бітерів. Найчастіше лікер подають як
+                    дижестив в охолодженому вигляді. Колір — темно-коричневий. Міцність становить 35%.
+                </p>
+                <h2>Короткий екскурс в історію</h2>
+                <p>Перший лікер Jagermeister випустили 1934 року. Рецепт не змінювали з того часу. Рецептуру розробив Курт Маст.</p>
+                <p>
+                    Назва лікеру Єгермейстер у перекладі з німецької означає «майстер-мисливець». Це посилання на офіційну державну посаду, яка існувала в Німеччині. Так у країні називали єгерів і старших лісників. У 1934 цю позицію займав Герман
+                    Герінг, тому лікер Jägermeister часто називали «Герінг-Шнапс».
+                </p>
+                <p>
+                    Міжнародний успіх продукту прийшов наприкінці 1970-х. Це заслуга Сідні Франка, який займався імпортом міцних алкогольних напоїв. Завдяки йому першу партію доправили до США. Продукт позиціонували як напій для гучних студентських
+                    вечірок, тому лікер Єгермейстер продавали за доступною ціною. З того часу ринок збуту поступово розширювався на Європу. Купити Єгермейстер в Україні можна в інтернет-магазині MAUDAU.
+                </p>
+                <h3>Декілька нотаток про дизайнерські особливості</h3>
+                <p>
+                    Квадратна важка пляшка — результат багаторічних експериментів Курта Маста. Він віддавав перевагу активному відпочинку, тому шукав надійну тару для перевезення лікеру Єгермейстер. Для цього Курт упускав пляшки на тверду підлогу, поки
+                    не вціліла фірмова з темно-зеленого скла.
+                </p>
+                <p>На етикетці вибито позачасовий вірш німецького поета Оскара фон Різенталя. Це мантра про честь, написана лісничим, яку потрібно знати кожному мисливцеві.</p>
+                <p>
+                    Напій добре знайомий покупцям як лікер з оленем. Логотип пов'язаний із легендою про святого на ім'я Губерт. Колись граф активно полював на диких звірів. У Страсну П'ятницю він помітив оленя, що несе між рогами хрест, що світився.
+                    Розп'яття наказало мисливцеві зупинитися, оскільки католикам не можна проливати кров невинної тварини в піст. Зустріч змінила думку графа. Він пожертвував нажиті заощадження церкви, а сам подався в ченці. Незабаром Губерт
+                    перетворився на покровителя мисливців.
+                </p>
+                <h3>Культові рекламні інтеграції</h3>
+                <p>
+                    У 1970-х роках лікер Єгермейстер стає спонсором «Формули-1» і DTM. Також напій асоціюється з німецьким футболом. Логотип торгової марки нанесли на футболки Eintracht Braunschweig. Компанія брала участь у змаганнях із настільного
+                    тенісу, представляючи Драгутіна Шурбека. 2018 року торгова марка стала спонсором Національної хокейної ліги. За цей час лікер Єгермейстер суттєво зріс у ціні. У 2020 році корпорація Mast-Jägermeister SE відійшла від фінансування
+                    подібних заходів, вважаючи поєднання міцного спиртного та спорту неприйнятним.
+                </p>
+                <p>Лікер Jägermeister ніколи не розривав контакт із музикою. Імпортер Сідні Франк зробив свій внесок, забезпечивши партнерство з відомими рок-гуртами, серед яких:</p>
+                <ul>
+                    <li>Metallica;</li>
+                    <li>Pantera;</li>
+                    <li>The Bloodhound Gang.</li>
+                </ul>
+                <p>
+                    З 2008 року лікер Єгермейстер — спонсор фестивалю рок-музики Rockstar Mayhem. В Австралії з торговою маркою пов'язаний незалежний музичний чарт AIR Charts. Компанія регулярно підтримує молодих талановитих артистів, надаючи контакт
+                    із Mustard, Smino та EarthGang.
+                </p>
+                <h2>Що входить до складу</h2>
+                <p>
+                    Міцний спиртний напій Єгермейстер відносять до сімейства Kräuterlikör, що німецькою означає «трав'яний лікер». При цьому бітер має характерний солодкий смак. До складу входять 56 компонентів, включно з фруктами, травами, корінням і
+                    спеціями. Основу складає м'якоть гіркого апельсина, змішаного з кіркою. Повний рецепт тримають у секреті.
+                </p>
+                <h3>Трав'яний збір</h3>
+                <p>Про деякі добавки відомо. Це:</p>
+                <ul>
+                    <li>солодка;</li>
+                    <li>корінь імбиру;</li>
+                    <li>корінь галангалу;</li>
+                    <li>андрографіс волотистий;</li>
+                    <li>лаванда;</li>
+                    <li>ромашка;</li>
+                    <li>ісоп;</li>
+                    <li>шафран;</li>
+                    <li>женьшень.</li>
+                </ul>
+                <p>Також до складу входять спеції та прянощі, а саме:</p>
+                <ul>
+                    <li>зірчастий аніс;</li>
+                    <li>кориця;</li>
+                    <li>гвоздика;</li>
+                    <li>мацис;</li>
+                    <li>кардамон;</li>
+                    <li>ягоди ялівцю;</li>
+                    <li>насіння маку.</li>
+                </ul>
+                <p>Такий «солідний» набір складових пояснює, чому лікер Jägermeister продають за ціною від 400 грн за 0,7 літра.</p>
+                <h3>Як виробляють міцний спиртний напій</h3>
+                <p>Лікер Jagermeister виготовляють за стандартною технологією. Вона поєднує чотири ключові стадії:</p>
+                <ol>
+                    <li>Мацерація. Компоненти подрібнюють, потім настоюють на 70-градусному спирті. Процес займає 2–4 тижні. Мацерація сприяє вилученню насичених ефірних олій.</li>
+                    <li>Витримка. Готовий напій розливають дубовими бочками. Там він проводить 12 місяців.</li>
+                    <li>Зниження міцності. Спирт розбавляють пом'якшеною водою, а також змішують із карамеллю та цукровим концентратом. Залишки трав і спецій видаляють за допомогою фільтрації.</li>
+                    <li>Оцінка. Лікер Єгермейстер відправляють на перевірку. Після підтвердження якості напій розливають скляними пляшками та відправляють у продаж.</li>
+                </ol>
+                <h2>Як пити лікер Jägermeister</h2>
+                <p>Пляшку рекомендовано зберігати на льоду. Міцний спиртний напій подають охолодженим при -18 ⁰C. Його подають без добавок як шот. За бажанням можна купити лікер Єгермейстер для змішування в коктейлях:</p>
+                <ol>
+                    <li>Лонг Jägerbomb готують із 40–50 мл німецького трав'яного лікеру, змішаного з енер​​гетичним напоєм, наприклад, Red Bull.</li>
+                    <li>Шот «Коричний рідкий кокаїн» — варіант для запальної вечірки. Просто змішайте одну чарку міцного спиртного напою Jagermeister і таку саму порцію шнапсу, настояного на кориці.</li>
+                    <li>Мікс Surfer on Acid складається з рівних частин німецького бітеру, кокосового лікеру Malibu та ананасового соку.</li>
+                </ol>
+                <h2>Як правильно вибрати лікер Jagermeister</h2>
+                <p>
+                    В інтернет-магазині MAUDAU представлений продукт, виготовлений за класичним рецептом. Змінюється об'єм — від 0,04 л до 1,75 л. Якщо плануєте пити лікер Єгермейстер у чистому вигляді, зупиніться на стандартних об'ємах — 0,5 або 0,7
+                    л. Крихітні пляшечки поповнять мінібар або гармонійно впишуться у святковий бокс.
+                </p>
+                <h2>Чому вигідно купити лікер Єгермейстер в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В онлайн-каталозі перевірена оригінальна продукція, яку поставляють напряму. Для комфортного алкогольного шопінгу — кілька методів оплати та варіантів доставки. Лікер Jägermeister, купити який можна в інтернет-магазині MAUDAU,
+                    реалізують за конкурентною вартістю. При цьому на товар поширюється гуртова знижка.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Cut" src="https://photo.maudau.com.ua/Landing/cocktails/incat/JagerCut.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Cut</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li>Цедра лимона</li>
+                        </ul>
+                        <div class="description-text">
+                            Jägermeister Cut — простий у приготуванні, міцний класичний шот. Союз бурбону та Єгермейстеру виходить гармонійним і сміливим.
+                        </div>
+                        <a class="pop-button" href="#popup1">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Hunter's Tea" src="https://photo.maudau.com.ua/Landing/cocktails/incat/JagerHuntersTea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Hunter's Tea</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/chai-2/typ_83=chornyi-22" target="_blank">Чорний чай</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2" target="_blank">Кленовий сироп</a></li>
+                            <li>Цедра лимона</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Hunter's Tea — ідеальний коктейль для домашнього приготування як аперитив. Кленовий сироп додає Єгермейстеру солодкості, а лаймовий сік залишає цитрусовий післясмак.
+                        </div>
+                        <a class="pop-button" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Count Mast" src="https://photo.maudau.com.ua/Landing/cocktails/incat/CountMast.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Count Mast</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone" target="_blank">Солодкий червоний вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/dzhyn" target="_blank">Джин</a></li>
+                            <li>Цедра лимона</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Count Mast — досить міцний коктейль з ідеальними пропорціями джину, вермуту та Єгермейстеру. В центрі композиції знаходиться гіркувато-солодкий смак трав'яного лікеру.
+                        </div>
+                        <a class="pop-button" href="#popup3">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Naughty German" src="https://photo.maudau.com.ua/Landing/cocktails/incat/NaughtyGerman.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Naughty German</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Цукровий сироп</a></li>
+                            <li>Чорносмородиновий лікер</li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li>Цедра лимона</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Naughty German, він же Пустотливий Німець — популярний коктейль з Єгермейстеру та ягідного лікеру. Відрізняється «багатим» солодким сиропом, який готується у пропорціях цукру та води 2:1.
+                        </div>
+                        <a class="pop-button" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Mule" src="https://photo.maudau.com.ua/Landing/cocktails/incat/JagerMule.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Mule</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l" target="_blank">Імбирне пиво</a></li>
+                            <li>Лайм</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Jägermeister Mule — коктейль із групи лонгів із цитрусовим присмаком лайма та гострою свіжістю імбирного пива. Для напою потрібний мінімум інгредієнтів, його легко готувати.
+                        </div>
+                        <a class="pop-button" href="#popup5">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Jager Cafe" src="https://photo.maudau.com.ua/Landing/cocktails/incat/JagerCafe.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jager Cafe</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кавовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадін</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Jager Cafe — незвичайний напій, що бадьорить, на основі Єгермейстеру з кавовим післясмаком від лікеру. Гренадін додає кисло-солодку нотку.
+                        </div>
+                        <a class="pop-button" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Purple Stag" src="https://photo.maudau.com.ua/Landing/cocktails/incat/PurpleStag.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Purple Stag</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/chai-2" target="_blank">Чай</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li>Ожиновий джем</li>
+                            <li>Свіжа ожина</li>
+                            <li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra" target="_blank">Цукрова пудра</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Purple Stag — насичений фруктовий коктейль із трав'яним відтінком Єгермейстеру. Легко балансує між гіркотою та солодкістю, залишаючи приємний післясмак.
+                        </div>
+                        <a class="pop-button" href="#popup7">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Jägermeister Old Fashioned" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Rum-Cola.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Jägermeister Old Fashioned</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2" target="_blank">Кленовий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=zhytnii-rye" target="_blank">Житній віскі</a></li>
+                            <li>Цедра лимона чи апельсина</li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=bitteri" target="_blank">Бітер</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Old Fashioned — коктейльна класика з Єгермейстером, кленовим сиропом і віскі. Напій підійде і для галасливих застіль, і для душевних дружніх посиденьок.
+                        </div>
+                        <a class="pop-button" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Тікі майстер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tiki_meister.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Тікі майстер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=vytrymanyi-anejo" target="_blank">Витриманий ром</a></li>
+                            <li>Банановий лікер жовтий Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14" target="_blank">Ванільний сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13" target="_blank">Ананасовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko" target="_blank">Яблучний сік</a></li>
+                            <li>Банан</li>
+                            <li>Ананасове листя</li>
+                            <li><a href="https://maudau.com.ua/product/korytsia-kotanyi-melena-25-h" target="_blank">Мелена кориця</a></li>
+                            <li>Дроблений лід</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Тікі майстер — тематичний карибський коктейль, що поєднує поціновувачів рому та Єгермейстеру. Попри високий градус, має м'який приємний смак.
+                        </div>
+                        <a class="pop-button" href="#popup9">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Воскоподібний" src="https://photo.maudau.com.ua/Landing/cocktails/incat/wax.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Воскоподібний</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9" target="_blank">Грейпфрутовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/chai-2/typ_83=chornyi-22" target="_blank">Чорний чай</a></li>
+                            <li>Молоко</li>
+                            <li>Домашній ягідний чатні</li>
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=arakhisova" target="_blank">Арахісова паста</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Воскоподібний — слабоалкогольний коктейль для великої компанії. Готується в чаші для пуншу на основі чаю та ягідного чатні. За міцність відповідають Апероль та Єгермейстер.
+                        </div>
+                        <a class="pop-button" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100 г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">250 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">13.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">28.3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Cut</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>10 мл Єгермейстеру</li>
+                    <li>10 мл бурбону</li>
+                    <li>цедра лимона</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Налийте в шот-стопку 10 мл Єгермейстеру. Класичною вважають стопку прямої циліндричної (або конічної) форми з товстим дном.<br>
+                2. Обережно додайте 10 мл бурбону. Намагайтеся не перемішувати напої.<br>
+                3. Видавіть у стопку цедру одного лимона, за настроєм прикрасьте нею шот.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Hunter's Tea</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл Єгермейстеру</li>
+                    <li>20 мл лаймового соку</li>
+                    <li>50 мл чорного чаю</li>
+                    <li>15 мл кленового сиропу</li>
+                    <li>лимонна цедра</li>
+                    <li>лід у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Заваріть міцний листовий чай і дайте йому охолонути до кімнатної температури.<br>
+                2. Додайте в рокс-келих кубики льоду. Через деякий час злийте воду, що відтанула.<br>
+                3. Влийте в келих 50 мл чорного чаю та 50 мл Єгермейстеру.<br>
+                4. Додайте 20 мл лаймового соку та 15 мл кленового сиропу.<br>
+                5. Досипте лід і перемішайте напій барною ложкою.<br>
+                6. Скрутіть лимонну цедру над коктейлем і прикрасьте келих твістом із цедри.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Count Mast</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл Єгермейстеру</li>
+                    <li>30 мл солодкого червоного вермуту</li>
+                    <li>30 мл джину</li>
+                    <li>цедра лимона</li>
+                    <li>лід у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть кубики льоду в змішувальну склянку.<br>
+                2. Налийте по 30 мл Єгермейстеру, джину та солодкого червоного вермуту.<br>
+                3. Добре перемішайте напої високою коктейльною ложкою.<br>
+                4. Заздалегідь охолодіть келих для подачі.<br>
+                5. Перелийте через стрейнер у келих напій зі склянки.<br>
+                6. Прикрасьте цедрою лимона чи апельсина на шпажці.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Naughty German</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>35 мл Єгермейстеру</li>
+                    <li>10 мл цукрового сиропу</li>
+                    <li>10 мл чорносмородинового лікеру</li>
+                    <li>15 мл лимонного соку</li>
+                    <li>цедра лимона</li>
+                    <li>лід у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Насипте в шейкер лід і налийте 10 мл цукрового сиропу та 15 мл лимонного соку.<br>
+                2. Влийте 35 мл Єгермейстеру та 10 мл чорносмородинового лікеру.<br>
+                3. Добре потрясіть шейкер протягом 20 секунд для змішування всіх інгредієнтів.<br>
+                4. Пропустіть напій через стрейнер у заздалегідь охолоджений келих.<br>
+                5. Прикрасьте коктейль лимонною цедрою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Mule</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл Єгермейстеру</li>
+                    <li>120 мл імбирного пива</li>
+                    <li>2 часточки лайма</li>
+                    <li>кубики льоду</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Візьміть келих хайбол і наповніть його догори льодом.<br>
+                2. Налийте 50 мл заздалегідь охолодженого Єгермейстеру.<br>
+                3. Додайте 120 мл імбирного пива, щоб заповнити хайбол до верхньої межі.<br>
+                4. Перемішайте високою коктейльною ложкою.<br>
+                5. Прикрасьте часточками лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jager Cafe</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл горілки</li>
+                    <li>30 мл Єгермейстеру</li>
+                    <li>30 мл кавового лікеру</li>
+                    <li>5 мл гренадину</li>
+                    <li>кубики льоду</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Налийте в шейкер 30 мл горілки та додайте 30 мл Єгермейстеру.<br>
+                2. Влийте 30 мл кавового лікеру та 5 мл гренадину.<br>
+                3. Закиньте кубики льоду в шейкер і ретельно перемішайте всі компоненти.<br>
+                4. Процідіть напій через сито в охолоджену коктейльну чарку.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Purple Stag</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл Єгермейстеру</li>
+                    <li>25 мл холодного ягідного чаю</li>
+                    <li>25 мл лимонного соку</li>
+                    <li>10 мл ожинового джему</li>
+                    <li>5–7 шт свіжої ожини</li>
+                    <li>3 г цукрової пудри</li>
+                    <li>лід у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Роздавіть і перемішайте в шейкері свіжу ожину та 10 мл ожинового джему.<br>
+                2. Додайте лід, 25 мл холодного ягідного (або фруктового) чаю та 25 мл лимонного соку.<br>
+                3. Влийте 50 мл Єгермейстеру та інтенсивно струсіть усі інгредієнти.<br>
+                4. Відфільтруйте коктейль через стрейнер у заздалегідь охолоджений рокс із кубиками льоду.<br>
+                5. Декоруйте коктейль свіжою ожиною на шпажці та посипте цукровою пудрою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Jägermeister Old Fashioned</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл Єгермейстеру</li>
+                    <li>15 мл кленового сиропу</li>
+                    <li>45 мл житнього віскі</li>
+                    <li>2 краплі бітеру</li>
+                    <li>цедра апельсина чи лимона</li>
+                    <li>кубики льоду</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть рокс кубиками льоду. Перемішайте, щоб рівномірно охолодити келих.<br>
+                2. Влийте 15 мл охолодженого Єгермейстеру та 45 мл житнього віскі.<br>
+                3. Додайте 15 мл кленового сиропу та 2 краплі бітеру.<br>
+                4. Акуратно розмішайте всі складові високою коктейльною ложкою.<br>
+                5. Вичавіть над келихом цедру лимона чи апельсина. Покладіть у напій як прикрасу.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Тікі майстер</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл витриманого рому</li>
+                    <li>20 мл бананового жовтого лікеру Fruko Schulz</li>
+                    <li>20 мл Єгермейстеру</li>
+                    <li>5 мл ванільного сиропу</li>
+                    <li>20 мл ананасового соку</li>
+                    <li>15 мл яблучного соку</li>
+                    <li>30 г банана</li>
+                    <li>2 листочки ананаса</li>
+                    <li>5 г меленої кориці</li>
+                    <li>лід подрібнений та у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть тікі-келих дробленим льодом до верху.<br>
+                2. Налийте в шейкер 15 мл яблучного та 20 мл ананасового соку, 5 мл ванільного сиропу, 20 мл бананового лікеру, 20 мл Єгермейстеру та 40 мл витриманого рому.<br>
+                3. Наповніть шейкер кубиками льоду та збийте інгредієнти.<br>
+                4. Перелийте через стрейнер-сито в келих.<br>
+                5. Прикрасьте коктейль листочками ананаса, кружальцями банана на шпажці та посипте меленою корицею.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Воскоподібний</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>250 мл Апероля</li>
+                    <li>70 мл Єгермейстеру</li>
+                    <li>500 мл лимонного соку</li>
+                    <li>500 мл грейпфрутового соку</li>
+                    <li>500 мл чорного чаю</li>
+                    <li>500 мл молока</li>
+                    <li>500 г ягідного чатні</li>
+                    <li>300 г арахісової пасти</li>
+                    <li>1 кг льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Візьміть трилітрову чашу для пуншу та покладіть у неї 500 г домашнього ягідного чатні та 300 г арахісової пасти.<br>
+                2. Налийте по 500 мл чорного чаю, молока та грейпфрутового соку.<br>
+                3. Додайте 500 мл лимонного соку, 70 мл Єгермейстеру та 250 мл Аперолю.<br>
+                4. Ретельно перемішайте високим віночком.<br>
+                5. Наповніть келихи-рокси кубиками льоду та розлийте напій. Пуншу вистачить приблизно на 15 порцій.<br>
+                6. Прикрасьте напій ложкою арахісової пасти.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+</div>
+
