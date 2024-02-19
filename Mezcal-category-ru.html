@@ -1,0 +1,1094 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Мескаль — алкоголь прозрачного или светло-золотистого цвета, производимый посредством ферментации и перегонки сока агавы. Его относят к культурному наследию Мексики. Минимальная крепость на выходе составляет 40%. Это обширная
+                    категория спиртного. Самой известной разновидностью мескаля считают текилу.
+                </p>
+                <h2>История происхождения мескаля</h2>
+                <p>
+                    Спиртное на основе ферментированного сока агавы возникло в доколониальную эпоху. Успех к напитку пришел в XVI веке, когда испанцы познакомили мексиканцев с возможностями дистилляции. Вскоре на продукт ввели запрет. Производство не
+                    остановили, а перенесли во «внутренние ущелья», а именно — в высокогорные города. В то время мескаль производили исключительно в кустарных условиях, прибегая к многолетнему опыту предков. Только в 1994 году напиток получил
+                    собственное наименование по происхождению.
+                </p>
+                <h2>Технология производства мескаля</h2>
+                <p>Основной компонент — агава. Несколько сортов культивируют на фермах, но в приоритете — суккулент, выращенный в диких условиях. Созревание занимает 7–35 лет. Процесс изготовления выглядит так:</p>
+                <ol>
+                    <li>
+                        Подготовка сырья. Химадор срезает листья с помощью заостренного клинка, оголяя мягкую сердцевину. На этом этапе определяются показатели сладости и вязкости. Чем ближе к пинье срезают листья, тем выше содержание сахара в соку.
+                    </li>
+                    <li>
+                        Запекание. Производство мескаля начинается с подготовки пиньи. Зачастую мягкую сердцевину запекают в земляных печах. Вместительность такой — 10 тонн. Яму выстилают окаменелыми вулканическими породами, а на дно помещают
+                        древесину. По мере сгорания она насыщает пинью дымным ароматом, медленно нагревая камни. Обжарка длится 5–7 дней. Также используют каменные печи. Они выглядят как полноценная комната, в которую помещается 20 тонн сырья. Время
+                        приготовления ограничивается 72 часами. Инновационный вариант — автоклав. Напоминает скороварку. Пинья запекается всего 18 часов.
+                    </li>
+                    <li>
+                        Измельчение. Из приготовленной сердцевины извлекают сладкий сок, который вскоре превратится в мескаль. На первом этапе пинью рубят ручным топором. Далее прибегают к помощи каменного колеса — тахона. Жернов вращает животное или
+                        трактор. Реже прибегают к механическим измельчителям.
+                    </li>
+                    <li>Ферментация. На этом этапе дрожжи превращают сахар в спирт. Ферментация проходит в открытых деревянных или металлических резервуарах. Применение емкости из нержавеющей стали сокращает длительность брожения до 18 часов.</li>
+                    <li>Дистилляция. Полученную жидкость перекачивают в медный куб (аламбик) или колонну непрерывного действия. Традиционно мескаль, купить который можно в интернет-магазине MAUDAU, проходит двойную перегонку.</li>
+                    <li>Выдержка. Дистиллят редко выдерживают. Иногда созревание сглаживает вкусо-ароматическую композицию. Классификация мескаля по возрасту стандартная: Joven (молодой), Reposado (отдохнувший), Añejo (выдержанный).</li>
+                </ol>
+                <h3>Вкус и аромат</h3>
+                <p>
+                    Мескаль — алкоголь с дымным ароматом. На финише крепкий спиртной напиток раскрывается нотами шоколада и острого перца. Поскольку пинья содержит много эфирных масел, ощущается травянистый привкус. Мягкую сердцевину запекают, что
+                    придает сладкие нотки коричневого сахара, карамели, миндаля, печеной тыквы. Ферментация с дикими дрожжами привносит оттенки кожи, табака, сухофруктов.
+                </p>
+                <p>
+                    Отдельного внимания заслуживает Mezcal de Pechuga. Это ароматизированная версия классического алкогольного напитка. Во время второй перегонки в медный куб добавляют куриную или индюшиную грудку. Она придает характерный копченый
+                    аромат.
+                </p>
+                <h2>Разница между текилой и мескалем</h2>
+                <p>Различия сводятся к шести основным моментам:</p>
+                <ol>
+                    <li>
+                        Происхождение. Мескаль производят в девяти штатах Мексики, а текилу — в пяти. Около 90% мескаля выпускают в Оахаке. Также производство легализовано в штатах Дуранго, Гуанахуато, Герреро, Мичоакан, Пуэбло, Сан-Луис-Потоси,
+                        Тамаулипас, Сакатекас. Текилу в основном поставляют из Халиско.
+                    </li>
+                    <li>Состав. Текилу изготавливают из одного сорта агавы — Blue Weber. Для мескаля также подходят сорта Espadin, Tobala, Tepeztate, Arroqueno.</li>
+                    <li>
+                        Подготовка сырья. Сок для производства добывают из пиньи — мягкой сердцевины. Когда производят текилу, ее запекают в надземных печах на пару. Пинью для мескаля обжаривают в каменных подземных ямах, отапливаемых дровами. Остатки
+                        волокон после запекания удаляют частично.
+                    </li>
+                    <li>Дрожжи. Когда производят мескаль, выбор — за дикими дрожжами. Для текилы зачастую применяют коммерческие штаммы.</li>
+                    <li>Вкус. Мескаль окутывает дымным послевкусием, что объясняется особенностями изготовления. Текила — острая и пряная.</li>
+                    <li>
+                        Маркировка. За выпуск мескаля отвечает Consejo Regulador del Mezcal (CRM). На бутылке указывают одну из трех сертификационных категорий, присваиваемых в зависимости от характера изготовления. Текилу маркируют только по возрасту
+                        и составу.
+                    </li>
+                </ol>
+                <p>
+                    Также разница заметна в способах употребления. Крепкий алкогольный напиток мескаль в основном подают в чистом виде. Текилу сопровождают лаймом и солью. К мескалю подают ломтики апельсина, посыпанные Sal de Gusano. Так называют
+                    приправу из смеси сушеных червей, морской соли и перца чили.
+                </p>
+                <h2>Разновидности мескаля</h2>
+                <p>Выделяют три юридически определенные категории:</p>
+                <ol>
+                    <li>Modern. Самый инновационный вариант. Разрешено использование высокотехнологичного оборудования, например, автоклавов и колонн непрерывного действия.</li>
+                    <li>
+                        Ancestral. Противоположный конец спектра. Пинью обжаривают в земляных ямах, а измельчают только с помощью подручных средств. Перегонку осуществляют в медных горшках, подогреваемых огнем. Конденсат собирается в чаше, наполненной
+                        водой. Около 3% коммерческих производителей выпускают продукцию Ancestral. Стоимость мескаля, изготовленного кустарным способом, высокая.
+                    </li>
+                    <li>Artesanal. Среднее звено. Перегонку проводят в медных кубах маленькими партиями.</li>
+                </ol>
+                <h2>Как выбрать качественный мескаль</h2>
+                <p>
+                    Крепкий спиртной напиток реализуют в стеклянных бутылках. Для знакомства с продуктом или торговой маркой выбирайте 0,5 л. Для посиделок в компании мескаль доступен в литровом объеме. Если ищете вариант на подарок, заказывайте
+                    продукцию в красивой подарочной упаковке.
+                </p>
+                <p>Также обратите внимание на крепость. Чем выше процент алкоголя, тем острее вкус. Молодой дистиллят подходит для смешивания в коктейлях. Если подаете без добавок, заказывайте продукцию с отметкой Añejo.</p>
+                <p>
+                    Не последнее место отводят стоимости. Мескаль — кустарный алкоголь, производимый маленькими партиями, что влияет на цену. Иногда для созревания суккуленту требуется 35 лет. Количество концентрированной жидкости для ферментации и
+                    дистилляции меньше, по сравнению с текилой, которую изготавливают из сорта Blue Weber.
+                </p>
+                <h2>Почему выгодно купить мескаль в интернет-магазине MAUDAU</h2>
+                <p>
+                    Шопинг в маркете важных штук имеет множество преимуществ. Главное — огромный ассортимент. Мескаль, купить который можно в онлайн-каталоге MAUDAU, поставляют напрямую. Собственный импорт открывает доступ к эксклюзивным позициям. За
+                    доставку отвечает курьер или почтовая служба. Опция бесплатна от определенной суммы. Предусмотрено несколько вариантов оплаты — банковской картой, наличными или переводом на расчетный счет. Заказать мескаль по выгодной цене можно с
+                    учетом постоянных акций и оптовой скидки.
+                </p>
+            </div>            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Мескалеро" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Mezcalero.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мескалеро</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li>Маурин квина</li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smakaromat_4=tsytrusovi-2" target="_blank">Грейпфрутовый биттер</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Ледяной куб</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Крепкий и гармоничный коктейль на основе ароматного мескаля и апероля. Капелька грейпфрутового биттера привносит цитрусовую нотку.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Негрони мескалито" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Negroni_mezcaliato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Негрони мескалито</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cynar" target="_blank">Чинар</a></li>
+                            <li>Апельсин</li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/kukhonna-sil/kolir_10=chorna" target="_blank">Черная соль</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Коктейльная классика терпкого Негрони с добавлением мескаля. Послевкусие горько-соленому напитку придает травяная горчинка биттера.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Золотой петух" src="https://photo.maudau.com.ua/Landing/cocktails/incat/golden rooster.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Золотой петух</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-dry-orange-apelsyn-15-07-l" target="_blank">Ликер драй оранж De Kuyper</a></li>
+                            <li>Вишневый ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/kheres-valdespino-oloroso-leyenda-bile-sukhe-18-075-l-25269" target="_blank">Херес олоросо</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сладко-горький оригинальный шот, который подается в шампанском блюдце. Изюминкой коктейля является финальное добавление ароматного хереса олоросо. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Темная сторона Луны" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Dark_Side_of_the_Moon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Темная сторона Луны</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li>Пикон</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=imbyr-6" target="_blank">Имбирный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Апельсин</li>
+                            <li>Бамбуковый уголь измельченный</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Пряный кисловатый коктейль для поклонников Звездных войн и не только. Имбирь и лайм гармонично дополняют тандем мескаля и биттера.
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Эль бискоти" src="https://photo.maudau.com.ua/Landing/cocktails/incat/El_Bizzcoti.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Эль бискоти</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=strega" target="_blank">Стрега</a></li>
+                            <li>Медово-имбирный сироп</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Зеленый базилик</li>
+                            <li>Кардамон</li>
+                            <li>Корень имбиря</li>
+                            <li>Лимонная цедра</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Эль бискоти — насыщенный шорт-дринк с узнаваемым дымным вкусом мескаля и медово-сладким послевкусием имбирного сиропа. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кричащая чипотле" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chipotle_Chillon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кричащая чипотле</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=prianyi-5" target="_blank">Пряный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li><a href="https://maudau.com.ua/ru/category/chipsy/typ_296=ovochevi-3" target="_blank">Овощные чипсы</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Неординарный сауэр на базе мескаля и пряного сиропа. Добавление абсента и овощных чипсов делает коктейль по-настоящему незабываемым. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Мекс мэн" src="https://photo.maudau.com.ua/Landing/cocktails/incat/mex_man.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мекс мэн</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava" target="_blank">Сироп агавы</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Популярный коктейль Мекс мэн гармонично сочетает мескаль и красный вермут. Сироп агавы добавляет напитку еще больше мексиканской экзотики. 
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Понти маргарита" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Ponty_Margarita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Понти маргарита</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лайм</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Понти маргарита — простой и приятный твист с кисловатым лаймовым оттенком. Сахарный сироп смягчает крепкий травянистый вкус мескаля. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ананасовая улица" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Pineapple_street.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ананасовая улица</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=peychauds" target="_blank">биттер Пишо</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=revenevyi" target="_blank">Ревеневый биттер</a></li>
+                            <li>Сироп эрл грей</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13" target="_blank">Ананасовый сок</a></li>
+                            <li>Взбитые сливки</li>
+                            <li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=apelsyn-24" target="_blank">Апельсиновый джем</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Слабоалкогольный лонг на мескале с ананасовым соком. Вкрапления биттера придают пикантность, а взбитые сливки — кремовый привкус. 
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Всемогущие двигатели" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The_engines_that_can.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Всемогущие двигатели</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=strega" target="_blank">Стрега</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=italicus" target="_blank">Италикус</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Кумкват</li>
+                            <li>Зеленый базилик</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Взрывной и освежающий физз с веселящими пузырьками просекко и дымной аурой мескаля. Этот травянистый и хвойный коктейль оставляет долгое приятное послевкусие.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">208 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">34.83 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Мескалеро</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл мескаля</li>
+                    <li>30 мл маурин квина</li>
+                    <li>30 мл биттера апероль</li>
+                    <li>1 мл грейпфрутового биттера</li>
+                    <li>Апельсиновая цедра</li>
+                    <li>1 ледяной куб</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в стакан-коллинз ледяной куб. <br>
+                2. В емкость для смешивания налейте 30 мл апероля и 30 мл маурин квина. <br>
+                3. Туда же добавьте 30 мл мескаля и 1 мл грейпфрутового биттера. <br>
+                4. Насыпьте в напиток кубики льда и бережно размешайте барной ложкой. <br>
+                5. Перелейте коктейль через стрейнер в коллинз и украсьте его апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Негрони мескалито</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл мескаля</li>
+                    <li>20 мл красного вермута</li>
+                    <li>15 мл красного биттера</li>
+                    <li>10 мл ликера Чинар</li>
+                    <li>30 г апельсина</li>
+                    <li>5 г корицы в палочках</li>
+                    <li>2 г черной соли</li>
+                    <li>120 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Сделайте на бокале-кубке окаемку из черной соли. <br>
+                2. Наполните его кубиками льда почти доверху. <br>
+                3. Налейте 10 мл ликера Чинар и 20 мл красного вермута.<br>
+                4. Добавьте 15 мл красного биттера и 20 мл мескаля.<br>
+                5. Очень аккуратно перемешайте ингредиенты коктейльной ложечкой. <br>
+                6. Украсьте напиток палочками корицы и долькой апельсина. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Золотой петух</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>35 мл мескаля</li>
+                    <li>35 мл красного вермута</li>
+                    <li>7 мл ликера драй оранж De Kuyper</li>
+                    <li>7 мл вишневого ликера Fruko Schulz</li>
+                    <li>5 мл хереса олоросо</li>
+                    <li>5 г красной коктейльной вишни</li>
+                    <li>300 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в емкость для смешивания по 7 мл вишневого и драй оранж ликеров. <br>
+                2. Влейте туда же 35 мл красного вермута и 35 мл мескаля. <br>
+                3. Добавьте в стакан кубики льда и размешайте коктейльной ложкой. <br>
+                4. Перелейте напиток через сито-стрейнер в заранее охлажденное шампанское блюдце. <br>
+                5. Распылите над коктейлем 5 мл хереса олоросо и украсьте вишенкой. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Темная сторона Луны</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл мескаля</li>
+                    <li>15 мл биттера Пикон</li>
+                    <li>15 мл имбирного сиропа</li>
+                    <li>15 мл лаймового сока</li>
+                    <li>30 г апельсина</li>
+                    <li>3 г измельченного бамбукового уголя</li>
+                    <li>380 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-коллинз доверху кубиками льда. <br>
+                2. В шейкер положите 3 г измельченного бамбукового угля. <br>
+                3. Налейте 15 мл лаймового сока и 15 мл имбирного сиропа. <br>
+                4. Добавьте 15 мл биттера Пикон и влейте 30 мл мескаля. <br>
+                5. Насыпьте в шейкер кубики льда и тщательно взбейте ингредиенты.<br>
+                6. Процедите напиток через сито-стрейнер в стакан. <br>
+                7. Украсьте коллинз ломтиком апельсина. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Эль бискоти</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл мескаля</li>
+                    <li>25 мл ликера Стрега</li>    
+                    <li>20 мл медово-имбирного сиропа</li>    
+                    <li>25 мл лимонного сока</li>    
+                    <li>1 г зеленого базилика</li>    
+                    <li>1 г кардамона</li>    
+                    <li>20 г кореня имбиря</li>    
+                    <li>Лимонная цедра</li>    
+                    <li>150 г дробленого льда</li>    
+                    <li>200 г льда в кубиках</li>    
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал–рокс дробленым льдом до верхнего края. <br>
+                2. Уложите в шейкер 20 г имбирного корня и подавите мадлером. <br>
+                3. Залейте имбирь 25 мл лимонного сока и 20 мл медово-имбирного сиропа. <br>
+                4. Добавьте 25 мл ликера Стрега и 40 мл мескаля. <br>
+                5. Наполните шейкер кубиками льда и хорошенько взбейте смесь. <br>
+                6. Перелейте коктейль через ситечко-стрейнер в бокал. <br>
+                7. Прищепкой соедините лимонную цедру, листик базилика и кардамон. Украсьте композицией коктейль. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кричащая чипотле</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл мескаля</li>
+                    <li>15 мл абсента</li>
+                    <li>30 мл пряного сиропа</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>Белок перепелиного яйца</li>
+                    <li>5 г овощных чипсов</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. С помощью спрейера распылите над бокалом-роксом 15 мл абсента. <br>
+                2. Налейте в шейкер по 30 мл лимонного сока и сиропа. Добавьте белок перепелиного яйца.<br>
+                3. Влейте 40 мл мескаля и тщательно взбейте без добавления льда. <br>
+                4. Теперь наполните шейкер кубиками льда и взбейте повторно. <br>
+                5. Пропустите напиток через стрейнер в бокал. <br>
+                6. Украсьте коктейль парочкой овощных чипсов. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Мекс мэн</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл мескаля</li>
+                    <li>25 мл красного вермута</li>
+                    <li>1 мл биттера Ангостура</li> 
+                    <li>15 мл сиропа агавы</li>
+                    <li>5 г красной коктейльной вишни</li>
+                    <li>300 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стакан для смешивания 25 мл красного вермута и 15 мл сиропа агавы. <br>
+                2. Влейте 1 мл биттера Ангостура и 50 мл мескаля. <br>
+                3. Наполните стакан доверху кубиками льда и размешайте барной ложкой.<br>
+                4. Перелейте через сито-стрейнер в охлажденный бокал для коктейлей. <br>
+                5. Подавайте Мекс мэн на подносе-блюдце вместе с коктейльной вишней. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Понти маргарита</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл мескаля</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>25 мл лаймового сока</li>
+                    <li>20 г лайма</li>
+                    <li>320 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс-бокал кубиками льда до краев. <br>
+                2. Налейте в шейкер 25 мл лаймового сока и 15 мл сиропа. <br>
+                3. Добавьте 45 мл мескаля. <br>
+                4. Заполните шейкер льдом в кубиках и хорошенько взбейте. <br>
+                5. Пропустите напиток через барное сито–стрейнер в бокал. <br>
+                6. Добавьте к коктейлю дольку лайма и подавайте гостям. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Ананасовая улица</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл мескаля</li>
+                    <li>5 мл биттера Пишо</li>
+                    <li>2 мл ревеневого биттера</li>
+                    <li>15 мл сиропа эрл грей</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>40 мл ананасового сока</li>
+                    <li>20 г взбитых сливок</li>
+                    <li>5 г апельсинового джема</li>
+                    <li>380 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Заполните стакан-хайбол доверху кубиками льда. <br>
+                2. Положите в шейкер 5 г апельсинового джема и налейте 10 мл лимонного сока. <br>
+                3. Влейте 15 мл домашнего сиропа эрл грей и 40 мл ананасового сока. <br>
+                4. Добавьте 2 мл ревеневого биттера, 5 мл биттера Пишо и 40 мл мескаля. <br>
+                5. Наполните шейкер кубиками льда и как следует взбейте. <br>
+                6. Перелейте напиток через барное сито в хайбол. <br>
+                7. Сверху украсьте коктейль взбитыми сливками. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Всемогущие двигатели</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл мескаля</li>
+                    <li>10 мл ликера Стрега</li>
+                    <li>20 мл ликера Италикус</li>
+                    <li>100 мл просекко</li>
+                    <li>20 мл лимонного сока</li>
+                    <li>5 г кумквата</li>
+                    <li>1 г зеленого базилика</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в шейкер 20 мл лимонного сока, 10 мл ликера Стрега и 20 мл ликера Италикус. <br>
+                2. Добавьте 40 мл мескаля и наполните шейкер кубиками льда. <br>
+                3. Тщательно взбейте все составляющие и перелейте через стрейнер в бокал-флюте. <br>
+                4. Долейте 100 мл просекко в бокал доверху. <br>
+                5. Украсьте напиток половинкой плода кумквата и листом базилика. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
