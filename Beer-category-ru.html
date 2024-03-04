@@ -1,0 +1,1097 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<body>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Пиво — слабоалкогольный напиток, который готовят посредством сбраживания солодового сусла. В процессе используют классический набор ингредиентов: воду, солод, хмель, дрожжи. В основном затор готовят из ячменя или пшеницы. Реже
+                    используют рожь, кукурузу, рис.
+                </p>
+                <p>
+                    Иногда на крафтовых пивоварнях наряду с зерновой засыпкой применяют добавки — овощи, фрукты, травы, молоко. Такое пиво называют специальным. Комбинация основных и вспомогательных компонентов влияет на вкусо-ароматическую палитру, а
+                    также на текстуру пенного напитка и показатели крепости.
+                </p>
+                <h3>Сколько алкоголя содержит пиво</h3>
+                <p>Средняя крепость составляет 3–6%. По желанию можно заказать пиво с повышенным процентом алкоголя — 9–14%. Легкий напиток, который называют сессионным, имеет 1–3% градуса. В отдельную категорию выносят безалкогольную продукцию.</p>
+                <h2>Краткая история пенного напитка</h2>
+                <p>
+                    Пиво — один из самых древних напитков. Первую подобную продукцию изготавливали на территории Египта, Китая, Месопотамии. Напиток производили в северных регионах, где плохо произрастал виноград. Люди, которые решили купить пиво в то
+                    время, фактически употребляли кашу, поскольку его готовили только из зерна и диких дрожжей. Позже монахи-бенедиктинцы дополнили рецептуру водой и хмелем.
+                </p>
+                <p>В конце XVIII века изобрели термометр и ареометр, что способствовало строгому контролю при варке. В 1857 году Луи Пастер открыл миру дрожжи. В XIX веке впервые предложили купить пиво, закрытое кронен-пробкой.</p>
+                <h2>Классификация пива</h2>
+                <p>Стандартной классификации нет. Пиво делят по составу, цвету, крепости, горечи. Новичку важно разобраться в различиях между двумя основными видами:</p>
+                <ol>
+                    <li>Эль — пиво верхового брожения. Ферментация проходит в верхней части бродильного резервуара при температуре +16–26 ⁰C. Процесс создания эля занимает до четырех недель. Напиток ценят за крепкий и глубокий вкус.</li>
+                    <li>
+                        Лагер — пиво низового брожения. Дрожжи опускаются на дно ферментационного резервуара, где поглощают сахар при температуре +10–13 ⁰C. Брожение проходит медленно, поэтому производственный цикл длится не менее четырех недель.
+                        Результат — лагер с освежающим вкусом.
+                    </li>
+                </ol>
+                <p>
+                    Если решили купить пиво онлайн, то встретите позиции, приготовленные по смешанной технологии. Такой продукт относят к гибридным. Например, наряду с холодным кондиционированием, применяемым для лагера, могут использовать дрожжи
+                    верхового брожения.
+                </p>
+                <p>В интернет-магазине MAUDAU, где можно заказать пиво по конкурентной цене, представлено множество производных от эля или лагера. Их называют стилями. Существует более 70 стилей эля и около 20 — лагера.</p>
+                <p>Культовые разновидности эля:</p>
+                <ol>
+                    <li>IPA. Расшифровывается как «индийский светлый эль». IPA относят к горькому пиву с повышенным градусом — около 7. Свою версию популярного напитка с минимальной горечью также предложили пивовары из США, назвав ее APA.</li>
+                    <li>
+                        Портер. Темный напиток. Выпускается в разных вариантах. Например, пивовары из Англии привносят сладкий карамельно-шоколадный акцент. Балтийский портер отличается повышенной крепостью и освежающими фруктовыми аккордами. Солод в
+                        США сильно обжаривают, что приближает портер к стауту.
+                    </li>
+                    <li>Стаут. Основной ингредиент — несоложеный обжаренный ячмень. Классика жанра — Guinness.</li>
+                    <li>Пшеничное пиво. Напиток с мутным осадком. Вкус — легкий, поскольку используют мало хмеля, но с ярко выраженной цитрусовой кислинкой.</li>
+                    <li>Гоз (Gose). Древний сорт пива, который постепенно возрождает крафтовая пивная индустрия. Он на 50% состоит из солодовой пшеницы. В процессе ферментации прибегают к диким дрожжам. Вкус — кислый и соленый одновременно.</li>
+                    <li>
+                        Ламбик (Lambic). Отдельная категория пива из Бельгии. Акцент — на кислотности. Пенный напиток готовят посредством спонтанной ферментации. Интернет-магазин MAUDAU также предлагает купить пиво с доставкой по Украине, куда входит
+                        вишня (Kriek) или малина (Framboos).
+                    </li>
+                </ol>
+                <p>Распространенные стили лагера:</p>
+                <ol>
+                    <li>Пильзнер. Сорт, который родился в крохотном поселке в Чехии. В основе — солодовый ячмень. Пильзнер — светлый сухой стиль, в котором показатели горечи и сладости определяются видом и количеством хмеля.</li>
+                    <li>Раухбир (Rauchbier). Копченое пиво имеет интенсивный дымный шлейф. Один из немногих стилей, для которого зерно сушат возле открытого огня. Это придает нотку дыма, иногда — бекона.</li>
+                </ol>
+                <h2>Как изготавливают пиво</h2>
+                <p>Процесс выглядит так:</p>
+                <ul>
+                    <li>подготовка солода — зерно проращивают и сушат;</li>
+                    <li>затирание — солод измельчают и смешивают с водой;</li>
+                    <li>фильтрация — зерно попадает в чан, в котором разделяют неохмеленное сусло и дробину;</li>
+                    <li>варка — к суслу добавляют хмель и кипятят;</li>
+                    <li>осветление — на этом этапе удаляют остатки ячменя и хмеля;</li>
+                    <li>ферментация — после охлаждения дрожжи превращают сахар в спирт и углекислый газ;</li>
+                    <li>фильтрация — напиток очищают от остатков дрожжей.</li>
+                </ul>
+                <p>Также в онлайн-каталоге MAUDAU можно заказать пиво с отметкой «пастеризованное». Это означает, что напиток термически обработали при высоких температурах для продления срока годности.</p>
+                <h3>Чем отличается масс-маркет и крафт</h3>
+                <p>Крафтовое пиво производят по классическим технологиям, но в процессе используют уникальные добавки. За счет этого повышается процент алкоголя, а вкусо-ароматический букет становится более разнообразным.</p>
+                <p>Крафтовую продукцию выпускают ограниченными партиями. Только 10% акций пивоварни принадлежат инвесторам. Ежегодное производство крафтового пива ограничено 6 миллионами баррелей для одной пивоварни.</p>
+                <h2>Какая польза от пива</h2>
+                <p>
+                    Умеренное употребление снижает риск развития сердечно-сосудистых заболеваний и сахарного диабета. Пенный напиток содержит зерно, которое является источником полезной клетчатки. Поскольку сахар полностью расщепляется, пиво относят к
+                    низкокалорийным продуктам. Высокое содержание витаминов и минералов, особенно кремния, положительно влияет на опорно-двигательный аппарат.
+                </p>
+                <h2>Кому нельзя пить пиво</h2>
+                <p>Напиток противопоказан детям, а также беременным женщинам и кормящим мамам. Нежелательно пить пиво людям, страдающим расстройствами ЖКТ. Повышенное кровяное давление также является противопоказанием.</p>
+                <h2>Как выбрать пиво</h2>
+                <p>Примите во внимание несколько базовых критериев:</p>
+                <ul>
+                    <li>тип;</li>
+                    <li>цвет;</li>
+                    <li>фильтрацию;</li>
+                    <li>крепость;</li>
+                    <li>показатели горечи.</li>
+                </ul>
+                <p>Например, цвет варьируется от светло-золотистого до темно-коричневого. Оттенок зависит от времени обжарки солода. Также влияет фильтрация.</p>
+                <p>Показатели горечи определяются по шкале IBU. Легкий лагер имеет 8–20 IBU. Показатели для IPA достигают 80–100 IBU.</p>
+                <p>Не последний критерий — возможность купить пиво с доставкой по выгодной цене. Стоимость определяется исходя из стиля, объема, именитости торговой марки.</p>
+                <h3>Где производят пиво</h3>
+                <p>Пенный напиток изготавливают в разных уголках мира, но популярна продукция из:</p>
+                <ul>
+                    <li>Бельгии — Blanche de Bruges, Chimay, Leffe, Hoegaarden;</li>
+                    <li>Германии — Ayinger, Beck’s, DAB;</li>
+                    <li>Англии — BrewDog, Samuel Smith;</li>
+                    <li>Италии — Baladin, 2 Sorelle;</li>
+                    <li>Нидерландов — Bavaria, De Molen, La Trappe;</li>
+                    <li>Украины — Carlsberg, Forever, Hike, Mikki Brew, Volynski Browar;</li>
+                    <li>США — Lakefront Brewery, Sierra Nevada.</li>
+                </ul>
+                <h3>Какое пиво лучше: в стекле или в банке</h3>
+                <p>
+                    Комфортный вариант — продукт в стеклянных бутылках объемом 0,3 или 0,5 л. Такой напиток имеет продолжительный срок хранения, а темное стекло защищает от негативного воздействия света. Также купить пиво в Украине можно в жестянках.
+                    Это прекрасный выбор для прогулки или отдыха на природе. Отдельного внимания заслуживают подарочные наборы, куда входят несколько металлических банок.
+                </p>
+                <h2>Почему выгодно купить пиво в интернет-магазине MAUDAU</h2>
+                <p>
+                    В онлайн-каталоге — оригинальная продукция. Большой ассортимент с эксклюзивными товарами — результат налаженного импорта. Постоянные акции и скидки на оптовую покупку способствуют экономии. За доставку отвечает курьер или почтовая
+                    служба.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Вишневое пиво" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cherry-Beer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Вишневое пиво</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=temne-2" target="_blank">Темное пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vyshnia-10" target="_blank">Вишневый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=vyshnia-21" target="_blank">Вишневый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li>Гвоздика</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лимонная цедра</li>
+                        </ul>
+                        <div class="description-text">
+                            Пряный горячий коктейль с изумительным сочетанием кисло-сладкой вишни и темного пива. Отлично подходит для холодных зимних вечеров и весенних пикников на даче.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Черный флип" src="https://photo.maudau.com.ua/Landing/cocktails/incat/black-flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Черный флип</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi" target="_blank">Темный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=temne-2" target="_blank">Темное пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Желток перепелиного яйца</li>
+                            <li><a href="https://maudau.com.ua/ru/product/muskatnyi-horikh-melenyi-cannamela-25-h" target="_blank">Мускатный орех молотый</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=chornyi-6" target="_blank">Черный шоколад</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Черный флип — приятный сладкий коктейль с органичным сочетанием рома и пива.  Сироп и шоколад смягчают крепость напитка. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Горящий доктор Пеппер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Dr-Pepper.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Горящий доктор Пеппер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=overpruf-overproof-2" target="_blank">Сверхкрепкий ром</a></li>
+                            <li>Ликер амаретто Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Пылающий оригинальный коктейль для горячих вечеринок. В состав обязательно входит сверхкрепкий ром — для необычной подачи.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Летний бриз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Summer-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Летний бриз</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=roza" target="_blank">Сироп розы</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=mandaryn-4" target="_blank">Мандариновый сироп</a></li>
+                            <li>Лайм</li>
+                            <li>Апельсин</li>
+                            <li>Физалис</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Летний бриз — пикантный цветочный коктейль с нетипичным сочетанием пива и сиропа розы. Имеет ярко выраженные цитрусовые нотки и послевкусие. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Пчелка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The-Little-Bee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Пчелка</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi" target="_blank">Темный ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-galliano-lauthentico-423-05-l" target="_blank">Гальяно л’аутентико</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=temne-2" target="_blank">Темное пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Пчелка — запоминающийся пряный коктейль, на базе темного рома и пива. Любители оригинальных лонгов оценят нотки ликера Гальяно. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Зимняя маракуйя" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Physalis.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зимняя маракуйя</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=marakuia-3" target="_blank">Сироп маракуйи</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Физалис</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Сладкий тропический шорт-дринк с необычным дуэтом светлого пива и сиропа маракуйи. Простой и быстрый в приготовлении, красивый в подаче. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Бир берри рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/beer_berry_royal.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бир берри рояль</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=chorna-smorodyna-4" target="_blank">Черносмородиновый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Брусника</li>
+                        </ul>
+                        <div class="description-text">
+                            Ягодный ароматный коктейль на основе светлого пива, с добавлением смородинового сиропа. «Пивная королевская ягода» понравится ценителям сладких лонгов. Бруснику можно заменить красной смородиной.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Зимнее яблоко" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Apple.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зимнее яблоко</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=karamel-8" target="_blank">Карамельный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=zelene-yabluko" target="_blank">Зеленый яблочный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Яблоко</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Зимнее яблоко — вкусный карамельный коктейль на пиве. Тон напитку задает душистый яблочный сироп. Для приготовления понадобится блендер. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Спагетти по-западному" src="https://photo.maudau.com.ua/Landing/cocktails/incat/spaghetti-western.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Спагетти по-западному</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-ancho-reyes-original-40-07-l" target="_blank">Ликер перца анчо</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava" target="_blank">Сироп агавы</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Томат черри</li>
+                            <li><a href="https://maudau.com.ua/ru/category/kukhonna-sil" target="_blank">Соль</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Смелый соленый коктейль с горчинкой перца и кислинкой черри. Все компоненты миксуются в единый гармоничный напиток. Отлично подойдет для барбекю-вечеринок.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Карловарская осень" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Carlsbad-Falls.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Карловарская осень</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/pyvo/kolir_pyva=svitle-2" target="_blank">Светлое пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=myhdal-5" target="_blank">Миндальный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14" target="_blank">Медовый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2" target="_blank">Кленовый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Апельсин</li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3" target="_blank">Гвоздика</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Уютный горячий коктейль на пиве, названный в честь чешского музыкального фестиваля. Аромат миндаля, корицы и меда очаровывает с первого глотка. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">43 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.46 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">3.55 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">92 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Вишневое пиво</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>75 мл темного пива</li>
+                    <li>20 мл вишневого сиропа</li>
+                    <li>75 мл вишневого сока</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>5 г корицы в палочках</li>
+                    <li>5 г гвоздики</li>
+                    <li>Апельсиновая цедра</li>
+                    <li>Лимонная цедра</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в чайничек-питчер 10 мл лимонного сока, 75 мл вишневого сока и 20 мл вишневого сиропа.<br>
+                2. Влейте 75 мл темного пива и перемешайте коктейльной ложкой. <br>
+                3. Добавьте в напиток 5 г гвоздики, палочку корицы, цедру апельсина и лимона.<br>
+                4. Нагрейте напиток, но не доводите до кипения. Постоянно помешивайте. <br>
+                5. Дайте коктейлю настояться пару минут и перелейте в бокал с ручкой (для ирландского кофе).  
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Черный флип</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл темного рома</li>
+                    <li>60 мл темного пива</li>
+                    <li>15 мл сахарного сиропа</li>
+                    <li>5 желтков перепелиного яйца</li>
+                    <li>2 г молотого мускатного ореха</li>
+                    <li>5 г черного шоколада</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в шейкер 5 желтков перепелиного яйца и 15 мл сахарного сиропа. <br>
+                2. Добавьте 45 мл темного рома и 60 мл темного пива. <br>
+                3. Взбейте все ингредиенты методом драй шейк, то есть безо льда. <br>
+                4. Наполните шейкер кубиками льда и тщательно взбейте еще раз. <br>
+                5. Перелейте через стрейнер в охлажденный стакан-хайбол. <br>
+                6. Присыпьте пенку коктейля молотым мускатным орехом.<br>
+                7. Подавайте напиток на блюдечке, с кусочком черного шоколада. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Горящий Доктор Пеппер</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл сверхкрепкого рома</li>
+                    <li>25 мл ликера амаретто Fruko Schulz</li>
+                    <li>200 мл светлого пива</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните на 2/3 стакана–хайбол 200 мл светлого пива. <br>
+                2. Налейте в стопку 25 мл ликера амаретто Fruko Schulz. <br>
+                3. Сверху осторожно долейте 25 мл сверхкрепкого рома. Используйте коктейльную ложку.<br>
+                4. Подожгите ром и опустите стопку в хайбол с пивом. <br>
+                5. Быстро выпейте «горящий» коктейль.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Летний бриз</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл светлого пива</li>
+                    <li>10 мл сиропа розы</li>
+                    <li>20 мл мандаринового сиропа</li>
+                    <li>40 г лайма</li>
+                    <li>115 г апельсина</li>
+                    <li>5 г физалиса</li>
+                    <li>200 г дробленого льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в бокал-харрикейн нарезанные на четверти лайм и апельсин. Подавите барным пестиком. <br>
+                2. Наполните харрикейн дробленым льдом до верхнего края. <br>
+                3. Налейте 10 мл сиропа розы и 20 мл мандаринового сиропа.<br>
+                4. Долейте 100 мл светлого пива и аккуратно размешайте коктейльной ложечкой. <br>
+                5. По желанию досыпьте чуть-чуть дробленого льда. <br>
+                6. Украсьте напиток физалисом и ломтиками цитрусовых.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Пчелка</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл темного рома</li>
+                    <li>25 мл ликера Гальяно л’аутентико</li>
+                    <li>300 мл темного пива</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>10 г корицы в палочках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в заранее охлажденный бокал-слинг 25 мл ликера Гальяно л’аутентико и 10 мл лаймового сока. <br>
+                2. Используйте высокую коктейльную ложку и налейте слой темного рома 15 мл.<br> 
+                3. Аккуратно долейте доверху 300 мл темного пива. <br>
+                4. Украсьте бокал палочками корицы. Пчелка готова к полету!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зимняя маракуйя</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>90 мл светлого пива</li>
+                    <li>45 мл сиропа маракуйи</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>5 г физалиса</li>
+                    <li>60 г дробленого льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в блендер 10 мл лимонного сока и 45 мл сиропа маракуйи.<br>
+                2. Добавьте 90 мл светлого пива и насыпьте совок дробленого льда.<br>
+                3. Хорошенько взбейте все составляющие коктейля. <br>
+                4. Перелейте напиток в охлажденное шампанское блюдце. <br>
+                5. Украсьте бокал физалисом и подавайте с чайной ложкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бир берри рояль</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>250 мл светлого пива</li>
+                    <li>25 мл черносмородинового сиропа</li>
+                    <li>10 мл лаймового сока</li>
+                    <li>15 г брусники</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в охлажденный слинг–бокал 25 мл черносмородинового сиропа. <br>
+                2. Положите в бокал 15 г брусники. В одной барной ложке помещается 5 г ягод. <br>
+                3. Добавьте 10 мл лаймового сока. <br>
+                4. Используя высокую барную ложку, долейте доверху 250 мл светлого пива. Не смешивайте ингредиенты.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зимнее яблоко</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл светлого пива</li>
+                    <li>10 мл карамельного сиропа</li>
+                    <li>35 мл зеленого яблочного сиропа</li> 
+                    <li>10 мл лимонного сока</li>
+                    <li>20 г яблока</li>
+                    <li>60 г дробленого льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в блендер по 10 мл лимонного сока и карамельного сиропа. <br>
+                2. Добавьте 35 мл зеленого яблочного сиропа и 50 мл светлого пива. <br>
+                3. Насыпьте в блендер совок дробленого льда и интенсивно взбейте.<br> 
+                4. Перелейте коктейль в заранее охлажденное шампанское блюдце. <br>
+                5. Украсьте бокал тонкими слайсами зеленого яблока. Подавайте с чайной ложкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Спагетти по-западному</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл бурбона</li>
+                    <li>7 мл красного биттера</li>
+                    <li>15 мл ликера перца анчо</li>
+                    <li>90 мл светлого пива</li>
+                    <li>15 мл сиропа агавы</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>60 г томатов черри</li>
+                    <li>1 г соли</li>
+                    <li>Лимонная цедра</li>
+                    <li>380 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-коллинз доверху кубиками льда. <br>
+                2. Положите в шейкер 60 г томатов черри и подавите мадлером. <br>
+                3. Налейте 30 мл лимонного сока, 15 мл сиропа агавы и 7 мл красного биттера.<br>
+                4. Добавьте 15 мл ликера перца анчо, 30 мл бурбона и щепотку соли. <br>
+                5. Наполните шейкер кубиками льда и взбейте. <br>
+                6. Налейте в коллинз 90 мл светлого пива.<br>
+                7. Пропустите через стрейнер смесь из шейкера в коллинз с пивом. <br>
+                8. Украсьте коктейль лимонной цедрой и черри на шпажке.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Карловарська осінь</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл светлого пива</li>
+                    <li>15 мл миндального сиропа</li>
+                    <li>15 мл медового сиропа</li>
+                    <li>5 мл кленового сиропа</li>
+                    <li>100 мл апельсинового сока</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>40 г апельсина</li>
+                    <li>10 г корицы в палочках</li>
+                    <li>3 г гвоздики</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в питчер 10 мл лимонного и 100 мл апельсинового сока.<br> 
+                2. Добавьте сиропы: 15 мл миндального, 5 мл кленового и 15 мл медового.<br> 
+                3. Влейте 50 мл светлого пива, положите палочку корицы и 3 штучки гвоздики. <br>
+                4. Нагревайте питчер, но не кипятите напиток. В процессе регулярно помешивайте.<br>
+                5. Перелейте через барное ситечко в бокал для ирландского кофе. <br>
+                6. Украсьте коктейль долькой апельсина и палочкой корицы
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
+
+
+</body>
