@@ -1,0 +1,1109 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Вино — алкогольный напиток, который изготавливают путем сбраживания винограда. Сок добывают посредством измельчения и прессования. Сахар, содержащийся в ягодах, подвергают воздействию дрожжей, пока он не сбродит и не превратится в
+                    спирт.
+                </p>
+                <p>
+                    Если нужно купить вино в Украине, то полезно знать, что напиток зачастую маркируют исходя из сорта винограда в составе, например, как Пино Нуар или Каберне Совиньон. Реже указывают регион происхождения — по типу Бордо или Бургундия.
+                    Вино может готовиться либо из одного сорта винограда, либо из смеси.
+                </p>
+                <h2>Экскурс в историю виноделия</h2>
+                <p>
+                    Производство вин уходит корнями в далекую историю. Археологи сходятся во мнении, что виноделие возникло на территории современной Армении около 10 000 лет назад. Самые старые остатки винных бочек и винодельческого инвентаря
+                    датируются примерно 6 000 годом до н.э. Например, представители Шулавери-Шому выдерживали вино в глиняных емкостях. Химический анализ подтвердил, что на стенках содержатся остатки перебродившего виноградного сока.
+                </p>
+                <p>Индустриализация способствовала наращиванию производственных объемов и стандартизации продукции. При этом виноделие остается искусством, как раньше, а за последнее десятилетие произошло возрождение многих традиционных методов.</p>
+                <h2>Технология производства вин</h2>
+                <p>Процесс состоит из шести ключевых стадий:</p>
+                <ol>
+                    <li>Сбор винограда. Разрешен механический сбор, но ручной труд ценится выше. Виноград сортируют, отбирая засохший и гнилой. Иногда удаляют плодоножки.</li>
+                    <li>
+                        Дробление. На этом этапе формируется разница между красными и белыми винами. Красные позиции получают насыщенный цвет и танинный профиль из виноградной кожицы. В приоритете — темный виноград. Если производят белое вино, кожуру и
+                        семена удаляют. В основном используют зеленый виноград.
+                    </li>
+                    <li>
+                        Ферментация. На этом этапе сахар превращается в спирт. Как правило, используют коммерческий штамм дрожжей. По желанию винодела прибегают к диким дрожжам, которые естественным образом содержатся на лозах и перелетают по воздуху.
+                        Если решили купить вино, выпущенное с минимальным человеческим вмешательством, оно потешит натуральным фруктовым букетом. Во время ферментации выделяется углекислый газ: кожица всплывает, а сок остается внизу. Поэтому содержимое
+                        емкостей для брожения регулярно перемешивают. Ферментация длится в среднем 5–21 день.
+                    </li>
+                    <li>Выдержка. По желанию вино разливают по дубовым бочкам или другим резервуарам. Строгих ограничений по времени, проведенному в темных подвалах, нет.</li>
+                    <li>Смешивание и осветление. Когда напиток отдохнул, винодел смешивает вина из разных бочек. Остатки мертвых дрожжей удаляют, чтобы избавиться от мутного осадка после розлива.</li>
+                    <li>Розлив и маркировка. Процесс проходит на автоматизированных линиях. Контакт с кислородом минимизирован.</li>
+                </ol>
+                <h3>Сроки выдержки вина</h3>
+                <p>
+                    Созревание развивает дополнительный аромат: начиная от пряных нот и заканчивая землистыми, минеральными, древесными или табачными аккордами. Выдержка также помогает резким танинам, содержащимся в красных винах, расщепляться и
+                    смягчаться, придавая напитку тонкий аромат и «округлый» вкус. Для этого применяют разную тару:
+                </p>
+                <ul>
+                    <li>новые или повторно использованные дубовые бочки;</li>
+                    <li>емкости из нержавеющей стали;</li>
+                    <li>глиняные сосуды.</li>
+                </ul>
+                <p>
+                    Если в интернет-магазине заказываете белое вино, скорее всего, оно вообще не будет выдерживаться. Это объясняется свежим фруктовым шлейфом, который нужно сохранить. Например, если Мерло выдерживают 3–15 лет, то Рислинг — до 60
+                    месяцев.
+                </p>
+                <h2>Краткий гайд по сортам винограда</h2>
+                <p>
+                    Независимо от производимого вина, виноград должен быть зрелым. Созревание проходит с разной скоростью, так как зависит от сорта и местоположения виноградника. Нередко винодельни выращивают один сорт на той же плантации на протяжении
+                    сотен лет.
+                </p>
+                <p>Известно около 10 000 виноградных сортов, но самыми культивируемыми считают:</p>
+                <ul>
+                    <li>Каберне Совиньон;</li>
+                    <li>Пино Нуар;</li>
+                    <li>Мерло;</li>
+                    <li>Шираз;</li>
+                    <li>Гренаш;</li>
+                    <li>Темпранильо;</li>
+                    <li>Мальбек;</li>
+                    <li>Мускат;</li>
+                    <li>Шардоне;</li>
+                    <li>Пино Гриджио;</li>
+                    <li>Рислинг.</li>
+                </ul>
+                <h2>Классификация вин</h2>
+                <p>Самый распространенный вариант классификации вин — по цвету:</p>
+                <ol>
+                    <li>Красное. Молодой напиток узнаваем по пурпурно-красному цвету. Со временем он становится насыщеннее. Красное вино отличается глубоким вкусом, который раскрывается аккордами спелых ягод и фруктов: вишни, черники, ежевики.</li>
+                    <li>Белое. Цвет варьируется от лимонного до янтарного. Вкус — свежий, с акцентом на цитрусовых. Нередко ощущается легкий минеральный шлейф.</li>
+                    <li>Розовое. Производят либо из темного, либо из зеленого винограда. Оттенок светлее, чем у красных вин, поскольку кожица остается в виноградном соке недолго.</li>
+                </ol>
+                <p>
+                    В отдельную группу выносят оранжевое вино — цена такого напитка выше, чем у стандартных позиций. Другая классификация опирается на наличие углекислого газа. Исходя из этого фактора выделяют тихие вина, которые составляют 85%
+                    ассортимента, и игристые напитки.
+                </p>
+                <p>Если решили заказать вино в интернет-магазине MAUDAU, обращайте внимание на количество остаточного сахара. Выделяют:</p>
+                <ul>
+                    <li>сухое — до 4 г/л;</li>
+                    <li>полусухое — 5–12 г/л;</li>
+                    <li>полусладкое — 13–45 г/л;</li>
+                    <li>сладкое — от 45 г/л.</li>
+                </ul>
+                <p>Однозначного ответа на вопрос, какое вино лучше — сухое или полусладкое, нет. Выбор зависит от личных предпочтений.</p>
+                <p>Иногда на винных этикетках встречаются следующие отметки:</p>
+                <ol>
+                    <li>Крепленое вино. Мадейра, херес, портвейн — основные разновидности. К виноградному суслу добавляют спирт, который повышает крепость до 15–22%.</li>
+                    <li>Безалкогольное вино. По вкусу напоминает классический продукт, но процент алкоголя близится к 0.</li>
+                    <li>Марочное вино. Термин относится к напиткам, изготовленным из урожая одного года. Класс распространен во Франции.</li>
+                </ol>
+                <h2>Как правильно пить вино и с чем сочетать</h2>
+                <p>
+                    Прежде всего важно подобрать бокал. Для культовых напитков вроде Бордо разработан отдельный стакан. Но можно найти универсальный вариант. Температура подачи зависит от цвета. Белое вино подают при +7–12 ºC, красное — при +14–17 ºC.
+                    Последнее также подвергают декантации.
+                </p>
+                <p>Что касается закусок, то выбор многообразен. Белое вино зачастую подают с рыбой и морепродуктами, красное — с птицей и мясом. Десертные напитки, как следует из названия, подходят к десертам.</p>
+                <h2>Как вино влияет на здоровье человека</h2>
+                <p>
+                    Допустимая ежедневная доза — 125–150 мл. Бокал вина снижает стресс, а также положительно влияет на сердечно-сосудистую систему, минимизируя риск развития ишемической болезни сердца. Напиток предотвращает сахарный диабет, а высокая
+                    концентрация антиоксидантов препятствует старению.
+                </p>
+                <h2>Как выбрать и купить вино онлайн</h2>
+                <p>
+                    Поскольку провести дегустацию не получится, сомелье рекомендуют опираться на этикетку. На ней указывают производителя, год выпуска, регион, где был выращен виноград, и сорт. Нередко вино сопровождают короткой аннотацией, которая
+                    поможет разобраться, какой вкусо-ароматический букет скрывается в бутылке.
+                </p>
+                <p>Важно учесть процент остаточного сахара и алкоголя. Емкость зависит от цели покупки. Например, вино объемом 375 мл пополнит мини-бар. Бутылка на 5 л — вариант для громкой вечеринки.</p>
+                <p>
+                    Не последнее место отводят ценнику. Благодаря широкому ассортименту интернет-магазина MAUDAU можно заказать вино по конкурентной цене. Зачастую позиции с низким потенциалом старения стоят дешевле, чем продукция, рассчитанная на
+                    продолжительное хранение.
+                </p>
+                <h3>Короткая география виноделия</h3>
+                <p>
+                    Вино производят практически по всему миру. При классификации оперируют понятиями «Старый Свет» и «Новый Свет». Первая категория состоит из старинных винодельческих регионов, охватывающих Европу и некоторые части Средиземноморья.
+                    Это:
+                </p>
+                <ul>
+                    <li>Франция;</li>
+                    <li>Италия;</li>
+                    <li>Испания;</li>
+                    <li>Германия;</li>
+                    <li>Грузия.</li>
+                </ul>
+                <p>Эти страны уделяют особое внимание терруару — совокупности уникальных почвенно-климатических характеристик. Они придают вину характер места.</p>
+                <p>Термин «Новый Свет» применяют для обозначения относительно молодых винодельческих регионов:</p>
+                <ul>
+                    <li>Австралия;</li>
+                    <li>Новая Зеландия;</li>
+                    <li>Южная Африка;</li>
+                    <li>Чили;</li>
+                    <li>Аргентина;</li>
+                    <li>США.</li>
+                </ul>
+                <h2>Почему выгодно купить вино в маркете алкогольных штук MAUDAU</h2>
+                <p>Интернет-магазин предлагает широкий ассортимент напитков из разных уголков мира. В онлайн-каталоге — оригинальная продукция от всемирно известных торговых марок, а также локальных производителей из Украины.</p>
+                <p>
+                    Несмотря на доступную цену, онлайн-каталог регулярно пополняется акциями. Скидка на оптовую покупку действует постоянно. За доставку отвечает курьер по Киеву или одна из почтовых служб. Рассчитаться за покупку можно онлайн или в
+                    момент получения заказа. Если сложно определиться с выбором, обращайтесь за помощью к онлайн-консультанту или изучите подборку вин от сомелье. Отдельного внимания заслуживают позиции в подарочных упаковках.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Глинтвейн" src="https://photo.maudau.com.ua/Landing/cocktails/incat/glinwein.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Глинтвейн</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi" target="_blank">Сахарный песок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3" target="_blank">Гвоздика</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Апельсиновая цедра</li>
+                        </ul>
+                        <div class="description-text">
+                            Ароматный горячий глинтвейн давно стал символом уютных зимних вечеров. Его основу составляет красное вино с добавлением сахара и пряностей. 
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Милано спритцер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/milano-spitz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Милано спритцер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile;solodkist_2=sukhe-2" target="_blank">Белое вино сухое</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda" target="_blank">Содовая</a></li>
+                            <li>Красный биттер</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Слабоалкогольный коктейль с горчинкой биттера и кислинкой сухого вина. Легкий, бодрящий и простой в приготовлении.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Негрони из Бронкса" src="https://photo.maudau.com.ua/Landing/cocktails/incat/negroni-from-bronx.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Негрони из Бронкса</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=drambuie" target="_blank">Драмбуи</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/product/portvein-messias-porto-tawny-chervonyi-solodkyi-195-075-l" target="_blank">Портвейн тони</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-fee-brothers-plum-12-015-l" target="_blank">Сливовый биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-fee-brothers-peach-17-015-l" target="_blank">Персиковый биттер</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Напиток с насыщенным ароматом и гармоничным сочетанием всех ингредиентов. Довольно крепкий, но мягкий коктейль. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Сангрия" src="https://photo.maudau.com.ua/Landing/cocktails/incat/sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Сангрия</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone" target="_blank">Красное вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu" target="_blank">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi" target="_blank">Сахар</a></li>
+                            <li>Апельсины</li>
+                            <li>Лимон</li>
+                            <li>Свежая мята</li>
+                        </ul>
+                        <div class="description-text">
+                            Сангрия — визитная карточка Испании и самый известный прохладительный напиток на основе красного вина и воды. Легкий и прекрасно утоляет жажду. Традиционно подается в прозрачном кувшине или вместительной чаше. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Калимочо" src="https://photo.maudau.com.ua/Landing/cocktails/incat/calimocho.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Калимочо</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone" target="_blank">Красное вино</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Простой тонизирующий коктейль всего из двух компонентов. Считается атрибутом вечеринок, так как бодрит и вызывает прилив сил. Хорошо сочетается с мороженым. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Красный сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/red-sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Красный сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14" target="_blank">Медовый сироп</a></li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Насыщенный разноцветный коктейль с необычным сочетанием вина и виски. Сиропы приглушают крепость и оставляют сладкое послевкусие. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Виноградный Мартини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Grape-Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Виноградный Мартини</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile" target="_blank">Белое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Ягоды белого винограда</li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Вкусный крепкий коктейль на белом вине. Несмотря на название, в нем нет Мартини и вообще вермута — просто он подается в одноименном бокале.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Карлос" src="https://photo.maudau.com.ua/Landing/cocktails/incat/carlos.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Карлос</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak" target="_blank">Коньяк (бренди)</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile" target="_blank">Белое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Карлос — сбалансированный коктейль с оригинальным сочетанием рома, бренди и вина. Его не сложно приготовить в домашних условиях или на пикнике. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Бабье лето" src="https://photo.maudau.com.ua/Landing/cocktails/incat/babye-lito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бабье лето</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile" target="_blank">Белое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2" target="_blank">Тоник</a></li>
+                            <li>Лимон</li>
+                            <li>Свежая мята</li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Тандем белого вина и тоника в равных пропорциях. Напиток получается некрепким и освежающим. Мята и лимон добавляют прохладные цитрусовые нотки.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Палермо" src="https://photo.maudau.com.ua/Landing/cocktails/incat/palermo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Палермо</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13" target="_blank">Ананасовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile" target="_blank">Белое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Приятный кисло-сладкий коктейль на роме и вине. С итальянским названием, хотя придуман в Англии. Ананасовый сок привносит неожиданную нотку экзотики. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">83 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.07 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">2.72 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">86.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пепел</div>
+                <div class="nutrion-facts-row__value">0.24 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Всего сахара</div>
+                <div class="nutrion-facts-row__value">0.79 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Глинтвейн</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>150 мл красного сухого вина</li> 
+                    <li>10 г сахарного песка</li>
+                    <li>5 г корицы в палочках</li>
+                    <li>1 г гвоздики</li>
+                    <li>Лимонная цедра</li>
+                    <li>Апельсиновая цедра</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в чайничек-питчер 150 мл красного сухого вина. <br>
+                2. Добавьте в вино 10 г сахарного песка, палочку корицы и 3 шт гвоздики. <br>
+                3. Киньте туда цедру лимона и апельсина. <br>
+                4. Нагревайте, помешивая и не доводя до кипения. <br>
+                5. Перелейте глинтвейн в бокал для ирландского кофе с ручкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Милано спритцер</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл красного биттера</li>
+                    <li>100 мл белого сухого вина</li>
+                    <li>50 мл содовой</li>
+                    <li>Апельсиновая цедра</li>
+                    <li>60 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал для вина доверху кубиками льда. <br> 
+                2. Налейте 20 мл красного биттера и 100 мл белого сухого вина.<br> 
+                3. Долейте 50 мл содовой и аккуратно перемешайте коктейльной ложечкой.<br> 
+                4. Украсьте бокал апельсиновой цедрой — и напиток готов!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Негрони из Бронкса</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл ликера Драмбуи</li>
+                    <li>30 мл красного биттера</li>
+                    <li>15 мл портвейна тони</li>
+                    <li>40 мл красного сухого вина</li>
+                    <li>3 мл сливового биттера</li>
+                    <li>3 мл персикового биттера</li>
+                    <li>Апельсиновая цедра</li>
+                    <li>420 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-рокс кубиками льда до краев. <br>
+                2. Налейте в стакан для смешивания 15 мл портвейна тони и 40 мл красного сухого вина. <br>
+                3. Добавьте 30 мл красного биттера, 15 мл ликера Драмбуи и по 3 мл биттеров: сливового и персикового. <br>
+                4. Насыпьте кубики льда и размешайте барной ложкой.<br> 
+                5. Перелейте напиток через сито-стрейнер в бокал-рокс. <br>
+                6. Украсьте коктейль апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Сангрия</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>500 мл красное вино</li>
+                    <li>500 мл вода без газа</li>
+                    <li>2 апельсина</li>
+                    <li>1 лимон</li>
+                    <li>1 столовая ложка сахара</li>
+                    <li>свежая мята</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Нарежьте апельсины и лимон тонкими дольками и выложите в кувшин. Посыпьте сахаром. <br>
+                2. В отдельной емкости смешайте 500 мл красного вина и 500 мл воды без газа. <br>
+                3. Смесью залейте цитрусовые. По желанию добавьте пряности.<br> 
+                4. Настаивайте напиток в холодильнике от 3 до 12 часов. <br>
+                5. Перед подачей добавьте в кувшин лед и свежую мяту.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Калимочо</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл колы</li>
+                    <li>100 мл красного вина</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните охлажденный бокал кубиками льда.<br>
+                2. Добавьте 100 мл красного вина и 100 мл колы. <br>
+                3. Аккуратно перемешайте коктейльной ложечкой. <br>
+                4. Украсьте напиток долькой лимона и добавьте трубочку. <br>
+                5. По желанию подавайте с ванильным мороженым.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Красный сауэр</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл шотландского виски</li>
+                    <li>30 мл красного сухого вина</li>
+                    <li>30 мл сахарного сиропа</li>
+                    <li>20 мл медового сиропа</li>
+                    <li>150 г дробленого льда</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс-бокал доверху дробленым льдом. <br>
+                2. Налейте в шейкер 20 мл медового и 30 мл сахарного сиропов. <br>
+                3. Добавьте 40 мл шотландского виски.<br>
+                4. Наполните шейкер кубиками льда и взбейте напиток.<br>
+                5. Перелейте напиток через сито-стрейнер в бокал.<br> 
+                6. Аккуратно влейте 30 мл красного сухого вина. Коктейль готов! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Виноградный Мартини</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>20 мл белого вина</li>
+                    <li>10 мл сахарного сиропа</li>
+                    <li>10 ягод белого винограда</li>
+                    <li>Лёд</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Подавите в шейкере 10 ягод белого винограда до образования сока. <br>
+                2. Налейте в него 50 мл водки, 20 мл белого вина и 10 мл сахарного сиропа. <br>
+                3. Насыпьте лед и хорошо перемешайте все компоненты. <br>
+                4. Перелейте через барное сито в бокал для Мартини и украсьте виноградом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Карлос</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл светлого рома</li>
+                    <li>15 мл коньяка (бренди)</li>
+                    <li>25 мл белого вина</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>Лёд</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-коллинз кубиками льда доверху. <br>
+                2. Налейте 50 мл светлого рома и 15 мл коньяка (бренди). <br>
+                3. Аккуратно добавьте 25 мл белого вина и 10 мл лимонного сока. <br> 
+                4. Немного перемешайте коктейльной ложкой. <br>
+                5. Украсьте напиток цедрой лимона и подавайте с трубочкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бабье лето</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл белого вина</li>
+                    <li>100 мл тоника</li>
+                    <li>Лимон</li>
+                    <li>Свежая мята</li>
+                    <li>Лёд</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. В бокале для подачи разомните листики свежей мяты. <br>
+                2. Наполните его льдом, не доходя до верхнего края. <br>
+                3. Влейте 100 мл белого вина и 100 мл тоника. <br>
+                4. Добавьте ломтик лимона и перемешайте барной ложкой. <br>
+                5. Коктейль готов — подавайте его с трубочкой. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Палермо</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл белого рома</li>
+                    <li>40 мл ананасового сока</li>
+                    <li>30 мл белого вина</li>
+                    <li>5 мл сахарного сиропа</li>
+                    <li>Лёд</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Заранее охладите бокал типа «Мартини». <br>
+                2. Наполните шейкер льдом доверху и влейте 45 мл белого рома. <br>
+                3. Долейте 40 мл ананасового сока и 30 мл белого вина. <br>
+                4. Добавьте полную коктейльную ложку сахарного сиропа. <br>
+                5. Взбейте напиток и перелейте через сито-стрейнер в охлажденный бокал. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
