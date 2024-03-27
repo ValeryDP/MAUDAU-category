@@ -1,0 +1,1005 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Крепкий алкогольный напиток, который впечатлит сладко-бодрящим вкусом с продолжительным послевкусием. Ликер с короткой, но всемирно известной историей. Один из немногих дистиллятов, который поджигают для эффектной подачи. Все это —
+                    скромная презентация самбуки. Подробнее об особенностях изготовления и секретах популярности — далее.
+                </p>
+                <h2>Что такое самбука</h2>
+                <p>Самбука — ликер, родившийся в Италии, с характерным прозрачным оттенком. Спиртовую основу готовят из зерна или патоки. Его перегоняют на местных винокурнях, но также разрешен импорт. Стандартный состав:</p>
+                <ul>
+                    <li>спирт;</li>
+                    <li>звездчатый анис;</li>
+                    <li>сахар.</li>
+                </ul>
+                <p>Иногда самбука, купить которую можно в интернет-магазине MAUDAU, также содержит зеленый анис, бузину, лакрицу. Процесс изготовления максимально простой:</p>
+                <ol>
+                    <li>Деминерализованную воду нагревают до 70 °C, смешивая с сахаром для приготовления простого сиропа. Самбука — калорийный продукт, поскольку содержит примерно 350 г сахара на литр.</li>
+                    <li>Звездчатый анис бланшируют, а затем измельчают. Эфирные масла извлекают посредством дистилляции с водяным паром. Сейчас производители редко готовят анис самостоятельно, поскольку сырье импортируют из Китая.</li>
+                    <li>Затем спирт смешивают с сахарным сиропом и подготовленным анисом. Настаивание длится 7–9 дней в закрытых металлических резервуарах.</li>
+                    <li>После того как смесь осядет, ее фильтруют при комнатной температуре. Холодную фильтрацию не используют, чтобы не повредить структуру эфирных масел.</li>
+                </ol>
+                <p>Минимальная крепость самбуки, которая продается в интернет-магазине MAUDAU, составляет 38%. Бренды редко соблюдают рекомендацию, предлагая продукцию с повышенным содержанием алкоголя — 40–42%.</p>
+                <h3>Разновидности самбуки</h3>
+                <p>Если решили купить самбуку в Украине, скорее всего выбор падет на классическую прозрачную (белую) настойку. Однако на рынке можно найти интересные вариации:</p>
+                <ol>
+                    <li>
+                        Черная. Темно-синий цвет — результат добавления корня солодки. Этот вариант считается самым элитным на рынке, поэтому самбука продается по высокой цене. Культовый бренд Molinari также производит шоколадно-кофейную настойку с
+                        вязкой текстурой.
+                    </li>
+                    <li>Красная. Десертный напиток. Насыщенный оттенок получают благодаря экстрактам красных ягод и фруктов. Анисовая составляющая приглушается, а напиток становится гуще.</li>
+                </ol>
+                <h2>История появления и популяризации самбуки</h2>
+                <p>
+                    По одной из версий, название происходит от арабского слова «Zammut» — так называют спирт с анисом, который перевозили через порт Чивитавеккья, что недалеко от Рима. Именно этот город связан с международным успехом ликера. Виной
+                    всему — Анжело Молинари. После многочисленных экспериментов он выпустил настойку Sambuca Extra. Ликер оценил сам Фрэнк Синатра. Бутылка самбуки до сих пор вызывает у итальянцев ассоциацию с эпохой «Сладкой жизни», которая охватила
+                    страну в 1950–1960 гг.
+                </p>
+                <p>
+                    Первый известный коммерческий рецепт принадлежит Луиджи Манци. Именно он наладил массовый выпуск анисовой настойки в 1851 году. Дистиллятор позиционировал напиток как дижестив, который способствует пищеварению. Свой продукт Луиджи
+                    Манци назвал в честь лодочников «sambuchelli», которые курсировали между островом Искья и берегами Неаполя.
+                </p>
+                <h2>Какая польза от анисовой настойки</h2>
+                <p>Раньше на вопрос, где купить самбуку, указывали на аптеку. Прежде всего, анисовая настойка широко известная положительным влиянием на ЖКТ, поскольку уменьшает метеоризм и вздутие живота, а также способствует перевариванию пищи.</p>
+                <p>
+                    По мнению древних греков, анис обладает спазмолитическими свойствами. Он облегчает дыхание при кашле и простуде, а также снимает спазмы и судороги. Однако самбука — напиток с высоким содержанием сахара, что важно для людей с
+                    определенными заболеваниями или особыми потребностями в питании.
+                </p>
+                <h2>Как правильно пить</h2>
+                <p>Не только вкус превращает самбуку в уникальный напиток. Выделяют как минимум пять вариантов употребления:</p>
+                <ol>
+                    <li>Без добавок. Предварительно охлажденный напиток наливают в стопку. Рекомендованная порция — 40–50 мл. Выпивают залпом, не закусывая.</li>
+                    <li>
+                        Подача «с мухами». Своеобразный итальянский ритуал, связанный с историей, в которую попала пожилая дама. На приторно-сладкую настойку прилетели три мухи. Чтобы избавиться от назойливой компании, пожилая дама подожгла спирт
+                        спичкой. В современном понимании три кофейных зерна, которые заменяют мух, символизируют богатство, здоровье, счастье. Подача максимально простая: выложите кофейные зерна на дно стопки и влейте анисовый ликер. Выпейте настойку,
+                        после чего медленно разжевывайте зернышка.
+                    </li>
+                    <li>
+                        В разбавленном виде. Смешайте 50 мл самбуки с 100–150 мл прохладной воды или 5–7 кубиками льда, если чистый напиток кажется слишком резким. Мутный осадок, который возникает в результате, свидетельствует о правильном содержании
+                        эфирных масел.
+                    </li>
+                    <li>
+                        С огнем. Эффектный вариант подачи. Подготовьте толстостенную стопку или бокал. Влейте порцию самбуки и аккуратно подожгите с помощью зажигалки. Дистиллят потешит глаз приятным голубым пламенем. Оставьте пылающий бокал на 5–10
+                        секунд. Потушите огонь, как будто задувая свечу. Выпейте залпом.
+                    </li>
+                    <li>
+                        Подача «Два стакана». Сложный трюк, который зачастую выполняют опытные бармены. Подготовьте салфетку с воткнутой соломинкой, бокал-снифтер и традиционный рокс. Налейте в снифтер 50–70 мл самбуки и подожгите. Через 7–10 секунд
+                        аккуратно перелейте горящую настойку в рокс. Пустой стакан опрокиньте на салфетку. Как только огонь погаснет, выпейте самбуку, параллельно вдыхая пар, оставшийся в снифтере.
+                    </li>
+                </ol>
+                <p>
+                    Наконец, анисовый ликер — хороший ингредиент для смешивания в коктейлях. Зачастую его добавляют к шотам вроде «Хиросима» или «Зеленый луч». В лонг-дринках используют редко, чтобы интенсивный привкус пряностей не затмевал остальные
+                    компоненты.
+                </p>
+                <h3>Как подавать с едой</h3>
+                <p>
+                    Даже если напиток подают как аперитив, желудок не должен оставаться пустым. Дистиллят имеет высокий градус, поэтому его желательно подавать с закусками: мясными и сырными нарезками, оливками, соленьями. Также ликер подходит к
+                    морепродуктам. Если выбрали самбуку в качестве алкоголя для шумной вечеринки, подавайте с темным шоколадом, мармеладом, свежими сладкими фруктами.
+                </p>
+                <h2>Как выбрать и купить настоящую самбуку</h2>
+                <p>
+                    Главная рекомендация — заказывайте в проверенных местах. Интернет-магазин MAUDAU предоставляет гарантию, а также сертификат качества. На вопрос, сколько стоит бутылка самбуки, нет однозначного ответа. Цена зависит от популярности
+                    торговой марки, а также выбранного объема. Если ищете вариант на подарок, обратите внимание на продукцию в подарочных упаковках.
+                </p>
+                <h2>Почему выгодно купить самбуку в Украине в маркете алкогольных штук MAUDAU</h2>
+                <p>
+                    Интернет-магазин предлагает широкий выбор. Благодаря собственному импорту покупателям доступны эксклюзивные предложения. Подборки и рекомендации от опытных сомелье помогут определиться с выбором. Самбуку, которую заказали в маркете
+                    алкогольных штук MAUDAU, в краткий срок доставит курьер или почтовый перевозчик.
+                </p>
+                <p>В онлайн-каталоге — конкурентная стоимость самбуки в Украине. Для экономии отслеживайте акции, которые регулярно обновляются. Также не забывайте о дополнительной скидке на малый опт.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Хиросима" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hiroshima-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Хиросима</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+
+                        </ul>
+                        <div class="description-text">
+                            Коктейль Хиросима внешне напоминает то самое грибовидное облако. Напиток получил свое название из-за этой особенности и быстрого опьяняющего эффекта. Самбука и сливочный ликер придают анисовый привкус, а абсент — характерные травяные нотки. 
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Облака" src="https://photo.maudau.com.ua/Landing/cocktails/incat/clouds-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Облака</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li>Ликер блю кюрасао Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-mollys-irish-cream-17-07-l-486180" target="_blank">Айриш крим</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Крепкий пряно-травяной шот на основе самбуки и текилы. Оригинальный вид напоминает белые облака на голубом небе — отсюда и название коктейля.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Тик-так" src="https://photo.maudau.com.ua/Landing/cocktails/incat/tik-tak-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Тик-так</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li>Мятный ликер Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text">
+                            Тик-так — очень простой, но при этом изысканный коктейль. Умерено сладкий, с характерным анисово-мятным послевкусием. Быстрое приготовление и минимум ингредиентов делают его незаменимым на вечеринках. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Стратосфера" src="https://photo.maudau.com.ua/Landing/cocktails/incat/stratosphere-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Стратосфера</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li>Мятный ликер Fruko Schulz</li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Красивый коктейль изумрудного цвета, пряный и мятный. Частичка трипл сека Fruko Schulz и лаймовый сок добавляют цитрусовой пикантности. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Форсаж" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Fast-and-Furious-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Форсаж</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=tabasko" target="_blank">Красный соус Табаско</a></li>
+                            <li>Зеленый соус Табаско</li>
+                        </ul>
+                        <div class="description-text">
+                            Драйвовый пикантный коктейль с острыми и сладкими нотками. Это многослойный, но несложный шот. Оригинальное сочетание алкоголя и соуса Табаско надолго запомнится любителям необычных напитков. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Зеленый луч" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Green-Ray-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зеленый луч</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li>Зеленый ликер Шартрез</li>
+                        </ul>
+                        <div class="description-text">
+                            Зеленый луч — крепкий травяной коктейль на самбуке. В рецепт входит ликер Шартрез с горчинкой полыни и свежестью мяты. В послевкусии ощущаются нотки аниса и пряностей.
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Скользкий сосок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/slippery-nipple.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Скользкий сосок</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Оригинальный коктейль, одновременно крепкий и сладко-сливочный. Придуман фанатами рок-группы «Sex Pistols» и получил эпатажное название из-за характерного внешнего вида.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Виа Венето" src="https://photo.maudau.com.ua/Landing/cocktails/incat/via-veneto.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Виа Венето</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak" target="_blank">Коньяк (бренди)</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Белок куриного яйца</li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Виа Венето — десертный пикантный напиток, названный по аналогии с улицей Via Veneto из творения Феллини «Сладкая жизнь». Тандем самбуки и бренди удивительно сочетается с сахарным сиропом и соком лимона. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кокон" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cocoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кокон</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Самбука с колой — необычная и бодрящая комбинация. Коктейль похож на анисовую колу с цитринкой лимонного сока. Это просто и вкусно.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Шмель" src="https://photo.maudau.com.ua/Landing/cocktails/incat/bumblebee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Шмель</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Бейлис</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Яркий забавный коктейль своей расцветкой похож на брюшко шмеля. Сладкий и насыщенный шот с приятным кофейным послевкусием популярен среди молодежи. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">240 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">40 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Хиросима</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл классической самбуки</li>
+                    <li>20 мл абсента</li>
+                    <li>10 мл ликера айриш крим</li>
+                    <li>5 мл гренадина</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте на дно стопки 20 мл классической самбуки.<br>
+                2. Используйте коктейльную ложку или нож и выложите слоем 10 мл ликера айриш крим.<br>
+                3. Добавьте верхним слоем 20 мл абсента.<br> 
+                4. Налейте через трубочку 5 мл гренадина для имитации «взрыва».<br> 
+                5. Для эффектной подачи коктейль можно предварительно поджечь.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Облака</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл классической самбуки</li>
+                    <li>20 мл серебряной текилы</li>
+                    <li>10 мл абсента</li>
+                    <li>3 мл ликера блю кюрасао Fruko Schulz</li>
+                    <li>3 мл ликера айриш крим</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налей в стопку нижним слоем 20 мл классической самбуки.<br>
+                2. Сверху добавьте 20 мл серебряной текилы.<br> 
+                3. Аккуратно налейте из трубочки по 3 мл ликеров блю кюрасао Fruko Schulz и айриш крим.<br> 
+                4. Верхним слоем выложите 10 мл абсента. Для удобства используйте коктейльную ложку.<br>
+                5. Пить коктейль следует залпом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Тик-так</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл классической самбуки</li>
+                    <li>20 мл мятного ликера Fruko Schulz</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку 20 мл мятного ликера Fruko Schulz.<br>
+                2. Используйте коктейльную ложку или лезвие ножа и уложите следующим слоем 40 мл классической самбуки.<br> 
+                3. Шот готов! При желании можете поджечь коктейль перед подачей. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Стратосфера</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл классической самбуки</li>
+                    <li>20 мл мятного ликера Fruko Schulz</li>
+                    <li>10 мл трипл сека Fruko Schulz</li>
+                    <li>10 мл лаймового сока</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку 20 мл мятного ликера Fruko Schulz.<br> 
+                2. При помощи высокой барной ложки уложите слоем 15 мл классической самбуки.<br> 
+                3. Верхним слоем выложите 10 мл трипл сека Fruko Schulz.<br> 
+                4. Добавьте 10 мл лаймового сока.<br> 
+                5. Подожгите напиток и быстро выпейте через трубочку. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Форсаж</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл классической самбуки</li>
+                    <li>20 мл серебряной текилы</li>
+                    <li>10 мл трипл сека Fruko Schulz</li>
+                    <li>4 мл красного соуса Табаско</li>
+                    <li>4 мл зеленого соуса Табаско</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте на дно стопки 20 мл классической самбуки.<br>
+                2. Используйте коктейльную ложку и выложите слой зеленого соуса Табаско, а затем 10 мл трипл сека Fruko Schulz.<br> 
+                3. Продолжайте укладывать слои — 4 мл красного соуса Табаско и в завершении 20 мл серебряной текилы.<br> 
+                4. Быстро выпейте коктейль — ведь не зря он называется Форсаж! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зеленый луч</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл классической самбуки</li>
+                    <li>25 мл зеленого ликера Шартрез</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку 25 мл классической самбуки.<br> 
+                2. Возьмите высокую коктейльную ложку и аккуратно уложите поверх первого слоя 25 мл зеленого ликера Шартрез.<br> 
+                3. Слои не должны перемешиваться — так коктейль похож на вспышку зеленого луча за горизонтом. Готово! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Скользкий сосок</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл классической самбуки</li>
+                    <li>25 мл ликера айриш крим</li>
+                    <li>1 мл гренадина</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в маленькую стопку 25 мл классической самбуки.<br> 
+                2. Используйте коктейльную ложку или нож и выложите следующими слоем 25 мл ликера айриш крим.<br> 
+                3. Возьмите трубочку и аккуратно капните в центр шота 1 каплю гренадина.<br>
+                4. Выпейте залпом!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Виа Венето</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл самбуки</li>
+                    <li>60 мл коньяка (бренди)</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>5 мл сахарного сиропа</li>
+                    <li>1 белок куриного яйца</li>
+                    <li>Лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Заранее охладите бокал-блюдце для шампанского.<br>
+                2. Налейте в шейкер 15 мл самбуки и 60 мл коньяка (бренди).<br>
+                3. Добавьте 15 мл лимонного сока, 5 мл сахарного сиропа и белок куриного яйца.<br> 
+                4. Заполните шейкер льдом и встряхивайте в течение 30 секунд.<br>
+                5. Перелейте напиток через барное сито-стрейнер в бокал.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кокон</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл самбуки</li>
+                    <li>150 мл колы</li>
+                    <li>20 мл лимонного сока</li>
+                    <li>Лед</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните широкий стакан-олдфешн льдом до самого верха.<br>
+                2. Налейте 50 мл самбуки и 20 мл лимонного сока.<br> 
+                3. Аккуратно долейте 150 мл колы — может появиться пена.<br> 
+                4. Перемешайте напиток барной ложкой и подавайте с трубочкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Шмель</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл кофейного ликера</li>
+                    <li>15 мл самбуки</li>
+                    <li>15 мл ликера Бейлис</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте на дно рюмки 15 мл кофейного ликера.<br>
+                2. Вторым слоем по барной ложке или лезвию ножа добавьте 15 мл самбуки.<br>
+                3. Аккуратно уложите последним слоем 15 мл ликера Бейлис.<br> 
+                4. Не перемешивайте и выпейте шот залпом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
