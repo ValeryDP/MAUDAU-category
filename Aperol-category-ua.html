@@ -1,0 +1,1075 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Апероль (Aperol) — гіркий італійський лікер. Міцність становить 11%. Назва — посилання на французький жаргон: «apero» у перекладі означає «аперитив». Це логічно: простота насолоди напоєм перед їдою виглядає особливо вишукано в
+                    італійській культурі.
+                </p>
+                <p>
+                    Апероль вважають італійським амаро або бітером, що перекладається як «трохи гіркий». При цьому він найсолодший у сімействі. Спочатку бітер позиціонували як напій для покращення травлення. Незабаром він перетворився на варіант
+                    веселого соціального проведення часу, який високо цінують як місцеві жителі, так і туристи.
+                </p>
+                <h2>Що входить до складу</h2>
+                <p>
+                    Апероль, який можна купити в маркеті алкогольних штук MAUDAU, виготовлений за рецептом, який не змінювали з 1919 року. Загалом у складі — близько 30 компонентів. Трави постачають із П'ємонту. Точний склад тримають у секреті, але
+                    відомо про деякі інгредієнти:
+                </p>
+                <ol>
+                    <li>Апельсини. Складають основу бітеру Апероль. Використовують як солодкі, так і гіркі сорти.</li>
+                    <li>Тирлич. Підходять лише квіти. Вони привносять насичений трав'яний аромат із легкою гіркуватістю.</li>
+                    <li>Хінне дерево. Багаторічна рослина надає Аперолю насиченості. В основному використовують сушену кору.</li>
+                    <li>Ревінь. Привносить кислинку. Через це лікер часто змішують із солодкою газованкою або ігристим вином. Також допомагає збалансувати смак.</li>
+                </ol>
+                <p>Яскравий жовтогарячий відтінок — візитка Апероля. Колір асоціюється зі спекою. Точної інформації про походження відтінку немає, але його пов'язують із переважанням апельсинів у рецептурі.</p>
+                <p>Класичний італійський аперитив Апероль готують за допомогою настоювання інгредієнтів на нейтральній спиртовій основі. Готовий продукт фільтрують, підсолоджують цукром і розбавляють підготовленою водою до потрібної міцності.</p>
+                <h2>Виписки з історії</h2>
+                <p>
+                    Аперитив Aperol, який можна купити в маркеті алкогольних штук MAUDAU, — результат семирічних експериментів. Рецепт належить братам Луїджі та Сільвіо Барб'єрі. Гіркий лікер створили 1919 року на лікеро-горілчаному заводі, який
+                    належав їхньому батькові. Наразі компанія входить до складу Gruppo Campari.
+                </p>
+                <p>
+                    Успіх до бітеру прийшов у 1930-х роках. Лікер сподобався активній молоді, яка засідала в кафе Падуї, що в регіоні Венето. У 1950-х представили культовий Aperol Spritz — асоціацію з відпочинком улітку. Водночас рекламу активно
+                    крутили на ТБ.
+                </p>
+                <p>Бренд Aperol стає спонсором культурно-розважальних заходів. У 1980-х роках компанія налагодила імпорт. З того часу бітер реалізують у різних куточках світу, включно з Україною.</p>
+                <h2>Як правильно пити</h2>
+                <p>
+                    Бітер Апероль — алкоголь, який відрізняється інтенсивним гірко-солодким смаком з акцентом на апельсинах, з тонкими трав'яними та пряними нотами. Текстура — бархатиста та округла. Фініш — солодкий, з виразною гіркуватістю. Враження
+                    доповнює насичений аромат — з легким ванільним шлейфом.
+                </p>
+                <p>
+                    Якщо подаєте лікер як аперитив, розливайте маленькими чарками. Пийте маленькими ковтками. Температура подачі — +5–8 ⁰C. Бітер вигідно поєднується зі свіжими фруктовими соками. Спробуйте поєднання з апельсиновим фрешем.
+                    Найпоширеніший варіант подачі — у складі коктейлів:
+                </p>
+                <ol>
+                    <li>
+                        Справжня зірка — Aperol Spritz. На батьківщині його називають Spritz Veneziano та подають під час золотої години. Мікс складається з Апероля, ігристого вина (найчастіше — Просекко), газованки. Подається з льодом у широкому
+                        келиху на високій ніжці. Через низький вміст алкоголю подобається тим, хто шукає щось смачне без негативного впливу на здоров'я.
+                    </li>
+                    <li>Нерідко бітер використовують у Negroni замість Campari. Такий мікс стає легким і менш гірким порівняно з оригіналом. Рецепт доповнюють джином і солодким червоним вермутом.</li>
+                    <li>Не менш цікавий варіант — Ten Spot. Основний компонент — джин. За допомогою Апероля підкреслює приємну гіркуватість. Композицію збагачують грейпфрутом і лаймом. Напій подають охолодженим у високому келиху для шампанського.</li>
+                    <li>Сучасна класика — Paper Plan. Гірко-солодкий мікс, серцем якого виступає кукурудзяний віскі.</li>
+                </ol>
+                <p>На особливу увагу заслуговує набір, куди входить аперитив Aperol і ігристе вино. Цього достатньо для приготування смачного коктейлю в домашніх умовах.</p>
+                <h3>З якими закусками подавати</h3>
+                <p>Поєднання солодко-гірких акордів робить напій чудовим варіантом для комбінації з різними стравами. На батьківщині Aperol подають із крихітними закусками — чікетті. Також як додаток вибирають:</p>
+                <ol>
+                    <li>Кростіні. Так називають шматочки підсмаженого хліба, доповнені різноманітними начинками.</li>
+                    <li>Лінгет. Коржики, які готують у північній Італії. Їх змащують оливковою олією, доповнюючи вершковим сиром чи рибними консервами.</li>
+                    <li>Польпетте. Крихітні м'ясні фрикадельки. Варіант стріт-фуду, що подають на тонких дерев'яних паличках.</li>
+                    <li>Аранчіні. Страва нагадує апельсин, але складається з рису, сформованого в невелику кульку, потім покритого панірувальними сухарями та обсмаженого. За бажанням їх наповнюють овочами чи м'ясом.</li>
+                </ol>
+                <p>Гарно оформлена м'ясна дошка — простий спосіб справити враження на гостей. Також під гіркий лікер Aperol можна подавати салат, основну страву з птахів або морепродуктів, легкий десерт.</p>
+                <p>Як відрізнити оригінал від підробки</p>
+                <p>Бітер Aperol, купити який можна в інтернет-магазині MAUDAU, постачають безпосередньо з Італії. Тож інформація з цього розділу не стане в пригоді. Під час вибору пам'ятайте про важливі нюанси:</p>
+                <ol>
+                    <li>Гіркий лікер розливають по скляних пляшках, які закорковують синім короком із логотипом компанії та круглим написом угорі.</li>
+                    <li>Під етикеткою на лицьовій стороні видно опукле гравіювання Aperol.</li>
+                    <li>Наявність акцизної марки. Оригінальну етикетку виконують англійською мовою. Якщо товар потрапив до країни легально, інформацію дублюють українською.</li>
+                </ol>
+                <h3>Скільки коштує бітер в Україні</h3>
+                <p>На гіркий лікер Апероль ціна залежить від вибраного обсягу. Доступні варіанти: 0,7 літра, а також 1 та 3 л. Найпоширеніший варіант — 0,7. Вартість — від 399 грн. Не забувайте про знижки на малий гурт і стежте за акціями.</p>
+                <h2>Чому вигідно замовити Апероль в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В онлайн-каталозі лише оригінальна продукція. Це пояснюється налагодженим власним імпортом. Інтернет-магазин пропонує безкоштовну доставку від певної суми. Також опція стосується окремих позицій в асортименті. Для зручності покупця
+                    є кілька варіантів оплати.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Aperol Shpritz" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Aperol_Spritz-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Aperol Shpritz</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просеко</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/vyd_133=sylnohazovana" target="_blank">Содова</a></li>
+                            <li>Апельсин</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Aperol Spritz — найпопулярніший коктейль на основі бітеру Aperol. Його фірмова трав'яна гіркуватість ідеально поєднується з просеко та цитрусовими.
+                        </div>
+                        <a class="pop-button" href="#popup1">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Цікавість" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Curiosity.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Цікавість</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Житнє віскі Woodford Reserve</a></li>
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver" target="_blank">Абсент</a></li>
+                            <li>Червоний вермут</li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka" target="_blank">Бехеровка</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li>Малина</li>
+                            <li>Чорниця</li>
+                            <li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=malyna-16" target="_blank">Малиновий джем</a></li>
+                            <li>Лимонна цедра</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Неординарний коктейль на житньому віскі з легким присмаком малини. Гірчинка апероля непогано поєднується з димком Woodford Reserve.
+                        </div>
+                        <a class="pop-button" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Воскоподібний" src="https://photo.maudau.com.ua/Landing/cocktails/incat/aperol-wax.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Воскоподібний</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister" target="_blank">Єгермейстер</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9" target="_blank">Грейпфрутовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/chai-2/typ_83=chornyi-22" target="_blank">Чорний чай</a></li>
+                            <li>Молоко</li>
+                            <li>Домашній ягідний чатні</li>
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=arakhisova" target="_blank">Арахісова паста</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Воскоподібний — слабоалкогольний коктейль для великої компанії. Готується в чаші для пуншу на основі чаю та ягідного чатні. За міцність відповідають Апероль та Єгермейстер.
+                        </div>
+                        <a class="pop-button" href="#popup3">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Стрибаюча Джесіка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jumping_Jessica.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Стрибаюча Джесіка</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Золота текіла</a></li>
+                            <li>Зелений Шартрез</li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Цукровий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовий сік</a></li>
+                            <li>Білок перепелиного яйця</li>
+                            <li>Стручковий перець солодкий</li>
+                            <li>Корінь імбиру</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригінальний овочевий сауер, складний і пікантний. Провідну роль грає текіла, а апероль смачно відтіняє коктейль.
+                        </div>
+                        <a class="pop-button" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Іноземний легіон" src="https://photo.maudau.com.ua/Landing/cocktails/incat/foreign-legion-cocktai.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Іноземний легіон</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=vytrymanyi-anejo" target="_blank">Витриманий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/product_brand=dubonnet" target="_blank">Дюбоне</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li>Какао-лікер коричневий Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/product/kheres-kriplene-bodegas-barbadillo-manzanilla-sherry-bile-sukhe-15-0-75-l-36377" target="_blank">Херес 
+                                манзанілья</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=revenevyi" target="_blank">Ревеневий бітер</a></li>
+                            <li>Лимонна цедра</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Екстравагантний шот одночасно трав'яний і шоколадний на смак. Доволі міцний, із довгим післясмаком.
+                        </div>
+                        <a class="pop-button" href="#popup5">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Мескалеро" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Mezcalero-aperol.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мескалеро</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li>Маурин квіна</li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/product/biter-free-brothers-grapefruit-17-015-l" target="_blank">Грейпфрутовий бітер</a></li>
+                            <li>Апельсинова цедра</li>
+                            <li>Крижаний куб</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Міцний і гармонійний коктейль на основі ароматного мескаля й апероля. Крапелька грейпфрутового бітеру привносить цитрусову нотку.
+                        </div>
+                        <a class="pop-button" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Зламаний, але не зломлений" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Strong_but_crack.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зламаний, але не зломлений</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=pedro-himenes-pedro-ximenez" target="_blank">Херес Педро Хіменес</a></li>
+                            <li>Домашній апельсиновий сироп із хроном</li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li>Хрон</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Цікавий слабоалкогольний коктейль на хересі та аперолі. Цитрусову гостринку і пікантність надає апельсиновий сироп із хроном.
+                        </div>
+                        <a class="pop-button" href="#popup7">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Чорний трюфель" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Black_Truffle.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Чорний трюфель</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=vytrymanyi-anejo" target="_blank">Витриманий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi" target="_blank">Темний ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/tekila/product_class=meskal" target="_blank">Мескаль</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone" target="_blank">Червоний вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li>Червоний бітер</li>
+                            <li><a href="https://maudau.com.ua/product/nastoianka-angostura-orange-bitter-28-01-l-725705" target="_blank">Апельсиновий бітер</a></li>
+                            <li>Пармезан</li>
+                            <li>Трюфельна олія</li>
+                            <li><a href="https://maudau.com.ua/category/pryprava-perets/vyd_111=horoshok-2" target="_blank">Перець горошком</a></li>
+                            <li>Лід у кубиках</li>
+                            <li>Крижана сфера</li>
+                        </ul>
+                        <div class="description-text">
+                            Сміливий гірко-кислий шорт із трюфельною олією. Поєднання алкогольних інгредієнтів виходить гармонійне та оригінальне.
+                        </div>
+                        <a class="pop-button" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Апероль Сауер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Aperol_Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Апероль Сауер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/dzhyn" target="_blank">Джин</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Цукровий сироп</a></li>
+                            <li>Білок курячого яйца</li>
+                            <li>Лід</li>
+                        </ul>
+                        <div class="description-text">
+                            Сауер з рівних часток апероля і джину. В міру солодкий, з гіркуватістю і ялівцевою ноткою. Збитий білок приносить у коктейль характерну пінку.
+                        </div>
+                        <a class="pop-button" href="#popup9">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Апероль зі Швепсом" src="https://photo.maudau.com.ua/Landing/cocktails/incat/aperol_schweppes.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Апероль зі Швепсом</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol" target="_blank">Апероль</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=schweppes" target="_blank">Тонік Schweppes</a></li>
+                            <li>Лід</li>
+                        </ul>
+                        <div class="description-text">
+                            Модний освіжальний коктейль із двох компонентів. Простий у приготуванні та тонізуючий, швидко підбадьорить та вгамує спрагу в розпал вечірки.
+                        </div>
+                        <a class="pop-button" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">70 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">1.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Aperol Shpritz</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл бітеру Апероль</li>
+                    <li>100 мл просеко</li>
+                    <li>20 мл содової або тоніка</li>
+                    <li>30 г апельсину</li>
+                    <li>лід у кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у келих кубики льоду.<br>
+                2. Налийте 100 мл просеко або іншого сухого ігристого вина.<br>
+                3. Додайте 100 мл Апероля.<br>
+                4. Влийте содову та перемішайте коктейльною ложечкою.<br>
+                5. Прикрасьте скибочкою апельсина.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Цікавість</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл житнього віскі Woodford Reserve</li>
+                    <li>1 мл абсенту</li>
+                    <li>10 мл червоного вермуту</li>
+                    <li>5 мл бехеровки</li>
+                    <li>20 мл апероля</li>
+                    <li>5 г малини</li>
+                    <li>2 г чорниці</li>
+                    <li>5 г малинового джему</li>
+                    <li>Лимонна цедра</li>
+                    <li>420 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть рокс догори льодом у кубиках.<br>
+                2. Налийте в ємність для змішування 5 мл бехеровки, 10 мл червоного вермуту і 20 мл апероля.<br>
+                3. До них додайте 40 мл житнього віскі Woodford Reserve, 1 деш абсенту та 5 г малинового джему.<br>
+                4. Насипте в напій лід і розмішайте коктейльною ложкою.<br>
+                5. Перелийте через сито-стрейнер у келих-рокс.<br>
+                6. Прикрасьте ягодами малини, чорниці та цедрою лимона.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Воскоподібний</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>250 мл Апероля</li>
+                    <li>70 мл Єгермейстеру</li>
+                    <li>500 мл лимонного соку</li>
+                    <li>500 мл грейпфрутового соку</li>
+                    <li>500 мл чорного чаю</li>
+                    <li>500 мл молока</li>
+                    <li>500 г ягідного чатні</li>
+                    <li>300 г арахісової пасти</li>
+                    <li>1 кг льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Візьміть трилітрову чашу для пуншу та покладіть у неї 500 г домашнього ягідного чатні та 300 г арахісової пасти.<br>
+                2. Налийте по 500 мл чорного чаю, молока та грейпфрутового соку.<br>
+                3. Додайте 500 мл лимонного соку, 70 мл Єгермейстеру та 250 мл Аперолю.<br>
+                4. Ретельно перемішайте високим віночком.<br>
+                5. Наповніть келихи-рокси кубиками льоду та розлийте напій. Пуншу вистачить приблизно на 15 порцій.<br>
+                6. Прикрасьте напій ложкою арахісової пасти.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Стрибаюча Джесіка</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл золотої текіли</li>
+                    <li>10 мл зеленого Шартрезу</li>
+                    <li>10 мл Aperol</li>
+                    <li>20мл цукрового сиропу</li>
+                    <li>30 мл лаймового соку</li>
+                    <li>30 мл білка перепелиного яйця</li>
+                    <li>200 г стручкового солодкого перцю</li>
+                    <li>10 г кореня імбиру</li>
+                    <li>200 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Вичавіть сік із стручкового солодкого перцю та кореня імбиру.<br>
+                2. Налийте в шейкер 5 мл імбирного соку, 30 мл соку перцю, 30 мл лаймового соку і 30 мл білка перепелиного яйця.<br>
+                3. Додайте 20 мл цукрового сиропу, 10 мл Aperol, 10 мл зеленого Шартрезу та 50 мл золотої текіли.<br>
+                4. Спочатку збийте суміш без льоду, потім наповніть шейкер льодом і збийте ще раз.<br>
+                5. Процідіть коктейль через ситечко-стрейнер у заздалегідь охолоджений келих.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Іноземний легіон</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл витриманого рому</li>
+                    <li>15 мл аперитиву Дюбонне</li>
+                    <li>15 мл апероля</li>
+                    <li>5 мл какао-лікеру коричневого Fruko Schulz</li>
+                    <li>15 мл хересу манзанілья</li>
+                    <li>1 мл ревеневого бітеру</li>
+                    <li>Лимонна цедра</li>
+                    <li>420 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть келих-рокс до країв кубиками льоду.<br>
+                2. Налийте в змішувальну склянку 15 мл хересу манзанілья, 15 мл апероля і 15 мл аперитиву Дюбоне.<br>
+                3. Додайте 45 мл витриманого рому, 5 мл какао-лікеру Fruko Schulz і 1 мл ревеневого бітеру.<br>
+                4. Наповніть склянку кубиками льоду та розмішайте барною ложкою.<br>
+                5. Перелийте коктейль через сито-стрейнер у рокс та прикрасьте лимонною цедрою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Мескалеро</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл мескаля</li>
+                    <li>30 мл маурин квіна</li>
+                    <li>30 мл бітеру апероль</li>
+                    <li>1 мл грейпфрутового бітеру</li>
+                    <li>Апельсинова цедра</li>
+                    <li>1 крижаний куб</li>
+                    <li>200 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у склянку-колінз крижаний куб.<br>
+                2. У ємність для змішування налийте 30 мл апероля та 30 мл маурин квіна.<br> 
+                3. Туди ж додайте 30 мл мескаля та 1 мл грейпфрутового бітеру. <br>
+                4. Насипте в напій кубики льоду і дбайливо розмішайте барною ложкою. <br>
+                5. Перелийте коктейль через стрейнер у колінз і прикрасьте його апельсиновою цедрою. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Зламаний, але не зломлений</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл апероля</li>
+                    <li>30 мл хересу Педро Хіменес</li>
+                    <li>20 мл домашнього апельсинового сиропу з хроном</li>
+                    <li>25 мл лимонного соку</li>
+                    <li>5 г хріну</li>
+                    <li>200 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Налийте в шейкер 20 мл апельсинового сиропу з хроном і 25 мл лимонного соку.<br>
+                2. Додайте 30 мл хересу Педро Хіменес та 25 мл аперолю.<br>
+                3. Насипте 200 г льоду в кубиках та інтенсивно збийте.<br>
+                4. Перелийте через барне сито в охолоджений келих.<br>
+                5. Декоруйте коктейль шматком хрону на прищіпці.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Чорний трюфель</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл витриманого рому</li>
+                    <li>10 мл темного рому</li>
+                    <li>10 мл мескалю</li>
+                    <li>50 мл червоного вермуту</li>
+                    <li>30 мл апероля</li>
+                    <li>5 мл червоного бітеру</li>
+                    <li>4 мл апельсинового бітеру</li>
+                    <li>15 г пармезану</li>
+                    <li>32 мл трюфельної олії</li>
+                    <li>1 г перцю горошком</li>
+                    <li>300 г льоду в кубиках</li>
+                    <li>Крижана сфера</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у склянку-рокс крижану сферу.<br>
+                2. Налийте в ємність для змішування 5 мл червоного бітеру, 30 мл апероля, 50 мл червоного вермуту і 10 мл мескаля.<br>
+                3. Додайте в напій трюфельну олію, 4 мл апельсинового бітеру, 10 мл темного та 30 мл витриманого рому.<br>
+                4. Наповніть ємність кубиками льоду та обережно розмішайте коктейльною ложкою.<br>
+                5. Процідіть через сито-стрейнер у рокс.<br>
+                6. Вимочіть 15 г пармезану в трюфельній олії, додайте чорний перець і прикрасьте коктейль.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Апероль Сауер</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл джину</li>
+                    <li>30 мл апероля</li>
+                    <li>15 мл лимонного соку</li>
+                    <li>10 мл цукрового сиропу</li>
+                    <li>Білок курячого яйця</li>
+                    <li>Лід</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Для охолодження наповніть келих-рокс льодом догори.<br>
+                2. Налийте в шейкер 30 мл апероля і 30 мл джину.<br>
+                3. Додайте до складу 15 мл лимонного соку, 10 мл цукрового сиропу та білок курячого яйця.<br>
+                4. Насипте лід і збийте коктейль.<br>
+                5. Процідіть суміш через ситечко-стрейнер у келих для подачі.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Апероль зі Швепсом</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл апероля</li>
+                    <li>50 мл тоніку Schweppes</li>
+                    <li>Лід</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть льодом келих для подачі. Підійде великий винний келих на ніжці.<br>
+                2. Влийте 25 мл аперолю та додайте 50 мл тоніку Schweppes.<br>
+                3. Акуратно перемішайте, але не збовтуйте — з'явиться багато піни.<br>
+                4. За бажанням декоруйте коктейль апельсиновою часточкою і трубочкою для напоїв.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+</div>
