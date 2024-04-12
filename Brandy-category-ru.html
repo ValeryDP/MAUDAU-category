@@ -1,0 +1,1059 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Коньяк — крепкий спиртной напиток, который производят посредством сбраживания и перегонки винограда по регламентированной технологии. Крепость на выходе составляет 40%.</p>
+                <p>
+                    Французские коньяки считают разновидностью бренди, которая соответствует требованиям контролируемого наименования по происхождению — AOC. Если процесс производства выполнен в рамках закона, на этикетке указывают регион изготовления
+                    — Шаранта. Сводка строгих правил способствует выпуску крепкого спиртного напитка глубокого коричневого цвета с насыщенным вкусом, который пьют без добавок или подают в составе классических коктейлей, например Сазерак.
+                </p>
+                <p>Коньяк также производят в других странах, но к процессу не выдвигают серьезных ограничений. По закону такой продукт маркируют как «бренди».</p>
+                <h2>Углубление в технологию изготовления</h2>
+                <p>Если решили купить настоящие коньяки в Украине в интернет-магазине MAUDAU, вам может быть интересно узнать о процессе изготовления. Он объединяет несколько ключевых этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Виноград собирают, очищают, измельчают, прессуют. На выходе получают концентрированный виноградный сок.</li>
+                    <li>Брожение. Процесс проходит в закрытых металлических резервуарах. Ферментация длится 5–7 дней, пока не образуется вино крепостью 8–9%.</li>
+                    <li>
+                        Дистилляция. Коньяки перегоняют дважды. На первом этапе получают спирт-сырец. Его редко фильтруют, что придает готовому дистилляту насыщенный фруктовый шлейф. После окончания второго этапа получают бесцветный спирт, который
+                        называют «eau-de-vie», что с французского переводится как «вода жизни».
+                    </li>
+                    <li>Выдержка. Дистиллят разливают по дубовым бочкам. Созревание длится минимум 24 месяца. На этом этапе также разрешено использование натурального красителя — карамели.</li>
+                </ol>
+                <p>
+                    Завершающий штрих перед розливом коньяков — купажирование. Мастер-дистиллятор смешивает спирты из разных бочек. Это помогает производителю добиться уникального вкуса в каждой бутылке. На этикетке указывают возраст самого молодого
+                    спирта в составе.
+                </p>
+                <h3>Регламентация: что говорит законодательство Франции</h3>
+                <p>Выпуск коньяков в стране регламентирован пятью основными законодательными актами. Декреты принимали постепенно — в период с 1909 по 2003 год. Ключевые моменты:</p>
+                <ol>
+                    <li>География. Коньяк производят в департаментах Шаранта и Шаранта Приморская. Выделяют шесть официально зарегистрированных регионов: Grande Champagne, Petite Champagne, Borderies, Fins Bois, Bons Bois, Bois Ordinaires.</li>
+                    <li>Состав. Базовое вино производят в основном из сортов Уни Блан, Фоль Бланш, Коломбар. Также при производстве коньяков разрешено добавление винограда Монтиль, Жюрансон Блан, Семильон, Фолиньян.</li>
+                    <li>
+                        Производство. Для измельчения винограда не применяют винтовой пресс. Дистилляцию коньяков осуществляют в традиционных шарантских медных перегонных кубах, которые подогревают на открытом пламени. Спирт разбавляют
+                        деминерализованной водой. Запрещено добавление сахара и искусственных добавок.
+                    </li>
+                    <li>Выдержка. Коньяк созревает в дубовых бочках, привезенных из Лимузена или Тронсе.</li>
+                </ol>
+                <h2>Немного истории</h2>
+                <p>
+                    История коньяка восходит к XII веку, когда в стране высадили виноградники Пуату. Спустя 300 лет искусство перегонки перенесли из Голландии на территорию Франции. Дистилляция способствовала сохранению качества шарантских вин при
+                    длительной транспортировке. Через сто лет модифицировали перегонный куб — так возникла идея повторной перегонки.
+                </p>
+                <p>
+                    Рынок коньяка расширился в XVIII веке вместе со становлением культовых производителей: Martell, Hennessy, Remy Martin. С тех пор крепкий спиртной напиток реализуют в стеклянных бутылках. Сегодня продукт доступен в 160 странах.
+                    Коньяк, цена которого зависит от выдержки, можно заказать также в Украине — в маркете алкогольных штук MAUDAU.
+                </p>
+                <h3>Происхождение названия</h3>
+                <p>
+                    Название — отсылка к маленькому городку Коньяк, расположенному в регионе Новая Аквитания. Местный порт не только принимал поставки соли, которую перевозили из Франции в Северную Европу, но и способствовал распространению местных
+                    вин.
+                </p>
+                <h3>Чем коньяк отличается от бренди</h3>
+                <p>
+                    Бренди — категория. Коньяк — уникальный продукт, производимый в определенной зоне. Также к последнему выдвигают множество ограничений касательно состава и выдержки. Бренди производят за пределами AOC, используя не только виноград,
+                    но и другую фруктовую основу. Срок выдержки сокращен, а дистилляция проходит круглый год, тогда как в ситуации с коньяком перегонку обязательно завершают до 31 марта. Минимальный процент алкоголя в бренди составляет 37,5.
+                </p>
+                <h2>Как классифицируют коньяки</h2>
+                <p>По возрасту крепкий спиртной напиток делят на:</p>
+                <ul>
+                    <li>VS — выдержан не менее 24 месяцев;</li>
+                    <li>VSOP — минимум 48 месяцев;</li>
+                    <li>VVSOP — от 5,5 лет;</li>
+                    <li>XO — не менее 10 лет.</li>
+                </ul>
+                <p>Термин Napoleon указывает на выдержку 6–10 лет. Также встречается отметка Hors d’Age. Это самый изысканный напиток с интенсивным фруктовым шлейфом, который выдерживали от 30 лет.</p>
+                <p>На этикетке нередко проставляют звезды. Количество указывает на средний возраст коньячных спиртов. Например, 3-звездочный коньяк считают самым молодым, а 12-звездочный относят к коллекционным.</p>
+                <h2>Как правильно выбрать коньяк и какой самый хороший</h2>
+                <p>Оригинальный продукт производят на юго-западе Франции. Все остальное относят к разновидностям бренди:</p>
+                <ul>
+                    <li>Арманьяк;</li>
+                    <li>Писко;</li>
+                    <li>Палинка.</li>
+                </ul>
+                <p>Если решили заказать коньяк на праздник, обращайте внимание на:</p>
+                <ul>
+                    <li>цвет;</li>
+                    <li>выдержку;</li>
+                    <li>крепость;</li>
+                    <li>емкость.</li>
+                </ul>
+                <p>
+                    Не последнее место отводят стоимости. Для производства одного литра спирта нужно 10 литров базового вина. Поэтому цена на коньяк не может быть слишком низкой. Также на стоимость влияет срок выдержки. Чем он выше, тем насыщеннее и
+                    разнообразнее вкусовая палитра.
+                </p>
+                <h3>Разновидности за пределами Франции</h3>
+                <p>Перед покупкой нужно разобраться в тонкостях классификации в странах СНГ:</p>
+                <ol>
+                    <li>Ординарный. Коньяк, выдержанный 3–5 лет. В составе присутствуют остатки дубовых щепок.</li>
+                    <li>Марочный. Раньше так называли крепкий спиртной напиток, произведенный в конкретных регионах. Теперь термин «марочный» — синоним к слову «выдержанный», что указывает на выдержку от 5 лет.</li>
+                    <li>Коллекционный. Термин — аналог к понятиям Napoleon и Hors d’Age, которые активно используют во Франции. Так называют коньяки, которые провели в новых дубовых бочках свыше 10 лет.</li>
+                </ol>
+                <h3>Рейтинг популярных производителей</h3>
+                <p>Новичку лучше остановиться на культовых торговых марках: Martell, Remy Martin, Courvoisier, Delamain. Особого внимания заслуживают региональные разновидности бренди вроде Metaxa (Греция), Sarajishvili (Грузия), Shabo (Украина).</p>
+                <h2>Почему выгодно купить коньяк в интернет-магазине MAUDAU</h2>
+                <p>Маркет алкогольных штук предлагает широкий ассортимент товаров: от классической продукции из городка Коньяк до локального бренди из Перу или Испании. Все это возможно благодаря налаженному импорту.</p>
+                <p>
+                    На вопрос, сколько стоит коньяк в интернет-магазине MAUDAU, нет однозначного ответа. На крепкий спиртной напиток распространяется оптовая скидка. Онлайн-каталог регулярно пополняется выгодными акциями. Если в корзине окажется товар
+                    на определенную сумму, доставку осуществят бесплатно. За нее отвечают курьер по Киеву или почтовая служба в других населенных пунктах Украины.
+                </p>
+                <p>Особого внимания заслуживает коньяк, купить который можно в красивых подарочных коробках или жестяных тубусах. Мини-бутылочки — оптимальный вариант для пополнения личной коллекции или наполнения мини-бара.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Сазерак" src="https://photo.maudau.com.ua/Landing/cocktails/incat/sazerac-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Сазерак</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak" target="_blank">Коньяк</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Биттер Ангостура</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-peychauds-bitters-35-0148-l" target="_blank">Биттер Пишо</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu" target="_blank">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=presovanyi" target="_blank">Сахар в кубиках</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сазерак — крепкий травяной коктейль на бурбоне и коньяке. Является официальным коктейлем штата Луизиана, так как появился именно там.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Бренди Александр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brandy-Alexander.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бренди Александр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li>Какао-ликер коричневый Fruko Schulz</li>
+                            <li>Нежирные сливки</li>
+                            <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2" target="_blank">Мускатный орех молотый</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Деликатесный коктейль на коньяке со сливочным вкусом придумали в США во времена Сухого закона. Фанатом «Александра» был музыкант Джон Леннон. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Сайдкар" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Sidecar-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Сайдкар</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu" target="_blank">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi" target="_blank">Сахарный песок</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Классический сауэр, сочетающий благородство коньяка, кислинку лимонного сока и сладость ликера. В меру сладкий, с приятным цитрусовым послевкусием. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Бренди сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brandy-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бренди сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Лимон</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Необычный цитрусовый твист на коньяке. Сироп смягчает крепость Hennessy, а привкус лимонного сока добавляет свежих ноток. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Бренди и кола" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brandy-en-Coke.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Бренди и кола</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Молоко</li>
+                            <li>Ламинария</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригинальная версия популярного коктейля бренди-кола с добавлением молока. В результате получается сладкий слабоалкогольный лонг со сливочным послевкусием.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Французский дайкири" src="https://photo.maudau.com.ua/Landing/cocktails/incat/french-daiquiri.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Французский дайкири</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Мята</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Разновидность классического Дайкири — на коньяке. Сочетание Hennessy, сиропа и цитрусового сока понравится любителям освежающих, но крепких коктейлей. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Эй-Би-Си" src="https://photo.maudau.com.ua/Landing/cocktails/incat/ABC-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Эй-Би-Си</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                            <li>Ликер амаретто Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text">
+                            Эй-Би-Си — мягкий гармоничный коктейль с приятным послевкусием миндаля. Укладывается слоями и выглядит оригинально. Все ингредиенты берутся в равных пропорциях. 
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Короткий медовый месяц" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Honeymoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Короткий медовый месяц</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li>Кофейный ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14" target="_blank">Медовый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Потрясающий шот на базе коньяка и кофейного ликера. Присутствие в коктейле небольшого количества медового сиропа дало такое название.
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Корица по-французски" src="https://photo.maudau.com.ua/Landing/cocktails/incat/French_Cinnamon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Корица по-французски</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=karamel-8" target="_blank">Карамельный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko" target="_blank">Яблочный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сладкий коньячный шорт-дринк запоминается послевкусием корицы. Коньяк неплохо сочетается с яблочным соком, а карамельный сироп смягчает кислоту.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Стингер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/stinger.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Стингер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy" target="_blank">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-creme-de-menthe-miata-24-07-l" target="_blank">Мятный ликер светлый De Kuyper</a></li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Нестандартный коктейль Стингер состоит из коньяка и мятного ликера. Считается классическим дижестивом. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">239 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">1.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">65 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Сазерак</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл абсента</li>
+                    <li>45 мл коньяка</li>
+                    <li>30 мл бурбона</li>
+                    <li>3 мл биттера Ангостура</li>
+                    <li>3 мл биттера Пишо</li>
+                    <li>10 мл воды без газа</li>
+                    <li>5 г сахарв в кубиках</li>
+                    <li>Лимонная цедра</li>
+                    <li>420 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс до краев кубиками льда. <br>
+                2. Налейте в него воду без газа и 15 мл абсента. Отставьте его в сторону. <br>
+                3. Положите в стакан для смешивания кубик сахара. <br>
+                4. Накапайте на сахар 3 мл биттера Ангостура и 3 мл биттера Пишо. Подавите мадлером. <br>
+                5. Добавьте в стакан 45 мл коньяка и 30 мл бурбона. <br>
+                6. Наполните стакан льдом и размешивайте барной ложкой до растворения сахара. <br>
+                7. Вылейте из рокса воду с абсентом и льдом. <br>
+                8. Процедите коктейль через стрейнер в бокал и украсьте цедрой лимона. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бренди Александр</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл коньяка Hennessy</li>
+                    <li>30 мл какао ликера Fruko Schulz</li>
+                    <li>30 мл нежирных сливок</li>
+                    <li>1 г молотого мускатного ореха</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в шейкер 30 мл нежирных сливок и 30 мл какао–ликера Fruko Schulz.<br>
+                2. Добавьте 45 мл коньяка Hennessy.<br>
+                3. Наполните шейкер 200 г льда в кубиках и взбейте.<br>
+                4. Перелейте через барное сито в охлажденное шампанское блюдце.<br>
+                5. Посыпьте напиток молотым мускатным орехом. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Сайдкар</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>45 мл коньяка Hennessy</li>
+                    <li>30 мл трипл сека Fruko Schulz</li>
+                    <li>5 мл сахарного сиропа</li>
+                    <li>20 мл лимонного сока</li>
+                    <li>15 мл воды без газа</li>
+                    <li>5 г сахарного песка</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Сделайте на коктейльном бокале окаемку из сахара. <br>
+                2. Налейте в шейкер 20 мл лимонного сока, 15 мл воды без газа и 5 мл сахарного сиропа. <br>
+                3. Туда же влейте 30 мл трипл сека Fruko Schulz и 45 мл коньяка Hennessy. <br>
+                4. Насыпьте в шейкер кубики льда и хорошо перемешайте. <br>
+                5. Перелейте через сито-стрейнер в охлажденный коктейльный бокал с сахарной окаемкой. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бренди сауэр</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл коньяка Hennessy</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>20 мл белка перепелиного яйца</li>
+                    <li>10 г лимона</li>
+                    <li>5 г красной коктейльной вишни</li>
+                    <li>320 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Насыпьте в стакан-рокс кубики льда до краев. <br>
+                2. Налейте в шейкер 20 мл белка перепелиного яйца, 15 мл лимонного сока и 20 мл сахарного сиропа.<br> 
+                3. Добавьте в напиток 40 мл коньяка Hennessy, лед и взбейте. <br>
+                4. Перелейте коктейль через сито-стрейнер в рокс. <br>
+                5. Украсьте стакан долькой лимона и коктейльной вишней. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Бренди и кола</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл коньяка Hennessy</li>
+                    <li>120 мл колы</li>
+                    <li>50 мл молока</li>
+                    <li>Ламинария</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стакан для смешивания 120 мл колы. <br>
+                2. Влейте в колу 50 мл молока и 100 мл коньяка Hennessy. <br>
+                3. Тщательно перемешайте состав коктейльной ложкой. <br>
+                4. Оставьте напиток при комнатной температуре до сворачивания молока. <br>
+                5. Отфильтруйте смесь через марлю в кулинарную центрифугу и очистите коктейль. <br>
+                6. Украсьте ламинарией и подавайте в бокале-хайболе. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Французский дайкири</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл коньяка Hennessy</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>1 г мяты</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Уложите на дно шейкера 3 листика мяты. <br>
+                2. Налейте 15 мл лимонного сока, 20 мл сахарного сиропа и 50 мл коньяка Hennessy. <br>
+                3. Заполните шейкер кубиками льда и интенсивно взбейте. <br>
+                4. Перелейте напиток через ситечко-стрейнер в охлажденное шампанское блюдце. <br>
+                5. Украсьте коктейль листиком мяты. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Эй-Би-Си</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл коньяка Hennessy</li>
+                    <li>20 мл айриш крима</li>
+                    <li>20 мл ликера амаретто Fruko Schulz</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Возьмите рюмку для шотов и налейте 20 мл ликера амаретто Fruko Schulz.<br>
+                2. Используйте коктейльную ложку и выложите слой айриш крима 20 мл.<br>
+                3. Завершите оформление слоем 20 мл коньяка Hennessy. <br>
+                4. Не перемешивайте коктейль — так получится последовательное поступление вкусов. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Короткий медовый месяц</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл коньяка Hennessy</li>
+                    <li>15 мл кофейного ликера Fruko Schulz</li>
+                    <li>10 мл медового сиропа</li>
+                    <li>15 мл лимонного сока</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте на дно коктейльной стопки 10 мл медового сиропа. <br>
+                2. При помощи коктейльной ложки или ножа уложите 15 мл кофейного ликера Fruko Schulz. <br>
+                3. Продолжайте собирать коктейль. Уложите слой 15 мл лимонного сока.<br>
+                4. Верхним слоем пойдет 15 мл коньяка Hennessy. Готово! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Корица по-французски</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл коньяка Hennessy</li>
+                    <li>10 мл карамельного сиропа</li>
+                    <li>60 мл яблочного сока</li>
+                    <li>10 г корицы в палочках</li>
+                    <li>320 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-рокс льдом до верхнего края. <br>
+                2. Налейте в шейкер 60 мл яблочного сока и 10 мл карамельного сиропа. <br>
+                3. Аккуратно влейте 30 мл коньяка Hennessy. <br>
+                4. Заполните шейкер кубиками льда и взбейте. <br>
+                5. Перелейте напиток через ситечко в рокс и украсьте палочками корицы.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Стингер</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл коньяка Hennessy</li>
+                    <li>25 мл мятного ликера De Kuyper</li>
+                    <li>1 г мяты</li>
+                    <li>150 г дробленого льда</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс-бокал дробленым льдом до верхнего края. <br>
+                2. Влейте в шейкер 25 мл мятного ликера De Kuyper и 50 мл коньяка Hennessy. <br>
+                3. Насыпьте 200 г льда в кубиках и тщательно взбейте все ингредиенты. <br>
+                4. Процедите коктейль через сито-стрейнер в рокс. <br>
+                5. Положите сверху веточку мяты. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
