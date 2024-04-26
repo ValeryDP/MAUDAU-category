@@ -1,0 +1,1057 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Водка — крепкий спиртной напиток, который не имеет запаха и цвета, кроме ароматизированных линеек. Его готовят из разных сбраживаемых сельскохозяйственных продуктов, включая зерно, виноград, картофель, свеклу. Минимальный процент
+                    алкоголя в готовом продукте составляет 37,5. Стандартная крепость — 40%.
+                </p>
+                <h2>Краткая историческая сводка</h2>
+                <p>
+                    Поначалу водку предлагали как лекарство. Успех как к спиртному напитку пришел в 1940-х годах. Сегодня продукт считают одной из самых популярных разновидностей алкоголя по всему миру, а заказать водку через интернет — проще простого.
+                </p>
+                <p>
+                    Напиток, знакомый современному покупателю, отличается от продукции, которую производили в 14-15 веке. Горький вкус, приправленный высоким процентом сторонних примесей, маскировали с помощью сахара и растительных добавок. Говоря об
+                    истории, Россия и Польша до сих пор ведут споры касательно происхождения крепкого спиртного напитка.
+                </p>
+                <p>
+                    Первая русская документация водки восходит к 1751 году. В то время открыли раннюю форму перегонки, замораживая пиво. Это привело к созданию крепкого спирта, но с повышенной концентрацией сивушных масел. Внедрение множества важных
+                    процессов приписывают России. Пример — угольная фильтрация. Идея принадлежала химику Товию Ловицу. Крестьянин Петр Смирнов — основатель одной из самых известных торговых марок Smirnoff, особенно почитаемой во Франции.
+                </p>
+                <p>
+                    Первую польскую водку изготовили в 1405 году. Продукцию производили тайно, а рецептуру не выносили за порог дома. Позже польскому королю подарили экзотический овощ — картофель. С того времени страна славится картофельной водкой.
+                    Первую ректификацию по современному образцу выполнили в 1871 году.
+                </p>
+                <p>
+                    Массовое «вторжение» водки в Европу и США приписывают Джону Мартину, который руководил Heublein. Компания отвечала за распространение алкогольной продукции по миру. Именно Джону Мартину принадлежала маркетинговая стратегия по
+                    продвижению водки, которая подвинула виски в рейтинге популярных спиртных напитков. Вскоре компания представила культовый микс — «Московский мулл».
+                </p>
+                <h3>Что известно о названии</h3>
+                <p>
+                    Водка — не единственный вариант названия крепкого спиртного напитка. Раньше продукт именовали «хлебным вином», «пенником» или «полугаром». Форму «vodka» фиксируют в 1405 и 1437 годах. Но только в 1534 году в польских документах
+                    термин использовали для обозначения спиртного напитка, приготовленного посредством дистилляции.
+                </p>
+                <p>
+                    Считают, что слово «vodka» произошло из русского языка. Вплоть до XVIII века нейтральный зерновой спирт называли «вином». Если рецептуру дополняли добавками, особенно ягодами или фруктами, продукцию маркировали как «водку». Только в
+                    XIX веке закрепили современное понимание названия.
+                </p>
+                <h2>Как производят водку</h2>
+                <p>
+                    Зачастую главным компонентом выступает зерно. Используют пшеницу, кукурузу, рожь, ячмень. Первый этап — соложение. Зерну дают прорасти, смешивая его с теплой водой. Если используют свеклу или картофель, их готовят для высвобождения
+                    крахмала, который вскоре превратится в сахар. Последующий процесс выглядит так:
+                </p>
+                <ol>
+                    <li>Ферментация. Брожение проходит в закрытых металлических резервуарах. Дрожжи почти не влияют на вкус.</li>
+                    <li>
+                        Дистилляция. Если решили купить водку в Украине, скорее всего, ее произвели путем непрерывной перегонки в колоннах. Процесс контролирует мастер-дистиллятор. При изготовлении используют только сердце, то есть середину спирта.
+                        «Голова» содержит повышенную концентрацию метанола, поэтому ее удаляют. Также отсекают так называемый «хвост», испорченный сивушными маслами. Водку перегоняют 4–8 раз, извлекая максимум ароматических соединений. На выходе
+                        получают концентрированный спирт крепостью 95–97 градусов.
+                    </li>
+                    <li>Фильтрация. Дистиллят пропускают через активированный уголь. Цель — очистить водку от примесей. Готовый спирт разбавляют деминерализованной водой до крепости 40%. Чем больше циклов очистки прошла водка, тем выше цена.</li>
+                    <li>Розлив. Водку повторно фильтруют. По желанию дистиллят ненадолго помещают в емкости из нержавеющей стали. Готовый крепкий спиртной напиток разливают по стеклянным бутылкам.</li>
+                </ol>
+                <h2>Какая водка на вкус</h2>
+                <p>
+                    Вкус сильно различается в зависимости от используемого сырья и применяемых методов производства. Классическая продукция имеет чистый нейтральный вкус, который можно охарактеризовать как слегка сладкий, с легким шлейфом пряностей на
+                    финише. По этой причине водку в основном пьют без добавок. Консистенция — вяжущая. Реже вкусовая композиция раскрывается освежающими цитрусовыми аккордами.
+                </p>
+                <h2>Классификация: как выбрать водку</h2>
+                <p>Продукцию делят на ароматизированную и неароматизированную. Последняя категория составляет основу ассортимента. Официальной классификации нет, поэтому водку различают по сырью:</p>
+                <ol>
+                    <li>Пшеница. Распространенный вариант. Процесс производства простой, так что цена пшеничной водки в Украине — доступная. Пшеница привносит мягкий характер и легкий финиш, который напоминает анисовую настойку.</li>
+                    <li>Кукуруза. Вариант, широко используемый в США. Зерно придает вязкую текстуру и сладкий шлейф.</li>
+                    <li>Рожь. Злаковую культуру активно используют в Польше. Она наполняет водку остротой и сладкой-пряным финишем.</li>
+                    <li>Ячмень. Наименее распространенный вариант, кроме продукции из Финляндии. Вкус — сладкий.</li>
+                    <li>Картофель. Основной ингредиент, применяемый в Польше. Заказать водку из картофеля стоит тем, кто ищет насыщенный аромат и пикантный вкус. Продукция обладает отчетливым землисто-ореховым шлейфом.</li>
+                    <li>Виноград. Если решили заказать виноградную водку онлайн, ищите продукцию из Грузии, Украины, Франции. Ягоды придают дистилляту отчетливый фруктовый аромат, сменяющийся освежающими аккордами во вкусовой палитре.</li>
+                    <li>Свекла. Продукция с характерными землистыми оттенками. Финиш — хрустящий, с продолжительной сладостью.</li>
+                </ol>
+                <p>Реже используют киноа или тростниковую патоку. Зачастую — как вспомогательный компонент.</p>
+                <p>Ароматизированную водку изготавливают посредством мацерации или добавления натуральных эссенций. Распространенные добавки: мед, шоколад, ваниль, ягоды, фрукты, травы.</p>
+                <h2>Вред и польза от крепкого спиртного напитка</h2>
+                <p>Из-за высокого содержания алкоголя водку используют как антисептик в полевых условиях. За счет воздействия на ЦНС дистиллят обезболивает, а также снижает риск развития отдельных сердечных заболеваний.</p>
+                <p>
+                    Чрезмерное употребление чревато болезнями печени, развитием раковых клеток, алкогольной интоксикацией. Спирт нарушает координацию, что нередко заканчивается травмами. Поэтому большая бутылка водки — вариант для компании.
+                    Потенциально безопасная ежедневная доза составляет 50–80 мл.
+                </p>
+                <h2>Какая водка самая лучшая в Украине</h2>
+                <p>
+                    В онлайн-каталоге MAUDAU можно купить водку, произведенную не только в Польше, но и в других странах, включая Германию, Великобританию, Латвию, Францию, Финляндию, Швецию, Японию. Особого внимания заслуживает продукция торговых
+                    марок:
+                </p>
+                <ol>
+                    <li>Absolut. Шведская компания, которая реализует водку в аптечных стеклянных бутылках. Основной ингредиент — пшеница. Зерно привносит гладкую текстуру и мягкий привкус.</li>
+                    <li>Danzka. Дизайнерская германская водка. Особенность — шестиколонная дистилляция, благодаря которой крепкий спиртной напиток обретает сбалансированный вкус.</li>
+                    <li>Finlandia. Чистая водка, которая отдает аккордами ванили и белого перца. Бренд предлагает широкую ароматизированную линейку.</li>
+                    <li>Green Day. Украинская торговая марка, которая предлагает водку, изготовленную по запатентованному экологическому стандарту.</li>
+                    <li>Grey Goose. Французская водка, которую готовят из озимой пшеницы. Воду поставляют из региона Коньяк. Продукцию относят к ультра-премиум-классу. Вкус — тонкий, с пикантными аккордами.</li>
+                    <li>Zubrowka. Крепкий спиртной напиток из Польши, который содержит особую добавку — зубровку. Вкус раскрывается оттенками ясменника и кокоса.</li>
+                </ol>
+                <h2>Почему выгодно купить водку в интернет-магазине MAUDAU</h2>
+                <p>
+                    В ассортименте собрана оригинальная продукция. Благодаря собственному налаженному импорту покупатели получают доступ к уникальным позициям, например, к продукции Ciroc. Также можно найти варианты в подарочных коробках. Поскольку
+                    купить водку в интернет-магазине MAUDAU можно в бутылках из стекла, выгоднее всего делать это по скидке на малый опт. Она действует постоянно при покупке от трех штук. Товар доставит курьер или одна из почтовых служб — «Новая Почта»
+                    или «Укрпочта». При определенной сумме заказа доставку осуществляют бесплатно.
+                </p>
+                <p>
+                    Однозначного ответа на вопрос, сколько стоит водка в маркете алкогольных штук MAUDAU, нет. Все зависит от выбранной емкости, популярности производителя, действия акций. Также можно выбрать комфортный вариант оплаты — картой или
+                    наличными.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Голубая лагуна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/blue-lagoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Голубая лагуна</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li>Ликер блю кюрасао Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite" target="_blank">Спрайт</a></li>
+                            <li>Ананас</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Популярный освежающий коктейль небесно-голубого цвета с тропической ноткой. Легкий и кисловатый, поэтому идеально подходит для летних вечеринок.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Лонг айленд айс ти" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Long-Island-Ice-Tea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Лонг айленд айс ти</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn/klasyfikatsiia_2=london-dry-gin" target="_blank">Лондонский сухой джин</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Лимон</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сложный крепкий лонг, сногсшибательный в полном смысле этого слова. Несмотря на название, коктейль не содержит холодного чая, а назван так за свой насыщенный янтарный оттенок. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Кровавая Мэри" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bloody-Mary.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кровавая Мэри</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=tomat-6" target="_blank">Томатный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Сельдерей</li>
+                            <li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=tabasko" target="_blank">Табаско соус красный</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=vustershyrskyi" target="_blank">Ворчестер соус</a></li>
+                            <li>Сельдереевая соль</li>
+                            <li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058" target="_blank">Черный перец молотый</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Яркий и пикантный коктейль Bloody Mary — это больше, чем водка с томатным соком. В состав входят специи, сельдерей и лимонный сок. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Отвертка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Screwdriver.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Отвертка</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li>Апельсин</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Простейший коктейль Отвертка не теряет популярность. Все дело в освежающем цитрусовом вкусе, который приглушает крепость водки.
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Водка спрайт" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-sprite.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Водка спрайт</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite" target="_blank">Спрайт</a></li>
+                            <li>Лайм</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Незатейливый легкий напиток из водки и Спрайта. Простой в приготовлении, сладковатый и бодрящий. Для цитрусовой кислинки в него добавляют лайм или лимон. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Эспрессо мартини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Espresso-Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Эспрессо мартини</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14" target="_blank">Ванильный сироп</a></li>
+                            <li>Кофе эспрессо</li>
+                            <li><a href="https://maudau.com.ua/ru/category/kava/typ_86=u-zernakh" target="_blank">Кофе в зернах</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригинальный коктейль для кофеманов на базе водки. Крепкий алкоголь смягчается кофейным ликером. В итоге получается сладкий и пряный коктейль, красиво украшенный кофейными зернами.
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Водка тоник" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Водка тоник</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2" target="_blank">Тоник</a></li>
+                            <li>Лимон</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Базовый лонг с водкой и тоником. Освежающий, с горчинкой и кислинкой. Для приготовления лучше брать классический светлый тоник без красителей.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Водка мартини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Водка мартини</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry" target="_blank">Сухой вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny" target="_blank">Оливки</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Тот самый любимый коктейль Джеймса Бонда. Аромат полыни из сухого вермута прекрасно сочетается с высоким градусом горько-сладкой водки. Обязательно добавьте оливочку! 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кайпироска" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Caipiroska_Vodka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кайпироска</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Лайм</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Кайпироска считается народным коктейлем Южной Америки. Он очень простой — состоит из водки и лайма с сиропом. Имеет кисло-сладкие нотки и цитрусовое послевкусие с легкой горчинкой.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кейп Кодер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cape-Cod.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кейп Кодер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13" target="_blank">Клюквенный сок</a></li>
+                            <li>Клюква</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Кисло-сладкий коктейль с ярким насыщенным ягодным вкусом. Назван в честь полуострова Кейп-Код, где расположены большие клюквенные поля. Красивый и эффектный из-за добавления алого ягодного сока.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Голубая лагуна</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>20 мл ликера блю кюрасао Fruko Schulz</li>
+                    <li>150 мл Спрайта</li>
+                    <li>30 г ананаса</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-харрикейн доверху льдом в кубиках.<br>
+                2. Налейте 20 мл ликера блю кюрасао Fruko Schulz и 50 мл водки.<br>
+                3. Осторожно долейте доверху 150 мл Спрайта — напиток может вспениться.<br>
+                4. Аккуратно размешайте напиток коктейльной ложкой.<br>
+                5. Украсьте бокал долькой ананаса. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Лонг айленд айс ти</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл водки</li>
+                    <li>30 мл белого рома</li>
+                    <li>30 мл серебряной текили</li>
+                    <li>30 мл лондонского сухого джина</li>
+                    <li>30 мл трипл сек Fruko Schulz</li>
+                    <li>30 мл сахарного сиропа</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>100 мл колы</li>
+                    <li>40 г лимона</li>
+                    <li>300 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Насыпьте в хайбол кубики льда до краев.<br> 
+                2. Налейте в стакан по 30 мл лимонного сока, сахарного сиропа и ликера трипл сек Fruko Schulz.<br> 
+                3. Добавьте 30 мл водки Царская, и по столько же белого рома, серебряной текилы и лондонского сухого джина.<br> 
+                4. Долейте доверху 100 мл колы и аккуратно размешайте коктейльной ложкой.<br>
+                5. Украсьте хайбол долькой лимона. Коктейль готов!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кровавая Мэри</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>120 мл томатного сока</li>
+                    <li>10 мл лимонного сока</li>
+                    <li>15 г сельдерея</li>
+                    <li>1 мл красного соуса Табаско</li>
+                    <li>1 мл соуса Ворчестер</li>
+                    <li>1 г сельдереевой соли</li>
+                    <li>1 г молотого черного переца</li>
+                    <li>380 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните хайбол доверху кубиками льда. <br>
+                2. Налейте в шейкер 120 мл томатного сока, 10 мл лимонного сока и 50 мл водки.<br> 
+                3. Добавьте по 1 мл красного соуса Табаско и соуса Ворчестер. <br>
+                4. Присыпьте напиток щепотками черного молотого перца и сельдереевой соли.<br>
+                5. Наполните шейкер льдом, плотно закройте и несколько минут перекатывайте по вертикали. <br>
+                6. Процедите коктейль через стрейнер в хайбол и украсьте сельдереем.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Отвертка</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>150 мл апельсинового сока</li>
+                    <li>30 г апельсина</li>
+                    <li>180 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-коллинз кубиками льда до краев. <br>
+                2. Налейте в бокал 50 мл охлажденной водки. <br>
+                3. Долейте доверху 150 мл апельсинового сока и осторожно размешайте коктейльной ложечкой. <br>
+                4. Украсьте напиток кружочком апельсина. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Водка спрайт</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>150 мл Спрайта</li>
+                    <li>40 г лайма</li>
+                    <li>180 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-хайбол кубиками льда почти доверху.<br> 
+                2. Налейте 50 мл водки и аккуратно долейте 150 мл Спрайта.<br>
+                3. Осторожно размешайте напиток высокой коктейльной ложечкой.<br> 
+                4. Добавьте в коктейль две крупные дольки лайма. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Эспрессо мартини</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл водки</li>
+                    <li>15 мл кофейного ликера</li>
+                    <li>5 мл ванильного сиропа</li>
+                    <li>50 мл кофе эспрессо</li>
+                    <li>4 г кофе в зернах</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Заранее приготовьте и охладите кофе-эспрессо.<br>
+                2. Налейте в шейкер 50 мл холодного эспрессо, 5 мл ванильного сиропа и 15 мл кофейного ликера.<br> 
+                3. Добавьте в состав 30 мл водки.<br>
+                4. Наполните шейкер 200 г льда в кубиках и взбейте.<br> 
+                5. Перелейте через барное сито в охлажденный коктейльный бокал.<br> 
+                6. Украсьте напиток кофейными зернами.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Водка тоник</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>135 мл тоника</li>
+                    <li>40 г лимона</li>
+                    <li>80 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-хайбол кубиками льда до верхнего края. <br>
+                2. Налейте 15 мл лимонного сока и добавьте 50 мл водки. <br>
+                3. Долейте доверху 135 мл тоника и перемешайте ингредиенты коктейльной ложкой. <br>
+                4. Украсьте коктейль ломтиком лимона.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Водка мартини</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>75 мл водки</li>
+                    <li>15 мл сухого вермута</li>
+                    <li>9 г оливок</li>
+                    <li>300 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в емкость для смешивания 15 мл сухого вермута и 75 мл водки.<br> 
+                2. Насыпьте 300 г льда в кубиках и аккуратно размешайте высокой барной ложкой.<br> 
+                3. Перелейте через сито-стрейнер в заранее охлажденный коктейльный бокал.<br> 
+                4. Украсьте коктейль тремя оливками на шпажке. Бондиана начинается!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кайпироска</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>60 г лайма</li>
+                    <li>150 г дробленого льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в рокс-бокал два ломтика лайма и подавите мадлером.<br> 
+                2. Наполните рокс доверху дробленым льдом.<br>
+                3. Налейте в бокал 20 мл сахарного сиропа и 50 мл водки.<br> 
+                4. Размешайте напиток высокой барной ложкой.<br> 
+                5. По желание досыпьте еще немного дробленого льда.<br> 
+                6. Добавьте в бокал дольку лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Кейп Кодер</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл водки</li>
+                    <li>150 мл клюквенного сока</li>
+                    <li>5 г клюквы</li>
+                    <li>180 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-хайбол кубиками льда до верхнего края.<br> 
+                2. Положите на дно стакана 1 коктейльную ложку клюквы.<br> 
+                3. Налейте 50 мл водки и сверху 150 мл клюквенного сока.<br> 
+                4. Аккуратно размешайте напиток коктейльной ложкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>

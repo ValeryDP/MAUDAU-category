@@ -1,0 +1,1056 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Горілка — міцний спиртний напій, який не має запаху та кольору, крім ароматизованих лінійок. Його готують із різних сільськогосподарських продуктів, що зброджуються, зокрема із зерна, винограду, картоплі, буряка. Мінімальний
+                    відсоток алкоголю в готовому продукті становить 37,5. Стандартна міцність — 40%.
+                </p>
+                <h2>Коротке історичне зведення</h2>
+                <p>Спочатку горілку пропонували як ліки. Успіх як до спиртного напою прийшов у 1940-х роках. Сьогодні продукт вважають одним із найпопулярніших різновидів алкоголю по всьому світу, а замовити горілку через інтернет — дуже просто.</p>
+                <p>
+                    Напій, знайомий сучасному покупцю, відрізняється від продукції, яку виготовляли в 14-15 столітті. Гіркий смак, приправлений високим відсотком сторонніх домішок, маскували за допомогою цукру та рослинних добавок. Говорячи про
+                    історію, Росія та Польща досі ведуть суперечки щодо походження міцного спиртного напою.
+                </p>
+                <p>
+                    Перша російська документація горілки сягає 1751 року. На той час відкрили ранню форму перегонки, заморожуючи пиво. Це спричинило створення міцного спирту, але з підвищеною концентрацією сивушних масел. Використання безлічі важливих
+                    процесів приписують Росії. Приклад — вугільна фільтрація. Ідея належала хіміку Товію Ловицю. Селянин Петро Смирнов — засновник однієї з найвідоміших торгових марок Smirnoff, особливо шанованої у Франції.
+                </p>
+                <p>
+                    Першу польську горілку виготовили 1405 року. Продукцію робили таємно, а рецептуру не виносили за поріг будинку. Пізніше польському королю подарували екзотичний овоч — картоплю. З того часу країна славиться картопляною горілкою.
+                    Першу ректифікацію за сучасним зразком виконали 1871 року.
+                </p>
+                <p>
+                    Масове «вторгнення» горілки до Європи та США приписують Джону Мартіну, який керував Heublein. Компанія відповідала за поширення алкогольної продукції у світі. Саме Джону Мартіну належала маркетингова стратегія з просування горілки,
+                    яка посунула віскі в рейтингу популярних спиртних напоїв. Незабаром компанія представила культовий мікс — «Московський мулл».
+                </p>
+                <h3>Що відомо про назву</h3>
+                <p>
+                    Горілка — не єдиний варіант назви міцного спиртного напою. Раніше продукт називали «хлібним вином», «пінником» або «напівгаром». Форму «vodka» фіксують у 1405 та 1437 роках. Але лише в 1534 році в польських документах термін
+                    використовували для позначення спиртного напою, приготовленого за допомогою дистиляції.
+                </p>
+                <p>
+                    Вважають, що слово «vodka» походить із російської мови. Аж до XVIII століття нейтральний зерновий спирт називали «вином». Якщо рецептуру доповнювали добавками, особливо ягодами чи фруктами, продукцію маркували як «горілку». Лише в
+                    ХІХ столітті закріпили сучасне розуміння назви.
+                </p>
+                <h2>Як виробляють горілку</h2>
+                <p>
+                    Найчастіше головним компонентом є зерно. Використовують пшеницю, кукурудзу, жито, ячмінь. Перший етап — солодіння. Зерну дають прорости, змішуючи його з теплою водою. Якщо використовують буряк чи картоплю, їх готують для вивільнення
+                    крохмалю, який незабаром перетвориться на цукор. Наступний процес виглядає так:
+                </p>
+                <ol>
+                    <li>Ферментація. Бродіння відбувається в закритих металевих резервуарах. Дріжджі майже не впливають на смак.</li>
+                    <li>
+                        Дистиляція. Якщо вирішили купити горілку в Україні, швидше за все, її зробили безперервною перегонкою в колонах. Процес контролює майстер-дистилятор. При виготовленні використовують лише серце, тобто середину спирту. «Голова»
+                        містить підвищену концентрацію метанолу, тому її видаляють. Також відсікають так званий хвіст, зіпсований сивушними маслами. Горілку переганяють 4–8 разів, витягуючи максимум ароматичних сполук. На виході одержують
+                        концентрований спирт міцністю 95–97 градусів.
+                    </li>
+                    <li>
+                        Фільтрування. Дистилят пропускають через активоване вугілля. Мета — очистити горілку від домішок. Готовий спирт розбавляють демінералізованою водою до міцності 40%. Що більше циклів очищення пройшла горілка, то вищою є ціна.
+                    </li>
+                    <li>Розлив. Горілку повторно відфільтровують. За бажанням дистилят ненадовго поміщають в ємності з нержавіючої сталі. Готовий міцний спиртний напій розливають скляними пляшками.</li>
+                </ol>
+                <h2>Яка горілка на смак</h2>
+                <p>
+                    Смак сильно відрізняється залежно від використовуваної сировини та методів виробництва, що застосовуються. Класична продукція має чистий нейтральний смак, який можна охарактеризувати як трохи солодкий, з легким шлейфом прянощів на
+                    фініші. З цієї причини горілку переважно п'ють без добавок. Консистенція вʼяже. Рідше смакова композиція розкривається освіжальними цитрусовими акордами.
+                </p>
+                <h2>Класифікація: як вибрати горілку</h2>
+                <p>Продукцію ділять на ароматизовану та неароматизовану. Остання категорія складає основу асортименту. Офіційної класифікації немає, тому горілку розрізняють за сировиною:</p>
+                <ul>
+                    <li>Пшениця. Поширений варіант. Процес виробництва простий, тому ціна пшеничної горілки в Україні — доступна. Пшениця приносить м'який характер і легкий фініш, який нагадує анісову настоянку.</li>
+                    <li>Кукурудза. Варіант, який широко використовується в США. Зерно надає в'язку текстуру та солодкий шлейф.</li>
+                    <li>Жито. Злакову культуру активно використовують у Польщі. Вона наповнює горілку гостринкою та солодкою-пряним фінішем.</li>
+                    <li>Ячмінь. Найменш поширений варіант, крім продукції з Фінляндії. Смак — солодкий.</li>
+                    <li>Картопля. Основний інгредієнт у Польщі. Замовити горілку з картоплі варто тим, хто шукає насичений аромат і пікантний смак. Продукція має виразний землесто-горіховий шлейф.</li>
+                    <li>Виноград. Якщо вирішили замовити виноградну горілку в інтернеті, шукайте продукцію з Грузії, України, Франції. Ягоди надають дистиляту виразний фруктовий аромат, що змінюється освіжальними акордами у смаковій палітрі.</li>
+                    <li>Буряк. Продукція з характерними землистими відтінками. Фініш — хрумкий, із тривалою солодкістю.</li>
+                </ul>
+                <p>Рідше використовують кіноа або очеретяну патоку. Найчастіше — як допоміжний компонент.</p>
+                <p>Ароматизовану горілку виготовляють за допомогою мацерації чи додавання натуральних есенцій. Найпоширеніші добавки: мед, шоколад, ваніль, ягоди, фрукти, трави.</p>
+                <h2>Шкода та користь від міцного спиртного напою</h2>
+                <p>Через високий вміст алкоголю горілку використовують як антисептик у польових умовах. Завдяки дії на ЦНС дистилят знеболює, а також знижує ризик розвитку окремих серцевих захворювань.</p>
+                <p>
+                    Надмірне вживання може спричинити хвороби печінки, розвиток ракових клітин, алкогольну інтоксикацію. Спирт порушує координацію, що часто закінчується травмами. Тому велика пляшка горілки — варіант для компанії. Потенційно безпечна
+                    щоденна доза становить 50–80 мл.
+                </p>
+                <h2>Яка горілка найкраща в Україні</h2>
+                <p>
+                    В онлайн-каталозі MAUDAU можна купити горілку, виготовлену не тільки в Польщі, а й в інших країнах, зокрема — Німеччині, Великій Британії, Латвії, Франції, Фінляндії, Швеції, Японії. На особливу увагу заслуговує продукція торгових
+                    марок:
+                </p>
+                <ol>
+                    <li>Absolut. Шведська компанія, що реалізує горілку в аптечних скляних пляшках. Основний інгредієнт — пшениця. Зерно приносить гладку текстуру та м'який присмак.</li>
+                    <li>Danzka. Дизайнерська німецька горілка. Особливість — шестиколонна дистиляція, завдяки якій міцний спиртний напій набуває збалансованого смаку.</li>
+                    <li>Фінляндія. Чиста горілка, яка віддає акордами ванілі та білого перцю. Бренд пропонує широку ароматизовану лінійку.</li>
+                    <li>Green Day. Українська торгова марка, яка пропонує горілку, виготовлену за запатентованим екологічним стандартом.</li>
+                    <li>Grey Goose. Французька горілка, яку готують з озимої пшениці. Воду постачають із регіону Коньяк. Продукцію відносять до ультрапреміумкласу. Смак тонкий, із пікантними акордами.</li>
+                    <li>Zubrowka. Міцний спиртний напій із Польщі, який містить особливу добавку — зубровку. Смак розкривається відтінками ясенника та кокосу.</li>
+                </ol>
+                <h2>Чому вигідно купити горілку в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В асортименті зібрано оригінальну продукцію. Завдяки власному налагодженому імпорту покупці отримують доступ до унікальних позицій, наприклад продукції Ciroc. Також можна знайти варіанти в подарункових коробках. Оскільки купити
+                    горілку в інтернет-магазині MAUDAU можна у пляшках зі скла, найвигідніше робити це за знижкою на малий гурт. Вона діє завжди при покупці від трьох штук. Товар доставить кур'єр або одна з поштових служб — «Нова Пошта» або «Укрпошта».
+                    За певної суми замовлення доставку здійснюють безкоштовно.
+                </p>
+                <p>
+                    Однозначної відповіді на питання, скільки коштує горілка в маркеті алкогольних штук MAUDAU, немає. Все залежить від вибраної ємності, популярності виробника, дії акцій. Також можна вибрати комфортний варіант оплати — карткою або
+                    готівкою.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Блакитна лагуна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/blue-lagoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Блакитна лагуна</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li>Лікер блю кюрасао Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite" target="_blank">Спрайт</a></li>
+                            <li>Ананас</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Популярний освіжальний коктейль небесно-блакитного кольору із тропічною ноткою. Легкий і кислуватий, тому ідеально підходить для літніх вечірок.
+                        </div>
+                        <a class="pop-button" href="#popup1">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Лонг айленд ай сті" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Long-Island-Ice-Tea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Лонг айленд ай сті</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10" target="_blank">Білий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver" target="_blank">Срібна текіла</a></li>
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin" target="_blank">Лондонський сухий джин</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Цукровий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li>Лимон</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Складний міцний лонг, карколомний у повному сенсі цього слова. Попри назву, коктейль не містить холодного чаю, а названий так за свій насичений бурштиновий відтінок.
+                        </div>
+                        <a class="pop-button" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Кривава Мері" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bloody-Mary.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кривава Мері</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6" target="_blank">Томатний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li>Селера</li>
+                            <li><a href="https://maudau.com.ua/category/sousy/vyd_119=tabasko" target="_blank">Табаско соус червоний</a></li>
+                            <li><a href="https://maudau.com.ua/category/sousy/vyd_119=vustershyrskyi" target="_blank">Ворчестер соус</a></li>
+                            <li>Селерова сіль</li>
+                            <li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058" target="_blank">Чорний перець мелений</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Яскравий і пікантний коктейль Bloody Mary — це більше, ніж горілка з томатним соком. До складу входять спеції, селера та лимонний сік.
+                        </div>
+                        <a class="pop-button" href="#popup3">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Викрутка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Screwdriver.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Викрутка</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновий сік</a></li>
+                            <li>Апельсин</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Найпростіший коктейль Викрутка не втрачає популярності. Вся справа в освіжальному цитрусовому смаку, який приглушує міцність горілки.
+                        </div>
+                        <a class="pop-button" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Горілка спрайт" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-sprite.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Горілка спрайт</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite" target="_blank">Спрайт</a></li>
+                            <li>Лайм</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Невигадливий легкий напій із горілки та спрайту. Простий у приготуванні, солодкуватий і бадьорий. Для цитрусової кислинки до нього додають лайм або лимон.
+                        </div>
+                        <a class="pop-button" href="#popup5">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Еспресо мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Espresso-Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Еспресо мартіні</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кавовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14" target="_blank">Ванільний сироп</a></li>
+                            <li>Кава еспресо</li>
+                            <li><a href="https://maudau.com.ua/category/kava/typ_86=u-zernakh" target="_blank">Кава в зернах</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригінальний коктейль для кавоманів на базі горілки. Міцний алкоголь пом'якшується кавовим лікером. У результаті виходить солодкий і пряний коктейль, красиво прикрашений кавовими зернами.
+                        </div>
+                        <a class="pop-button" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Горілка тонік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Горілка тонік</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2" target="_blank">Тонік</a></li>
+                            <li>Лимон</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Базовий лонг з горілкою та тоніком. Освіжальний, із гіркуватістю та кислинкою. Для приготування краще купувати класичний світлий тонік без барвників.
+                        </div>
+                        <a class="pop-button" href="#popup7">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Горілка мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Горілка мартіні</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry" target="_blank">Сухий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny" target="_blank">Оливки</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Той самий найулюбленіший коктейль Джеймса Бонда. Аромат полину із сухого вермуту чудово поєднується з високим градусом гірко-солодкої горілки. Обов'язково додайте оливку!
+                        </div>
+                        <a class="pop-button" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кайпироска" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Caipiroska_Vodka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кайпироска</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарний сироп</a></li>
+                            <li>Лайм</li>
+                            <li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text">
+                            Кайпироска вважається народним коктейлем Південної Америки. Він дуже простий — складається з горілки та лайма з сиропом. Має кисло-солодкі нотки та цитрусовий післясмак з легкою гіркуватістю.
+                        </div>
+                        <a class="pop-button" href="#popup9">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кейп Кодер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cape-Cod.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кейп Кодер</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/horilka" target="_blank">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13" target="_blank">Журавлинний сік</a></li>
+                            <li>Журавлина</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Кисло-солодкий коктейль з яскравим насиченим ягідним смаком. Названий на честь півострова Кейп-Код, де розташовані великі журавлинні поля. Гарний та ефектний через додавання червоного ягідного соку.
+                        </div>
+                        <a class="pop-button" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Блакитна лагуна</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>20 мл лікеру блю кюрасао Fruko Schulz</li>
+                    <li>150 мл Спрайту</li>
+                    <li>30 г ананасу</li>
+                    <li>200 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть келих-харікейн догори льодом у кубиках.<br>
+                2. Налийте 20 мл лікеру блю кюрасао Fruko Schulz і 50 мл горілки.<br>
+                3. Обережно долийте догори 150 мл Спрайту — напій може спінитися.<br>
+                4. Акуратно розмішайте напій коктейльною ложкою.<br>
+                5. Прикрасьте келих скибочкою ананаса.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Лонг айленд ай сті</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл горілки</li>
+                    <li>30 мл білого рому</li>
+                    <li>30 мл срібної текілі</li>
+                    <li>30 мл лондонського сухого джину</li>
+                    <li>30 мл трипл сек Fruko Schulz</li>
+                    <li>30 мл цукрового сиропу</li>
+                    <li>30 мл лимонного соку</li>
+                    <li>100 мл коли</li>
+                    <li>40 г лимона</li>
+                    <li>300 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Насипте в хайбол кубики льоду до країв.<br>
+                2. Налийте в склянку по 30 мл лимонного соку, цукрового сиропу та лікеру трипл сек Fruko Schulz.<br> 
+                3. Додайте 30 мл горілки, і по стільки ж білого рому, срібної текіли та лондонського сухого джину.<br> 
+                4. Долийте доверху 100 мл коли й акуратно розмішайте коктейльною ложкою.<br>
+                5. Прикрасьте хайбол скибочкою лимона. Коктейль готовий!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Кривава Мері</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>120 мл томатного соку</li>
+                    <li>10 мл лимонного соку</li>
+                    <li>15 г селери</li>
+                    <li>1 мл червоного соусу Табаско</li>
+                    <li>1 мл соусу Ворчестер</li>
+                    <li>1 г селерової солі</li>
+                    <li>1 г меленого чорного перецю</li>
+                    <li>380 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть хайбол догори кубиками льоду.<br>
+                2. Налийте в шейкер 120 мл томатного соку, 10 мл лимонного соку та 50 мл горілки.<br>
+                3. Додайте по 1 мл червоного соусу Табаско та соусу Ворчестер.<br>
+                4. Присипте напій щіпками чорного меленого перцю і солі селери.<br>
+                5. Наповніть шейкер льодом, щільно закрийте і кілька хвилин перекочуйте по вертикалі.<br>
+                6. Процідіть коктейль через стрейнер у хайбол і прикрасьте селерою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Викрутка</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>150 мл апельсинового соку</li>
+                    <li>30 г апельсина</li>
+                    <li>180 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть келих-колінз кубиками льоду до країв.<br>
+                2. Налийте в келих 50 мл охолодженої горілки.<br>
+                3. Долийте догори 150 мл апельсинового соку і обережно розмішайте коктейльною ложечкою.<br>
+                4. Прикрасьте напій кружальцем апельсина.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Горілка спрайт</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>150 мл Спрайту</li>
+                    <li>40 г лайма</li>
+                    <li>180 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть склянку-хайбол кубиками льоду майже догори.<br>
+                2. Налийте 50 мл горілки і обережно долийте 150 мл Спрайту.<br>
+                3. Обережно розмішайте напій високою коктейльною ложечкою.<br>
+                4. Додайте в коктейль дві великі скибочки лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Еспресо мартіні</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл горілки</li>
+                    <li>15 мл кавового лікеру</li>
+                    <li>5 мл ванільногого сиропу</li>
+                    <li>50 мл кави еспресо</li>
+                    <li>4 г кави в зернах</li>
+                    <li>200 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Заздалегідь приготуйте та охолодіть каву-еспресо.<br>
+                2. Налийте в шейкер 50 мл холодного еспресо, 5 мл ванільного сиропу та 15 мл кавового лікеру.<br>
+                3. Додайте до складу 30 мл горілки.<br>
+                4. Наповніть шейкер 200 г льоду в кубиках і збийте.<br>
+                5. Перелийте через барне сито в охолоджений келих.<br>
+                6. Прикрасьте напій кавовими зернами.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Горілка тонік</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>15 мл лимонного соку</li>
+                    <li>135 мл тоніку</li>
+                    <li>40 г лимона</li>
+                    <li>80 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть склянку-хайбол кубиками льоду до верхнього краю.<br>
+                2. Налийте 15 мл лимонного соку та додайте 50 мл горілки.<br>
+                3. Долийте догори 135 мл тоніку та перемішайте інгредієнти коктейльною ложкою.<br>
+                4. Прикрасьте коктейль скибочкою лимона.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Горілка мартіні</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>75 мл горілки</li>
+                    <li>15 мл сухого вермуту</li>
+                    <li>9 г оливок</li>
+                    <li>300 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Налийте в ємність для змішування 15 мл сухого вермуту та 75 мл горілки.<br>
+                2. Насипте 300 г льоду в кубиках і обережно розмішайте високою барною ложкою.<br>
+                3. Перелийте через сито-стрейнер у заздалегідь охолоджений келих.<br>
+                4. Прикрасьте коктейль трьома оливками на шпажці. Бондіана починається!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Кайпироска</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>20 мл цукрового сиропу</li>
+                    <li>60 г лайма</li>
+                    <li>150 г подрібненого льоду</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Покладіть у рокс-келих дві скибочки лайма і подавіть мадлером.<br>
+                2. Наповніть рокс догори подрібненим льодом.<br>
+                3. Налийте в келих 20 мл цукрового сиропу та 50 мл горілки.<br>
+                4. Розмішайте напій високою барною ложкою.<br>
+                5. За бажання досипте ще трохи подрібненого льоду.<br>
+                6. Додайте в келих часточку лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Як приготувати Кейп Кодер</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл горілки</li>
+                    <li>150 мл журавлинного соку</li>
+                    <li>5 г журавлини</li>
+                    <li>180 г льоду в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготування:</span><br>
+                1. Наповніть склянку-хайбол кубиками льоду до верхнього краю.<br>
+                2. Покладіть на дно склянки 1 коктейльну ложку журавлини.<br>
+                3. Налийте 50 мл горілки та зверху 150 мл журавлинного соку.<br>
+                4. Акуратно розмішайте напій коктейльною ложкою.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Зачинити</a>
+                </div>
+        </div>
+</div>
+
+</div>
