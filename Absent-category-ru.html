@@ -1,0 +1,1081 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Абсент — крепкий спиртной напиток, который изготавливают посредством мацерации и повторной перегонки, используя нейтральный зерновой спирт. Важный компонент — экстракт полыни горькой. Растение содержит туйон — химическое вещество,
+                    которое в особо высоких концентрациях является токсином. Классический абсент имеет зеленый цвет, хотя нередко встречаются вариации. На протяжении истории использовали несколько альтернативных названий, среди которых «зеленая фея»,
+                    «безумие в бутылке», «сущность жизни».
+                </p>
+                <h2>Что входит в состав</h2>
+                <p>
+                    Основу составляет нейтральный зерновой спирт, хотя ранее не менее активно использовали виноград, картофель, свеклу. Рецептуру дополняют «святой троицей»: горькой полынью, зеленым анисом, флорентийским фенхелем. Также в составе могут
+                    содержаться:
+                </p>
+                <ul>
+                    <li>полынь понтийская;</li>
+                    <li>иссоп;</li>
+                    <li>мелисса;</li>
+                    <li>звездчатый анис;</li>
+                    <li>дудник;</li>
+                    <li>кориандр;</li>
+                    <li>мята перечная;</li>
+                    <li>вероника;</li>
+                    <li>аир;</li>
+                    <li>лакрица;</li>
+                    <li>петрушка;</li>
+                    <li>ромашка.</li>
+                </ul>
+                <h2>Что по вкусу напоминает абсент</h2>
+                <p>Напиток отличается сложным и разнообразным вкусо-ароматическим профилем. В нем часто присутствуют нотки аниса и фенхеля, которые по вкусу похожи на лакричник, но более тонкие.</p>
+                <h3>Сколько градусов в абсенте</h3>
+                <p>
+                    После повторной перегонки крепость составляет 55–70%. Из-за повышенного содержания алкоголя дистиллят разбавляют водой, когда подают к столу. Если решили купить абсент в Украине, помните, что качественный продукт при контакте с
+                    водой мутнеет. Этот процесс называют эффектом Луша. Он объясняется эфирными маслами, которые содержатся в анисе и фенхеле.
+                </p>
+                <h2>Краткая история абсента</h2>
+                <p>
+                    Точной информации о происхождении нет. Первую настойку из полыни готовили в Древнем Египте, используя эликсир в лечебных целях. Современный рецепт абсента, то есть дистиллированного из нейтрального спирта и полынно-анисовой
+                    настойки, относят к XVIII веку. По легенде, идея принадлежала французскому врачу Пьеру Ординеру, проживавшему в Куве, что в Швейцарии, в 1792 году. Позже рецептуру передали сестрам Анрио, которые продавали абсент как лечебный
+                    эликсир. Спустя несколько лет рецепт перешел к местному предпринимателю Анри Дюбье. Вместе с сыном Марселленом и зятем Анри-Луи Перно в 1797 году бизнесмен открыл винокурню Dubied Pere et Fils. С того времени наладили массовый
+                    выпуск, а спустя 8 лет расширили производство на Францию.
+                </p>
+                <p>Настойку Absinthe запретили в 1914 году. Напиток связывали с негативным воздействием на психику из-за повышенного содержания туйона. Запрет распространился на Швейцарию, Францию, Бельгию, Италию, США.</p>
+                <p>
+                    В странах, где запрет не действовал, спрос на крепкий спиртной напиток не угасал. В 1840-х годах абсент выдавали солдатам как средство для профилактики малярии. В 1860-х годах в пабах по всему миру время 17:00 называли «l’heure
+                    verte», что в переводе означает «зеленый час».
+                </p>
+                <p>
+                    В конце XIX века напиток ассоциировали с богемной жизнью. Его высоко ценили писатели и художники, особенно Джеймс Джойс, Марк Твен, Шарль Бодлер, Артюр Рембо. Эдгар Дега даже создал картину «Absinthe», которую хранят в Музее Орсе
+                    (Франция).
+                </p>
+                <p>
+                    Запрет на продажу постепенно снимали с 1990-х годов. Возрождение дистиллята связано с Великобританией, где напиток никогда официально не запрещали. Франция разрешила продажу только в 2011 году. Согласно закону, абсент, купить
+                    который можно в маркете важных штук MAUDAU, содержит порцию туйона, не превышающую 35 мг/л.
+                </p>
+                <h2>Немного о разновидностях</h2>
+                <p>
+                    Продукцию классифицируют на Verte и Blanche. Первый вариант — стандартный зеленый абсент. Цвет — результат естественного окрашивания, связанного с хлорофиллами, которые поступают в дистиллят из листьев. Оттенок формируется во время
+                    повторной мацерации. Зеленый абсент известен по насыщенному травяному привкусу.
+                </p>
+                <p>Вторая категория — Absinthe Blanche. Дистиллят разливают по стеклянным бутылкам сразу после приготовления, поэтому он остается бесцветным. Вкус — сладкий и гладкий. Иногда на финише развивается легкий цитрусовый шлейф.</p>
+                <p>Абсент — напиток, выпуск которого не регламентируют как производство джина или виски. Поэтому на рынке можно найти несколько альтернативных оттенков:</p>
+                <ol>
+                    <li>Желтый. Цвет — признак естественного старения. Со временем хлорофилл желтеет, поэтому бутылки выполняют из темно-зеленого стекла, препятствуя процессу окисления.</li>
+                    <li>Красный. В составе — экстракт граната. Он придает насыщенный рубиново-красный оттенок, а также приятную кислинку.</li>
+                    <li>Коричневый. Используют не листья и стебли, а корни. Темный цвет нередко обусловлен экстрактом черной акации Катеху. Он привносит характерный сладкий акцент.</li>
+                    <li>Синий. Абсент окрашивают с помощью вытяжек из семян гуараны или голубых кувшинок. Не влияет на уникальный травяной вкус.</li>
+                </ol>
+                <p>Производители нередко экспериментируют, используя искусственные красители. Это не запрещено по закону и не вредит здоровью, но по оттенку нельзя полностью оценить качество крепкого спиртного напитка.</p>
+                <p>
+                    Также выделяют несколько стилей. Классический — французский или швейцарский. Абсент готовят посредством медленной перегонки, постепенно внедряя ботанический букет. Антипод — чешский или богемский стиль. Напиток называют Absinth.
+                    Спирт смешивают с ароматизаторами, красителями, сахаром. Анисовый привкус менее выражен. Чешский стиль пользовался популярностью до 1990-х годов. Теперь на такой абсент цена крайне низкая, а спрос небольшой — разве что для
+                    смешивания в коктейлях.
+                </p>
+                <p>Дополнительно дистиллят классифицируют по крепости. Выделяют напитки с повышенной крепостью — 55–65%. Отдельная категория — продукция экстремально высокой крепости. Процент алкоголя составляет 70–80.</p>
+                <h2>Как пить абсент и с какими закусками сочетать</h2>
+                <p>Крепкий спиртной напиток подают разными способами:</p>
+                <ol>
+                    <li>
+                        Французский вариант. Этот метод называют «ритуалом». Он нацелен на медленное и сознательное потягивание. Подготовьте стакан. Налейте порцию абсента — 30 мл. Сверху выложите плоскую перфорированную ложку. Поместите на нее кубик
+                        сахара. Его используют, чтобы сбалансировать горький привкус полыни. Капните сверху ледяной водой. Комфортнее наливать из небольшого кувшина. Сахар постепенно растворится. Абсент становится гуще. Достаточно 80–100 мл охлажденной
+                        воды.
+                    </li>
+                    <li>
+                        «Стакан в стакане». Влейте в стопку 30 мл абсента. Поместите ее в стакан побольше. Медленно налейте холодную воду в стопку. В результате содержимое маленького стакана перельется в большой. Выньте стопку и выпейте порцию
+                        постепенно или как шот.
+                    </li>
+                </ol>
+                <p>Классическая отправная точка для дегустации абсента в коктейлях — Сазерак. В сочетании со ржаным виски, коньяком, биттерами и сахаром он приобретает нейтральный вкус. Дистиллят также сглаживает остроту виски.</p>
+                <p>
+                    Крепкий спиртной напиток выгодно сочетается с красным мясом, пикантными сырами, морепродуктами. Также его можно подавать с фруктовой нарезкой, особенно с ананасами и зелеными яблоками. Если ищете полноценное блюдо, выбор — за
+                    бургерами или пастой.
+                </p>
+                <h3>Зачем поджигают абсент</h3>
+                <p>Этот метод не рекомендуют на родине, так как он разрушает многогранную вкусо-ароматическую палитру. Поджигание снижает процент алкоголя, а также эффектно выглядит. Выполняйте подачу осторожно.</p>
+                <p>
+                    Первый вариант — чешский. Залейте абсентом кубик сахара, лежащей на ложке поверх стакана. Подожгите его. Разрешите сахару раствориться. Потушите пламя, сбрызнув его водой или газировкой. Создайте из сахара кашицу и растворите
+                    остатки в стакане.
+                </p>
+                <p>
+                    Второй метод называют «обратная тяга». Наполните стопку наполовину. Подожгите абсент спичкой или зажигалкой. Пламя должно вспыхнуть сразу и медленно разгораться. Быстро положите ладонь на край рюмки, полностью прикрыв ее и закрыв
+                    доступ к воздуху. Пламя погаснет. Делайте это быстро: не позднее, чем через 5 секунд после поджога. Осторожно вдохните, чтобы почувствовать аромат, и сделайте глоток.
+                </p>
+                <h2>Как выбрать абсент</h2>
+                <p>Критерии, на которые стоит обратить внимание:</p>
+                <ol>
+                    <li>Состав. Продукция, представленная в онлайн-каталоге MAUDAU, напрямую попадает в Украину. В приоритете — качественный продукт из натурального сырья.</li>
+                    <li>Концентрация туйона. Безопасная доза составляет 35 мг/л. При этом такой напиток — самый горький. Если нужен более сладкий вариант, остановитесь на показателях 10–15 мг/л.</li>
+                    <li>Цвет. Классика жанра — зеленый. Если ищете вариант на подарок, обращайте внимание на синий или желтый абсент.</li>
+                    <li>Крепость. Оптимальный вариант — от 60%. Чем выше процент алкоголя, тем насыщеннее вкус.</li>
+                </ol>
+                <p>
+                    Ценник зависит от емкости и именитости торговой марки. Поскольку абсент разбавляют водой, выгодный вариант — 0,5 л. Напиток хорошо хранится, поэтому бутылка 0,7 литра — прекрасный вариант для приготовления коктейлей в домашних
+                    условиях.
+                </p>
+                <h3>Рейтинг торговых марок</h3>
+                <p>В интернет-магазине MAUDAU можно найти продукцию от:</p>
+                <ol>
+                    <li>Abysse. Французская компания, которая выпускает Absinthe Verte. Продукция отличается насыщенным травяным шлейфом.</li>
+                    <li>Paul Devoille. Винокурня, работающая с 1859 года. Особого внимания заслуживает подарочный набор с ложкой.</li>
+                    <li>Pernod. Компания, которая специализируется на выпуске ликеров. Классический абсент раскрывается терпкими анисово-мятными аккордами.</li>
+                    <li>Rodnik’s. Испанская торговая марка, которая предлагает мягкий вариант традиционного алкоголя. Абсент реализуют по выгодной цене из-за сниженного градуса.</li>
+                    <li>Xenta. Дистиллят, рожденный в Италии. Продукцию производят по старинному рецепту, который датируется XIX веком.</li>
+                </ol>
+                <h2>Почему выгодно купить абсент в Украине в маркете алкогольных штук MAUDAU</h2>
+                <p>
+                    Интернет-магазин предлагает оригинальную продукцию. Товар доставит курьер или почтовая служба. Достаточно выбрать понравившиеся позиции, переместить их в корзину и выбрать подходящий вариант оплаты. На абсент постоянно действует
+                    оптовая скидка. Также регулярно обновляются акции.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Зеленая фея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/green_fairy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зеленая фея</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li>Ликер блю кюрасао Fruko Schulz</li>
+                            <li>Дынный ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi" target="_blank">Энергетик</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Знаменитый коктейль Зеленая Фея — это сумасшедший микс алкогольных напитков и энергетика. Поэтому он так популярен на дискотеках и вечеринках. 
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Хиросима" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hirosima.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Хиросима</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Коктейль Хиросима внешне напоминает то самое грибовидное облако. Напиток получил свое название из-за этой особенности и быстрого опьяняющего эффекта. Самбука и сливочный ликер придают анисовый привкус, а абсент — характерные травяные нотки. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Облака" src="https://photo.maudau.com.ua/Landing/cocktails/incat/clouds-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Облака</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li>Ликер блю кюрасао Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-mollys-irish-cream-17-07-l-486180" target="_blank">Айриш крим</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Крепкий пряно-травяной шот на основе самбуки и текилы. Оригинальный вид напоминает белые облака на голубом небе — отсюда и название коктейля.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Сазерак" src="https://photo.maudau.com.ua/Landing/cocktails/incat/sazerac-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Сазерак</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak" target="_blank">Коньяк</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Биттер Ангостура</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-peychauds-bitters-35-0148-l" target="_blank">Биттер Пишо</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu" target="_blank">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=presovanyi" target="_blank">Сахар в кубиках</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сазерак — крепкий травяной коктейль на бурбоне и коньяке. Является официальным коктейлем штата Луизиана, так как появился именно там. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Таракан" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cockroach.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Таракан</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                        </ul>
+                        <div class="description-text">
+                            В основе коктейля Таракан лежит тандем самбуки и абсента, но с обязательным добавлением кофейного ликера. Напиток получается крепким, с отчетливыми травяными и пряными нотками.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Абсент и ананас" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Absinthe-with-Pineapple-Juice.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Абсент и ананас</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13" target="_blank">Ананасовый сок</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Коктейль интересно и небанально сочетает абсент и ананас. Сладкий тропический сок уравновешивает характерный привкус абсента. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Противная слякоть" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Nasty_slush.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Противная слякоть</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Несмотря на название, это очень вкусный ароматный коктейль на абсенте и ликерах. Крепкий, сливочный и сладкий — обязательно нужно попробовать! 
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Медуза" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jellyfish.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Медуза</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li>Какао-ликер</li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys" target="_blank">Айриш крим Baileys</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Экстравагантный коктейль Медуза с оригинальным вкусом и видом. Имеет среднюю крепость и сливочно-травяное послевкусие. Даже в домашних условиях делается за 3 минуты. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Абсент сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Absinthe_sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Абсент сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Деликатесный сауэр из простых ингредиентов. Абсент всегда отлично сочетается с сахаром и смягчает свою крепость. Лимонный сок привносит цитрусовые ноты. 
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Пилот" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pilot.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Пилот</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi" target="_blank">Энергетик</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Улетный коктейль Пилот подойдет рисковым и активным. Это травяной и крепкий шот. Равные части абсента и энергетика вызывают прилив сил, но лучше не пить больше 2 порций за вечер. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">171 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">8.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зеленая фея</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл серебряной текили</li>
+                    <li>15  мл абсента</li>
+                    <li>15 мл водки</li>
+                    <li>15 мл белого рома</li>
+                    <li>10 мл ликера блю кюрасао Fruko Schulz</li>
+                    <li>30 мл дынного ликера Fruko Schulz</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>100 мл энергетика</li>
+                    <li>10 г красной коктейльной вишни</li>
+                    <li>Лимонная цедра</li>
+                    <li>150 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-слинг доверху кубиками льда. <br>
+                2. Сперва налейте 30 мл лимонного сока, 10 мл ликера блю кюрасао Fruko Schulz и 30 мл дынного ликера Fruko Schulz.<br> 
+                3. Добавьте в равных пропорциях по 15 мл серебряной текилы, абсента, водки и белого рома.<br>
+                4. Сверху долейте 100 мл энергетика и размешайте барной ложкой. <br>
+                5. Украсьте бокал лимонной цедрой и двумя коктейльными вишнями.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Хиросима</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл классической самбуки</li>
+                    <li>20 мл абсента</li>
+                    <li>10 мл ликера айриш крим</li>
+                    <li>5 мл гренадина</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте на дно стопки 20 мл классической самбуки.<br>
+                2. Используйте коктейльную ложку или нож и выложите слоем 10 мл ликера айриш крим.<br>
+                3. Добавьте верхним слоем 20 мл абсента. <br>
+                4. Налейте через трубочку 5 мл гренадина для имитации «взрыва».<br> 
+                5. Для эффектной подачи коктейль можно предварительно поджечь.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Облака</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл классической самбуки</li>
+                    <li>20 мл серебряной текилы</li>
+                    <li>10 мл абсента</li>
+                    <li>3 мл ликера блю кюрасао Fruko Schulz</li>
+                    <li>3 мл ликера айриш крим</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налей в стопку нижним слоем 20 мл классической самбуки.<br>
+                2. Сверху добавьте 20 мл серебряной текилы. <br>
+                3. Аккуратно налейте из трубочки по 3 мл ликеров блю кюрасао Fruko Schulz и айриш крим.<br> 
+                4. Верхним слоем выложите 10 мл абсента. Для удобства используйте коктейльную ложку.<br>
+                5. Пить коктейль следует залпом.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Сазерак</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                    <ul>
+                        <li>15 мл абсента</li>
+                        <li>45 мл коньяка</li>
+                        <li>30 мл бурбона</li>
+                        <li>3 мл биттера Ангостура</li>
+                        <li>3 мл биттера Пишо</li>
+                        <li>10 мл воды без газа</li>
+                        <li>5 г сахарв в кубиках</li>
+                        <li>Лимонная цедра</li>
+                        <li>420 г льда в кубиках</li>
+                    </ul>
+                <p>
+                    <span class="cocktail-accent">Приготовление:</span><br>
+                    1. Наполните рокс до краев кубиками льда.<br> 
+                    2. Налейте в него воду без газа и 15 мл абсента. Отставьте его в сторону.<br> 
+                    3. Положите в стакан для смешивания кубик сахара.<br>
+                    4. Накапайте на сахар 3 мл биттера Ангостура и 3 мл биттера Пишо. Подавите мадлером.<br> 
+                    5. Добавьте в стакан 45 мл коньяка и 30 мл бурбона.<br>
+                    6. Наполните стакан льдом и размешивайте барной ложкой до растворения сахара.<br> 
+                    7. Вылейте из рокса воду с абсентом и льдом.<br>
+                    8. Процедите коктейль через стрейнер в бокал и украсьте цедрой лимона. 
+                </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Таракан</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл самбуки</li>
+                    <li>15 мл абсента</li>
+                    <li>20 мл кофейного ликера</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в коктейльную стопку 20 мл кофейного ликера.<br>
+                2. Используйте коктейльную ложку или лезвие ножа и уложите 15 мл самбуки.<br> 
+                3. Верхним слоем уложите 15 мл абсента. Слои не должны смешиваться!<br>
+                4. Подожгите абсент и быстро выпейте коктейль через трубочку. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Абсент и ананас</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл абсента</li>
+                    <li>150 мл ананасового сока</li>
+                    <li>180 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните высокий стакан-хайбол кубиками льда.<br>
+                2. Налейте в него 50 мл абсента.<br>
+                3. Долейте 150 мл ананасового сока.<br>
+                4. Аккуратно размешайте напиток барной ложкой.<br> 
+                5. Подавайте с коктейльными трубочками.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Противная слякоть</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл абсента</li>
+                    <li>20 мл кофейного ликера</li>
+                    <li>20 мл айриш крима</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Возьмите коктейльную стопку — на ножке или с плоским дном.<br>
+                2. Налейте в стопку 20 мл кофейного ликера.<br>
+                3. При помощи коктейльной ложки уложите 20 мл айриш крима.<br> 
+                4. Сверху налейте 20 мл абсента.<br>
+                5. Не перемешивайте коктейль, а сразу выпейте залпом. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Медуза</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>10 мл абсента</li>
+                    <li>20 мл какао-ликера</li>
+                    <li>20 мл трипл сека Fruko Schulz</li>
+                    <li>5 мл айриш крима</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку 20 мл какао-ликера.<br> 
+                2. Используйте коктейльную ложку и выложите слой трипл сека Fruko Schulz 20 мл.<br> 
+                3. Последним слоем уложите 10 мл абсента.<br> 
+                4. Через трубочку аккуратно добавьте 5 мл айриш крима.<br> 
+                5. Красивый слоистый коктейль готов! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Абсент сауэр</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл абсента</li>
+                    <li>30 мл сахарного сиропа</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>Лимонная цедра</li>
+                    <li>150 г дробленого льда</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс дробленым льдом до краев.<br>
+                2. Налейте в шейкер 30 мл лимонного сока и 30 мл сахарного сиропа.<br>
+                3. Добавьте 30 мл абсента и кубики льда.<br> 
+                4. Интенсивно взбейте компоненты в шейкере.<br> 
+                5. Перелейте напиток через сито-стрейнер в рокс.<br> 
+                6. По желанию досыпьте чуть дробленого льда.<br> 
+                7. Расположите в бокале ложку для абсента, лимонную цедру и подавайте коктейль. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Пилот</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл абсента</li>
+                    <li>25 мл энергетика</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в стопку 25 мл абсента. Лучше использовать стопку с плоским дном.<br> 
+                2. Добавьте 25 мл энергетика — и коктейль готов. Выпейте залпом!<br>
+                3. По желанию пропорции можно менять, но оставлять в равных долях.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
