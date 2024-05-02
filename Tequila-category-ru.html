@@ -1,0 +1,1040 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Текила — крепкий спиртной напиток, который изготавливают посредством ферментации сока голубой агавы. Используемый сорт — Blue Weber. Крепость составляет 38–55%. Производство официально разрешено в пяти штатах Мексики: Халиско,
+                    Гуанахуато, Мичоакан, Наярит, Тамаулипас. Текилу относят к разновидностям мескаля.
+                </p>
+                <h2>Краткая историческая сводка</h2>
+                <p>Первый известный крепкий спиртной напиток, произведенный из сброженного сока агавы, восходит к 250–300 годам н.э. Рецепт принадлежал ацтекам, которые готовили церемониальный напиток — пульке.</p>
+                <p>
+                    В 1530 году в Мексику прибыл испанский капитан Христофор де Окате, основав маленькое поселение — Текилу. Конкистадоры забраковали местный ферментированный напиток, поэтому наладили перегонку в классических медных перегонных кубах.
+                    Так появился мескаль. Название состоит из двух слов — «melt» и «izcalli», что в переводе с языка ацтеков означает «агава» и «приготовленный». Поначалу мескаль распространяли на территории Мексики, пока в 1600-х годах маркиз Альтамир
+                    не открыл крупную винокурню.
+                </p>
+                <p>
+                    Текилу активно производят с 1758 года. В то время семья Куэрво выкупила земли в штате Халиско, где вскоре вырос полноценный винокуренный завод. В 1795 году торговая марка получила лицензию на выпуск крепкого спиртного напитка —
+                    Mezcal Vino de Tequila. Со временем первую часть упустили, оставив современное лаконичное название.
+                </p>
+                <p>Международный успех пришел к дистилляту после Олимпийских игр, проходивших в Мехико в 1968 году. С 1974 года текилу признали интеллектуальной собственностью Мексики.</p>
+                <h2>Как производят крепкий спиртной напиток</h2>
+                <p>Производство стандартизировано. Процесс состоит из следующих этапов:</p>
+                <ol>
+                    <li>Сбор. Текилу производят из сока голубой агавы. Растение напоминает кактус. Химадор срезает суккулент, оставляя мягкую сердцевину — пинью. Листья удаляют.</li>
+                    <li>Подготовка сырья. Пинью разрезают на 3-4 части. Чтобы начать процесс брожения, нужен сахар. Его получают путем запекания пиньи в паровых автоклавах или в подземных каменных печах.</li>
+                    <li>
+                        Измельчение. Запеченную мягкую сердцевину измельчают. Используют либо ручной метод, либо валковую мельницу. Второй вариант — более распространен, так как механизм смывает с волокон остатки липкого сахара, выжимая максимум
+                        концентрированного сока. Также в интернет-магазине MAUDAU можно заказать текилу, сырье для которой измельчили при помощи тахона. Это огромное каменное колесо, которое вращают лошади или трактор.
+                    </li>
+                    <li>Ферментация. К соку добавляют дрожжи. На этом этапе сахар превращается в спирт. Крепость на выходе составляет до 18%. Брожение проходит в деревянных, глиняных или каменных резервуарах. Реже используют металлический чан.</li>
+                    <li>Дистилляция. Зачастую текилу перегоняют дважды. Дистилляцию осуществляют в медных перегонных кубах. Готовый напиток разбавляют водой до нужной крепости.</li>
+                </ol>
+                <p>По желанию производителя дистиллят выдерживают. Последний этап — розлив по стеклянным бутылкам и маркировка.</p>
+                <p>Стоимость текилы от маленьких семейных предприятий достаточно высокая. Это объясняется тем, что изготовление крепкого спиртного напитка происходит вручную.</p>
+                <h3>Что отличает текилу от мескаля</h3>
+                <p>
+                    Напитки производят в разных мексиканских регионах. Производство мескаля разрешено в девяти. Текилу готовят из агавы Blue Weber. Мескаль — из других сортов, таких как Эспадин и Тобала. Пинью для мескаля запекают на кострах в земле,
+                    что придает готовому напитку характерный дымный аромат. Текила — острая и свежая, поскольку мягкую сердцевину обрабатывают на пару.
+                </p>
+                <h2>Разновидности крепкого спиртного напитка</h2>
+                <p>Основная классификация опирается на состав. Выделяют:</p>
+                <ol>
+                    <li>
+                        Tequila 100% Agave. Напиток, произведенный из чистого сока голубой агавы. Сахар не добавляют. Дистиллят разливают в пределах региона изготовления. Такая текила считается самой качественной — из-за этого повышается цена. Вкус —
+                        насыщенный, с отчетливой остротой и минерально-травянистым шлейфом. Крепкий спиртной напиток подают без добавок.
+                    </li>
+                    <li>Tequila Mixto. Дистиллят, рецептуру которого дополняют тростниковым или кукурузным сахаром. Минимальный процент сока агавы составляет 51. Вкус — тонкий. Оптимальный вариант для смешивания в коктейлях.</li>
+                </ol>
+                <p>Дальнейшая классификация указывает на выдержку. Бутылка текилы маркируется исходя из категории:</p>
+                <ol>
+                    <li>Blanco. Также называют Silver или Plata. Бесцветный крепкий спиртной напиток, который выдерживают в резервуарах из нержавеющей стали или сразу отправляют на розлив.</li>
+                    <li>Joven. Встречаются названия Gold или Oro. Молодая текила, которую готовят благодаря смешиванию классов Blanco и Reposado.</li>
+                    <li>Reposado. Альтернативный вариант — Aged. Текилу легко узнать по светло-золотистому оттенку, который дистиллят приобретает после 60-дневной выдержки.</li>
+                    <li>Añejo. Другая маркировка — Extra Aged. Напиток, который созревал в дубовых бочках вместительностью 600 литров от 12 месяцев. Карамель — разрешенная добавка, которая придает цвет.</li>
+                    <li>
+                        Extra Añejo. Второй вариант — Ultra Aged. Категорию зарегистрировали в 2006 году. Так называют напиток, который провел в закрытых дубовых бочках не менее трех лет. Поклонники сравнивают текилу Extra Añejo с изысканным
+                        французским коньяком, поэтому готовы платить высокую цену.
+                    </li>
+                </ol>
+                <p>Новую категорию Curados запустили в 2006 году. Так называют текилу, приправленную натуральными добавками: лимоном, апельсином, мандаринами, ананасом, клубникой. В составе — минимум 25% сока голубой агавы.</p>
+                <p>Выдержанную текилу, которая прошла угольную фильтрацию для удаления красящих пигментов и смягчения вкуса, называют Cristalinos. Категорию презентовали в 2011 вместе с выпуском Don Julio 70.</p>
+                <h2>Как правильно пить текилу</h2>
+                <p>Продукцию Añejo подают при комнатной температуре. Текилу наливают в снифтер. По желанию разбавляют водой или льдом. Потягивают медленно.</p>
+                <p>Как шот пьют позиции Blanco или Reposado. Охлажденный напиток разливают по стопкам. Это объясняется обжигающим финишем. К шоту подают немного соли и лайма, а в Мексике — апельсин.</p>
+                <p>На родине текилу в основном пьют вместе со Сангритой. Безалкогольный микс готовят из свежевыжатого апельсинового сока. Также добавляют томатный сок и острый соус. Приправляют лаймом и гранатовым сиропом.</p>
+                <h2>Как выбрать текилу</h2>
+                <p>Чтобы не запутаться в ассортименте, учитывайте:</p>
+                <ol>
+                    <li>Бренд. Новичку оптимально остановиться на культовых торговых марках: Sierra, Jose Cuervo, Olmeca, Patron.</li>
+                    <li>Цвет. Оттенок указывает на выдержку. Розовая или голубая текила — прекрасный ингредиент для коктейля.</li>
+                    <li>Подачу. Если пьете текилу без добавок, выбирайте продукцию Añejo или Extra Añejo. Вариант для смешивания — Mixto.</li>
+                    <li>
+                        Емкость. Текила, купить которую можно в интернет-магазине MAUDAU, различается по объему. Бутылочки по 0,05 литра пополнят мини-бар. Стандартный объем для посиделок с близкими или друзьями — 0,5 или 0,7 л. Также обращайте
+                        внимание на продукцию в подарочных упаковках.
+                    </li>
+                </ol>
+                <h2>Почему выгодно купить текилу в Украине в маркете алкогольных штук MAUDAU</h2>
+                <p>
+                    Интернет-магазин предлагает 100% оригинальный продукт. Благодаря налаженному импорту покупатели получают доступ к эксклюзивным позициям и лимитированным выпускам. Скидка на малый опт и акции способствуют экономии. Заказать текилу
+                    можно с доставкой курьером или почтовой службой. При покупке на определенную сумму товар доставят бесплатно.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Маргарита" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Margarita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Маргарита</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лайм</li>
+                            <li><a href="https://maudau.com.ua/ru/category/kukhonna-sil" target="_blank">Соль</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Легендарный классический коктейль Маргарита с узнаваемым характерным вкусом. Сочетание резкой кислоты лайма, сладости цитрусового ликера и крепости текилы гарантирует незабываемые впечатления.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Текила санрайз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tequila_Sunrise.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Текила санрайз</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li>Апельсин</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Популярный коктейль на текиле, мягкий и сладкий. В меру крепкий, с цитрусовыми нотами. Оригинальный цвет напитка действительно похож на восход солнца. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Зеленая фея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/green_fairy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Зеленая фея</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/horilka" target="_blank">Водка</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10" target="_blank">Белый ром</a></li>
+                            <li>Ликер блю кюрасао Fruko Schulz</li>
+                            <li>Дынный ликер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi" target="_blank">Энергетик</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Знаменитый коктейль Зеленая Фея — это сумасшедший микс алкогольных напитков и энергетика. Поэтому он так популярен на дискотеках и вечеринках. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Текила бум" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tequila_Boom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Текила бум</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite" target="_blank">Спрайт</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Простой в приготовлении коктейль с оригинальным ритуалом распития. В состав входят всего два ингредиента: Спрайт и текила. После подачи стакан накрывают плотной салфеткой, крутят по часовой стрелке, стучат дном по столу и приговаривают «Бум-бум».
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Серебряная пуля" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Silver_Bullet.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Серебряная пуля</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                            <li>Лимон</li>
+                        </ul>
+                        <div class="description-text">
+                            По легенде коктейль Серебряная пуля придумали охотники на оборотней. А может это просто фильм по произведениям Стивена Кинга. В любом случае получается вкусный крепкий шот на текиле с кофейным привкусом.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Текила смэш" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tequila-Smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Текила смэш</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Сахарный сироп</a></li>
+                            <li>Лимон</li>
+                            <li>Лайм</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Крепкий насыщенный коктейль с кисло–мятным вкусом. В основе напитка текила с добавлением сахарного сиропа и лимона. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Аравика" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Arabica.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Аравика</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2" target="_blank">Кофейный ликер</a></li>
+                            <li>Гренадин</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Клубника</li>
+                        </ul>
+                        <div class="description-text">
+                            Десертный сладкий шот на текиле. Гармоничная комбинация крепкого алкоголя и кофейного ликера. Клубничный привкус придает свежести и легкости. 
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Красный пес" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Red_dog.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Красный пес</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2" target="_blank">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=tabasko" target="_blank">Красный соус Табаско</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Простой в приготовлении пикантный коктейль. Крепкий, ведь состоит из текилы и самбуки. Название получил от красной острой капельки Табаско, висящей в коктейле и «кусающей» за язык.
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Чивава" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chihuahua.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Чивава</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li>Тростниковый сахар в кубиках</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригинальный коктейль на текиле с карамельным послевкусием. Горячий шот Чивава полагается пить залпом. Для приготовления потребуется маленькая барная горелка.
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Выбор бармена" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bartender_choice.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Выбор бармена</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver" target="_blank">Серебряная текила</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/product/aperytyv-lillet-blanc-na-osnovi-vyna-17-075-l-668889" target="_blank">Лилле блан</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9" target="_blank">Грейпфрутовый сок</a></li>
+                            <li>Грейпфрутовая цедра</li>
+                            <li>Ледяной куб</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Выбор бармена — это удивительный микс алкогольных напитков, сиропа и цитрусовых соков. В результате получается вкуснейший крепкий шорт-дринк с текиловой базой. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">231 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">1.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">24 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Маргарита</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл серебряной текилы</li>
+                    <li>25 мл трипл сека Fruko Schulz</li>
+                    <li>10 мл сахарного сиропа</li>
+                    <li>30 мл лаймового сока</li>
+                    <li>10 г лайма</li>
+                    <li>2 г соли</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Сделайте на специальном бокале для Маргариты соленую окаемку.<br> 
+                2. Налейте в шейкер 30 мл лаймового сока и 10 мл сахарного сиропа.<br>
+                3. Добавьте 25 мл трипл сека Fruko Schulz и 50 мл серебряной текилы.<br>
+                4. Насыпьте в шейкер 200 г льда в кубиках и взбейте.<br> 
+                5. Процедите напиток через стрейнер в бокал для Маргариты с соленой окаемкой.<br> 
+                6. Прикрепите на ободок бокала кружок лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup2" class="overlay">
+    <a href="#cocktail-item-2" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Текила санрайз</h2>
+                <a class="close" href="#cocktail-item-2">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл серебряной текилы</li>
+                    <li>10 мл гренадина</li>
+                    <li>150 мл апельсинового сока</li>
+                    <li>30 г апельсина</li>
+                    <li>180 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните стакан-хайбол доверху кубиками льда.<br> 
+                2. Налейте 10 мл гренадина и 50 мл серебряной текилы.<br> 
+                3. Аккуратно долейте до краев 150 мл апельсинового сока.<br> 
+                4. Перемешайте ингредиенты высокой барной ложкой.<br> 
+                5. Украсьте коктейль апельсиновым кружочком. 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Зеленая фея</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл серебряной текили</li>
+                    <li>15  мл абсента</li>
+                    <li>15 мл водки</li>
+                    <li>15 мл белого рома</li>
+                    <li>10 мл ликера блю кюрасао Fruko Schulz</li>
+                    <li>30 мл дынного ликера Fruko Schulz</li>
+                    <li>30 мл лимонного сока</li>
+                    <li>100 мл энергетика</li>
+                    <li>10 г красной коктейльной вишни</li>
+                    <li>Лимонная цедра</li>
+                    <li>150 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-слинг доверху кубиками льда.<br> 
+                2. Сперва налейте 30 мл лимонного сока, 10 мл ликера блю кюрасао Fruko Schulz и 30 мл дынного ликера Fruko Schulz.<br> 
+                3. Добавьте в равных пропорциях по 15 мл серебряной текилы, абсента, водки и белого рома.<br>
+                4. Сверху долейте 100 мл энергетика и размешайте барной ложкой.<br> 
+                5. Украсьте бокал лимонной цедрой и двумя коктейльными вишнями.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Текила бум</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                    <ul>
+                        <li>50 мл серебряной текилы</li>
+                        <li>100 мл Спрайта</li>
+                    </ul>
+                <p>
+                    <span class="cocktail-accent">Приготовление:</span><br>
+                    1. Налейте в стакан-рокс 50 мл серебряной текилы.<br> 
+                    2. Добавьте 100 мл Спрайта и накройте салфеткой.<br>
+                    3. Выполните ритуал по подготовке к распитию.<br> 
+                    4. Быстро выпейте коктейль, пока он сильно пенится.
+                </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Серебряная пуля</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл серебряной текилы</li>
+                    <li>20 мл кофейного ликера</li>
+                    <li>10 г лимона</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в рюмку-стопку 20 мл кофейного ликера.<br> 
+                2. Аккуратно вложите маленький кусочек лимона.<br> 
+                3. При помощи коктейльной ложки уложите верхним слоем 30 мл серебряной текилы.<br> 
+                4. Оригинальный шот готов!
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Текила смэш</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>50 мл серебряной текилы</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>120 г лимона</li>
+                    <li>10 г лайма</li>
+                    <li>1 г мяты</li>
+                    <li>150 г дробленого льда</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в рокс 5 листиков мяты и 3 дольки лимона. Подавите пестиком-мадлером.<br> 
+                2. Наполните бокал дробленым льдом доверху.<br> 
+                3. Налейте 20 мл сахарного сиропа и 50 мл серебряной текилы.<br> 
+                4. Размешайте напиток коктейльной ложкой и досыпьте дробленого льда.<br>
+                5. Украсьте коктейль листиками мяты и кружком лайма.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup7" class="overlay">
+    <a href="#cocktail-item-7" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Аравика</h2>
+                <a class="close" href="#cocktail-item-7">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл серебряной текилы</li>
+                    <li>15 мл кофейного ликера</li>
+                    <li>15 мл гренадина</li>
+                    <li>15 мл лимонного сока</li>
+                    <li>Клубника</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в коктейльную стопку 15 мл гренадина.<br> 
+                2. Используйте высокую коктейльную ложку и уложите слой кофейного ликера 15 мл.<br> 
+                3. Продолжайте выкладывать слоями 15 мл лимонного сока и 15 мл серебряной текилы.<br> 
+                4. Выпейте шот залпом и закусите клубничкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup8" class="overlay">
+    <a href="#cocktail-item-8" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Красный пес</h2>
+                <a class="close" href="#cocktail-item-8">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>25 мл серебряной текилы</li>
+                    <li>20 мл самбуки</li>
+                    <li>5 мл красного соуса Табаско</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в рюмку-стопку 20 мл самбуки.<br> 
+                2. Возьмите барную ложку или нож и уложите слоем 25 мл серебряной текилы.<br> 
+                3. Аккуратно капните в напиток 5 мл красного соуса Табаско.<br> 
+                4. Шот готов к подаче! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup9" class="overlay">
+    <a href="#cocktail-item-9" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Чивава</h2>
+                <a class="close" href="#cocktail-item-9">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>20 мл серебряной текилы</li>
+                    <li>20 мл трипл сека Fruko Schulz</li>
+                    <li>5 г тростникового сахара в кубиках</li>
+                    <li>20 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. В стопку налейте 20 мл трипл сека Fruko Schulz.<br> 
+                2. Используйте коктейльную ложку и расположите слой серебряной текилы 20 мл.<br>
+                3. Возьмите вилку и положите на нее кубики тростникового сахара.<br> 
+                4. Держите вилку над стопкой и аккуратно растопите сахар специальной горелкой.<br> 
+                5. Капли сахарной карамели должны попасть в напиток. Следите, чтобы горелка не приближалась к стеклу.<br> 
+                6. Перед подачей проведите по кромке стопки кубиком льда.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup10" class="overlay">
+    <a href="#cocktail-item-10" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Выбор бармена</h2>
+                <a class="close" href="#cocktail-item-10">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>30 мл серебряной текилы</li>
+                    <li>10 мл красного биттера</li>
+                    <li>20 мл аперитива Лилле блан</li>
+                    <li>20 мл сахарного сиропа</li>
+                    <li>20 мл лаймового сока</li>
+                    <li>15 мл грейпфрутового сока</li>
+                    <li>Грейпфрутовая цедра</li>
+                    <li>Ледяной куб</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Положите в шампанское блюдце ледяной куб.<br> 
+                2. Налейте в шейкер 20 мл сахарного сиропа, 20 мл лаймового сока и 15 мл грейпфрутового сока.<br> 
+                3. Добавьте 10 мл красного биттера, 20 мл аперитива Лилле блан и 30 мл серебряной текилы.<br> 
+                4. Насыпьте в шейкер 200 г льда в кубиках и взбейте смесь.<br> 
+                5. Процедите напиток через стрейнер в шампанское блюдце.<br> 
+                6. Украсьте коктейль цедрой грейпфрута.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
