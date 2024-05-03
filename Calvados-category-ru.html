@@ -1,0 +1,1075 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Кальвадос — крепкий спиртной напиток, который производят в Нижней Нормандии (Франция). Главный компонент — яблоки. Дополнительно используют груши. Крепость составляет 40%. Кальвадос относят к разновидностям французского бренди.
+                    Продукт защищен стандартом AOC.
+                </p>
+                <h2 style="margin-top: 21px;">Краткая выжимка из истории</h2>
+                <p>
+                    Яблони и груши активно произрастали во Франции с VIII века. Об этом упоминает сам Карл Великий. Первая информация о нормандской дистилляции восходит к 1553 году и связана с оруженосцем Жиле Пико. Спустя 50 лет в регионе создали
+                    гильдию по перегонке сидра.
+                </p>
+                <p>В XVII веке на производство яблочного бренди наложили запрет. Но он не касался Бретани, Мэна и Нормандии. В 19 веке пришли к промышленной дистилляции, что повысило объемы производства.</p>
+                <p>Осенью рабочий класс активно пил кофе-кальву — бодрящий напиток с порцией кальвадоса. Когда в последней четверти XIX века вспышка филлоксеры опустошила виноградники Франции, яблочный бренди пережил золотой век.</p>
+                <p>Во время Первой мировой войны кальвадос использовали для изготовления взрывчатых снарядов из-за высокого содержания спирта. В 1942 году зарегистрировали первую категорию AOC — Calvados Pays d’Auge.</p>
+                <h2>Производство: как выбирают груши и яблоки для кальвадоса</h2>
+                <p>
+                    Крепкий спиртной напиток перегоняют из сидра. Его готовят из специально выращенных и отобранных яблок. Различают около 200 разрешенных сортов. Яблоки и груши смешивают в разных пропорциях. Зачастую используется следующая комбинация:
+                </p>
+                <ul>
+                    <li>сладкие — «Руж Дюре»;</li>
+                    <li>терпкие — «Рэмбо»;</li>
+                    <li>горькие — «Метте» или «Сен-Мартен».</li>
+                </ul>
+                <p>
+                    Яблоки собирают и очищают. Далее из них добывают сок, который превращают в сухой сидр. Его перегоняют в прозрачную коньячную воду — бренди. Если используют двойную дистилляцию, применяют медный шарантский перегонный куб. Такой метод
+                    повышает потенциал хранения. При использовании колонн спирт перегоняют один раз. Таким образом сохраняется чистый и свежий вкус.
+                </p>
+                <p>После выдержки в дубовых бочках в течение 2–5 лет напиток маркируют как «кальвадос». Чем дольше он выдерживается, тем мягче становится.</p>
+                <h3>Что отличает коньяк от кальвадоса</h3>
+                <p>
+                    Коньяк изготавливают из винограда. Кальвадос готовят из сидра, а не из вина. При производстве коньяка используют не более пяти виноградных сортов. Кальвадос производят из более 200 сортов яблок, которые смешивают со 100 видами груш.
+                </p>
+                <h2>Классификация кальвадоса: по месту выпуска и сроку выдержки</h2>
+                <p>В зависимости от происхождения выделяют три официально зарегистрированных наименования (апелласьоны):</p>
+                <ol>
+                    <li>
+                        Calvados. На регион приходится 70% ассортимента. Территория полностью охватывает Нижнюю Нормандию. Сидр перегоняют либо в медных кубах, либо в вертикальных колоннах. Зачастую используют второй вариант. Минимальный срок выдержки
+                        в дубовых бочках составляет от 24 месяцев.
+                    </li>
+                    <li>
+                        Calvados Domfrontais. Категория, зарегистрированная в 1997 году. Производственный центр — коммуна Домфрон ан Пуаре. Напиток изготавливают по принципу непрерывной колонной перегонки. В составе — не менее 30% груш. На практике
+                        показатели приближаются к 50%. Минимальный срок выдержки — 46 месяцев.
+                    </li>
+                    <li>
+                        Calvados Pays d’Auge. Самая маленькая категория. Занимает территорию к востоку от Кана, простираясь от Довиля на побережье к югу от Лизье. Ферментация длится не менее 21 дня. Кальвадос дистиллируют дважды, используя медный
+                        перегонный куб. Количество груш ограничено 30%.
+                    </li>
+                </ol>
+                <p>
+                    Возраст указывают всегда. Для маркировки применяют стандартную классификацию, подобно коньяку, — VS, VSOP и XO. На этикетках указывают возраст самого молодого дистиллята в составе. Если решили купить винтажный кальвадос в Украине,
+                    обращайте внимание на дату. Она обозначает год сбора урожая. Несколько слов о важных отметках:
+                </p>
+                <ol>
+                    <li>VS. Также используют маркировку Trois Etoiles. Напиток, выдержанный от двух лет.</li>
+                    <li>Vieux или Reserve. Категория кальвадоса, самый молодой спирт в составе которого насчитывает от трех лет.</li>
+                    <li>Vieux Reserve, VO или VSOP. Крепкий спиртной напиток с ярко выраженной вкусо-ароматической палитрой. Срок созревания составляет от четырех лет.</li>
+                    <li>Hors d’Age. Вариант со множеством альтернативных маркировок: Napoleon, Très Vieille Reserve, Tres Vieux, Extra. Выдержка длится от шести лет.</li>
+                </ol>
+                <p>Кальвадос, выдержанный 12 и 15 лет, относят к коллекционным экземплярам. Для маркировки используют термин D’Auge. Также проставляют возраст — 12 yo и 15 yo.</p>
+                <h3>Что известно о вкусо-ароматических характеристиках</h3>
+                <p>
+                    Молодой кальвадос, купить который можно в интернет-магазине MAUDAU, — легкий и фруктовый. Если добавляют груши, это привносит нежный цветочно-медовый шлейф. Поскольку выдержка не продолжительная, древесина привносит глубину, которая
+                    напоминает выпечку, приправленную кремом Патисьер.
+                </p>
+                <p>Со временем кальвадос становится насыщеннее, напоминая Тарт Татен. Хрустящая текстура свежих яблок сменяется отчетливыми запеченными ароматами. Финиш — стойкий и сухой.</p>
+                <h2>Что подают и как пить</h2>
+                <p>Кальвадос — синоним Le Trou Normand. Так называют напиток, который подают как дижестив. Нередко — между приемами пищи. Также к выдержанному алкоголю предлагают яблочный или грушевый шербет.</p>
+                <p>Второй вариант подходит для завтрака — Le Cafe Calva. Так называют свежесваренный эспрессо, смешанный с 2–4 каплями кальвадоса.</p>
+                <p>Молодой напиток можно подавать как аперитив. Просто смешайте со льдом или прохладной водой. Дополните легкой закуской:</p>
+                <ul>
+                    <li>маринованной рыбой;</li>
+                    <li>морепродуктами;</li>
+                    <li>легкими овощными салатами;</li>
+                    <li>сырами, особенно Камамбером и Ливаро;</li>
+                    <li>десертами на основе яблок, груш, шоколада.</li>
+                </ul>
+                <p>К морепродуктам кальвадос подавайте охлажденным до +5–7 ⁰C. Если заливаете мороженое, подходит напиток комнатной температуры.</p>
+                <h3>Обзор торговых марок</h3>
+                <p>Выбор — за культовыми производителями:</p>
+                <ol>
+                    <li>Busnel. Самая старая винокурня, которая производит кальвадос. Особого внимания заслуживает купаж, выдержанный 12 лет. Раскрывается сложным фруктовым ароматом.</li>
+                    <li>Pere Magloire. Компания, основанная в 1821 году. С 1968 по 1998 год принадлежала дому Veuve Clicquot. Сейчас перешла к семье из Нормандии. Кальвадос проводит в дубовых бочках от четырех лет.</li>
+                    <li>Christian Drouin. Компания функционирует с 1960 года. Олицетворяет мастерство и традиции. Производит Calvados Pays d’Auge.</li>
+                    <li>Coquerel. Винокурня, расположенная недалеко от Мон-Сен-Мишеля. Компания чтит традиции, поэтому производит классический кальвадос с ярким фруктовым ароматом.</li>
+                </ol>
+                <p>Кальвадос от культовых торговых марок можно заказать в интернет-магазине MAUDAU. Истинному поклоннику придется по душе вариант в изысканной коробке. Он станет памятным подарком или пополнит коллекцию.</p>
+                <h2>Почему выгодно купить кальвадос в MAUDAU</h2>
+                <p>
+                    Интернет-магазин MAUDAU гарантирует, что в онлайн-каталоге — 100% оригинал. Для оформления заказа достаточно 5-7 минут. Доставка возможна курьером или почтовой службой. От определенной суммы услугу предоставляют бесплатно. На
+                    кальвадос цена формируется исходя из емкости и качества напитка. Стандартный объем — 0,7 литра. Благодаря налаженному импорту покупатели получают доступ к уникальным коллекционным позициям. Не забывайте о скидке на малый опт и
+                    акциях.
+                </p>
+            </div>
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Яблочный тини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/apple-tini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Яблочный тини</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/rehion_3=kalvados-3" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Яблоко</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Яблочный тини — фруктовый сладкий коктейль на кальвадосе. Оставляет узнаваемое яблочное послевкусие. 
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup1" class="overlay">
+                <a href="#cocktail-item-1" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Яблочный тини</h2>
+                            <a class="close" href="#cocktail-item-1">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл кальвадоса</li>
+                                <li>20 мл сахарного сиропа</li>
+                                <li>15 мл лимонного сока</li>
+                                <li>120 г яблока</li>
+                                <li>200 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                            1. Уложите на дно шейкера очищенные половинки зеленого яблока и подавите мадлером.<br> 
+                            2. Налейте 15 мл лимонного сока и 20 мл сахарного сиропа.<br> 
+                            3. Долейте 50 мл кальвадоса и добавьте 200 г льда в кубиках.<br> 
+                            4. Хорошо взбейте все ингредиенты.<br> 
+                            5. Процедите напиток через ситечко-стрейнер в заранее охлажденный коктейльный бокал.<br> 
+                            6. Сделайте из долек яблока веер и украсьте коктейль.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Жизнь прекрасна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/life_is_beautiful.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Жизнь прекрасна</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/rehion_3=kalvados-3" target="_blank">Кальвадос</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                            <li>Тростниковый сахар в кубиках</li>
+                            <li>Грейпфрутовая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Горько-сладкий коктейль с оптимистичным названием и вкусом. Сочетание просекко и кальвадоса действительно бодрит и повышает настроение.
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup2" class="overlay">
+                <a href="#cocktail-item-2" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Жизнь прекрасна</h2>
+                            <a class="close" href="#cocktail-item-2">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>20 мл кальвадоса</li>
+                                <li>20 мл красного биттера</li>
+                                <li>120 мл просекко</li>
+                                <li>5 мл гренадина</li>
+                                <li>5 г тростникового сахара в кубиках</li>
+                                <li>Грейпфрутовая цедра</li>
+                                <li>200 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в охлажденный бокал-флюте кубик тростникового сахара.<br> 
+                                2. Налейте в шейкер 5 мл гренадина и 20 мл красного биттера.<br> 
+                                3. Добавьте 20 мл кальвадоса и всыпьте лед в кубиках.<br> 
+                                4. Взбейте смесь и перелейте через стрейнер во флюте.<br> 
+                                5. Аккуратно долейте доверху 120 мл просекко.<br> 
+                                6. Выжмите над напитком цедру грейпфрута и украсьте коктейль.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Мулен Руж" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Moulin_Rouge.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Мулен Руж</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/fruktove-piure-monin-malyna-1-l" target="_blank">Малиновое пюре</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/fruktove-piure-monin-lichi-1-l" target="_blank">Пюре личи</a></li>
+                            <li>Малина</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Мулен Руж — эффектный коктейль, названный в честь легендарного французского кабаре. Сочетание кальвадоса, просекко и ягодного пюре дарит ему незабываемый вкус.
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup3" class="overlay">
+                <a href="#cocktail-item-3" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Мулен Руж</h2>
+                            <a class="close" href="#cocktail-item-3">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>75 мл просекко</li>
+                                <li>10 мл кальвадоса</li>
+                                <li>30 г малинового пюре</li>
+                                <li>50 г пюре личи</li>
+                                <li>1-2 ягодки малины</li>
+                                <li>лед в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в емкость для смешивания пюре малины и личи.<br>
+                                2. Добавьте 75 мл просекко и 10 мл кальвадоса.<br>
+                                3. Наполните стакан кубиками льда и аккуратно размешайте высокой ложечкой.<br>
+                                4. Перелейте коктейль через сито-стрейнер в заранее охлажденный высокий бокал-флюте.<br>
+                                5. Украсьте малиной на коктейльной шпажке.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Джек Роуз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/jack_rose.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Джек Роуз</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадин</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Джек Роуз — легендарный коктейль со множеством аллюзий к возникновению. Самая вероятная — его придумал реальный гангстер Baldy Jack Rose, упомянутый в «Великом Гэтсби». Напиток получается сладким и крепким. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup4" class="overlay">
+                <a href="#cocktail-item-4" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Джек Роуз</h2>
+                            <a class="close" href="#cocktail-item-4">&times;</a>
+                            <div class="popup-cocktail-content">
+                                <ul>
+                                    <li>50 мл кальвадоса</li>
+                                    <li>25 мл гренадина</li>
+                                    <li>15 мл лаймового сока</li>
+                                    <li>Лимонная цедра</li>
+                                    <li>200 г льда в кубиках</li>
+                                </ul>
+                            <p>
+                                <span class="cocktail-accent">Приготовление:</span><br>
+                                    1. Заранее охладите коктейльный бокал.<br>
+                                    2. Налейте в шейкер 15 мл лаймового сока и 25 мл гренадина.<br> 
+                                    3. Добавьте 50 мл кальвадоса и 200 г льда в кубиках.<br> 
+                                    4. Хорошенько взбейте все ингредиенты.<br> 
+                                    5. Перелейте напиток через сито-стрейнер в бокал.<br> 
+                                    6. Декорируйте коктейль лимонной цедрой.
+                            </p>
+                        <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Рогатый заяц" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jackalope.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Рогатый заяц</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent" target="_blank">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2" target="_blank">Кленовый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновый сок</a></li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Пряный кисло-сладкий коктейль на кальвадосе с дымкой абсента. Точно неизвестно, откуда пошло название, возможно от мифического животного — рогатого зайца.
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup5" class="overlay">
+                <a href="#cocktail-item-5" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Рогатый заяц</h2>
+                            <a class="close" href="#cocktail-item-5">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>45 мл кальвадоса</li>
+                                <li>10 мл абсента</li>
+                                <li>15 мл кленового сиропа</li>
+                                <li>15 мл лимонного сока</li>
+                                <li>15 мл апельсинового сока</li>
+                                <li>100 г дробленого льда</li>
+                                <li>200 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Наполните дробленым льдом коктейльный бокал и добавьте 10 мл абсента.<br> 
+                                2. Налейте в шейкер 15 мл лимонного и 15 мл апельсинового соков.<br> 
+                                3. Добавьте 15 мл кленового сиропа и 45 мл кальвадоса.<br> 
+                                4. Насыпьте в шейкер 200 г льда в кубиках и взбейте.<br> 
+                                5. Помешайте коктейльной ложкой лед с абсентом и уберите его из бокала.<br> 
+                                6. Перелейте коктейль через сито-стрейнер в бокал. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Запретный плод" src="https://photo.maudau.com.ua/Landing/cocktails/incat/forbidden_fruit.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Запретный плод</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=lavanda-4" target="_blank">Сироп лаванды</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9" target="_blank">Лаймовый сок</a></li>
+                            <li>Ежевика</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Цветочно-ягодный крепкий коктейль с оригинальным послевкусием лаванды и ежевики. В меру сладкий, с лаймовой кислинкой. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup6" class="overlay">
+                <a href="#cocktail-item-6" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Запретный плод</h2>
+                            <a class="close" href="#cocktail-item-6">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>40 мл кальвадоса</li>
+                                <li>10 мл сиропа лаванды</li>
+                                <li>10 мл лаймового сока</li>
+                                <li>12 г ежевики</li>
+                                <li>300 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в емкость для смешивания 3 ягоды ежевики и подавите мадлером.<br> 
+                                2. Налейте 10 мл сиропа лаванды и 10 мл лаймового сока.<br> 
+                                3. Долейте в состав 40 мл кальвадоса.<br> 
+                                4. Наполните емкость кубиками льда и размешайте барной ложкой.<br> 
+                                5. Процедите напиток через стрейнер в охлажденный коктейльный бокал.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Норманди смэш" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Normand_Smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Норманди смэш</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco" target="_blank">Просекко</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Лайм</li>
+                            <li>Мята</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Норманди смэш — феерическое сочетание бодрящих пузырьков просекко и кальвадоса. Напиток понравится балансом между сладостью и горечью, а также приятным мятным оттенком.
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup7" class="overlay">
+                <a href="#cocktail-item-7" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Норманди смэш</h2>
+                            <a class="close" href="#cocktail-item-7">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>40 мл кальвадоса</li>
+                                <li>120 мл просекко</li>
+                                <li>20 мл сахарного сиропа</li>
+                                <li>20 г лайма</li>
+                                <li>3 г мяты</li>
+                                <li>200 г дробленого льда</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в бокал-хайбол несколько листьев мяты и четверть лайма. Подавите пестиком-мадлером.<br> 
+                                2. Наполните бокал доверху дробленым льдом.<br> 
+                                3. Налейте 20 мл сахарного сиропа и 40 мл кальвадоса.<br> 
+                                4. Долейте 120 мл просекко доверху и бережно размешайте коктейльной ложкой.<br> 
+                                5. Украсьте веточкой мяты и подавайте! 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Карибский яблочный пирог" src="https://photo.maudau.com.ua/Landing/cocktails/incat/caribbean-apple-pie.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Карибский яблочный пирог</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li>Черносмородиновый ли­кер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=korytsia-7" target="_blank">Сироп корицы</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13" target="_blank">Клюквенный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Яблоко</li>
+                            <li>Мята</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Насыщенный ягодный коктейль на кальвадосе. Этот сладковатый пряный лонг запомнится приятным послевкусием и умеренной крепостью. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup8" class="overlay">
+                <a href="#cocktail-item-8" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Карибский яблочный пирог</h2>
+                            <a class="close" href="#cocktail-item-8">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>60 мл кальвадоса</li>
+                                <li>15 мл черносмородинового ли­кера Fruko Schulz</li>
+                                <li>1 мл биттера Ангостура</li> 
+                                <li>25 мл сиропа корицы</li>
+                                <li>75 мл клюквенного сока</li>
+                                <li>30 мл лимонного сока</li>
+                                <li>20 г яблока</li>
+                                <li>1 г мяты</li>
+                                <li>350 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в бокал-слинг кубики льда доверху.<br> 
+                                2. Налейте в шейкер 30 мл лимонного сока, 75 мл клюквенного сока и 25 мл сиропа корицы.<br> 
+                                3. Добавьте 15 мл черносмородинового ликера Fruko Schulz и 60 мл кальвадоса.<br> 
+                                4. Капните в напиток 1 мл биттера Ангостура.<br> 
+                                5. Наполните шейкер кубиками льда, взбейте и перелейте напиток через стрейнер в бокал.<br> 
+                                6. Сделайте из яблочной дольки веер, добавьте веточку мяты и украсьте коктейль. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Кафе Жермен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/cafe_germain.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Кафе Жермен</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li>Ликер из цветков бузины De Kuyper</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=persyk-8" target="_blank">Персиковый сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Китайский перец в гранулах</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Экстравагантный сауэр с ликером из цветков бузины и кальвадосом. Персиковый сироп привносит ароматные кисло-сладкие нотки. 
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup9" class="overlay">
+                <a href="#cocktail-item-9" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Кафе Жермен</h2>
+                            <a class="close" href="#cocktail-item-9">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>35 мл кальвадоса</li>
+                                <li>30 мл ликера из цветков бузины De Kuyper</li>
+                                <li>20 мл персикового сиропа</li>
+                                <li>20 мл лимонного сока</li>
+                                <li>1 г китайского перца в гранулах</li>
+                                <li>200 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Налейте в шейкер 20 мл лимонного сока и 20 мл персикового сиропа.<br>
+                                2. Добавьте 35 мл кальвадоса и 200 г льда в кубиках.<br> 
+                                3. Тщательно смешайте все составляющие.<br> 
+                                4. Перелейте через сито-стрейнер в охлажденный бокал.<br> 
+                                5. Налейте в барный сифон 30 мл ликера из цветков бузины De Kuyper.<br> 
+                                6. Закройте сифон и встряхните 3-4 раза.<br> 
+                                7. Украсьте коктейль ликерной пеной и китайским перцем в гранулах.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div style="background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);" class="cocktail-card__img">
+                        <img style="mix-blend-mode: multiply;" alt="Пача Монте-Карло" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pacha-monte-carlo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Пача Монте-Карло</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li>Консервированный персик</li>
+                            <li>Вишня</li>
+                            <li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text">
+                            Фруктовый сладкий лонг с изумительным персиковым послевкусием. Кальвадос гармонично сочетается с красным вермутом и сахарным сиропом. 
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup10" class="overlay">
+                <a href="#cocktail-item-10" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Пача Монте-Карло</h2>
+                            <a class="close" href="#cocktail-item-10">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл кальвадоса</li>
+                                <li>100 мл красного вермута</li>
+                                <li>50 мл сахарного сиропа</li>
+                                <li>60 г консервированного персика</li>
+                                <li>10 г вишни</li>
+                                <li>60 г дробленого льда</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Поместите в блендер половинку консервированного персика.<br> 
+                                2. Налейте 50 мл сахарного сиропа и 50 мл кальвадоса.<br> 
+                                3. Добавьте 100 мл красного вермута и дробленный лед.<br> 
+                                4. Взбейте в блендере все ингредиенты.<br> 
+                                5. Перелейте коктейль в бокал-харрикейн и украсьте 2 вишенками.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">225 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
