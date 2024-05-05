@@ -1,0 +1,831 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Captain Morgan — торгова марка, що випускає ром і колекцію ароматизованих ромових напоїв. Бренд входить до портфоліо алкогольного гіганта Diageo з Великобританії. Попри це, на ром Капітан Морган ціна залишається доступною. Назва —
+                    відсилання до валлійського капера сера Генрі Моргана, який жив у 17 столітті.
+                </p>
+                <h2 style="margin-top: 21px;">Captain Morgan: зведення історичних фактів</h2>
+                <p>
+                    Перший ром Капітан Морган виготовили 1944 року. Біля витоків — канадська компанія Seagram, яка викупила право на випуск у крихітної ямайської аптеки Levy Brothers. Власники аптеки купували спирт, який виготовляють у стінах винокурні
+                    Long Pond. Рецептуру доповнювали спеціями. Готовий напій відправляли на витримку. Рецепт настільки припав до смаку засновнику Seagram Семюелу Бронфману, що незабаром він викупив навіть гуральню Long Pond.
+                </p>
+                <p>
+                    До 1950-х років випуск рому Captain Morgan здійснювали на Ямайці. Пізніше потужності перенесли до Пуерто-Ріко, де алкогольну індустрію не обкладали високими податками. Міжнародний успіх до продукту прийшов у 1982 році. На той час
+                    напій готували до виходу на ринок США. Тоді ж представили етикетку з піратом, автором якої виступив Дон Мейц. Саме його ілюстрації прикрашають книги Айзека Азімова, Рея Бредбері, Стівена Кінга.
+                </p>
+                <p>
+                    2001 року компанія Seagram оголосила, що відходить від виробництва алкоголю. Купити Captain Morgan вирішила команда алкогольного холдингу Diageo. Рішення коштувало 5,5 мільярда фунтів стерлінгів. Воно виявилося дуже вигідним. Лише у
+                    2004 році компанія розповсюдила понад 54 мільйони літрів ромової продукції під торговою маркою Captain Morgan.
+                </p>
+                <h2>Як виготовляють ром Капітан Морган</h2>
+                <p>Виробництво складається з п'яти ключових етапів:</p>
+                <ol>
+                    <li>Підготовка сировини Цукрову тростину збирають, очищають, подрібнюють. На виході отримують концентрований сік, який перетворюють на побічний продукт — патоку.</li>
+                    <li>Бродіння. Проходить у закритих ємностях із нержавіючої сталі. Ром Капітан Морган створюють шляхом змішування патоки з дріжджами та водою. Штам дріжджових культур вибирають в залежності від стилю, що випускається.</li>
+                    <li>Дистиляція. Перегонку здійснюють у мідних колонах ректифікації. Це дозволяє виробнику не обмежуватись маленькими партіями.</li>
+                    <li>
+                        Витримка. Дистилят розливають по дубових бочках, виготовлених з обпаленого білого американського дуба. Ємності відправляють на витримку до Великобританії, хоча решта виробничого процесу зосереджено на Ямайці. При дозріванні ром
+                        Captain Morgan пом'якшується та насичується новими ароматами.
+                    </li>
+                    <li>Змішування. На цьому етапі спирт із різних бочок змішують. Так досягається фірмова смако-ароматична композиція.</li>
+                </ol>
+                <p>Готовий напій розливають скляними пляшками. Це відбувається на автоматизованих лініях, що мінімізує втручання людини та псування продукції.</p>
+                <h2>Огляд основних різновидів рому Капітан Морган</h2>
+                <p>
+                    Асортимент поєднує 16 видів. Насамперед варто купити ром Captain Morgan Original Spiced Gold — флагман торгової марки. Міцність становить 35%. Дистилят розкривається насиченими ванільними акордами. Смак змінюється виразними
+                    відтінками коричневого цукру, сухофруктів, спецій. Фініш — тривалий і зігрівальний. Також до основної лінійки входять:
+                </p>
+                <ol>
+                    <li>
+                        Ром Captain Morgan White. Дистилят відносять до білого стилю. Відсоток алкоголю складає 37,5. П'ятиразова перегонка приносить у напій легкий і чистий смак. Букет розкривається ванільними нюансами, які змінюються солодкістю
+                        горіхів і дині. Післясмак — сухий, з акцентом на перці.
+                    </li>
+                    <li>
+                        Ром Captain Morgan Black Spiced. Класичний чорний сорт. Розкішний напій, що відтіняє традиції Ямайки. Міцність підвищена до 40%. Смак — солодкий і гладкий, з акцентом на димності та прянощах. Фініш — насичений, з яскраво
+                        вираженими дерев'яними акордами. Це пояснюється витримкою в повторно обпалених дубових бочках з-під бурбона. Термін дозрівання становить 46 місяців.
+                    </li>
+                </ol>
+                <p>Ромовий напій — продукт, в основі якого той самий дистилят. Але рецепт доповнюють спеціями, екстрактами, вичавками, ароматизаторами, барвниками. Ромовий напій Капітан Морган представлений такими позиціями:</p>
+                <ol>
+                    <li>Tiki Mango Pineapple. Лімітована серія. Міцність — 25%. Ромовий напій подають у складі коктейлів. Дистилят змішали з лимонадом. Смак — солодкий, з виразними відтінками манго та ананаса.</li>
+                    <li>Sliced Apple. Напій, який поєднує класичний рецепт зі свіжістю зелених яблук і гостротою імбиру.</li>
+                </ol>
+                <p>На ромовий напій Капітан Морган доступна ціна. Це пояснюється спрощеним процесом виробництва та експериментами з ключовими складовими. Ромовий напій — відмінний варіант для приготування різноманітних коктейлів.</p>
+                <h3>Смакові нотатки</h3>
+                <p>
+                    Класичний ром Капітан Морган виготовляють за стандартним рецептом: солодкий сік, вичавлений із цукрової тростини, ферментують і переганяють. Основний інгредієнт змішують зі спеціями та витримують у дубових бочках. Витримка робить
+                    напій м'яким і збалансованим, привносячи характерний ванільно-карамельний шлейф.
+                </p>
+                <h2>Як правильно пити ром Капітан Морган</h2>
+                <p>
+                    Асортимент торгової марки Капітан Морган унікальний і різноманітний. Білий, золотий і темний ром подають без добавок. Дистилят розливають по склянках із товстим дном. Комфортну температуру підтримують камінням. За бажанням додають
+                    лід. Рідше розводять прохолодною водою.
+                </p>
+                <p>Також придбати продукцію Капітан Морган можна для приготування коктейлів. Декілька цікавих варіантів, схвалених виробником:</p>
+                <ol>
+                    <li>Перевірений спосіб насолодитися золотим пряним ромом — змішати 50 мл Original Spiced Gold зі 125 мл Coca-Cola.</li>
+                    <li>
+                        Білий ром привносить освіжальний акцент, тому використовується в літньому Мохіто. Підготуйте 50 мл рому Captain Morgan White. Додайте 25 мл цукрового сиропу. Вкиньте листя свіжої м'яти та трохи коричневого тростинного цукру.
+                        Заповніть хайбол газованою водою до верху. Якщо ви шукаєте менш солодкий варіант, зупиніться на стандартній мінералці. Гарний літній варіант — холодний чай.
+                    </li>
+                    <li>
+                        Темний ром вигідно впишеться в рецепт Planter's Punch. Склад — простий. В основі — 30 мл темного рому Captain Morgan, змішаного з 30 мл апельсинового та ананасового соків. Композицію доповнюють лікерами Cointreau та Grenadine,
+                        простим цукровим сиропом, лаймом.
+                    </li>
+                </ol>
+                <p>Також ром вдало інтегрується в культовий рецепт на кшталт Pina Colada або Daiquiri.</p>
+                <h2>Як вибрати ром Captain Morgan</h2>
+                <p>Під час покупки можна спиратися на основні критерії:</p>
+                <ol>
+                    <li>Тип. Класичний ром Капітан Морган — оптимальний варіант для повільного потягування. Якщо вибрали ромову продукцію, змішуйте її з лимонадом, газованою водою, содовою, свіжим соком.</li>
+                    <li>Колір. Що насиченіший, то інтенсивніша смакова палітра. Новачку оптимально зупинитися на світлих сортах — білому або золотому.</li>
+                    <li>Смак. Класика жанру — пряний ром Captain Morgan. Також можна зупинитись на ароматизованих позиціях. Наприклад, яблука привносять хрустку текстуру.</li>
+                    <li>Місткість. Торгова марка пропонує різний об'єм — від 0,2 до 1,5 літра. Отже, кожен знайде потрібний варіант.</li>
+                    <li>
+                        Тип упаковки. Стандартний варіант — скло. Якщо вирішили купити ром Капітан Морган на подарунок, зверніть увагу на позиції в подарункових упаковках, особливо зі склянками в комплекті. Також можна замовити версію для вечірки, яка
+                        поєднує білий і темний ром. Такий варіант сподобається кожному гостю.
+                    </li>
+                </ol>
+                <h3>Скільки коштує ром Captain Morgan</h3>
+                <p>
+                    Ціна залежить від типу продукції та вибраної ємності. При цьому не забувайте про знижку на гуртову покупку від маркету алкогольних штук MAUDAU. Пропозиція дійсна при замовленні від трьох штук. Якщо хочете заощадити, стежте за
+                    акціями. Найдорожче коштуватиме чистий ром. Ромовий напій коштує дешевше, оскільки містить знижену концентрацію алкоголю. На продукцію Captain Morgan у подарункових упаковках ціна стартує від 459 грн.
+                </p>
+                <h2>Чому вигідно купити ром Captain Morgan в MAUDAU</h2>
+                <p>Інтернет-магазин MAUDAU спеціалізується на продажу алкоголю оригінального походження. Завдяки налагодженому імпорту покупці отримують доступ до лімітованих лінійок та ексклюзивних позицій.</p>
+                <p>
+                    Якщо товар є в наявності, оперативну доставку забезпечить кур'єр або одна з поштових служб. За бажанням можна оформити самовивіз у Києві. Якщо в кошику виявиться товар на певну суму, доставку здійснюють безкоштовно. Така сама опція
+                    поширюється на окремі позиції в каталозі, незалежно від суми замовлення. Сплатити покупку можна комфортним способом — карткою чи готівкою.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Капітанський шенді" src="https://photo.maudau.com.ua/Landing/cocktails/incat/capitans-shandy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Капітанський шенді</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/product/rom-captain-morgan-dark-40-1-l-8121" target="_blank">Темний ром Captain Morgan</a></li>
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2" target="_blank">Світле пиво</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad" target="_blank">Лимонад</a></li>
+                            <li>Лайм</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Капітанський шенді — це незвичайна комбінація пива та темного рому. В результаті виходить оригінальний, помірно міцний коктейль з освіжальним ефектом. Лимонад додасть необхідну солодкість.
+                        </div>
+                        <a class="pop-button" href="#popup1">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup1" class="overlay">
+                <a href="#cocktail-item-1" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Як приготувати Капітанський шенді</h2>
+                            <a class="close" href="#cocktail-item-1">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>25 мл темного рому Captain Morgan</li>
+                                <li>125 мл світлого пива</li>
+                                <li>50 мл лимонаду</li>
+                                <li>Скибочка лайма</li>
+                                <li>Кубики льоду</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготування:</span><br>
+                            1. Наповніть пивний кухоль кубиками льоду майже догори.<br>
+                            2. Налийте 25 мл темного рому Captain Morgan та 50 мл лимонаду.<br>
+                            3. Обережно додайте 125 мл світлого пива — напій може спінитися.<br>
+                            4. Перемішайте складові барною ложкою.<br>
+                            5. Прикрасьте коктейль скибочкою лайма.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-1">Зачинити</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Капітан, поцілований сонцем" src="https://photo.maudau.com.ua/Landing/cocktails/incat/kissed-captain.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Капітан, поцілований сонцем</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/product/rom-captain-morgan-white-375-1-l" target="_blank">Білий ром Captain Morgan</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13" target="_blank">Ананасовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda" target="_blank">Содова</a></li>
+                            <li>Ананас</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Яскравий легкий коктейль на основі білого рому. Усі інгредієнти беруться в рівних пропорціях. Цей Капітан запам'ятається своїм солодким тропічним присмаком.
+                        </div>
+                        <a class="pop-button" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup2" class="overlay">
+                <a href="#cocktail-item-2" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Як приготувати Капітан, поцілований сонцем</h2>
+                            <a class="close" href="#cocktail-item-2">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл білого рому Captain Morgan</li>
+                                <li>50 мл апельсинового соку</li>
+                                <li>50 мл ананасового соку</li>
+                                <li>50 мл содової</li>
+                                <li>1 склянка льоду в кубиках</li>
+                                <li>Шматочок ананаса для декору</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготування:</span><br>
+                            1. Наповніть високу склянку кубиками льоду догори.<br>
+                            2. Налийте 50 мл апельсинового соку та 50 мл ананасового соку.<br>
+                            3. Додайте 50 мл білого рому Captain Morgan та 50 мл содової.<br>
+                            4. Розмішайте напій високою барною ложкою.<br>
+                            5. Прикрасьте коктейль невеликою скибочкою ананасу.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-2">Зачинити</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Піна колада" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pina-colada.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Піна колада</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10" target="_blank">Білий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi" target="_blank">Темний ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=kokos-9" target="_blank">Кокосовий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовий сік</a></li>
+                            <li>Ананас</li>
+                            <li>Ананасове листя</li>
+                            <li>Коктейльна вишня червона</li>
+                            <li>Дроблений лід</li>
+                        </ul>
+                        <div class="description-text">
+                            Піна колада — традиційний карибський лонгдрінк, із незвичайним молочно-кокосовим смаком і солодкуватим фруктовим післясмаком.
+                        </div>
+                        <a class="pop-button" href="#popup3">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup3" class="overlay">
+                <a href="#cocktail-item-3" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Як приготувати Піна колада</h2>
+                            <a class="close" href="#cocktail-item-3">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>60 мл білого рому</li>
+                                <li>15 мл темного рому</li>
+                                <li>40 мл кокосового сиропу</li>
+                                <li>20 мл лаймового соку</li>
+                                <li>1 кг ананаса</li>
+                                <li>ананасовий лист</li>
+                                <li>коктейльна червона вишня</li>
+                                <li>подрібнений лід</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготування:</span><br>
+                                1. Слайсером виріжте м'якоту ананаса і вичавіть із неї сік.<br>
+                                2. Налийте в блендер 20 мл лаймового соку та 100 мл свіжого ананасового соку.<br>
+                                3. Додайте туди 40 мл кокосового сиропу, 15 мл темного і 60 мл білого рому.<br>
+                                4. Насипте в блендер один барний совок дробленого льоду і збийте.<br>
+                                5. Перелийте отриманий напій у келих-харрикейн.<br>
+                                6. Прикрасьте коктейльною вишнею на шпажці та ананасовим листом.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-3">Зачинити</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Ураган" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Hurricane.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Ураган</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10" target="_blank">Білий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi" target="_blank">Темний ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=marakuia-3" target="_blank">Сироп маракуї</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn" target="_blank">Гренадін</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13" target="_blank">Ананасовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27" target="_blank">Апельсиновий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9" target="_blank">Лаймовий сік</a></li>
+                            <li>Лимон</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Ураган — насичений і досить міцний лонгдрінк із фруктовим смаком. Сироп маракуї та гренадин пом'якшують ромову комбінацію, а соки додають екзотичний вайб.
+                        </div>
+                        <a class="pop-button" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup4" class="overlay">
+                <a href="#cocktail-item-4" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Як приготувати Ураган</h2>
+                            <a class="close" href="#cocktail-item-4">&times;</a>
+                            <div class="popup-cocktail-content">
+                                <ul>
+                                    <li>30 мл білого рому</li>
+                                    <li>30 мл темного рому</li>
+                                    <li>15 мл сиропу маракуї</li>
+                                    <li>5 мл гренадину</li>
+                                    <li>60 мл ананасового соку</li>
+                                    <li>60 мл апельсинового соку</li>
+                                    <li>30 мл лаймового соку</li>
+                                    <li>20 г лимона</li>
+                                    <li>лід у кубиках</li>
+                                </ul>
+                            <p>
+                                <span class="cocktail-accent">Приготування:</span><br>
+                                    1. Наповніть харрикейн догори кубиками льоду.<br>
+                                    2. Налийте в шейкер соки: 30 мл лаймового, 60 мл апельсинового та 60 мл ананасового.<br>
+                                    3. Додайте 15 мл сиропу маракуї, гренадин, 30 мл темного та 30 мл білого рому.<br>
+                                    4. Наповніть шейкер кубиками льоду та ретельно збийте всі інгредієнти.<br>
+                                    5. Перелийте коктейль через стрейнер у келих-харрикейн.<br>
+                                    6. Прикрасьте напій лимонним слайсом.
+                            </p>
+                        <a class="close-popbtn" href="#cocktail-item-4">Зачинити</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="King of Barbados" src="https://photo.maudau.com.ua/Landing/cocktails/incat/King-of-barbados.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">King of Barbados</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=zolotyi-6" target="_blank">Золотий ром</a></li>
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2" target="_blank">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/product/liker-the-bitter-truth-pimento-dram-22-05-l-818715" target="_blank">Піменто драм</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17" target="_blank">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14" target="_blank">Медовий сироп</a></li>
+                        </ul>
+                        <div class="description-text">
+                            Пряний ромовий коктейль із затишним медово-цитрусовим післясмаком. Кальвадос органічно доповнює характерний смак золотого рому.
+                        </div>
+                        <a class="pop-button" href="#popup5">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup5" class="overlay">
+                <a href="#cocktail-item-5" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Як приготувати King of Barbados</h2>
+                            <a class="close" href="#cocktail-item-5">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>60 мл золотого рому</li>
+                                <li>15 мл кальвадосу</li>
+                                <li>10 мл бітеру Піменто Драм</li>
+                                <li>20 мл лимонного соку</li>
+                                <li>20 мл медового сиропу</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготування:</span><br>
+                            1. Заздалегідь охолодіть келих-купе.<br>
+                            2. Налийте в шейкер 20 мл лимонного соку та 20 мл медового сиропу.<br>
+                            3. Додайте 10 мл бітеру Піменто Драм, 15 мл кальвадосу та 60 мл золотого рому.<br>
+                            4. Наповніть шейкер кубиками льоду і ретельно збийте.<br>
+                            5. Процідіть коктейль через сито-стрейнер в охолоджений келих.<br>
+                            6. Прикрасьте напій скибочкою лимона.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-5">Зачинити</a>
+                            </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">193 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
