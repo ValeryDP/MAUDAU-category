@@ -1,0 +1,1090 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 20px;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Бурбон — крепкий спиртной напиток, который производят в США и считают разновидностью виски. Зерновая смесь требует минимум 51% кукурузных зерен.</p>
+                <h2 style="margin-top: 21px;">История появления и становления бурбона</h2>
+                <p>Крепкий спиртной напиток перегоняют с XVIII века. Известно, что первую винокурню запустил Эван Уильямс в 1783 году.</p>
+                <p>
+                    Историки считают, что название связано с улицей Bourbon Street в Новом Орлеане. Раньше в городе функционировал крупный порт, где кукурузный спирт из Кентукки предлагали как дешевую альтернативу французскому коньяку. Другая версия
+                    связывает происхождение названия с историческим регионом Old Bourbon, который основали в 1785 году. Географические наименования происходят от французской династии Бурбонов, которые правили в стране в 1589–1792 гг. Современное
+                    название крепкого спиртного напитка используют с 1840 года.
+                </p>
+                <p>
+                    Документов, подтверждающих выпуск первой партии бурбона, не нашли. Поэтому среди местных бытует множество легенд. Например, в барах штата Кентукки расскажут версию, что первый рецепт принадлежит Элайдже Крейгу — местному
+                    баптистскому священнику и производителю крепкого алкоголя для прихожан. Пастор выпускал дистиллят с 1789 года, используя тару из-под рыбы. Чтобы побороть неприятный запах, он обжигал емкости изнутри.
+                </p>
+                <p>
+                    Если верить второй версии, бурбон — результат многолетних экспериментов доктора Джеймса Кроу, которому приписывают изобретение метода «закваски» в 1823 году. Врачу принадлежала винокурня Pepper Distillery. В стенах предприятия
+                    разработали технологию, которая заключается в смешивании остатков старого зернового сусла с новым, до того как оно прошло стадию ферментации. Метод способствует стабилизации вкусо-ароматических свойств.
+                </p>
+                <h2>Как производят бурбон</h2>
+                <p>Процесс стандартизирован:</p>
+                <ol>
+                    <li>Подготовка сырья. Крепкий спиртной напиток состоит из кукурузы, воды, дрожжей. Зерно измельчают и заливают теплой водой. Зерновую смесь нагревают, пока крахмал полностью не превратится в сахар.</li>
+                    <li>Ферментация. Проходит в закрытых металлических емкостях. Зерновой затор смешивают с дрожжами, запуская брожение. Процесс длится, пока сахар не превратится в спирт.</li>
+                    <li>
+                        Дистилляция. Брагу перекачивают в медный перегонный куб. После нагревания получают очищенный спирт. Для запуска перегонки важно, чтобы в составе зерновой браги содержание алкоголя составляло 5–10%. Бурбон подвергают двойной
+                        перегонке, повышая крепость до 65%. Концентрированный дистиллят называют White Dog.
+                    </li>
+                    <li>
+                        Выдержка. Проходит в новых дубовых бочках из-под американского дуба. Жаркий климат штата Кентукки способствует расширению древесины, в которую впитывается спирт, извлекая насыщенный аромат. В холодное время года древесина
+                        сжимается, выталкивая дистиллят обратно.
+                    </li>
+                </ol>
+                <p>
+                    Результат — бурбон, который раскрывается нотами карамели, ванили, кокоса, специй. Вкус — сладкий, по сравнению с другими сортами виски. Если бочку сильно обожгли, это привносит во вкусовую палитру характерный дымный шлейф.
+                    Искусственных красителей или ароматизаторов в составе нет.
+                </p>
+                <h3>Сколько градусов в бурбоне</h3>
+                <p>
+                    После выдержки дистиллят фильтруют и разбавляют деминерализованной водой. Минимальная крепость составляет 40%. Если проставляют отметку Cask Strength, это означает что содержание алкоголя повышено, так как дистиллят не фильтруют и
+                    не разбавляют после извлечения из дубовых бочек.
+                </p>
+                <h3>География изготовления бурбона</h3>
+                <p>
+                    Название зарезервировано для крепкого алкоголя, производимого на территории США. Строгих ограничений касательно места изготовления нет. Кукурузный виски ассоциируется с Югом США, в частности — со штатом Кентукки. На регион припадает
+                    95% бурбона, производимого в стране. Также выпуск налажен в Пуэрто-Рико и округе Колумбия.
+                </p>
+                <h3>Чем бурбон отличается от виски</h3>
+                <p>Если подытожить, главная разница кроется в сырье. Чтобы легально продавать виски как бурбон, в зерновом заторе требуется 51–80% кукурузы, а не ячменя. Остаток припадает на любую другую злаковую культуру.</p>
+                <p>Также нет строгих ограничений касательно выдержки. Исключение — категория Straight Bourbon. Минимальный срок созревания составляет 24 месяца. Используют только новую высушенную и обожженную тару.</p>
+                <h2>Как выбрать бурбон</h2>
+                <p>Учитывайте несколько ключевых показателей:</p>
+                <ol>
+                    <li>
+                        Выдержка. Колеблется в пределах 2–19 лет. Чем больше времени дистиллят провел в дубовых бочках, тем сбалансированнее вкусо-ароматическая композиция. В то же время развивается насыщенный древесный шлейф, который сменяется
+                        пикантными аккордами пряных специй.
+                    </li>
+                    <li>Вкус. Фильтр поможет сгруппировать продукцию по доминирующему дескриптору: карамель, мед, шоколад, экзотические фрукты. Это позволит подобрать бурбон исходя из способа подачи.</li>
+                    <li>Крепость. Стартует от 40%. Если градус понижен до 30–35% — это виски-ликер. Он подходит для коктейлей. По закону такой продукт нельзя маркировать как бурбон, но в составе все так же преобладает кукуруза.</li>
+                </ol>
+                <p>
+                    На кукурузный виски под особым названием «бурбон» стоимость формируется исходя из популярности производителя, а также — емкости. Продукцию реализуют в разных объемах — от 0,05 до 4,5 л. Миниатюрки — прекрасный вариант для пополнения
+                    личной коллекции. Бутылка на качелях впишется в атмосферу громкой вечеринки.
+                </p>
+                <p>Иногда в описании к товару можно наткнуться на отметки, которые кажутся не совсем понятными:</p>
+                <ol>
+                    <li>Single Barrel. Дистиллят разливают из одной бочки. Вкус может немного отличаться. Бурбон Single Barrel, который можно купить в интернет-магазине MAUDAU, подают в чистом виде.</li>
+                    <li>Wheated. Пшеница заменяет рожь, на которую припадает около 10% в зерновом заторе. Вкус — мягкий. Такой вариант подходит тем, кому не нравится насыщенный спиртуозный шлейф.</li>
+                    <li>Rye. В составе — 25–30% ржи. Зерно привносит остроту, а также пряный финиш. Такой бурбон зачастую более сухой. Хорошо согревает в прохладную пору.</li>
+                    <li>
+                        Small Batch. Бурбон — алкоголь, который готовят посредством смешивания спиртов из разных бочек. Это помогает производителю придерживаться фирменной вкусо-ароматической композиции. Категорию Small Batch считают премиальной, так
+                        как спирт отбирают из ограниченного количества бочек — от 10 до 50. Это также означает, что на бурбон повышается цена.
+                    </li>
+                </ol>
+                <h3>Торговые марки</h3>
+                <p>Не менее важно во время выбора опираться на производителя. Культовыми торговыми марками считают:</p>
+                <ul>
+                    <li>Jim Beam;</li>
+                    <li>Wild Turkey;</li>
+                    <li>Four Roses;</li>
+                    <li>Bulleit;</li>
+                    <li>Maker’s Mark;</li>
+                    <li>Rebel Yell;</li>
+                    <li>Woodford Reserve.</li>
+                </ul>
+                <p>
+                    Если хотите насладиться бурбоном класса «люкс», выбор — за Benchmark. Бренд восходит к 1960 году. Торговая марка Ezra Brooks предлагает Straight Bourbon. Напиток нередко фигурирует в кино, включая культовую ленту «Леон». Когда
+                    захотите окунуться в историю США до введения сухого закона, закажите бутылку Redemption. Продукт содержит 75% кукурузных зерен, что придает сладости.
+                </p>
+                <h2>Как и с чем пить бурбон</h2>
+                <p>
+                    Вариант подачи зависит от возраста. Качественный напиток, который выдерживали свыше четырех лет, подают без добавок. Такой дистиллят редко смешивают с водой. Молодой бурбон, выдержанный 2–4 года, комбинируют с колотым льдом. Это
+                    сглаживает спиртуозный шлейф.
+                </p>
+                <p>По желанию бурбоном можно «приправить» коктейль. Классические миксы, которые сложно представить без порции кукурузного виски:</p>
+                <ul>
+                    <li>Manhattan;</li>
+                    <li>Old Fashioned;</li>
+                    <li>Whiskey Sour;</li>
+                    <li>Kentucky Mule;</li>
+                    <li>Mint Julep.</li>
+                </ul>
+                <p>
+                    Если ищете вариант закуски к бурбону, подавайте дистиллят с жирными продуктами: копченой ветчиной, морской рыбой, мягким сыром с плесенью. Сладкий кукурузный шлейф крепкого спиртного напитка гармонично сочетается с десертами. Также
+                    подходит тарелка свежих фруктов, особенно цитрусовых.
+                </p>
+                <h2>Почему выгодно купить бурбон в Украине в интернет-магазине MAUDAU</h2>
+                <p>В маркете алкогольных штук MAUDAU собрано свыше 100 оригинальных предложений. Это результат налаженного собственного импорта, который также подтверждает качество.</p>
+                <p>
+                    В интернет-магазине MAUDAU бурбон заказать просто — достаточно выбрать понравившийся продукт, переместить его в корзину, после чего указать вариант оплаты и доставки. По Киеву товар привезет курьер в оговоренное время. Также
+                    доступен самовывоз. За доставку по другим населенным пунктам Украины отвечает почтовая служба — «Новая Почта» или «Укрпочта». Если заказ окажется на определенную сумму — бурбон доставят бесплатно.
+                </p>
+                <p>Не забывайте о скидке на малый опт и регулярно обновляющихся акциях. Если преподносите крепкий спиртной напиток как презент, заказывайте продукцию в изысканных подарочных упаковках.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Олд фешен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/old-fashioned.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Олд фешен</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li>Тростниковый сахар в кубиках</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Олд фешен — коктейльная классика на бурбоне. Изысканный узнаваемый вкус еще несколько столетий назад высоко оценила элита Нового Света. Подают напиток в одноименном массивном бокале с толстым дном.
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup1" class="overlay">
+                <a href="#cocktail-item-1" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Олд фешен</h2>
+                            <a class="close" href="#cocktail-item-1">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>1 мл биттера Ангостура</li>
+                                <li>5 г тростникового сахара в кубиках</li>
+                                <li>5 г красной коктейльной вишни</li>
+                                <li>Апельсиновая цедра</li>
+                                <li>120 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в бокал кубик тростникового сахара и пропитайте его 1 мл биттера Ангостура.<br> 
+                                2. Раздавите сахар пестиком-мадлером.<br> 
+                                3. Насыпьте в бокал 120 г льда в кубиках.<br> 
+                                4. Налейте 50 мл бурбона и аккуратно размешайте барной ложкой.<br> 
+                                5. Оформите коктейль цедрой апельсина и коктейльной вишней на шпажке.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-2" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Манхэттен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Манхэттен</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Легендарный крепкий и сладкий Манхэттен — эталон бурбонных коктейлей. По легенде его придумала Леди Рандольф — мать Уинстона Черчилля. Дело было в баре «Manhattan Club», отсюда и пошло название напитка. 
+                        </div>
+                        <a class="pop-button" href="#popup2">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup2" class="overlay">
+                <a href="#cocktail-item-2" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Манхэттен</h2>
+                            <a class="close" href="#cocktail-item-2">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>25 мл красного вермута</li>
+                                <li>1 мл биттера Ангостура</li>
+                                <li>5 г красной коктейльной вишни</li>
+                                <li>300 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Налейте в стакан для смешивания 25 мл красного вермута и 50 мл бурбона.<br> 
+                                2. Добавьте 1 дэш биттера Ангостура и 300 г льда в кубиках.<br> 
+                                3. Хорошо размешайте ингредиенты коктейльной ложкой.<br> 
+                                4. Перелейте напиток через сито-стрейнер в охлажденный коктейльный бокал.<br> 
+                                5. Декорируйте коктейльной вишней на шпажке. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-2">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Виски сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Whiskey-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Виски сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Коктейль гармонично сочетает насыщенный вкус и крепость. Сладкий сироп и цитрусовый сок смягчают бурбон, а взбитый белок добавляет напитку оригинальную пенную окантовку. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup3" class="overlay">
+                <a href="#cocktail-item-3" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Виски сауэр</h2>
+                            <a class="close" href="#cocktail-item-3">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>1 мл биттера Ангостура</li>
+                                <li>15 мл сахарного сиропа</li>
+                                <li>30 мл лимонного сока</li>
+                                <li>25 мл белков перепелиного яйца</li>
+                                <li>5 г красной коктейльной вишни</li>
+                                <li>320 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Наполните бокал-рокс кубиками льда доверху.<br> 
+                                2. Налейте в шейкер белок перепелиного яйца, 30 мл лимонного сока и 15 мл сахарного сиропа.<br> 
+                                3. Добавьте 50 мл бурбона и 1 мл биттера Ангостура.<br> 
+                                4. Хорошо взбейте напиток — пока безо льда.<br> 
+                                5. Насыпьте в шейкер лед в кубиках и взбейте еще раз.<br> 
+                                6. Пропустите напиток через сито-стрейнер в бокал.<br> 
+                                7. Украсьте коктейль красной вишней на шпажке. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Нью-Йоркский сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/New-York-sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Нью-Йоркский сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/portvein-messias-porto-ruby-chervonyi-solodkyi-195-075-l" target="_blank">Портвейн руби</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-fee-brothers-plum-12-015-l" target="_blank">Сливовый биттер</a></li>
+                            <li>Домашний лавандово-кленовый сироп</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Насыщенный цитрусовый сауэр на бурбоне, с кислинкой лимона и деликатесной нотой лавандово-кленового сиропа. Яичный белок дает стойкую пену, а портвейн придает терпкости. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup4" class="overlay">
+                <a href="#cocktail-item-4" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Нью-Йоркский сауэр</h2>
+                            <a class="close" href="#cocktail-item-4">&times;</a>
+                            <div class="popup-cocktail-content">
+                                <ul>
+                                    <li>45 мл бурбона</li>
+                                    <li>15 мл портвейна руби</li>
+                                    <li>2 мл сливового биттера</li>
+                                    <li>15 мл домашнего лавандово-кленового сиропа</li>
+                                    <li>20 мл лимонного сока</li>
+                                    <li>30 мл белка перепелиного яйца</li>
+                                    <li>200 г льда в кубиках</li>
+                                </ul>
+                            <p>
+                                <span class="cocktail-accent">Приготовление:</span><br>
+                                    1. Налейте в шейкер 20 мл лимонного сока и 15 мл лавандово-кленового сиропа.<br> 
+                                    2. Добавьте белок перепелиного яйца и 15 мл портвейна руби.<br> 
+                                    3. Напоследок влейте 45 мл бурбона и 2 дэша сливового биттера.<br>
+                                    4. Тщательно перемешайте в шейкере смесь безо льда.<br> 
+                                    5. Добавьте 200 г льда в кубиках и взбейте напиток еще раз.<br> 
+                                    6. Перелейте через стрейнер в шампанское блюдце. Готово!
+                            </p>
+                        <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Возрождение бурбона" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bourbon-Renewal.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Возрождение бурбона</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li>Черносмородиновый ли­кер Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Лимон</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Сбалансированный шорт-дринк на основе бурбона. Имеет ярко выраженный цитрусовый и ягодный оттенок. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup5" class="overlay">
+                <a href="#cocktail-item-5" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Возрождение бурбона</h2>
+                            <a class="close" href="#cocktail-item-5">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>60 мл бурбона</li>
+                                <li>15 мл черносмородинового ли­кера Fruko Schulz</li>
+                                <li>1 мл биттера Ангостура</li>
+                                <li>15 мл сахарного сиропа</li>
+                                <li>30 мл лимонного сока</li>
+                                <li>20 г лимона</li>
+                                <li>320 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                            1. Заполните бокал-рокс кубиками льда до краев.<br> 
+                            2. Налейте в шейкер 30 мл лимонного сока и 15 мл сахарного сиропа.<br> 
+                            3. Добавьте 15 мл черносмородинового ликера Fruko Schulz и 60 мл бурбона.<br> 
+                            4. Аккуратно влейте 1 дэш биттера Ангостура.<br> 
+                            5. Наполните шейкер кубиками льда и взбейте напиток.<br> 
+                            6. Процедите через стрейнер в рокс и украсьте кружком лимона. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Педро Манхэттен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Pedro-Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Педро Манхэттен</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=pedro-himenes-pedro-ximenez" target="_blank">Херес Педро Хименес</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-peychauds-bitters-35-0148-l" target="_blank">Пишо биттер</a></li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Необычный твист на классический Манхэттен, с добавлением сладкого хереса. Пряность бурбона хорошо сочетается с горечью биттера и приторностью хереса. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup6" class="overlay">
+                <a href="#cocktail-item-6" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Педро Манхэттен</h2>
+                            <a class="close" href="#cocktail-item-6">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>20 мл хереса Педро Хименес</li>
+                                <li>2 мл биттера Пишо</li>
+                                <li>5 г красной коктейльной вишни</li>
+                                <li>300 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                            1. Налейте в стакан для смешивания 20 мл хереса Педро Хименес и 50 мл бурбона.<br> 
+                            2. Добавьте 2 мл биттера Пишо и 300 г льда в кубиках.<br> 
+                            3. Хорошенько перемешайте ингредиенты барной ложкой.<br> 
+                            4. Перелейте через сито-стрейнер в охлажденный коктейльный бокал.<br> 
+                            5. Украсьте напиток красной коктейльной вишней.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-7" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Лошадиная шея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/horses-neck.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Лошадиная шея</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l" target="_blank">Имбирное пиво</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Оригинальный коктейль с освежающим имбирным вкусом и нотами выдержанного бурбона. Этот лонг-дринк нравится и мужчинам, и женщинам. Поклонником Лошадиной шеи был Ян Флеминг — автор Джеймса Бонда. 
+                        </div>
+                        <a class="pop-button" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup7" class="overlay">
+                <a href="#cocktail-item-7" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Лошадиная шея</h2>
+                            <a class="close" href="#cocktail-item-7">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>1 мл биттера Ангостура</li>
+                                <li>150 мл имбирного пива</li>
+                                <li>Лимонная цедра</li>
+                                <li>180 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Наполните стакан-хайбол доверху кубиками льда.<br> 
+                                2. Налейте 50 мл бурбона и 1 мл биттера Ангостура.<br> 
+                                3. Долейте в стакан 150 мл имбирного пива и аккуратно размешайте.<br> 
+                                4. Декорируйте коктейль длинной цедрой лимона. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-7">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-8" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Охотник" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Hunter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Охотник</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=vyshnevyi" target="_blank">Вишневый ликер</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Простой сладкий микс из бурбона и ликера. Быстро готовится и так же выпивается. Ликер смягчает крепкий алкоголь и добавляет бурбону свежих ягодных ноток. 
+                        </div>
+                        <a class="pop-button" href="#popup8">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup8" class="overlay">
+                <a href="#cocktail-item-8" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Охотник</h2>
+                            <a class="close" href="#cocktail-item-8">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>50 мл бурбона</li>
+                                <li>25 мл вишневого ликера</li>
+                                <li>300 г льда в кубиках</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Заранее охладите бокал типа «шампанское блюдце».<br> 
+                                2. Налейте в емкость для смешивания 25 мл вишневого ликера и 50 мл бурбона.<br> 
+                                3. Наполните стакан 300 г льда в кубиках и размешайте коктейльной ложечкой.<br>
+                                4. Пропустите смесь через сито-стрейнер в охлажденное шампанское блюдце.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-8">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-9" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Собака дождя" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Rain-dog.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Собака дождя</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=amaro" target="_blank">Амаро</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850" target="_blank">Ангостура биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17" target="_blank">Лимонный сок</a></li>
+                            <li>Вода из цветков апельсина</li>
+                            <li>Мята</li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                            <li>Ледяной куб</li>
+                        </ul>
+                        <div class="description-text">
+                            Креативный коктейль на основе бурбона с добавлением ликера, сока и воды из цветков апельсина. В результате получается кисло-сладкий травяной шорт–дринк. 
+                        </div>
+                        <a class="pop-button" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup9" class="overlay">
+                <a href="#cocktail-item-9" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Собака дождя</h2>
+                            <a class="close" href="#cocktail-item-9">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>40 мл бурбона</li>
+                                <li>20 мл ликера Амаро</li>
+                                <li>2 мл биттера Ангостура</li>
+                                <li>20 мл лимонного сока</li>
+                                <li>10 мл воды из цветков апельсина</li>
+                                <li>5 г мяты</li>
+                                <li>Апельсиновая цедра</li>
+                                <li>200 г льда в кубиках</li>
+                                <li>Ледяной куб</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Положите в рокс цельный ледяной куб.<br> 
+                                2. Отожмите в шейкер 20 мл свежего лимонного сока.<br> 
+                                3. Налейте 10 мл воды из цветков апельсина и 20 мл ликера Амаро.<br> 
+                                4. Добавьте 40 мл бурбона и 2 мл биттера Ангостура.<br> 
+                                5. Насыпьте в шейкер кубики льда и интенсивно взбейте.<br> 
+                                6. Перелейте напиток через стрейнер в рокс.<br> 
+                                7. Украсьте бокал мятой и апельсиновой цедрой.
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-9">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+    
+            <div id="cocktail-item-10" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Выдержанный Манхэттен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/barrel-aged_manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Выдержанный Манхэттен</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon" target="_blank">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone" target="_blank">Красный вермут</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Ледяной куб</li>
+                        </ul>
+                        <div class="description-text">
+                            Вариация на коктейльную классику Манхэттен, где к бурбону и вермуту добавляется дымок виски. Готовится в больших пропорциях и до подачи полгода выдерживается в бочке.
+                        </div>
+                        <a class="pop-button" href="#popup10">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup10" class="overlay">
+                <a href="#cocktail-item-10" class="popup-area-close"></a>
+                    <div class="popup">
+                            <h2 class="popup-cocktail-header">Как приготовить Выдержанный Манхэттен</h2>
+                            <a class="close" href="#cocktail-item-10">&times;</a>
+                            <div class="popup-cocktail-content">
+                            <ul>
+                                <li>300 мл бурбона</li>
+                                <li>200 мл шотландского виски</li>
+                                <li>100 мл красного вермута</li>
+                                <li>Апельсиновая цедра</li>
+                                <li>5 г красной коктейльной вишни</li>
+                                <li>Ледяной куб</li>
+                            </ul>
+                        <p>
+                            <span class="cocktail-accent">Приготовление:</span><br>
+                                1. Налейте в емкость для смешивания 100 мл красного вермута и 200 мл шотландского виски.<br> 
+                                2. Добавьте 300 мл бурбона и размешайте высокой барной ложкой.<br> 
+                                3. Перелейте полученную смесь в бочку и оставьте вызревать на полгода.<br> 
+                                4. Перед подачей положите в рокс ледяной куб.<br> 
+                                5. Перелейте напиток через ситечко в бокал.<br> 
+                                6. Декорируйте цедрой апельсина и коктейльной вишней на шпажке. 
+                        </p>
+                        <a class="close-popbtn" href="#cocktail-item-10">Закрыть</a>
+                            </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">17 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
