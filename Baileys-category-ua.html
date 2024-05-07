@@ -1,0 +1,1007 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Бейліс — шоколадно-вершковий крем-лікер, який виробляють в Ірландії. Торгова марка належить до алкогольного холдингу Diageo. Це перший продукт у категорії «Irish Cream», що надійшов у продаж.</p>
+                <h3>Склад лікерів Baileys</h3>
+                <p>Базовий рецепт складається з вершків, какао, віскі. Вершкову основу гомогенізують з алкоголем, використовуючи емульгатор на основі рафінованої олії. Екстракт какао надає лікеру Бейліс шоколадний відтінок. Також до складу входять:</p>
+                <ul>
+                    <li>цукор;</li>
+                    <li>екстракт ванілі;</li>
+                    <li>карамель.</li>
+                </ul>
+                <p>Рідше використовують трави. В окремих позиціях також є кава, кокос, полуниця, яблука. Штучних консервантів у складі немає. Функцію виконує цукор. Точну рецептуру тримають у секреті.</p>
+                <h3>Скільки градусів у лікерах Baileys</h3>
+                <p>Міцність становить 17%. Віскі, що входить до складу, реалізують із підвищеним вмістом спирту. Концентрація алкоголю знижується після змішування з іншими компонентами.</p>
+                <h2>Короткий екскурс в історію: як з'явився Бейліс</h2>
+                <p>
+                    Рецепт приписують Девід Денд. Не менш вагомий внесок належить Тому Яго (Джаго). У той час він займався рекламою, коли до нього потрапив маркетинговий опис від компанії Gilbeys of Ireland. Корпорація шукала шляхи популяризації віскі
+                    на міжнародному ринку.
+                </p>
+                <p>
+                    Перші спроби створення лікеру Baileys припали на 1971 рік. Напій збивали міксером близько 45 хвилин. Рецептуру розробляли виходячи з потреби позбавитися надлишку вершків, що надходили з молочного підприємства Express Dairies. Віскі
+                    викупили за вкрай низькою вартістю у збиткової винокурні. Тоді до складу також входив шоколадний порошок Nesquik.
+                </p>
+                <p>Через три роки вдосконалення продукт представили як перший «ірландський крем». Назва — відсилання до ресторану Джона Честермана «Baileys Bistro», який приймав гостей по сусідству з W&amp;A Gilbey.</p>
+                <h2>Різновиди лікерів Бейліс</h2>
+                <p>
+                    Основний продукт — лікер Baileys Original. Шоколад вигідно поєднується з пікантністю віскі. Аромат — насичений, із кавово-горіховим шлейфом. Вершки привносять в'язку текстуру. Найлегший напій Бейліс — Deliciously Light. Вміст
+                    алкоголю становить 16,1%. З 1974 року колекцію регулярно поповнюють новими смаковими рішеннями:
+                </p>
+                <ol>
+                    <li>Salted Caramel. Вивели на ринок у 2014 році. Спершу солодкий смак плавно перетікає у тонкий аромат солоної карамелі. Аромат — насичений і тривалий.</li>
+                    <li>Apple Pie. Продукт, випущений 2020 року. Крем-лікер асоціюється із зимою, оскільки розкривається відтінками зелених яблук, кави, згущеного молока, випічки.</li>
+                    <li>Колада. Цей лікер Бейліс можна придбати з 2021 року. У серці композиції — кокос та ананас, які гармонійно вписуються в класичний рецепт.</li>
+                    <li>Strawberries&amp;Cream. Найновіший продукт у лінійці, представлений у 2023 році. Полуниця привносить у композицію делікатну кислинку.</li>
+                </ol>
+                <h2>Як правильно пити лікер Бейліс</h2>
+                <p>Напій подають охолодженим як дижестив. Підтримувати низьку температуру легко за допомогою криги. Якщо спиртуозний шлейф дуже інтенсивний, капніть трохи холодної води.</p>
+                <p>Також лікер Baileys можна придбати для змішування в коктейлях. Уникайте кислот, оскільки вершки згортаються при контакті з ними. Декілька коктейлів, які вигідно доповнить крем-лікер:</p>
+                <ul>
+                    <li>Martini;</li>
+                    <li>White Russian;</li>
+                    <li>Irish Coffee;</li>
+                    <li>Mudslide.</li>
+                </ul>
+                <p>Солодкий смаковий букет вигідно розкривається в компанії десертів: морозива, чизкейка, печива. Також можна подавати зі свіжими фруктами та ягодами, особливо ананасом, полуницею, малиною, ожиною.</p>
+                <h2>Як вибрати лікер Бейліс</h2>
+                <p>
+                    Коли шукаєте потрібний варіант, враховуйте варіант вживання. За бажанням згрупуйте продукцію за основним смаковим дескриптором. На колір впливає склад. Наприклад, полуниця надає приємного рожевого відтінку, що вигідно виглядає в
+                    літніх коктейлях.
+                </p>
+                <p>
+                    На лікер Бейліс ціна багато в чому залежить від ємності. Мініпляшечки по 375 мл — чудовий варіант для експериментів із коктейлями. Вони також доповнять полицю мінібару. Стандартний об'єм — 0,5 або 0,7 л. Також можна знайти продукцію
+                    в повнорозмірних літрових скляних пляшках. Не забувайте про подарункові набори, куди входять склянки.
+                </p>
+                <h2>Чому вигідно купити лікер Бейліс в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU забезпечує оригінальне походження продукції. Все завдяки власному налагодженому імпорту. Це також відкриває доступ до ексклюзивних пропозицій. Доставку здійснює кур'єр по Києву. Якщо товар є в
+                    наявності, можливий самовивіз із фізичних магазинів. Також можна скористатися послугами поштових перевізників. Ціна доставки залежить від суми замовлення. Сплатити покупку можна на сайті, використовуючи банківську картку.
+                    Альтернативний варіант — у момент отримання. Деякі позиції з онлайн-каталогу доставляють безкоштовно. Найвигідніше купити лікер Бейліс гуртом чи по акції.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б-52" src="https://photo.maudau.com.ua/Landing/cocktails/incat/B-52.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б-52</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                            <li>Трипл сек Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Б-52 — це модний коктейль із насиченим кавово-вершковим смаком і цитрусовим післясмаком. За однією з версій, назву отримав на честь американського стратегічного бомбардувальника Boeing B-52.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Б-52</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл кавового лікеру</li>
+                            <li>15 мл Айріш кріму</li>
+                            <li>15 мл трипл секу Fruko Schulz</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в коктейльну стопку 15 мл кавового лікеру.</li>
+                            <li>Використовуйте барну ложку і покладіть шаром 15 мл Айріш кріму.</li>
+                            <li>Завершіть коктейль шаром 15 мл трипл секу Fruko Schulz.</li>
+                            <li>Підпаліть верхній шар і подавайте напій із трубочкою.</li>
+                        </ol>
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хіросіма" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hiroshima-shooter.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хіросіма</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадін</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Хіросіма зовні нагадує ту саму грибоподібну хмару. Напій отримав свою назву через цю особливість і швидкий п'янкий ефект. Самбука та вершковий лікер надають анісового присмаку, а абсент — характерні трав'яні нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хіросіма</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл класичної самбуки</li>
+                            <li>20 мл абсенту</li>
+                            <li>10 мл лікеру айріш крім</li>
+                            <li>5 мл гренадину</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте на дно чарки 20 мл класичної самбуки.</li>
+                            <li>Використовуйте коктейльну ложку або ніж і викладіть шаром 10 мл лікеру айріш крім.</li>
+                            <li>Додайте верхнім шаром 20 мл абсенту.</li>
+                            <li>Налийте через трубочку 5 мл гренадину для імітації вибуху.</li>
+                            <li>Для ефектної подачі коктейль можна підпалити.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Слизький сосок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/slippery-nipple.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Слизький сосок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2">Самбука</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальний коктейль, одночасно міцний і солодко-вершковий. Придуманий фанатами рок-гурту «Sex Pistols» та отримав епатажну назву через характерний зовнішній вигляд.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Слизький сосок</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл класичної самбуки</li>
+                            <li>25 мл лікеру айріш крім</li>
+                            <li>1 мл гренадину</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в маленьку чарку 25 мл класичної самбуки.</li>
+                            <li>Використовуйте коктейльну ложку або ніж і викладіть наступним шаром 25 мл лікеру айріш крім.</li>
+                            <li>Візьміть трубочку і акуратно капніть у центр шота 1 краплю гренадину.</li>
+                            <li>Випийте залпом!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Рафаелло" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Raffaello.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рафаелло</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kokosovyi-2">Кокосовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=kokosova-struzhka-2">Кокосова стружка</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Повітряний солодкий коктейль із тропічним присмаком кокосу та солодкістю ванілі. Айріш крім надає композиції приємних вершкових ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Рафаелло</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл айріш кріму</li>
+                            <li>15 мл кокосового лікеру</li>
+                            <li>15 мл ванільного сиропу</li>
+                            <li>5 г кокосової стружки</li>
+                            <li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Зробіть по верхньому краю чарки облямівку з кокосової стружки.</li>
+                            <li>Налийте в шейкер 15 мл ванільного сиропу та 15 мл кокосового лікеру.</li>
+                            <li>Додайте 15 мл айріш кріму та 200 г льоду в кубиках.</li>
+                            <li>Збийте всі складові та перелийте через стрейнер у чарку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Неприємна сльота" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Nasty_slush.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Неприємна сльота</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Попри назву, це дуже смачний ароматний коктейль на абсенті та лікерах. Міцний, вершковий і солодкий — обов'язково потрібно спробувати!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Неприємна сльота</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл абсенту</li><li>20 мл кавового лікеру</li><li>20 мл айріш кріму</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть коктейльну чарку — на ніжці або з плоским дном.</li><li>Налийте в чарку 20 мл кавового лікеру.</li><li>За допомогою коктейльної ложки покладіть 20 мл айриш криму.</li><li>Зверху налийте 20 мл абсенту.</li><li>Не перемішуйте коктейль, а одразу випийте залпом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Медуза" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jellyfish.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Медуза</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                            <li>Какао-лікер</li>
+                            <li>Трипл сек Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Екстравагантний коктейль Медуза з оригінальним смаком і виглядом. Має середню міцність і вершково-трав'яний післясмак. Навіть у домашніх умовах робиться за 3 хвилини.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Медуза</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>10 мл абсенту</li><li>20 мл какао-лікеру</li><li>20 мл трипл секу Fruko Schulz</li><li>5 мл айріш кріму</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в стопку 20 мл какао-лікеру.</li><li>Використовуйте коктейльну ложку та викладіть шар трипл секу Fruko Schulz 20 мл.</li><li>Останнім шаром покладіть 10 мл абсенту.</li><li>Через трубочку обережно додайте 5 мл айріш кріму.</li><li>Гарний шаруватий коктейль готовий!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Генрі, що палає" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Henry_pro.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Генрі, що палає</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=jack-daniel-s">Американський віскі Jack Daniel’s</a></li>
+                            <li>Лікер амаретто Fruko Schulz</li>
+                            <li><a href="https://maudau.com.ua/product/liker-baileys-salted-caramel-17-07-l">Айріш крім</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Генрі, що палає, — дуже незвичайний тришаровий коктейль з оригінальною подачею. Має м'який збалансований смак і мигдально-кремові нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Генрі, що палає</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл американського віскі Jack Daniel's</li><li>15 мл лікеру амаретто Fruko Schulz</li><li>15 мл айріш крім</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в стопку першим шаром 15 мл лікеру амаретто Fruko Schulz.</li><li>Використовуйте коктейльну ложку і покладіть 15 мл айріш крім.</li><li>Третім шаром налийте 15 мл американського віскі Jack Daniel's.</li><li>Підпаліть напій і швидко випийте через трубочку. Не забудьте зробити спільне фото з Генрі, що палає!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ей-Бі-Сі" src="https://photo.maudau.com.ua/Landing/cocktails/incat/ABC-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ей-Бі-Сі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=hennessy">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                            <li>Лікер амарето Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ей-Бі-Сі — м'який гармонійний коктейль із приємним післясмаком мигдалю. Укладається шарами та виглядає оригінально. Усі інгредієнти беруться в рівних пропорціях.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ей-Бі-Сі</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл коньяку Hennessy</li><li>20 мл айріш кріму</li><li>20 мл лікеру амарето Fruko Schulz</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть чарку для шотів і налийте 20 мл лікеру амарето Fruko Schulz.</li><li>Використовуйте коктейльну ложку та викладіть шар айріш кріму 20 мл.</li><li>Завершіть оформлення шаром 20 мл коньяку Hennessy.</li><li>Не перемішуйте коктейль — так вийде послідовне надходження смаків.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Халк" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Hulk.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Халк</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Зелений Шартрез</li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Халк — дуже простий, але десертний шот, що запам'ятовується. Кажуть, що його вигадали фанати зеленого Супергероя. Рівні пропорції Шартрезу та айріш кріму створюють гармонійний вершково-трав'яний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Халк</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл лікеру зелений Шартрез</li><li>25 мл айріш кріму</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в чарку з ручкою 25 мл айріш кріму.</li><li>За допомогою коктейльної ложки або ножа покладіть шар 25 мл лікеру зелений Шартрез.</li><li>Шот готовий до подачі!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мадам кава" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Madam-coffee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мадам кава</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний сироп</a></li>
+                            <li>Кава американо</li>
+                            <li>Збиті вершки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Варіація кави по-ірландські, але без віскі. Ванільний сироп розбавляє гіркоту американо, а вершковий лікер додає м'які затишні нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мадам кава</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл айріш кріму</li><li>15 мл ванільного сиропу</li><li>150 мл кави американо</li><li>20 г збитих вершків</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заваріть каву будь-яким способом. За потреби профільтруйте від гущі.</li><li>Налийте в келих для ірландської кави 30 мл айріш кріму і 15 мл ванільного сиропу.</li><li>Долийте 150 мл гарячої кави американо.</li><li>Акуратно перемішайте напій коктейльною ложкою.</li><li>Прикрасьте збитими вершками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">314 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">14 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">22 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
