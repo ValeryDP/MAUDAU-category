@@ -1,0 +1,816 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Jim Beam — торговая марка из США, которая производит бурбон. Выпуск кукурузного виски сосредоточен в городе Клермонт, что в штате Кентукки.</p>
+                <p>До 2014 года торговая марка принадлежала семье Бим. За изготовление виски Jim Beam в разное время отвечало семь поколений. Сейчас бренд входит в состав японского алкогольного холдинга Suntory Holdings.</p>
+                <h3>Вкус и аромат: несколько заметок</h3>
+                <p>
+                    В портфолио компании — множество продуктовых линеек. Вкус и аромат зависят от использованной кислой заготовки. Классика жанра — бурбон, с отчетливой кукурузной сладостью. Также в композиции ощущаются оттенки меда, карамели, ванили,
+                    специй. Аромат — насыщенный, с цветочно-древесными мотивами.
+                </p>
+                <h2>Краткий экскурс в историю торговой марки Jim Beam</h2>
+                <p>У истоков — семья немецких эмигрантов, переехавших в штат Кентукки в конце XVIII века. История компании восходит к 1795 году, когда фермер Йоханнес Бим запустил крохотную винокурню, в стенах которой выпускали кукурузный виски.</p>
+                <p>В 1820 году семейное дело перешло к сыну Йоханнеса — Дэвиду Биму. Производство виски Джим Бим переместили в округ Нельсон, где в то время активно развивали железную дорогу.</p>
+                <p>
+                    Сложный период в истории компании пришелся на времена до и после введения сухого закона. Бразды правления перешли к Джеймсу Биму. Именно он отвечал за реконструкцию семейной винокурни в 1933 году, в стенах которой сегодня производят
+                    около 85% продукции Джим Бим.
+                </p>
+                <p>
+                    До 1880 года продукцию продавали на розлив местным, которые приносили кувшины. В то время купить виски Jim Beam можно было под торговой маркой Old Tub. К современному названию пришли в 1945 году. Это знак уважения Джеймсу Биму,
+                    поэтому на этикетках нередко встречается его главный девиз — «None Genuine Without My Signature». В том же году торговая марка перешла к чикагскому негоцианту Гарри Блуму.
+                </p>
+                <p>К семье компания вернулась в 1954 году. Эта важная веха истории связана с Джереми Бимом, который работал мастером-дистиллятором в течение 40 лет. В 1987 году Джим Бим выкупила компания National Distillers.</p>
+                <h2>Как изготавливают виски Jim Beam</h2>
+                <p>Производство строго регламентировано. Ключевые стадии:</p>
+                <ol>
+                    <li>Подготовка сырья. В составе — минимум 51% кукурузных зерен. Остаток припадает на рожь и ячмень. Зерно измельчают на молотковых мельницах до состояния муки.</li>
+                    <li>
+                        Подготовка зернового затора. В огромных чанах зерно смешивают с горячей водой. На этом этапе крахмал превращается в сахар. Главная добавка — отстоянная смесь. Так называют остатки от предыдущей перегонки — ключевую составляющую,
+                        которая способствует образованию кислого затора.
+                    </li>
+                    <li>Ферментация. Зерновой затор смешивают с дрожжами. Жидкость, которую получили в результате, называют «промывным пивом».</li>
+                    <li>Дистилляция. Перегонка виски Джим Бим проходит в стандартных медных перегонных кубах, дополненных ректификационной колонной.</li>
+                    <li>
+                        Выдержка. Дистиллят разливают по новым дубовым бочкам, обожженным изнутри. Смена времен года помогает древесине расширяться и сжиматься. Бурбон то просачивается внутрь, то возвращается. Карамелизированный сахар, который получают
+                        после обжигания дубовых бочек, придает вкус и цвет виски Jim Beam. Выдержка длится от четырех лет, хотя по закону достаточно 24 месяцев.
+                    </li>
+                </ol>
+                <h3>Сколько градусов в продукции Jim Beam</h3>
+                <p>Стандартная крепость составляет 40%. Процент алкоголя в выдержанных позициях достигает 43,5. Если готовят виски-ликер, градус снижают до 30–32%.</p>
+                <h2>Разновидности виски Джим Бим</h2>
+                <p>
+                    Основной продукт — White Straight Bourbon. Крепость стандартная — 40%. Вкус окутывает сладкими нотами, смешанными с ванильно-карамельными оттенками. Аромат раскрывается аккордами луговых цветов. Классическую линейку также
+                    представляют:
+                </p>
+                <ol>
+                    <li>
+                        Double Oak. Виски Джим Бим, выдержанный дважды. Всегда — в новых обожженных дубовых бочках. Вкус — сбалансированный, с легкими ореховыми мотивами. Аромат раскрывается тонами шоколада, кардамона, сухофруктов. Финиш — гладкий и
+                        продолжительный.
+                    </li>
+                    <li>
+                        Black Extra Aged. Классический дистиллят, выдержанный в течение восьми лет. Крепость повышена — 43%. Аромат — выразительный, с карамельно-табачными оттенками. Поначалу вкусовая композиция окутывает пряными мотивами, которые
+                        вскоре сменяются ванильно-фруктовой сладостью.
+                    </li>
+                    <li>Devil’s Cut. Виски Jim Beam, который созревал шесть лет. Вкус — мягкий, с выразительными древесными тонами.</li>
+                </ol>
+                <p>На стандартный Джим Бим — самая доступная цена. Также компания предлагает коллекцию ароматизированных виски-ликеров:</p>
+                <ul>
+                    <li>Apple — с яблоком;</li>
+                    <li>Honey — с медом;</li>
+                    <li>Red Stag — с темной вишней.</li>
+                </ul>
+                <p>Тем, кто ищет сухой и пикантный бурбон, стоит купить виски Jim Beam Rye. Сладкий карамельно-ванильный вкус постепенно сменяется оттенками черного перца, ржаного хлеба и кофе.</p>
+                <h2>Как выбрать виски Jim Beam</h2>
+                <p>Бренд предлагает огромную коллекцию крепкого алкоголя, поэтому во время поиска можно руководствоваться такими критериями:</p>
+                <ol>
+                    <li>Тип напитка. Линейка определяет подачу. Классический дистиллят пьют без добавок. Виски-ликер отличается спиртуозным шлейфом, поэтому гармонично раскрывается в миксах.</li>
+                    <li>Вкус. Фильтр поможет определиться с доминирующим вкусовым дескриптором: кукуруза, мед, перец, фрукты, ягоды. Это особенно важно в коктейлях.</li>
+                    <li>
+                        Емкость. Купить продукцию Джим Бим можно в разных объемах. Мини-бутылочка на 350 мл — хороший вариант для знакомства. Стандартный объем — 0,5 или 0,7 литра. На компанию из 4–6 человек подходит полноразмерная бутылка объемом один
+                        литр. Также можно заказать виски Jim Beam на качелях — прекрасный выбор для вечеринки.
+                    </li>
+                    <li>Тип упаковки. Продукцию реализуют в стандартных стеклянных бутылках. Также можно найти подарочные комплекты, куда входят бокалы для подачи в чистом виде. Нередко набор дополняют газировкой или тоником.</li>
+                </ol>
+                <p>Если решили купить виски Джим Бим для смешивания в коктейлях, остановитесь на ароматизированных позициях. Они привносят изюминку в рецепт и подходят для приготовления классических миксов.</p>
+                <h2>Как правильно пить виски Джим Бим</h2>
+                <p>Дистилляты из классической линейки подают в чистом виде. По желанию смешивают с прохладной водой. Если добавляете лед, выбор — за цельными кусками. Он постепенно охлаждают напиток, не слишком разбавляя содержимое стакана.</p>
+                <p>Также виски Jim Beam выгодно раскрывается в компании газировки или имбирного эля. По желанию приготовьте коктейль:</p>
+                <ul>
+                    <li>Rye Old Fashioned;</li>
+                    <li>Kentucky Sunrise;</li>
+                    <li>Bourbon Sour;</li>
+                    <li>Apple Highball.</li>
+                </ul>
+                <h2>Почему выгодно купить виски Jim Beam в MAUDAU</h2>
+                <p>
+                    Интернет-магазин MAUDAU предлагает только оригинальную продукцию, которая попадает в каталог посредством налаженного импорта. Помимо стандартных позиций, также можно найти лимитированные линейки. На оформление заказа понадобится 5–7
+                    минут — просто выберите напиток, а затем укажите вариант оплаты и доставки.
+                </p>
+                <p>
+                    На Jim Beam цена становится еще доступнее с учетом скидки на малый опт и постоянных акций. Если в корзине соберется товар на определенную сумму, его доставят бесплатно. Оплачивайте заказ онлайн или в момент получения. По Киеву
+                    продукцию доставляет курьер в оговоренное время. Если товар в наличии, его можно забрать самостоятельно из физических магазинов. Также возможна доставка почтовыми службами по территории Украины.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мятный Джулеп" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Mint_Julepr.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мятный Джулеп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu">Вода без газа</a></li>
+                            <li>Мята</li>
+                            <li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li>
+                            <li>Колотый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            В этом коктейле привкус бурбона идеально сочетается с ярким ароматом мяты, а высокую крепость отлично сглаживает сахарный сироп. Считается официальным напитком скачек The Kentucky Derby.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мятный Джулеп</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл бурбона</li><li>2 чайные ложки воды без газа</li><li>12 листиков мяты</li><li>1 чайная ложка сахарной пудры</li><li>Колотый лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в барную медную кружку 11 листиков мяты и чайную ложку сахарной пудры.</li><li>Налейте 2 чайные ложки воды без газа и придавите мадлером.</li><li>Насыпьте в кружку доверху колотый лед.</li><li>Добавьте 60 мл бурбона и аккуратно размешайте коктейльной ложкой.</li><li>По необходимости досыпьте немного льда и украсьте веточкой мяты.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Линчбургский лимонад" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Lynchburg_lemonade.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Линчбургский лимонад</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновый ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Крепкий специфический коктейль на бурбоне и цитрусовом ликере. Назван в честь города Линчбург — родины одного из культовых бурбонов. Это лонг-дринк, который принято пить из трубочки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Линчбургский лимонад</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл бурбона</li><li>50 мл апельсинового ликера</li><li>20–30 мл содовой</li><li>10–15 мл сахарного сиропа</li><li>лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте лед в высокий бокал-хайбол.</li><li>Налейте в шейкер 50 мл бурбона и 50 мл апельсинового ликера.</li><li>Добавьте 15 мл сахарного сиропа и лед.</li><li>Энергично встряхните шейкер и перелейте смесь через стрейнер в бокал.</li><li>Долейте 30 мл содовой. Не перемешивайте и подавайте с трубочкой!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бурбон с сидром" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bourbon_and_cider.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бурбон с сидром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht">Корица в палочках</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Горячий бодрящий напиток с пряным привкусом, кислинкой сидра и дымком бурбона. Идеально подходит для посиделок в прохладный сезон.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бурбон с сидром</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл бурбона</li><li>150 мл яблочного сидра</li><li>1 палочка корицы</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрейте в чайничке-питчере 150 мл яблочного сидра примерно до 70°C.</li><li>Не дожидаясь кипения, снимите питчер с огня.</li><li>Долейте 50 мл бурбона и добавьте 1 палочку корицы. По желанию положите дольку яблока.</li><li>Перемешайте напиток и оставьте на 5 минут.</li><li>Подавайте коктейль в стеклянной чашке или бокале Олд фэшн.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бульвардье" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Boulevardier-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бульвардье</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль с приятными травяными нотками и горько-сладким послевкусием. Крепкий, но мягкий. Рецепт придумал писатель и публицист Эрскин Гвинн в 20-х годах прошлого века. Поэтому его называют фирменным коктейлем литературной элиты.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бульвардье</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл бурбона</li><li>30 мл красного вермута</li><li>30 мл Кампари</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-рокс доверху кубиками льда.</li><li>Налейте в рокс 30 мл красного вермута и 30 мл Кампари.</li><li>Добавьте 45 мл бурбона и размешайте барной ложкой.</li><li>Украсьте напиток апельсиновой цедрой. Готово!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Олд фешен с ромашкой" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chamomile-old-fashioned.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Олд фешен с ромашкой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/chai-2/aromat_3=romashka-3">Ромашковый чай</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/med/typ_285=med-16">Мед</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вариация классического Олд фешен с добавлением чая из ромашки и меда. Это травяной успокаивающий коктейль на бурбоне, с идеальным балансом сладкого и горького вкусов.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Олд фешен с ромашкой</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл бурбона</li><li>1 мл апельсинового биттера</li><li>10 мл ромашкового чая</li><li>10 мл меда</li><li>Апельсиновая цедра</li><li>120 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее заварите и охладите ромашковый чай.</li><li>Налейте в бокал-рокс 10 мл меда и 10 мл холодного ромашкового чая.</li><li>Добавьте 50 мл бурбона и 1 дэш апельсинового биттера.</li><li>Наполните рокс 120 г льда в кубиках и аккуратно размешайте барной ложкой.</li><li>Декорируйте напиток апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">17 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
