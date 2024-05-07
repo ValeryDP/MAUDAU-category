@@ -1,0 +1,811 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Бренд відомий тим, що відправляє покупців у подорож різностороннім регіоном Хайленд. Купити віскі Томатін варто тим, хто шукає унікальний стиль Шотландії — неторфований, легкий, м'який, фруктовий.</p>
+                <h2>Історія віскікурні Tomatin</h2>
+                <p>
+                    У 1892 році залізницю нарешті проклали в селище Томатін, що за 24 кілометри від Інвернеса. Через 5 років МакДугалл за підтримки Джона МакЛейша та Олександра Еллена зареєстрував крихітну віскікурню Tomatin Spey Distillery Co LTD.
+                    Вперше лікеро-горілчаний завод закрився 1906 року.
+                </p>
+                <p>Виготовлення віскі відновили в 1909 році. У той час компанія випускала 225 000 літрів алкоголю щорічно, використовуючи два мідні перегінні куби. 1974 року віскікурню визнали найбільшою в країні.</p>
+                <p>
+                    Виробництво повторно зупинили 1985 року, поки акції не перейшли до японського алкогольного конгломерату Takara Shuzo. Назву змінили на Tomatin Spey Distillery Co LTD. З 1986 віскікурня повністю належить японцям — це перший випадок в
+                    історії Шотландії.
+                </p>
+                <h2>Особливості віскікурні Томатін</h2>
+                <p>Лікеро-горілчаний завод функціонує у віддаленій місцевості на краю гірського масиву, тому близько 80% працівників, що залучені у виробництві, проживають на території підприємства.</p>
+                <p>
+                    Віскікурня — одна з найтехнічніших у країні. До 2002 року в стінах лікеро-горілчаного заводу функціонували 23 мідні перегінні куби. Наразі використовують 12, зміщуючи акцент на випуск односолодового віскі. Форму та дизайн не
+                    змінювали з 1897 року.
+                </p>
+                <p>
+                    М'яку і чисту воду на віскікурню Томатін постачають із крихітного джерела Альт-на-Фріт (Alt-na-Frith), яке бере початок у горах Монадліат. Компанія має власну бондарську майстерню, де обслуговують бочки, перш ніж їх наповнять новим
+                    спиртом.
+                </p>
+                <h2>Особливості віскі Томатін</h2>
+                <p>Процес виготовлення стандартизований, однак із важливими нюансами:</p>
+                <ol>
+                    <li>Зерно не сушать у закритих печах із торфом, а використовують ялівець. Він надає легкого димного шлейфу.</li>
+                    <li>Ферментація зернового затору триває 168 годин. Це найтриваліший термін порівняно з конкурентними гуральнями.</li>
+                    <li>
+                        Компанія серйозно підходить до витримки. Мінімальний термін складає 48 місяців. Спочатку продукція зберігається у повторно використаних бочках з-під бурбона. Пізніше спирт переливають у тару з-під кріплених вин, що надає
+                        характерної кислинки.
+                    </li>
+                </ol>
+                <h2>Різновиди віскі Tomatin</h2>
+                <p>Бренд випускає як купажований, так і односолодовий дистилят. Основу асортименту складає лінійка Core Range, куди входять:</p>
+                <ol>
+                    <li>Legacy. Легкий скотч із присмаком ванільних стручків, білого шоколаду та кориці. Післясмак — тривалий і чистий, з акцентом на імбирних прянощах.</li>
+                    <li>12 років Old. Класичний вираз Томатін, який порадує м'якими тонами дикого вересу, сосни та кедра. Згодом деревний смак плавно перетікає в кремово-карамельний фініш із відтінками яблук і груш.</li>
+                    <li>14 років Old. М'який і солодкий напій, витриманий у бочках з-під Tawny Port. Багатий збалансований смак червоних ягід змінюється ніжними фруктово-горіховими відтінками.</li>
+                    <li>18 років Old. Сухий односолодовий скотч. Спирт завершує дозрівання в бочках з-під хересу Олоросо, тому наповнюється ароматами кураги, нуги та нотами тропічних фруктів.</li>
+                    <li>Cask Strength. Купуйте віскі Томатин першої заливки, якщо шукаєте найяскравіший вираз в асортименті. У смаку переважають карамельно-ванільні відтінки, а аромат солодового хліба створює пряний і тривалий смак.</li>
+                </ol>
+                <p>Також компанія щорічно випускає лімітовані лінійки. Спирт розливають із 1–5 ретельно відібраних бочок. Наприклад, Five Virtues — колекція, присвячена п'яти сполучним життєвим компонентам: дереву, вогню, землі, металу, воді.</p>
+                <p>Лінійка French Collection — обмежений випуск 2021 року. Спирт розлили по дубових бочках у 2008 році. Наприкінці дистилят витримували в ємностях з-під французьких вин:</p>
+                <ul>
+                    <li>Монбазіяк;</li>
+                    <li>Сотерн;</li>
+                    <li>Ривальт.</li>
+                </ul>
+                <p>Ексклюзивний реліз Tomatin Port Edition, що відбувся у 2022 році, знайомить з палітрою португальських вин:</p>
+                <ul>
+                    <li>The Port — на смак як шварцвальдський торт, але пом'якшений солодкістю ожини, малини, вишні;</li>
+                    <li>The Moscatel — солодкий вираз з інтенсивними нотами мармеладу, солоної карамелі, імбиру та анісу;</li>
+                    <li>The Madeira — напій з освіжальним ароматом лимона та меду, який змінюється солодкими запеченими яблуками.</li>
+                </ul>
+                <p>У 2023 році можна купити віскі Tomatin, який переносить в сонячну Італію. Лінійка поєднує три позиції: The Amarone, The Barolo, The Marsala.</p>
+                <h2>Як вибрати віскі Томатін</h2>
+                <p>Для швидкого пошуку згрупуйте продукцію за допомогою основних фільтрів:</p>
+                <ul>
+                    <li>Витримка. Що триваліша витримка, то м'якший і насиченіший смак. Ціна на витриманий віскі Tomatin вища, ніж на дистилят із мінімальним терміном дозрівання до п'яти років.</li>
+                    <li>Смак. Основний дескриптор — легкий фруктовий шлейф. Але також можна знайти продукцію з приємними деревними чи пряними відтінками.</li>
+                    <li>Міцність. Мінімальний відсоток алкоголю — 40. За бажанням виробника градус підвищується.</li>
+                </ul>
+                <p>Якщо ви шукаєте віскі Tomatin на подарунок, зверніть увагу на позиції в акуратній подарунковій упаковці. Також доступний різний об'єм: від 50 мл до 0,7 літра.</p>
+                <h2>Чому вигідно купити віскі Tomatin у маркеті алкогольних штук MAUDAU</h2>
+                <p>
+                    Інтернет-магазин пропонує широкий асортимент алкоголю оригінального походження. Власний імпорт відкриває доступ до ексклюзивних новинок. Постійні акції та знижки на малий гурт знижують підсумкову ціну віскі Томатін. Безкоштовна
+                    доставка від певної суми — додатковий бонус. Продукцію доставить кур'єр у визначений час або один із поштових операторів — «Нова Пошта» чи «Укрпошта». Якщо важко визначитися, зверніть увагу на рекомендації та добірки від досвідчених
+                    сомельє.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хрещений батько" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Godfather.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хрещений батько</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=amareto-3">Лікер Амаретто</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Класичний коктейль на базі віскі із додаванням Амаретто. Назвою завдячує легендарному твору «Хрещений батько». Має мигдальний аромат і приємний післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хрещений батько</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландського віскі</li>
+                            <li>25 мл лікеру Амаретто</li>
+                            <li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть рокс (або будь-який келих олд-фешн) кубиками льоду до верху.</li><li>Налийте в келих 25 мл лікеру Амаретто та 50 мл шотландського віскі.</li><li>Перемішайте барною ложкою. Бажано не дробити лід — це знижує міцність напою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хайбол" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Highball.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хайбол</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=highland">Односолодовий віскі з Хайленду</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=revenevyi">Ревеневий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=polunytsia-12">Полуничний сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li>
+                            <li>Полуниця</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хайбол — енергійний та освіжальний коктейль. Міцність віскі пом'якшує солодкий полуничний сироп, а ревінь додає пікантний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хайбол</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл односолодового віскі з Хайленду</li>
+                            <li>5 мл ревеневого лікеру</li>
+                            <li>30 мл полуничного сиропу</li>
+                            <li>150 мл содової</li>
+                            <li>20 г полуниці</li>
+                            <li>кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть високий келих хайбол кубиками льоду догори.</li><li>Налийте 30 мл полуничного сиропу та додайте 5 мл ревеневого лікеру.</li><li>Додати 30 мл односолодового віскі з Хайленду.</li><li>Доверху долийте содову та обережно розмішайте високою ложечкою.</li><li>Прикрасьте напій крупно нарізаною полуницею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Віскі з вишнею" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Whiskey_with_cherry.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Віскі з вишнею</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=vyshnia-21">Вишневий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                            <li>Лимон</li>
+                            <li>Коктейльна вишня червона</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Популярний і відомий коктейль із незвичайним поєднанням вишні та віскі. Ягідні нотки чудово доповнюють міцний шотландський напій і згладжують його гіркуватість.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Віскі з вишнею</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландського віскі</li><li>130 мл вишневого соку</li><li>20 мл лимонного соку</li><li>20 г лимона (скибочка)</li><li>коктейльна червона вишня</li><li>кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих хайбол кубиками льоду майже до верху.</li><li>Налийте 20 мл лимонного соку та 50 мл шотландського віскі.</li><li>Акуратно влийте догори 130 мл вишневого соку та перемішайте коктейльною ложкою.</li><li>Прикрасьте келих скибочкою лимона та коктейльною вишнею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кров і пісок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Blood-and-Sand.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кров і пісок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=vyshnevyi">Вишневий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                            <li>Апельсинова цедра</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Натхненням для коктейлю «Кров і пісок» стало однойменне німе кіно. Поєднання віскі, червоного вермуту та апельсинового соку символізує пісок арени після кориди. Напій має солодкий фруктовий присмак із нотами віскі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кров і пісок</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл шотландського віскі</li><li>25 мл червоного вермуту</li><li>25 мл вишневого лікеру</li><li>25 мл апельсинового соку</li><li>цедра апельсина</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 25 мл апельсинового соку та стільки ж вишневого лікеру.</li><li>Додайте 25 мл червоного вермуту та влийте 25 мл віскі.</li><li>Заповніть шейкер кубиками льоду та збийте всі інгредієнти.</li><li>Налийте через стрейнер в охолоджений келих типу «шампанське блюдце».</li><li>Прикрасьте за бажанням апельсиновою цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Вишневий сауер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cherry-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Вишневий сауер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=vyshnia-21">Вишневий сік</a></li>
+                            <li>Білок перепелиного яйця</li>
+                            <li>Апельсин</li>
+                            <li>Коктейльна вишня червона</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишневий сауер — м'який фруктовий коктейль, в якому добре розкривається смаковий букет віскі. Збита білкова піна надає оригінального вигляду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Вишневий сауер</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландського віскі</li><li>20 мл цукрового сиропу</li><li>30 мл вишневого соку</li><li>15 мл лимонного соку</li><li>25 мл білка з перепелиного яйця</li><li>40 г апельсина</li><li>коктейльна вишня</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Доверху наповніть келих-рокс кубиками льоду.</li><li>Налийте в шейкер білок перепелиного яйця, 15 мл лимонного та 30 мл вишневого соку.</li><li>Додайте 20 мл цукрового сиропу та 50 мл шотландського віскі.</li><li>Наповніть шейкер льодом і ретельно змішайте інгредієнти.</li><li>Перелийте через барне сито в келих.</li><li>За бажанням додайте часточку апельсина і прикрасьте коктейльною вишнею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
