@@ -1,0 +1,766 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Чача — крепкий спиртной напиток, который производят в Грузии. Второе название — виноградная водка. Чачу считают разновидностью бренди. Основной компонент — жмых. Так называют остатки от винограда. Напиток отличается прозрачным
+                    цветом. Желтый оттенок указывает на окрашивание натуральными красителями, зачастую — перегородками от грецких орехов.
+                </p>
+                <h3>Вкусо-ароматические заметки</h3>
+                <p>Вкус — мягкий и сбалансированный. Аромат — сладкий, с выразительным фруктовым шлейфом.</p>
+                <h2>История и география появления чачи</h2>
+                <p>Виноделие на территории Грузии насчитывает около 8 000 лет. Дистилляция восходит к VII веку. Вероятно, с того времени в стране появилась чача — культовая виноградная водка.</p>
+                <p>Изначально напиток готовили в домашних условиях крестьяне. Не менее активно дистиллят производили в монастырях. В качестве основного компонента использовали незрелый или дикий виноград.</p>
+                <p>Сейчас крепкий спиртной напиток выпускают на современных винокурнях. Виноград — не единственный возможный ингредиент. Чача, заказать которую можно в интернет-магазине MAUDAU, также содержит:</p>
+                <ul>
+                    <li>инжир;</li>
+                    <li>мандарин;</li>
+                    <li>апельсин;</li>
+                    <li>эстрагон.</li>
+                </ul>
+                <p>В 2011 году чачу зарегистрировали как официальный продукт, производимый только в Грузии.</p>
+                <h2>Как изготавливают чачу</h2>
+                <p>Производство не регламентируют. Все зависит от конкретного производителя. Процесс объединяет несколько этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Зачастую используют виноград «ркацители», «изабелла», «качич». Подходит только жмых — гроздья, вместе с гребнями и отжимками, которые остаются после винного производства.</li>
+                    <li>Брожение. К жмыху добавляют дрожжи. Зачастую прибегают к диким штаммам. Ферментация длится минимум неделю. На выходе получают брагу.</li>
+                    <li>
+                        Дистилляция. Проходит в классических медных перегонных кубах. На маленьких предприятиях до сих пор используют медный чан, который называют сосудом. Из него выводят трубки. Для закупорки отверстий используют кукурузную муку,
+                        смешанную с водой. Крепкий спиртной напиток дистиллируют дважды. Чачу, приготовленную в регионах Самегрело-Верхняя-Сванети и Гурия, перегоняют трижды. Готовый напиток разбавляют водой до крепости 40%.
+                    </li>
+                    <li>Выдержка. В ход идет кавказский дуб. Реже применяют акацию, вишню, шелковицу. Созревание привносит шлейф согревающих специй.</li>
+                </ol>
+                <p>Бутылка чачи, которую можно заказать в интернет-магазине MAUDAU, может производиться как на крохотных семейных винокурнях, так и на промышленных предприятиях.</p>
+                <h3>Чем чача отличается от водки и самогона</h3>
+                <p>Несмотря на схожий процесс изготовления, между напитками существует разница. Чача — напиток, который не проходит очистку, в отличие от водки. Что касается самогона, то:</p>
+                <ol>
+                    <li>Чачу готовят из винограда. Самогон сбраживают на разных сельскохозяйственных культурах.</li>
+                    <li>В процессе изготовления грузинской виноградной водки не используют сахар.</li>
+                    <li>Самогон редко выдерживают для раскрытия дополнительных вкусо-ароматических характеристик. Зачастую его пьют сразу после приготовления.</li>
+                </ol>
+                <h2>Как правильно пить чачу</h2>
+                <p>Выделяют три основных способа:</p>
+                <ol>
+                    <li>
+                        Классический. Чачу разливают по маленьким стопкам. Порция составляет 30–50 мл. Напиток подают при + 15–18 ºC. Если чача приобретена по низкой стоимости, предварительно охладите напиток. Тогда вкусо-ароматический букет полностью
+                        раскроется.
+                    </li>
+                    <li>Грузинский. На западе виноградную водку закусывают сладким, а на востоке — соленостями. Также чачу пьют утром, особенно в холодную пору года.</li>
+                    <li>Абхазский. Чачу подают как аперитив. Интересно, что после этого предлагают не сет закусок, а домашнее вино.</li>
+                </ol>
+                <p>Грузинскую виноградную водку пьют без добавок. Дистиллят гармонично раскрывается при смешивании с виноградно-ягодными соками и ликерами. Этот момент лег в основу классических коктейлей вроде «Тбилиси Фикс» и «Грузинский персик».</p>
+                <p>
+                    Что касается закусок, подходящих к чаче, то остановитесь на традиционных вариантах: овощи-гриль, шашлык из баранины, люля-кебаб, хинкали. Также можно преподнести тарелку квашенины. Пикантный вкус виноградной водки выгодно сочетается
+                    с кукурузными лепешками, приправленными сыром.
+                </p>
+                <h2>Как выбрать чачу</h2>
+                <p>Когда ищете подходящий вариант, обращайте внимание на:</p>
+                <ol>
+                    <li>Крепость. Зачастую процент алкоголя стандартный — 40%. Однако чача, купить которую можно в интернет-магазине MAUDAU, может иметь повышенный градус. Пример — продукция GWS, крепость которой составляет 42%.</li>
+                    <li>Емкость. Продукцию реализуют в стандартных объемах — 0,5 или 0,7 литра.</li>
+                    <li>Выдержку. Срок созревания составляет до пяти лет. Если чачу выдерживали, развивается карамельно-древесный шлейф, который хорошо согревает.</li>
+                </ol>
+                <p>
+                    Новичку оптимально остановиться на проверенных позициях. Один из вариантов — Chateau Mukhrani Chacha. Купаж состоит из девяти виноградных сортов. Вкус — насыщенный, с интенсивными фруктовыми оттенками. Аромат — стойкий, с акцентом
+                    на белых цветах. Финиш — с аккордами груш и жареного миндаля.
+                </p>
+                <h3>Какую торговую марку выбрать</h3>
+                <p>В онлайн-каталоге MAUDAU представлено свыше 20 вариантов чачи от производителей с разных регионов Грузии:</p>
+                <ul>
+                    <li>Askaneli Brothers;</li>
+                    <li>Chateau Mukhrani;</li>
+                    <li>Iveriuli;</li>
+                    <li>Marani;</li>
+                    <li>Vellevine.</li>
+                </ul>
+                <p>
+                    Бренд во многом влияет на вкусо-ароматическую композицию. Например, GWS предлагает медовую версию, которую перегоняют с помощью сот. Торговая марка Vardiani выпускает не только классический напиток, но и золотую или серебряную чачу.
+                    Первый вариант — дистиллят, состаренный в дубовых бочках. Второй указывает на то, что в составе — только жмых от винограда «ркацители».
+                </p>
+                <h2>Почему выгодно купить чачу в Украине в интернет-магазине MAUDAU</h2>
+                <p>
+                    Маркет алкогольных штук MAUDAU предлагает оригинальную продукцию. Благодаря собственному налаженному импорту на чачу цены остаются доступными, а покупатели получают доступ к уникальным предложениям и позициям в подарочных упаковках.
+                    После выбора напитка достаточно указать подходящий вариант оплаты и доставки. Если хотите сэкономить, не забывайте о скидке на малый опт и акциях. Также отслеживайте позиции, которые доставляют бесплатно, — их перечень постоянно
+                    меняется.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чача с вермутом" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chacha_with_vermouth.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чача с вермутом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=chacha">Чача</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li>
+                            <li>Цитрусовая наливка</li>
+                            <li>Цедра лимона</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нестандартный тандем чачи и вермута запоминается крепостью и легким ароматом винограда. В послевкусии ощущаются цитрусовые нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Чача с вермутом</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл чачи</li><li>50 мл красного вермута</li><li>50 мл цитрусовой наливки</li><li>Цедра лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите заранее креманку или бокал для мартини.</li><li>Уложите на дно бокала несколько кубиков льда.</li><li>Налейте 50 мл красного вермута и 50 мл цитрусовой наливки.</li><li>Добавьте 100 мл чачи и аккуратно перемешайте барной ложкой.</li><li>Приукрасьте коктейль лимонной цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чача с персиковым ликером" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chacha_with_peach_liqueur.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чача с персиковым ликером</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=chacha">Чача</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=persykovyi-3">Персиковый ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль на базе крепчайшей чачи, смягченной сладким фруктовым ликером. Персиковый аромат придает напитку летнего очарования и легкости.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Чача с персиковым ликером</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>80 мл чачи</li><li>30 мл персикового ликера</li><li>20 мл лимонного сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в шейкер немного колотого льда.</li><li>Налейте 80 мл чачи и 20 мл лимонного сока.</li><li>Добавьте 30 мл персикового ликера.</li><li>Деликатно перемешайте все ингредиенты.</li><li>Процедите коктейль через барное сито в охлажденный бокал-коллинз.</li><li>Декорируйте бокал ломтиком персика.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чача с яйцом и клубникой" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chacha_with_egg_and_strawberries.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чача с яйцом и клубникой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=chacha">Чача</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=polunychnyi">Клубничный ликер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                            <li>Яйцо</li>
+                            <li>Клубника</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Эта разновидность классического сауэра готовится с чачей. Крепкий виноградный напиток органично сочетается с ягодным ликером, а взбитый белок придает коктейлю оригинальный вид.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Чача с яйцом и клубникой</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл чачи</li><li>20 мл клубничного ликера</li><li>Сок половины лимона</li><li>1 яйцо</li><li>2 ягоды клубники</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите лед в бокал для подачи и шейкер.</li><li>Налейте в шейкер 20 мл клубничного ликера и 50 мл чачи.</li><li>Добавьте сок половины лимона и белок 1 яйца.</li><li>Интенсивно взбейте напиток до образования белковой пенки.</li><li>Перелейте через стрейнер в охлажденный бокал.</li><li>Украсьте коктейль 2 ягодками клубники на шпажке.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чача с фруктовыми соками" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chacha_with_fruit_juices.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чача с фруктовыми соками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=mandaryn-9">Мандариновый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=chacha">Чача</a></li>
+                            <li>Мелисса</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Отлично сбалансированный коктейль с равными пропорциями всех компонентов. Имеет яркий цитрусовый вкус и разумную крепость. Нотки чачи ощущаются в меру.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Чача с фруктовыми соками</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл мандаринового сока</li><li>40 мл грейпфрутового сока</li><li>40 мл чачи</li><li>1 веточка мелиссы</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите кубики льда в высокий бокал для подачи.</li><li>Налейте по 40 мл мандаринового и грейпфрутового соков.</li><li>Влейте к цитрусовым сокам 40 мл чачи.</li><li>Осторожно перемешайте напиток высокой барной ложкой.</li><li>Добавьте 1 веточку мелиссы и подавайте коктейль с трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">225 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
