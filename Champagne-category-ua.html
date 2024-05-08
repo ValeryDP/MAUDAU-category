@@ -1,0 +1,1006 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Ігристе вино — напій, насичений вуглекислим газом, що призводить до утворення іскристих бульбашок. Колір — білий або рожевий. Рідше зустрічаються червоні та помаранчеві позиції. Назва напою нерідко пов'язана з місцем виготовлення.
+                </p>
+                <p>
+                    Шампанське — підвид ігристого вина, що виготовляється в регіоні Шампань (Франція). Склад і процес виготовлення суворо регламентовані. Хоча назву активно використовують у різних країнах і місцевостях, включно з Україною, згідно із
+                    законом ЄС, так маркують тільки французьку продукцію, вироблену в межах Шампані.
+                </p>
+                <h2>Чим шампанське відрізняється від ігристого вина</h2>
+                <p>Відмінності стосуються:</p>
+                <ul>
+                    <li>походження;</li>
+                    <li>складу;</li>
+                    <li>технології виготовлення.</li>
+                </ul>
+                <p>
+                    Якщо ігристе вино належить до шампанського, його виробляють і розливають у пляшки в однойменному регіоні, розташованому на схід від Парижа. Клімат — вологий і прохолодний. Ґрунт насичений мінералами. Відповідно, теруар сприяє
+                    вирощуванню винограду з підвищеною кислотністю.
+                </p>
+                <h3>Який склад у шампанського</h3>
+                <p>Крім місця розташування, різниця криється в ягодах. Напій виробляють із семи дозволених сортів винограду. На практиці часто використовують тільки три:</p>
+                <ul>
+                    <li>«шардоне»;</li>
+                    <li>«піно нуар»;</li>
+                    <li>«піно меньє».</li>
+                </ul>
+                <p>Вони надають насичений і освіжальний аромат. Виноград часто змішують для досягнення складної смако-ароматичної композиції.</p>
+                <h3>Скільки градусів у шампанському</h3>
+                <p>Під час виготовлення напою застосовують класичну технологію — Methode Champenoise. Це означає, що вторинна ферментація відбувається в закоркованих пляшках, а не в металевих резервуарах. Результат — інтенсивний дріжджовий шлейф.</p>
+                <p>Фінальний штрих — вливання лікеру d'Expedition. Концентрація цукру в його складі впливає на кінцеві показники алкоголю. Міцність шампанського коливається в межах 5–18%.</p>
+                <h2>Короткий екскурс в історію ігристих вин</h2>
+                <p>
+                    Спершу причину появи бульбашок у тихих винах пов'язували з добрими і злими духами. Середньовічні виробники, особливо у Франції, вважали «ігристість» ознакою зіпсованості. Єдиний історичний регіон, де цей момент викликав гордість, —
+                    Лангедок. Перше комерційне ігристе вино можна було купити в Ліму в 1535 році.
+                </p>
+                <p>Британці першими оцінили потенціал іскристих напоїв. У той час продукцію привозили в Англію в дерев'яних бочках. Торговці потім розливали її по скляних пляшках для продажу. Незабаром місцеві відкрили для себе можливості корків.</p>
+                <p>
+                    1662 року фізик Крістофер Меррет написав статтю, в якій детально пояснив, як цукор призводить до утворення вуглекислого газу. Це один із перших офіційних документів, який підтверджує, що виробництво ігристих вин в Англії налагодили
+                    швидше, ніж у Франції.
+                </p>
+                <p>
+                    На початку XVII століття аптекарі створили потовщену пляшку з темного скла. Приблизно в той самий час традиційний метод виготовлення ігристих вин став відомий у Шампані. Ченцеві П'єру Періньйону доручили позбутися бульбашок. Через
+                    підвищений тиск пляшки шампанського довільно лопали в підвалі, запускаючи ланцюгову реакцію. Винокурні втрачали близько 25% винних запасів, а працівники носили важку залізну маску, що захищала обличчя, поки не винайшли мюзле —
+                    тонкий металевий дріт. П'єр Періньон виконав поставлене завдання, паралельно розкривши секрет шампанського.
+                </p>
+                <p>До кінця XVIII століття напій перебував на піку популярності. У той час з'являються культові торгові марки:</p>
+                <ul>
+                    <li>Ruinart;</li>
+                    <li>Taittinger;</li>
+                    <li>Lanson;</li>
+                    <li>Veuve Clicquot.</li>
+                </ul>
+                <p>
+                    У середині XIX століття Антуан Міллер представив техніку «ремюаж» — метод позбавлення шампанського від мертвих дріжджових культур. 1874 року Віктор Ламбер відкрив ферментацію, у процесі якої яблучна кислота перетворюється на
+                    молочну. Це призвело до створення культового стилю Brut.
+                </p>
+                <h2>Основні методи виробництва ігристих вин</h2>
+                <p>
+                    Подвійна ферментація ускладнює випуск продукції. Перший етап важливий для приготування тихих вин, а другий — для насичення готових напоїв вуглекислим газом. На винокурнях вдаються до двох ключових методів — «Шампенуаз» і
+                    «Шарма-Мартінотті».
+                </p>
+                <p>Перший варіант — найвитратніший, але найцінніший з погляду якості готової продукції. Якщо вирішили купити шампанське, його точно виготовили за методом «Шампенуаз». Особливості:</p>
+                <ol>
+                    <li>Виноград збирають, подрібнюють і запускають первинну ферментацію. На виході отримують тихе вино. Суміш нейтральних вин називають «кюве», що представляє кінцевий купаж.</li>
+                    <li>
+                        Вторинне бродіння запускають за допомогою вливання тиражного лікеру — суміші цукру і дріжджів. Вино переливають у пляшку і закривають кронен-корком. Вторинна ферментація підвищує відсоток алкоголю, а також сприяє утворенню CO₂.
+                    </li>
+                    <li>Під час витримки пляшка шампанського регулярно перевертається. Мертві дріжджі збираються біля горлечка.</li>
+                    <li>Наступний етап — дегоржаж. Горлечко поміщають у рідкий азот. Кронен-корок відкривають, а залишки мертвих дріжджів вилітають.</li>
+                    <li>Вільний простір заповнюють сумішшю вина і цукру, яку називають лікер Exposition. Пляшку шампанського повторно закорковують, покривають мюзле і маркують.</li>
+                </ol>
+                <p>Метод «Шарма-Мартінотті» — другий за поширеністю. Різниця полягає в тому, що вторинне бродіння відбувається у величезних металевих резервуарах, а не в закоркованих пляшках. Результат — напій із насиченим фруктовим профілем.</p>
+                <p>
+                    Після завершення основного виробничого процесу продукцію фільтрують, дозують і розливають без витримки. Оскільки процес виготовлення спрощений, ціна ігристого вина знижується. Коли готують бюджетну продукцію, вдаються до методу
+                    штучної карбонізації.
+                </p>
+                <h2>Різновиди ігристих вин і шампанського</h2>
+                <p>Основна класифікація спирається на відсоток залишкового цукру. Найпоширеніший клас — Brut. Кількість цукру становить 7–12 г/л. Також виділяють:</p>
+                <ul>
+                    <li>Brut Nature — 0 г/л;</li>
+                    <li>Extra Brut — 0–6 г/л;</li>
+                    <li>Extra Dry — 13–17 г/л;</li>
+                    <li>Dry — 18–32 г/л;</li>
+                    <li>Demi Sec — 33–50 г/л;</li>
+                    <li>Doux — від 50 г/л.</li>
+                </ul>
+                <p>
+                    Кожна пляшка шампанського має різний тиск. Виділяють категорії Frizzante і Spumante. Перший варіант вирізняється маленькими бульбашками. Він характерний для ігристих вин «Асті» і «Просеко». Позначка Frizzante вказує на стійку піну,
+                    характерну для шампанського. Підвищений тиск також зустрічається в напоях, вироблених за методом «Шампенуаз».
+                </p>
+                <p>
+                    Що стосується шампанського, то його класифікують залежно від складу. Виноград збирають на різних плантаціях, що впливає на якість. Виділяють категорії Premier Cru і Grand Cru. На останнє шампанське найвища ціна, оскільки площа
+                    виноградників становить до 50 гектарів. Також впливає сортовий склад:
+                </p>
+                <ol>
+                    <li>Blanc de Blancs. У складі — 100% винограду «шардоне». Колір — білий. Потенціал до витримки — високий.</li>
+                    <li>Blanc de Noirs. Рідкісний сорт шампанського, який виробляють із темного винограду.</li>
+                </ol>
+                <p>Якщо ігристе вино виробили з урожаю одного року, ставлять позначку Millesime. Якщо в складі — купаж різного віку, продукцію маркують як Non-vintage.</p>
+                <h2>Регіони виготовлення ігристих вин і відомі виробники</h2>
+                <p>Найпопулярніший приклад ігристого вина у світі — шампанське. Його випускають Moet &amp; Chandon, Laurent Perrier, Louis Roederer.</p>
+                <p>
+                    Якщо напій виготовили за методом «Шампенуаз», але за межами регіону Шампань — це Champagne Cremant. Назва в перекладі з французької означає «вершковий». Сортовий склад відрізняється. У купажі нерідко присутній виноград «каберне
+                    фран» і «совіньйон блан». Смак — легкий і свіжий, з акордами лимона і лайма. Більшість шампанського Cremant походить із Долини Луари. Бренди:
+                </p>
+                <ul>
+                    <li>Marcel Cabelier;</li>
+                    <li>LaCheteau;</li>
+                    <li>Maison du Vigneron.</li>
+                </ul>
+                <p>Також у Франції виробляють ігристе вино PetNat. Напій розливають по пляшках до моменту закінчення ферментації. Результат — каламутний осад, який видніється на дні.</p>
+                <p>За обсягами виробництва не відстає Італія, яка випускає:</p>
+                <ol>
+                    <li>
+                        Prosecco. Класичний варіант, вироблений за методом «Шарма-Мартінотті». Смак — м'який, з легкими квітково-мінеральними відтінками. Ігристе вино «Просеко» виробляють із сорту «глера». Найчастіше його випускають у сухому стилі.
+                        Виробники: San Mare, Piccini, San Martino.
+                    </li>
+                    <li>
+                        Lambrusco. У складі — однойменний сорт винограду. На його основі виробляють червоне ігристе вино. Напій вирізняється пікантними нотками, які змінюються солодкістю лісових ягід. Продукт випускають у різних провінціях
+                        Емілії-Романьї. Торгові марки: Riunite, Abbazia, Chiarli.
+                    </li>
+                    <li>Asti. Напій повністю виготовлений із винограду «мускат блан». Смаковий букет розкривається акордами персика, груші, апельсина. Бренди: Martini, Mondoro, Bosio.</li>
+                    <li>
+                        Fragolino. Червоне ігристе вино, яке походить із регіону Венето. Його готують із винограду «ізабелла» — штучно виведеного сорту. Напій виконують у солодкому стилі. Домінантні акценти: полуниця, малина, ожина, вишня. Виробники:
+                        Fiorelli, Fratelli, Entre.
+                    </li>
+                    <li>
+                        Franciacorta. Ігристе вино, вироблене в провінції Брешіа. Єдиний напій в Італії, який виготовляють за методом «Шампенуаз». Це додає смако-ароматичний палітрі інтенсивного дріжджового шлейфу. Бренди: Contadi, Barone Pizzini, Lo
+                        Sparviere.
+                    </li>
+                </ol>
+                <p>
+                    Іспанія відома ігристими винами Cava і Corpinnat. Культову «Каву» виробляють у Каталонії. Смак — сухий, але з яскраво вираженою кислинкою. Це пояснюється використанням сортів «парельяда», «макабео», «шарелло». Бренди: Gran Baron,
+                    Jaume Serra, Bach.
+                </p>
+                <p>«Корпіннат» — категорія ігристих вин, витриманих від 18 місяців. У складі — виноград, вирощений і зібраний у Пенедесі. Торгові марки: Nadal, Recaredo, Torello.</p>
+                <p>Також в інтернет-магазині MAUDAU доступні до замовлення ігристі вина, вироблені в Австрії, Німеччині, Грузії, Молдові, Україні.</p>
+                <h2>Як вибрати ігристе вино</h2>
+                <p>Асортимент настільки різноманітний, що новачкові легко заплутатися. Для швидкого пошуку згрупуйте продукцію за одним із фільтрів:</p>
+                <ol>
+                    <li>Колір. Класика — біле або червоне ігристе вино. Рожеве розкривається ніжними ягідними відтінками.</li>
+                    <li>Міцність. Крім стандартних варіантів, в онлайн-каталозі MAUDAU також можна замовити шампанське, в якому вміст алкоголю наближається до 0%.</li>
+                    <li>Сорт винограду. Темний виноград додає підвищеної концентрації танінів і пікантного смаку. Зелений — свіжий аромат і хрустку текстуру.</li>
+                </ol>
+                <p>Також звертайте увагу на ємність. Наприклад, мініпляшечки — прекрасний варіант для поповнення мінібару.</p>
+                <p>
+                    Відповідь на питання, скільки коштує шампанське, випливає з перелічених вище критеріїв. Наприклад, витримане ігристе вино обійдеться дорожче, ніж молодий напій. Якщо в складі — виключно виноград «шардоне», це також підвищує кінцеву
+                    вартість.
+                </p>
+                <h2>Чому вигідно купити шампанське в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU пропонує оригінальну продукцію. Налагоджений імпорт не тільки відкриває доступ до ексклюзивних товарів, а й знижує ціну. Якщо хочете вразити іменинника, зупиніться на напоях у подарункових упаковках.
+                    Оскільки на шампанське вартість доволі висока, скористайтеся знижкою на малий гурт, а також стежте за акціями.
+                </p>
+            </div>            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шампань айс" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Champagne_Ice.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шампань айс</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li>Морозиво</li>
+                            <li>Полуниця</li>
+                            <li>Мʼята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шампань айс — щось середнє між коктейлем і десертом. Кисластий брют ідеально підходить до солодкого пломбіру. Завершують композицію нотки свіжої полуниці.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шампань айс</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шампанського (брют або сухе)</li><li>100 г морозива (пломбір)</li><li>50 г полуниці</li><li>2-3 листочки м'яти</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте полуницю великими шматочками, а м'яту подрібніть.</li><li>Змішайте в коктейльному келиху полуницю, м'яту та 100 г морозива (пломбір).</li><li>Обережно влийте 50 мл шампанського (брют або сухе).</li><li>Подавайте коктейль із трубочкою та ложкою. Ложка стане в пригоді для полуниці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні Рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Royale_lemon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні Рояль</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile">Білий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li>Лимон</li>
+                            <li>Мʼята</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний фіз із літнім цитрусовим смаком і м'ятними нотками. Білий вермут і шампанське ідеально поєднуються в цьому класичному коктейлі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні Рояль</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл білого вермуту</li><li>75 мл шампанського</li><li>1 четвертинка лимона</li><li>1 г м'яти</li><li>160 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть кулястий келих для вина догори кубиками льоду.</li><li>Налийте 75 мл білого вермуту та 75 мл шампанського.</li><li>Акуратно розмішайте напій коктейльною ложкою — він може пінитися.</li><li>Прикрасьте коктейль четвертинкою лимона та листям м'яти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Чорне і біле" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Black_and_White.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чорне і біле</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li><a href="https://maudau.com.ua/category/kava/typ_86=u-zernakh">Кава в зернах</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ефектний тандем кавового лікеру та шампанського. Ігристе з кавовим присмаком — це дуже незвичайно та смачно. Як прикраса підійдуть кавові зернятка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чорне і біле</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл кавового лікеру</li><li>120 мл шампанського</li><li>3 г зерен кави</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть подовжений вузький келих-флюте.</li><li>Налийте в келих 30 мл кавового лікеру.</li><li>Обережно долийте 120 мл шампанського.</li><li>Прикрасьте коктейль зернами кави та подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Золотий Оксамит" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Golden_Velvet.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Золотий Оксамит</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Незвичайний лонг із суперечливим поєднанням пива та шампанського. При цьому коктейль має гарний вигляд та оригінальний рідкісний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Золотий Оксамит</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>100 мл шампанського</li><li>25 мл ананасового соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть шампанське.</li><li>Налийте у великий пивний келих 100 мл холодного шампанського.</li><li>Додайте 25 мл ананасового соку та 100 мл світлого пива.</li><li>Змішайте інгредієнти коктейльною ложкою. Не додавайте кригу.</li><li>Коктейль готовий — подавайте його з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Персиковий серпанок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Peach_haze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Персиковий серпанок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Персик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шампанське та персики — безпрограшний варіант. А якщо до них додати коньяк, то вийде вишуканий, в міру міцний і солодкий коктейль. Персикова димка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Персиковий серпанок</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл коньяку</li><li>25 мл апельсинового соку</li><li>50 мл шампанського</li><li>Персик</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у блендер м'якоть 1 персика і влийте 25 мл апельсинового соку.</li><li>Додайте 25 мл коньяку та збийте до однорідного стану.</li><li>Перекладіть отримане пюре в келих.</li><li>Акуратно долийте в келих 50 мл шампанського та подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Північне сяйво" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Northern_Lights.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Північне сяйво</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Напій із вибуховим поєднанням горілки та шампанського і м'яким цитрусовим післясмаком лимонного соку. За однією з версій, легендарний коктейль названо на честь однойменного атмосферного явища.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Північне сяйво</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки</li><li>50 мл лимонного соку</li><li>1 столова ложка цукру</li><li>100 мл шампанського</li><li>Лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть льодом ємність для змішування напоїв.</li><li>Покладіть 1 столову ложку цукру і гілочку розмарину (за бажанням).</li><li>Налийте 50 мл лимонного соку і перемішуйте 20 секунд.</li><li>Влийте 50 мл горілки і ще раз розмішайте коктейльною ложкою.</li><li>Процідіть суміш через сито-стрейнер в охолоджений коктейльний келих.</li><li>Тонкою цівкою акуратно влийте 100 мл шампанського і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шипучий ківі" src="https://photo.maudau.com.ua/Landing/cocktails/incat/kiwi-smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шипучий ківі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li>Ківі</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий і свіжий коктейль на базі шампанського. Пюре з ківі надає напою приємної кислинки та красивого зеленого кольору. До складу не входить лід, тому ігристе треба заздалегідь охолодити.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шипучий ківі</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл апельсинового соку</li><li>30 мл шампанського</li><li>1 ківі</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистіть 1 ківі та покладіть шматочки в блендер.</li><li>Налийте 30 мл апельсинового соку і збийте до однорідності.</li><li>Перекладіть суміш в охолоджений коктейльний келих.</li><li>Акуратно долийте 30 мл шампанського.</li><li>Прикрасьте келих кружечком ківі та подавайте з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Поцілунок Мерілін" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Marylin_kiss.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Поцілунок Мерілін</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/solodkist_3=sukhe-3">Сухе шампанське</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Чарівний солодкуватий коктейль, такий самий млосний, як знаменита Мерилін Монро, на честь якої він названий. Комбінація кальвадосу і шампанського виходить гармонійною і м'якою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Поцілунок Мерілін</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл кальвадосу</li><li>150 мл сухого шампанського</li><li>5 мл гренадину</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть келих для мартіні.</li><li>Насипте в шейкер лід і додайте 50 мл кальвадосу.</li><li>Налийте 150 мл сухого шампанського і 5 мл гренадину.</li><li>Змішайте всі інгредієнти в шейкері.</li><li>Перелийте напій через барне ситечко в келих.</li><li>Можна прикрасити коктейль ягідкою полуниці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">80 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">1.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
