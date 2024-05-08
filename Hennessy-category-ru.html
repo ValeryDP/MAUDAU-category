@@ -1,0 +1,1003 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Hennessy — культовая торговая марка, под которой выпускают коньяк во Франции. Коньячный дом внесен в «большую четверку», наряду с торговыми марками Martell, Courvoisier и Remy Martin. Вместе они производят около 85% коньяков,
+                    доступных к заказу по миру. Продукцию относят к ультра-премиум классу, поэтому на «Хеннесси» цена достаточно высокая.
+                </p>
+                <p>Компания не только выпускает коньяк, но и позиционирует себя как негоциант. Это означает, что на мощностях винокурни разливают продукцию менее ходовых торговых марок.</p>
+                <h2>Немного из истории коньяка «Хеннесси»</h2>
+                <p>
+                    Торговая марка восходит к 1765 году. Винокурню открыл Ричард Хеннесси — якобит, который после ранения переселился в городок Коньяк, что в департаменте Шаранта. Это первая торговая марка, которая наладила продажу коньячных спиртов в
+                    стеклянных бутылках, а не в бочках. В 1794 году купить коньяк Hennessy можно было не только во Франции, но и в Северной Америке.
+                </p>
+                <p>
+                    В 1817 году принц-регент Георг IV, который вскоре занял королевский трон, заказал особый продукт. Его назвали VSOP. С того времени название появляется при классификации коньячных спиртов. Спустя 48 лет правнук основателя Моррис
+                    Хеннесси представил обновленную классификацию по количеству звезд. Позже звездочки заменили буквами.
+                </p>
+                <p>В 1971 году компания объединила производство с Moët &amp; Chandon. С 1987 года бренд входит в портфолио известного производителя предметов роскоши — французского холдинга LVMH.</p>
+                <h2>Как производят коньяк Hennessy</h2>
+                <p>В основе — виноград Ugni Blanc. Уникальную продукцию выпускают исключительно в регионе Коньяк. Прежде чем превратиться в крепкий спиртной напиток, виноград проходит шесть основных этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Виноград собирают, очищают, прессуют. Сок смешивают с дрожжами, запуская ферментацию.</li>
+                    <li>Дистилляция. Перегонку выполняют в классических медных перегонных кубах Шаранта. Коньяк «Хеннесси» проходит двойную дистилляцию.</li>
+                    <li>Выдержка. Спирт выдерживают в разных бочках, проводя регулярную ротацию. Возраст самого молодого дистиллята в составе ложится в основу классификации.</li>
+                    <li>Дегустация. Комиссия оценивает подборку коньячных спиртов. Подходящий вариант переливают в маленькую бутылочку, которую отправляют в так называемую библиотеку.</li>
+                    <li>Смешивание. Если решили купить Hennessy, знайте, что это всегда купаж — напиток состоит из отборных коньячных спиртов. Это объясняет неизменно сбалансированный фирменный букет.</li>
+                    <li>Розлив. Процесс осуществляют на современном заводе. Человеческое вмешательство минимизировано.</li>
+                </ol>
+                <h2>Классификация и разновидности коньяка «Хеннесси»</h2>
+                <p>Продукцию классифицируют по возрасту. Классическая линейка представлена позициями:</p>
+                <ol>
+                    <li>VS. Рецепт восходит к 1865 году. В составе — свыше 40 коньячных спиртов. Самому младшему — 24 месяца. Вкус — свежий, с нотами ранних фруктов.</li>
+                    <li>VSOP. Срок созревания — шесть лет. Дистиллят обволакивает нежными медовыми тонами, сменяющимися интенсивными лакричными аккордами. Финиш — фруктовый, с нотами жареного миндаля.</li>
+                    <li>XO. Выдержка составляет 20 лет. Купить этот коньяк «Хеннесси» стоит тем, кто ищет изысканную палитру, наполненную оттенками шоколада и сухофруктов. Послевкусие — согревающее, раскрывается тонами черного перца.</li>
+                    <li>Paradis. Минимальный возраст коньячных спиртов в купаже — 30 лет. Вкус — многогранный, окутывает нотами специй, включая кардамон и шиповник. Финиш — цветочный, с акцентом на сухих розах.</li>
+                </ol>
+                <p>
+                    Крепость классической линейки стандартная — 40%. Также в интернет-магазине MAUDAU можно купить коньяк «Хеннесси» из особых линеек. Хороший пример — Library. Возраст спиртов колеблется в пределах 10–12 лет. Деликатный
+                    вкусо-ароматический букет раскрывается сладкими фруктовыми аккордами, смешанными с пряными специями.
+                </p>
+                <h3>Сколько стоит Хеннесси Оригинал</h3>
+                <p>
+                    Цена зависит от выдержки, емкости, а также наличия подарочной упаковки. Мини-бутылочка объемом 50 мл обойдется от 179 грн. Если решили купить «Хеннесси» в Украине в полноразмерном формате, стоимость за 1,5 литра стартует от 3 642
+                    грн. Коллекционная продукция стоит дороже. Например, за выдержанный коньяк Paradis нужно выложить свыше 59 000 грн.
+                </p>
+                <h2>Как правильно пить коньяк Hennessy</h2>
+                <p>Если в руках — молодой дистиллят, подавайте его как аперитив. Выдержанный напиток предлагают после приема пищи — к десерту. Дегустацию коллекционных сортов проводят с минимальными закусками.</p>
+                <p>
+                    Поскольку на коньяк Hennessy стоимость не низкая, важно не испортить напиток. Подавайте дистиллят в снифтерах — стаканах с широким основанием на низкой ножке. Температура — +16–18 ⁰C. Не используйте лед. Выбор — за охлажденными
+                    камнями из вулканических пород. Если ощущается спиртуозный шлейф, разбавьте напиток водой комнатной температуры.
+                </p>
+                <p>
+                    Если решили купить «Хеннесси», попробуйте традиционную подачу с элитными сигарами. В качестве гастрономического сопровождения выбирайте канапе с икрой или паштетом, легкий салат с морепродуктами или тарелку твердых сыров. Также
+                    подходит темный шоколад. Молодой дистиллят выгодно раскрывается под аккомпанемент свежих ягод и фруктов: дыни, персика, инжира, клубники.
+                </p>
+                <p>
+                    Молодой коньяк «Хеннесси» нередко используют в коктейлях. Начните с классики — «Сазерак», «Сайдкар», «Короткий медовый месяц». Простой вариант подачи — коньяк, смешанный с сахарным сиропом и лимонным соком. Завершите подачу свежими
+                    мятными листьями.
+                </p>
+                <h2>Почему выгодно купить коньяк «Хеннесси» в Украине в интернет-магазине MAUDAU</h2>
+                <p>
+                    В онлайн-каталоге — 100% оригинальная продукция, что объясняется налаженным импортом. Прямая поставка расширяет ассортимент товаров, открывая доступ к коньякам Hennessy в подарочных упаковках и лимитированным линейкам для пополнения
+                    личной коллекции. Для оформления заказа достаточно переместить в корзину понравившийся крепкий спиртной напиток, а также указать подходящий вариант доставки и оплаты. На коньяк Hennessy цена остается конкурентной, поскольку маркет
+                    алкогольных штук MAUDAU предлагает скидку на малый опт и акции, которые регулярно обновляются.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="The Tamarindo" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The_Tamarindo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">The Tamarindo</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy Very Special</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                            <li>Пюре из тамаринда</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Незаурядный коктейль Tamarindo соединяет изысканный вкус Hennessy и экзотические нотки плодов тамаринда. Сладкий сироп уравновешивает пряную горчинку коньяка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить The Tamarindo</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл Hennessy Very Special</li><li>45 мл сахарного сиропа</li><li>30 мл пюре из тамаринда</li><li>Сок лайма</li><li>60 мл содовой воды</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в емкость для смешивания 60 мл Hennessy Very Special.</li><li>Добавьте 45 мл сахарного сиропа, 30 мл пюре из тамаринда и сок лайма.</li><li>Встряхните и перемешайте коктейльной ложкой.</li><li>Украсьте бокал окаемкой из сахара и корицы.</li><li>Отфильтруйте напиток через стрейнер в бокал.</li><li>Долейте в коктейль 60 мл содовой воды и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="The Orange Sour" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The_Orange_Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">The Orange Sour</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy Very Special</a></li>
+                            <li>Свежий сок апельсина</li>
+                            <li>Свежий лимонный сок</li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                            <li>Яичный белок</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Orange Sour — элегантный коктейль с узнаваемым дубовым привкусом Hennessy и цитрусовым послевкусием. У напитка выразительный букет и приятный аромат.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить The Orange Sour</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 доли Hennessy Very Special</li><li>0.5 доли свежего сока апельсина</li><li>Свежий лимонный сок</li><li>0.25 доли сахарного сиропа</li><li>Яичный белок</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите рокс-бокал.</li><li>Налейте в шейкер яичный белок и 0.5 доли свежего сока апельсина.</li><li>Добавьте 1.5 доли Hennessy Very Special, лимонный сок и сахарный сироп.</li><li>Наполни шейкер кубиками льда и тщательно взбейте.</li><li>Процедите коктейль через барное сито в бокал для подачи.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Privateer" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Privateer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Privateer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy Very Special</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/napii-coconaut-kokosovyi-nehazovanyi-zb-032-l">Кокосовая вода</a></li>
+                            <li>Клубника</li>
+                            <li>Свежевыжатый сок лайма</li>
+                            <li>Нектар агавы</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Privateer — интересный коктейль на базе коньяка, с экзотическими нотками кокоса и агавы. Hennessy не теряется на фоне необычных компонентов, а наоборот — раскрывает свою многогранную текстуру.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Privateer</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл коньяка Hennessy Very Special</li><li>80 мл кокосовой воды</li><li>3 ягоды клубники</li><li>15 мл свежевыжатого сока лайма</li><li>10 мл нектара агавы</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Поместите в шейкер 3 ягодки клубники и 15 мл свежевыжатого сока лайма.</li><li>Налейте 60 мл коньяка Hennessy, 80 мл кокосовой воды и 10 мл нектара агавы.</li><li>Насыпьте лед и интенсивно взбалтывайте до охлаждения.</li><li>Отфильтруйте коктейль через стрейнер в бокал-коллинз.</li><li>По желанию украсьте ягодой клубники.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="There’s Always Thyme" src="https://photo.maudau.com.ua/Landing/cocktails/incat/There_is_Always_Thyme.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">There’s Always Thyme</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy Very Special</a></li>
+                            <li>Абрикосовый сироп с медом с тимьяном</li>
+                            <li>Свежевыжатый лимонный сок</li>
+                            <li>Ореховый биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3">Ликер Amaretto</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматный коктейль There’s Always Thyme — прекрасная комбинация культового Hennessy и фруктово-медового сиропа с тимьяном. Лимонный сок добавляет свежую цитрусовую нотку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить There’s Always Thyme</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл Hennessy Very Special</li><li>30 мл абрикосового сиропа с медом с тимьяном</li><li>20 мл свежевыжатого лимонного сока</li><li>1 капля орехового биттера</li><li>Немного ликера Amaretto</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в шейкер немного льда и влейте ликер Amaretto.</li><li>Налейте 30 мл абрикосового сиропа с медом с тимьяном.</li><li>Добавьте 20 мл свежего лимонного сока и 45 мл Hennessy Very Special.</li><li>Финальная нота — 1 капля орехового биттера.</li><li>Взбейте ингредиенты и налейте через сито в бокал-рокс.</li><li>Декорируйте коктейль веточкой тимьяна.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Fleur-Di-Lis" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Fleur_Di_Lis.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Fleur-Di-Lis</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy Very Special</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Fleur-Di-Lis назван в честь королевской гербовой лилии. Простой состав подчеркивают объемные ноты коньяка Hennessy. Насыщенный сочный гренадин закрепляет приятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Fleur-Di-Lis</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл коньяка Hennessy Very Special</li><li>40 мл лимонного сока</li><li>30 мл гренадина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в шейкер лед и добавьте 40 мл лимонного сока.</li><li>Налейте 30 мл гренадина и 60 мл коньяка Hennessy Very Special.</li><li>Аккуратно смешайте все компоненты в шейкере.</li><li>Наполните стакан-рокс колотым льдом.</li><li>Процедите коктейль через стрейнер в рокс.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Hennessy Old Fashioned" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Old_Fashioned.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Hennessy Old Fashioned</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy VS</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=bitteri">Горький биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/tsukor-ocheretianyi-premiia-korychnevyi-500-h-856920">Коричневый сахар</a></li>
+                            <li>Апельсиновая цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Твист на коктейльную классику Олд фешен. Базовый вкус формируется за счет изысканного коньяка, а частичка коричневого сахара раскрывает его аромат. Биттер придает горьковатую нотку, а вода разбавляет крепость напитка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Hennessy Old Fashioned</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл Hennessy VS</li><li>2-3 капли горького биттера</li><li>Вода без газа</li><li>1 кубик коричневого сахара</li><li>Апельсиновая цедра для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в бокал-рокс кубик коричневого сахара.</li><li>Пропитайте сахар 3 каплями горького биттера и придавите мадлером.</li><li>Влейте немного воды без газа.</li><li>Наполните бокал льдом и влейте 60 мл Hennessy VS.</li><li>Аккуратно перемешайте компоненты высокой ложкой.</li><li>Украсьте коктейль апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Hennessy Sidecar" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Sidecar-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Hennessy Sidecar</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy VS</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновый ликер</a></li>
+                            <li>Лимонный фреш</li>
+                            <li>Цедра лайма</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Sidecar — крепкий сбалансированный коктейль на коньяке, с кислым цитрусовым оттенком. По легенде, он появился в Париже в конце Первой мировой войны, а название пошло от сайдкара — армейского мотоцикла с коляской.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Hennessy Sidecar</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл Hennessy VS</li><li>20 мл апельсинового ликера</li><li>20 мл лимонного фреша</li><li>Цедра лайма для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сделайте на коктейльном бокале сахарную окаемку.</li><li>Налейте в шейкер по 20 мл лимонного фреша и апельсинового ликера.</li><li>Добавьте 45 мл Hennessy VS и кубики льда.</li><li>Аккуратно встряхните напиток несколько раз.</li><li>Перелейте через стрейнер в бокал и украсьте цедрой лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Hennessy Ginger" src="https://photo.maudau.com.ua/Landing/cocktails/incat/ginger.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Hennessy Ginger</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy VS</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l">Имбирный эль</a></li>
+                            <li>Лайм или имбирь</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Главный ингредиент коктейля — Hennessy VS с узнаваемым, четко выраженным вкусом. Насыщенный имбирный эль придает композиции оригинальную пикантную ноту. Выдержанный коньяк и свежесть имбиря отлично сочетаются.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Hennessy Ginger</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл Hennessy VS</li><li>20 мл имбирный эля</li><li>Долька лайма или имбиря</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите бокал-хайбол.</li><li>Насыпьте кубики льда и налейте 50 мл Hennessy VS.</li><li>Доверху долейте 20 мл имбирного эля.</li><li>Декорируйте коктейль Hennessy Ginger ломтиками свежего имбиря и лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Hennessy Berry" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hennessy_berry.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Hennessy Berry</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/koniak-hennessy-vs-v-korobtsi-40-07-l-1631">Hennessy VS</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li>
+                            <li>Ягоды и долька лайма</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Hennessy Berry — коктейль с сочным ягодным букетом и клюквенной кислинкой. Из крепких напитков в составе только коньяк, что позволяет сполна насладиться вкусом Hennessy VS с волнующими нотками ванили и дуба.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Hennessy Berry</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл Hennessy VS</li><li>100 мл клюквенного сока</li><li>Свежие ягоды и долька лайма для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В охлажденный хайбол налейте 50 мл Hennessy VS.</li><li>Насыпьте кубики льда, чтобы заполнить бокал почти доверху.</li><li>Аккуратно добавьте 100 мл клюквенного сока.</li><li>Деликатно перемешайте напиток барной ложкой.</li><li>Украсьте коктейль долькой лайма и ягодами клюквы.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бренди сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brandy-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бренди сауэр</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy">Коньяк Hennessy</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                            <li>Белок перепелиного яйца</li>
+                            <li>Лимон</li>
+                            <li>Коктейльная вишня красная</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Необычный цитрусовый твист на коньяке. Сироп смягчает крепость Hennessy, а привкус лимонного сока добавляет свежих ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бренди сауэр</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл коньяка Hennessy</li><li>20 мл сахарного сиропа</li><li>15 мл лимонного сока</li><li>20 мл белка перепелиного яйца</li><li>10 г лимона</li><li>5 г красной коктейльной вишни</li><li>320 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в стакан-рокс кубики льда до краев.</li><li>Налейте в шейкер 20 мл белка перепелиного яйца, 15 мл лимонного сока и 20 мл сахарного сиропа.</li><li>Добавьте в напиток 40 мл коньяка Hennessy, лед и взбейте.</li><li>Перелейте коктейль через сито-стрейнер в рокс.</li><li>Украсьте стакан долькой лимона и коктейльной вишней.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">239 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">10 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
