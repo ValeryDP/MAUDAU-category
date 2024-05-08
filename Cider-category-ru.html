@@ -1,0 +1,897 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Сидр — алкогольный напиток, который готовят посредством сбраживания яблочного сока. Иногда к яблокам добавляют грушу или айву. Содержание алкоголя варьируется в пределах 2–8%. По внешнему виду слабоалкогольный напиток напоминает
+                    игристое вино, так как на стадии брожения выделяется углекислый газ. Газированный напиток — распространенный вариант. Тихую версию производят редко.
+                </p>
+                <h2>Как появился сидр</h2>
+                <p>
+                    Происхождение напитка отслеживают к временам Юлия Цезаря. Когда тот пытался вторгнуться в Британию в 55 г. до н.э., он обнаружил, что местные кельты ферментируют яблоки. Полководец провез открытие через континентальную Европу вместе
+                    с отступающими войсками.
+                </p>
+                <p>
+                    Также сидр упоминается в «Капитулярии о поместьях», написанным Карлом Великим примерно в 800 году. С XII века центром производства стала Нормандия. Спустя 100 лет напиток активно распространяли по Англии. Даже пиво уступило
+                    первенство сидру, особенно в осенне-зимнее время.
+                </p>
+                <p>Первый патент на выпуск слабоалкогольного напитка принадлежал Королевству Наварра. Позже дворянин Гийом Дюрсю привез рецепт во Францию, где также способствовал выращиванию баскских сортов яблок.</p>
+                <h2>Как производят сидр</h2>
+                <p>Процесс состоит из трех этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Яблоки собирают, сортируют, моют. Далее их измельчают до состояния пюре. Чтобы извлечь сок из мякоти, ее прессуют.</li>
+                    <li>
+                        Брожение. Холодный яблочный сок перекачивают в резервуар для брожения. Иногда ферментацию осуществляют непосредственно в стеклянных бутылках. Тогда на дне появляется мутный осадок. Брожение длится от нескольких дней до месяцев.
+                    </li>
+                    <li>
+                        Розлив. Когда сидр готов, его фильтруют и пастеризуют. Конвейер перекачивает напиток в стеклянную бутылку, которую закрывают крышкой. Продукт маркируют и отправляют в продажу. Сидр — напиток, который не выдерживают. Он имеет
+                        низкий потенциал к хранению.
+                    </li>
+                </ol>
+                <h3>Разница между сидром и яблочным вином</h3>
+                <p>
+                    Компонент тот же — яблоки. Различия кроются во вкусовых характеристиках и применяемых техниках. Для изготовления вина используют яблоки сладких сортов, что приводит к повышению крепости. Напиток подвергают выдержке. Настоящий сидр
+                    готовят из разных комбинаций яблок. Нередко используют кислые или острые. Готовый продукт употребляют молодым.
+                </p>
+                <h2>Основные разновидности сидра</h2>
+                <p>В центре внимания — исторически сложившиеся стили, которые опираются на применяемые технологии и сортовые различия. Ключевые категории:</p>
+                <ol>
+                    <li>
+                        Современный сидр. Напиток, изготовленный из кулинарных сортов яблок: McIntosh, Golden Delicious, Granny Smith, Gala, Fuji. Концентрация танинов низкая, что приводит к повышению кислотности. Вкусо-ароматический букет —
+                        насыщенный.
+                    </li>
+                    <li>
+                        Сидр Heritage. Продукцию изготавливают из особых сортов, а именно: Dabinett, Kingston Black, Roxbury Russet, Wickson. Яблони выращивают годами в семейных садах. Нередко рецептуру обогащают дикими плодами. К использованию
+                        культивируемых дрожжей прибегают редко. В приоритете — естественный процесс брожения. На сидр Heritage самая высокая цена, так как его производят маленькими партиями.
+                    </li>
+                    <li>Специальный сидр. В категорию выносят крафтовую продукцию. В составе нередко присутствует сторонний фруктово-ягодный концентрат, который получают из вишни, малины, черники, ежевики.</li>
+                </ol>
+                <p>
+                    Также классификация опирается на количество остаточного сахара. Большинство сидров производят в полусладком или сладком стилях. Это означает, что после ферментации к яблочному соку добавляют сахар. Реже встречается отметка
+                    «полусухой» или «сухой». Такой напиток готовят посредством полного сбраживания яблочного сока. Если сидр произвели во Франции, используют термин «Брют», который также относится к игристым винам.
+                </p>
+                <p>
+                    В зависимости от использованных компонентов и прохождения стадии фильтрации меняется цвет. Если решили купить сидр в Украине, то на рынке можно встретить как прозрачный напиток, так и красный или темно-синий. Традиционный оттенок —
+                    темный. Такой напиток отличается насыщенным фруктовым ароматом. Белая версия — легкая и освежающая.
+                </p>
+                <h2>Как правильно пить сидр</h2>
+                <p>
+                    Если в руках бутылка игристого напитка, подавайте его охлажденным в бокалах на высокой ножке. Сидр, приготовленный из кислых яблок, выгодно дополнит стейк. Легкая сладкая игристая версия гармонично сочетается с морепродуктами,
+                    твердыми сырами, свежими фруктами и ягодами, шоколадом.
+                </p>
+                <p>Также сидру найдется место в рецепте коктейля. Летом смешивайте его с фруктовыми соками и мятой. Зимой — с выдержанным ромом, обогащенным согревающими специями.</p>
+                <h2>География производства сидра: обзор регионов и торговых марок</h2>
+                <p>
+                    Лидер по изготовлению слабоалкогольного напитка — Великобритания. В стране фиксируют самое высокое потребление сидра на душу населения. Культовые торговые марки: Aspall, Thatchers, Westons. В отдельную категорию выносят продукцию,
+                    производимую в Ирландии. Один из самых старых брендов — Magners.
+                </p>
+                <p>Сидр, который можно купить в маркете алкогольных штук MAUDAU, также производят во Франции. Его активно выпускают в Нормандии и Бретани. Хороший пример — Val de Rance.</p>
+                <p>Изготовление сидра в Испании сосредоточено в Астурии и Стране Басков. Известные производители — Lervig и Trabanco.</p>
+                <p>Германия выпускает собственные разновидности слабоалкогольного напитка на землях Рейнланд-Пфальц и Гессен. Сорт Apfelwein отличается от стандартной версии терпким привкусом.</p>
+                <p>Не отстает и Украина, которая выпускает настоящий крафтовый сидр, используя яблоки автохтонных сортов. Производители:</p>
+                <ul>
+                    <li>Apps;</li>
+                    <li>Cidre Royal;</li>
+                    <li>Somersby;</li>
+                    <li>Cikera;</li>
+                    <li>Gardenz;</li>
+                    <li>Mikki Brew;</li>
+                    <li>Ysla.</li>
+                </ul>
+                <p>Также в интернет-магазине MAUDAU можно заказать сидр, произведенный в Латвии, Норвегии, Финляндии.</p>
+                <h2>Почему выгодно купить сидр в интернет-магазине MAUDAU</h2>
+                <p>
+                    Заказ в маркете алкогольных штук MAUDAU — гарантия оригинального происхождения. Широкий ассортимент объединяет как классическую продукцию, так и эксклюзивные предложения. Товар упакован в надежную и красивую упаковку, поэтому станет
+                    прекрасным вариантом подарка. После оформления заказа укажите вариант оплаты и доставки. При достижении определенной суммы за доставку не нужно платить. Несмотря на то, что на сидр цена остается конкурентной, в каталоге регулярно
+                    появляются акции.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Apple Grande" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Apple_Grande.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Apple Grande</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy">Сидр</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простой двухкомпонентный коктейль с приятным освежающим вкусом яблочного сидра. Продуманные пропорции ¼ смягчают крепость текилы и делают напиток более изящным.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Apple Grande</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл серебряной текилы</li><li>120 мл сидра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите сидр и бокал олд фэшн.</li><li>Налейте в бокал 30 мл серебряной текилы.</li><li>Добавьте 120 мл охлажденного сидра доверху.</li><li>По желанию украсьте коктейль ломтиком лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чимайо" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chimayo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чимайо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=zolota-gold">Золотая текила</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li>Долька лимона</li>
+                            <li><a href="https://maudau.com.ua/ru/product/liker-paul-devoille-crme-de-cassis-black-currant-chorna-smorodyna-18-07-l-826947">Ликер Crème de cassis</a></li>
+                            <li>Лед</li>
+                            <li>Долька красного яблока или вишенка</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Энергичный свежий коктейль с ароматом яблок и ягодного крем-ликера. Сочетание сидра с крепкой мексиканской текилой получается гармоничным и насыщенным.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Чимайо</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл золотой текилы</li><li>30 мл яблочного сидра</li><li>1 долька лимона</li><li>7,5 мл ликера Crème de cassis</li><li>лед</li><li>1 долька красного яблока или вишенка</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер до половины кубиками льда.</li><li>Налейте 7,5 мл ликера Crème de cassis и 30 мл яблочного сидра.</li><li>Добавьте 45 мл золотой текилы и выжмите в напиток сок дольки лимона.</li><li>Энергично встряхните шейкер несколько раз.</li><li>Перелейте напиток через сито-стрейнер в бокал.</li><li>Декорируйте коктейль долькой яблока или вишенкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сангрия с сидром" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Sangria_with_cider.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сангрия с сидром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яблоки</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок </a></li>
+                            <li>Апельсин</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кисло-сладкая бодрящая сидровая сангрия — новый хит классического напитка. Отличается экспрессивным ярким вкусом и узнаваемыми нотками кальвадоса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Сангрия с сидром</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 стакан яблок</li><li>1 стакан яблочного сока</li><li>1 апельсин</li><li>2 столовые ложки лимонного сока</li><li>1/4 стакана кальвадоса</li><li>650 мл яблочного сидра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смешайте в глубокой емкости нарезанные дольками яблоки и кольца апельсина в кожуре.</li><li>Залейте фруктовую смесь 1 стаканом яблочного сока.</li><li>Добавьте 2 столовые ложки лимонного сока и 1/4 стакана кальвадоса.</li><li>Оставьте емкость на 1-2 часа в холодильнике.</li><li>Переложите ингредиенты в кувшин и добавьте 650 мл яблочного сидра.</li><li>Нью-Сангрия готова!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пряный яблочный сидр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Spiced_Apple_Cider.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пряный яблочный сидр</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom">Ром</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматный и легкий в приготовлении коктейль, состоящий из рома и сидра. Эта простая холодная версия пряного напитка подается с добавлением льда, поэтому актуальна в любом сезоне.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Пряный яблочный сидр</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл пряного рома</li><li>150 мл яблочного сидра</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В высокий бокал-хайбол насыпьте лед, не доходя до верхнего края.</li><li>Налейте 30 мл пряного рома и дайте ему распределиться по льду.</li><li>Дополните напиток 150 мл яблочного сидра.</li><li>Аккуратно размешайте коктейль барной ложечкой.</li><li>По желанию украсьте бокал ломтиком яблока.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Апельсиновый пунш с сидром" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Orange_punch_with_cider.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Апельсиновый пунш с сидром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li>
+                            <li>Ликер Кюрасао апельсин</li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li>Апельсины</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сидровый пунш — идеальный напиток для большой компании. Это коктейль с энергичным и веселым характером. Тандем яблочного и апельсинового вкуса запоминается своей свежестью.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Апельсиновый пунш с сидром</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 мл апельсинового сока</li><li>90 мл ликера Кюрасао апельсин</li><li>2 л яблочного сидра</li><li>5 апельсинов</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Помойте и порежьте кружочками апельсины.</li><li>Сложите цитрусовые в широкую чашу для пунша.</li><li>Налейте 90 мл ликера Кюрасао апельсин и дайте отстояться в холодильнике 2 часа.</li><li>Добавьте 400 мл апельсинового сока и 2 л яблочного сидра.</li><li>Перед подачей в стаканы можно положить лед.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сидр с фруктами и мятой" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cider_with_fruit_and_mint.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сидр с фруктами и мятой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яблочный сок</li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li>Яблоко</li>
+                            <li>Мята</li>
+                            <li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мятный сидр — отличный освежающий коктейль для летней вечеринки. Напиток получается легким, приятным и слабоалкогольным. Имеет мятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Сидр с фруктами и мятой</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 л яблочного сока</li><li>0,5 л яблочного сидра</li><li>1 яблоко</li><li>пучок мяты</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Уложите в емкость для смешивания промытую мяту и слегка примните пестиком-мадлером.</li><li>Нарежьте яблоко и добавьте кусочки к мяте.</li><li>Налейте к фруктам 1,5 л яблочного сока.</li><li>Добавьте 0,5 л яблочного сидра и перемешайте барной ложкой.</li><li>Разложите по стаканам лед, налейте коктейль и подавайте охлажденным.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ранняя осень" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Early_autumn.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ранняя осень</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn/product_brand=bombay-sapphire">Джин Бомбей Сапфир</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sydry-ta-medy/smak=jabluko">Яблочный сидр</a></li>
+                            <li>Грушевый бренди</li>
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l">Имбирное пиво</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li>
+                            <li>Лимонная цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль на джине и пахучем яблочном сидре — это фруктовый вкус теплой ранней осени. Напиток появился в сердце клубного Нью-Йорка и быстро завоевал популярность во всем мире.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Ранняя осень</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл джина Бомбей Сапфир</li><li>15 мл абсента</li><li>45 мл яблочного сидра</li><li>15 мл грушевого бренди</li><li>1 ч.л. лимонного сок</li><li>Имбирное пиво</li><li>Корица</li><li>Лимонная цедра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в шейкер лед.</li><li>Налейте лимонный сок и по 15 мл абсента и грушевого бренди.</li><li>Добавьте 45 мл джина Бомбей Сапфир и 45 мл яблочного сидра.</li><li>Деликатно взбейте все ингредиенты в шейкере.</li><li>Процедите напиток через сито-стрейнер в бокал-хайбол.</li><li>Медленно влейте имбирное пиво и размешайте высокой ложкой.</li><li>Украсьте коктейль палочкой корицы и крученой цедрой лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">47 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">11.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
