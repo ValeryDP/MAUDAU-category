@@ -1,0 +1,1003 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Вермут «Мартіні» — спиртний напій, який випускають в Італії. Секретний інгредієнт — суміш рослинних добавок. Назва — відсилання до лікеро-горілчаного заводу Martini &amp; Rossi Distilleria Nazionale di Spirito di Vino в місті Турин.
+                    Саме в його стінах виробляють культовий напій.
+                </p>
+                <h3>Що входить до складу вермуту «Мартіні»</h3>
+                <p>Рецептура складається з чотирьох компонентів. Основу становить базове вино. Його постачають із регіону Емілія-Романья та острова Сицилія. Під час виробництва використовують виноград сортів «треббіано» і «катаратто».</p>
+                <p>
+                    Також до рецепта вермуту «Мартіні» входять цукор і спирт. Головний компонент — суміш рослинних екстрактів. Вона складається з трав, листя, стебел, квіток, коренів, висушених фруктів і ягід. До складу обов'язково входить полин, який
+                    збирають на полях Панкалери. Інші поширені добавки:
+                </p>
+                <ul>
+                    <li>ромашка;</li>
+                    <li>м'ята;</li>
+                    <li>меліса;</li>
+                    <li>коріандр;</li>
+                    <li>кмин;</li>
+                    <li>гісоп;</li>
+                    <li>звіробій;</li>
+                    <li>деревій;</li>
+                    <li>імбир;</li>
+                    <li>фіалка;</li>
+                    <li>троянда;</li>
+                    <li>ірис;</li>
+                    <li>ваніль.</li>
+                </ul>
+                <p>Точний рецепт відомий тільки майстру-купажисту Джузеппе Муссо і майстру-травнику Івано Тонутті. До складу кожного напою з колекцій торгової марки Martini входить комбінація понад 30 різних рослин.</p>
+                <h3>Який відсоток алкоголю в напоях «Мартіні»</h3>
+                <p>Міцність становить 15–18%. Вміст алкоголю залежить від стилю і використовуваних компонентів.</p>
+                <h2>Короткий екскурс в історію вермуту Martini</h2>
+                <p>Винокурню, на потужностях якої виробляють культовий напій, заснували 1847 року. На той час підприємство носило назву «Національний завод з виробництва вин і спиртних напоїв». Сучасну назву йому присвоїли 1879 року.</p>
+                <p>
+                    Історія вермуту пов'язана з іменами Алессандро Мартіні та Луїджі Россі. Останній майстер — досвідчений травник, якому належить культовий рецепт. Винокурня перейшла під їхній контроль 1863 року, а за кілька місяців з'явився культовий
+                    продукт — Martini Rosso. У 1892 році бізнес перейшов до чотирьох синів Россі. Через 38 років — до онуків. З 1992 року торгова марка входить до складу корпорації Bacardi Limited.
+                </p>
+                <h2>Різновиди вермутів Martini</h2>
+                <p>
+                    Напій являє собою традиційний варіант солодкого ароматизованого кріпленого вина, який виробляють в Італії. Флагман — Martini Rosso. Міцність становить 15%. Колір — червоний. Смак — насичений, з легким ванільним шлейфом. Продукт —
+                    результат змішування нейтральних вин із місцевими травами, серед яких шавлія, чабер і ясенець. Композицію доповнює гірко-солодка кора екзотичних деревних порід. Базові різновиди вермуту Martini, які також можна купити в
+                    інтернет-магазині MAUDAU:
+                </p>
+                <ol>
+                    <li>Bianco. Колір — світло-солом'яний, з легкими зеленими відблисками. Смак — свіжий. Післясмак розкривається стриманою кислинкою. Екстракт ванілі притупляє гіркий акцент.</li>
+                    <li>
+                        Fiero. Композиція складається з суміші цитрусових, змішаних з нейтральними білими винами. Результат — вермут «Мартіні», який вигідно розкривається в поєднанні з тоніком. Колір — вогняний. Смак — інтенсивний, зі свіжими нотками
+                        апельсина та грейпфрута. Фініш — медовий.
+                    </li>
+                    <li>
+                        Extra Dry. Відсоток алкоголю підвищено до 18. Напій презентували 1 січня 1900 року. Родзинка — трирічний флорентійський ірис, висушений природним чином на сонці. На першому плані — аґрус і лимон. Поступово смак змінюється
+                        ніжними малиновими акордами, змішаними з нюансами екзотичних спецій.
+                    </li>
+                </ol>
+                <p>
+                    Знахідка для колекціонерів — лінійка Riserva Speciale. Попри те, що це особливий випуск, на вермут Martini ціна залишається доступною. Міцність кожного напою становить 18%. Перший екземпляр — Rubino. Багатий і складний вермут,
+                    створений за 150-річним рецептом. До складу входять червоний сандал і три сорти полину. Другий варіант — Ambrato. Колір — бурштиновий. Смак — делікатний, розкривається квітково-медовими акордами.
+                </p>
+                <h2>Як пити вермут Martini</h2>
+                <p>Базову лінійку подають як аперитив. Вермут змішують із льодом або подають «на каменях» — на кубиках, вироблених із вулканічних порід. Доповнить композицію твіст: апельсиновий — для червоних позицій, лимонний — для білих.</p>
+                <p>
+                    Класика жанру — вермут, змішаний із тоніком. Якщо вирішили купити «Мартіні» в солодкому виконанні, комбінуйте його з пряним ромом, скотчем, бурбоном, насиченими лікерами. Сухий вермут впізнаваний за легким квітковим шлейфом, який
+                    вигідно розкривається в компанії нейтральних спиртів, таких як горілка або джин.
+                </p>
+                <h2>Чому вигідно купити вермут «Мартіні» в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU пропонує широкий асортимент оригінальної продукції, яку постачають напряму. Це пояснює той факт, що на вермут «Мартіні» ціна залишається доступною. Безкоштовна доставка замовлення на певну суму, як і
+                    знижка на малий гурт та акції, що постійно оновлюються, роблять шопінг максимально вигідним. Не забувайте про подарункові набори — у комплект входить не тільки вермут Martini, а й тонік.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Горілка мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Vodka_Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Горілка мартіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Оливки</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Той самий найулюбленіший коктейль Джеймса Бонда. Аромат полину із сухого вермуту чудово поєднується з високим градусом гірко-солодкої горілки. Обов'язково додайте оливку!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Горілка мартіні</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл горілки</li><li>15 мл сухого вермуту</li><li>9 г оливок</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в ємність для змішування 15 мл сухого вермуту та 75 мл горілки.</li><li>Насипте 300 г льоду в кубиках і обережно розмішайте високою барною ложкою.</li><li>Перелийте через сито-стрейнер у заздалегідь охолоджений келих.</li><li>Прикрасьте коктейль трьома оливками на шпажці. Бондіана починається!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні 50/50" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_ 50_50.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні 50/50</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li>
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-extra-dry-18-05-l-24125">Сухий мартіні</a></li>
+                            <li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мартіні 50/50 — це популярний і дуже простий у приготуванні коктейль на базі джина і вермуту. У нього впізнаваний специфічний смак, в якому нотки полину гармонійно поєднуються з присмаком ялівцю.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні 50/50</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл джину</li><li>40 мл сухого мартіні</li><li>Лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте лід у змішувальну склянку.</li><li>Налийте 40 мл джину та 40 мл сухого мартіні.</li><li>Добре перемішайте напій високою коктейльною ложкою.</li><li>Процідіть через сито-стрейнер в охолоджений коктейльний келих.</li><li>За бажанням прикрасьте коктейль оливками на шпажці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Негроні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Negroni.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Негроні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li>
+                            <li>Червоний бітер</li>
+                            <li>Апельсинова цедра</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Негроні — коктейльна класика на основі джину, вермуту та бітеру. Має насичений солодко-гіркий смак. Складається з трьох інгредієнтів у рівних пропорціях і легко готується в домашніх умовах.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Негроні</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл лондонського сухого джину</li><li>30 мл червоного вермуту</li><li>30 мл червоного бітеру</li><li>Апельсинова цедра</li><li>120 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-рокс кубиками льоду до країв.</li><li>Налийте в келих 30 мл червоного вермуту та 30 мл червоного бітеру.</li><li>Додайте 30 мл лондонського сухого джину й акуратно розмішайте барною ложкою.</li><li>Прикрасьте коктейль апельсиновою цедрою і подавайте гостям.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні з шампанським" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_with_champagne.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні з шампанським</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=malyna-9">Малиновий сироп</a></li>
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Мартіні Россо</a></li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цукерково-солодкий гламурний коктейль запаморочує голову і полонить приємним післясмаком. Легке і невимушене поєднання знаменитого вермуту з шампанським завжди покращує настрій.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні з шампанським</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл малинового сиропу</li><li>100 мл мартіні Россо</li><li>150 мл шампанського</li><li>Лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть високий келих льодом майже доверху.</li><li>На дно налийте 30 мл малинового сиропу.</li><li>Акуратно долийте 100 мл мартіні Россо і 150 мл шампанського.</li><li>Для ефекту шаруватості не перемішуйте напій.</li><li>Подавайте коктейль із трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Американо" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Americano.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Американо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Campari</a></li>
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Мартіні Rosso</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li>
+                            <li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Американо — класичний цитрусово-трав'яний коктейль на базі вермуту і кампарі, з додаванням содової. Його винайшов італійський кондитер Гаспаре Кампарі. Змінюючи кількість газованої води, можна коригувати міцність напою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Американо</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл Campari</li><li>50 мл мартіні Rosso</li><li>100 мл содової</li><li>Лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-рокс кубиками льоду до верхнього краю.</li><li>Налийте 25 мл Campari і 50 мл мартіні Rosso.</li><li>Акуратно додайте 100 мл содової та розмішайте барною ложкою.</li><li>Прикрасьте коктейль цедрою апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні з абсентом" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Absinthe_Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні з абсентом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-extra-dry-18-05-l-24125">Сухий мартіні</a></li>
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=miatnyi-3">Мʼятний лікер</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальний коктейль із рівномірним розподілом смакових якостей вермуту, абсенту та горілки. Міцний і збалансований. Лікер надає напою приємного м'ятного холодку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні з абсентом</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл абсенту</li><li>30 мл сухого мартіні</li><li>30 мл горілки</li><li>5 мл м'ятного лікеру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть келих для подачі — в холодильнику або за допомогою льоду.</li><li>Налийте 30 мл абсенту і частково розподіліть по стінках келиха.</li><li>Додайте 30 мл сухого мартіні та 30 мл горілки.</li><li>Останній штрих — капніть у напій 5 мл м'ятного лікеру і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б'янко санрайз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Bianco_Sunrise.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б'янко санрайз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-bianco-15-1-l-28900">Martini Bianco</a></li>
+                            <li><a href="https://maudau.com.ua/product/mors-granini-zhuravlyna-1-l-826249">Журавлинний морс</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                            <li>Апельсин</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дивовижно легкий Бʼянко санрайз не викликає сп'яніння і залишає приємний кисло-солодкий післясмак. Лонг готується на базі вермуту, ягідного морсу та апельсинового соку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Б'янко санрайз</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл Martini Bianco</li><li>75 мл журавлинного морсу</li><li>75 мл апельсинового соку</li><li>50 апельсинів</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть хайбол льодом у кубиках доверху.</li><li>Налийте в келих 75 мл апельсинового соку і 50 мл Martini Bianco.</li><li>Додайте до інгредієнтів 75 мл журавлинного морсу.</li><li>Акуратно перемішайте напій барною ложкою.</li><li>Декоруйте коктейль кружечками апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Роб Рой" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Rob_Roy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Роб Рой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Martini Rosso</a></li>
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландське віскі</a></li>
+                            <li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Бітер Ангостура</a></li>
+                            <li>Апельсин</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Назву Роб Рой коктейль отримав на честь однойменної опери, популярної на нью-йоркському Бродвеї наприкінці XIX століття. Зухвалий і оригінальний коктейль запам'ятовується нотками лугових трав і серпанком шотландського віскі. Вермут надає легкої солодкості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Роб Рой</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл Martini Rosso</li><li>60 мл шотландського віскі</li><li>1 мл бітеру Ангостура</li><li>3 г апельсина</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в склянку для змішування 40 мл Martini Rosso.</li><li>Додайте 60 мл шотландського віскі та 1 деш бітеру Ангостура.</li><li>Насипте 200 г льоду в кубиках і розмішайте високою ложкою.</li><li>Перелийте через барне ситечко в охолоджений келих.</li><li>Прикрасьте коктейль цедрою апельсина</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б'янко тонік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Bianco_tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б'янко тонік</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vermut-martini-bianco-15-1-l-28900">Martini Bianco</a></li>
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li>
+                            <li>Лимон</li>
+                            <li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий і елегантний фізз Б'янко тонік приємно освіжає в спекотний день. На смак мікс вермуту та газованої води виходить солодкувато-гірким. Це слабоалкогольний прохолодний напій і зазвичай подається з трубочкою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Б'янко тонік</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл Martini Bianco</li><li>150 мл тоніку</li><li>30 г лимона</li><li>200 г льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть льодом кулястий келих для вина.</li><li>Вичавіть у келих сік із лимонної скибочки.</li><li>Налийте 50 мл Martini Bianco.</li><li>Акуратно долийте зверху 150 мл тоніка.</li><li>Делікатно перемішайте коктейль барною ложкою.</li><li>Прикрасьте напій скибочкою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні фіз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Fiz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні фіз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Martini Rosato</li>
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/solodkist_3=solodke-3">Солодке ігристе вино</a></li>
+                            <li>Малина</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мартіні фіз люблять за його ненав'язливий, приємний смак із ягідними нотками та пікантною гіркуватістю. Коктейль запам'ятовується ідеальними пропорціями вермуту та ігристого вина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні фіз</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл Martini Rosato</li><li>75 мл солодкого ігристого вина</li><li>10 г малини</li><li>160 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть кубиками льоду келих для червоного вина.</li><li>Налийте 75 мл Martini Rosato і 75 мл солодкого ігристого.</li><li>Перемішайте інгредієнти коктейльною ложкою.</li><li>Перед подачею додайте свіжу малинку на шпажці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">145 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">17 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
