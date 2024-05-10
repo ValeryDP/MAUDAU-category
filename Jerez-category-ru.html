@@ -1,0 +1,881 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Херес — крепленое вино, которое изготавливают в Испании. Ключевой процент производства припадает на Андалусию. Основной компонент — белый виноград. Его выращивают в так называемом «хересном треугольнике», который обозначают
+                    граничащими точками в городах Херес-де-ла-Фронтера, Санлукар-де-Баррамеда и Эль-Пуэрто-де-Санта-Мария.
+                </p>
+                <h3>Вкусо-ароматическая композиция</h3>
+                <p>
+                    Крепленое вино Jerez раскрывается интенсивными фруктовыми аккордами, сменяющимися сладковатыми нюансами темных ягод с легкой кислинкой. Финиш — стойкий и терпкий. Аромат — сложный, а конкретные оттенки зависят от выпускаемого сорта.
+                </p>
+                <h2>Херес: краткий экскурс в историю</h2>
+                <p>
+                    Одноименный городок считали центром виноградарства с тех пор, как виноделие в Испанию завезли финикийцы в 1100 году до н.э. В 1264 году город захватил Альфонсо Кастильский. С того времени крепленое вино Jerez активно изготавливают и
+                    экспортируют в Европу.
+                </p>
+                <p>Известно, что Христофор Колумб перевозил напиток во время путешествия в Новый Свет. Когда Фердинанд Магеллан готовился к кругосветному плаванию в 1519 году, он потратил больше на закупку хереса, чем оружия.</p>
+                <p>
+                    В 1587 году испанский напиток оказался в Великобритании, после того как Фрэнсис Дрейк разграбил порт Кадиса. В 1894 году виноградники опустошила эпидемия филлоксеры. С того времени крепленое вино «Херес» постепенно возвращается на
+                    пик популярности. Во многом — благодаря вниманию миксологов.
+                </p>
+                <h2>Как производят херес</h2>
+                <p>Продукт относят к категории крепленых вин. Старт производства стандартный — виноград собирают, очищают, прессуют. Нередко перед выжимкой добавляют гипс, стимулируя выработку винных кислот.</p>
+                <p>Сорт, который используют для производства сухих стилей крепленых вин Jerez, — «паломино фино». Для сладких предпочитают «москатель» или «педро хименес». В 2021 году список разрешенных сортов пополнили шестью новыми лозами.</p>
+                <p>Брожение проходит в металлических резервуарах. Раньше использовали только деревянные бочки. Процесс длится до конца ноября.</p>
+                <p>
+                    После окончания брожения вино отбирают и классифицируют. Бочки маркируют специальными символами. Они указывают на качество продукции, что ложится в основу формирования различных сортов. Например, отметка «/» указывает на вино с
+                    хорошим вкусо-ароматическим букетом, который важен для стилей «Фино» и «Амонтильядо». Крепость составляет около 15%, что обеспечивает развитие цветочных ароматов.
+                </p>
+                <p>Не только сорт винограда, но и способ старения определяет качество и окончательный вкусовой букет крепленых вин Jerez. Важный этап — «хересование». Так называют особый процесс старения.</p>
+                <p>
+                    Выделяют два метода — биологический и оксидативный. Первый предполагает старение хереса под тонкой пленкой из натуральных дрожжей, называемой флором. По такому принципу готовят сорта Fino и Manzanilla. Пленка создает анаэробную
+                    среду, что снижает содержание глицерина. Готовый напиток отличается пикантным и слегка солоноватым вкусом, с ярко выраженными растительными аккордами.
+                </p>
+                <p>Крепленые вина Amontillado и Oloroso готовят по оксидативному методу. Напитку не перекрывают доступ к воздуху.</p>
+                <p>Важный момент — крепление. К виноградному суслу добавляют нейтральный спирт, постепенно повышая процент алкоголя до 15–22. Содержание сахара варьируется в пределах 0–200 г/л. Это объясняет высокий потенциал к хранению.</p>
+                <p>Помимо разных методов старения, крепленое вино «Херес» также славится уникальной техникой выдержки. В процессе применяют систему «солера». В нее попадают емкости, которые ранее использовали не менее 10 лет.</p>
+                <p>
+                    Бочки выкладывают в виде треугольника: внизу — старый дистиллят, молодой спирт — вверху. Время от времени вино отбирают из бочек и заменяют новым. Этот процесс называют фракционным купажированием. Результат — несколько винтажей в
+                    каждой бочке, формирующих ровный вкус.
+                </p>
+                <p>Отработанные емкости не выбрасывают, а перепродают. Например, для выдержки шотландского скотча.</p>
+                <h2>Ключевые сорта крепленых вин Jerez</h2>
+                <p>Выделяют два основных стиля:</p>
+                <ol>
+                    <li>
+                        Fino. Сухой сорт, который выдерживают под пленкой флора от трех лет. Главный ингредиент — первый отжим винограда. Цвет — светлый. Вкус — острый, с характерным дрожжевым шлейфом и нотками миндаля. Процент алкоголя — 15–17. Этот
+                        сорт вин Jerez выгодно сочетается с оливками, рыбой, морепродуктами. Если для придания сладости используют концентрированное виноградное сусло, продукцию маркируют как Pale Cream.
+                    </li>
+                    <li>
+                        Oloroso. Вариант, приготовленный оксидативным способом. В процессе используют второй отжим винограда. Херес приобретает темный оттенок. Крепость повышена до 18–20%. Напиток — полнотелый, с гладкой консистенцией. Вкус — сложный,
+                        с выраженным ореховым шлейфом. Херес Oloroso часто подают как дижестив.
+                    </li>
+                </ol>
+                <p>Постепенно классификацию расширили. Сейчас в интернет-магазине MAUDAU можно купить вино «Херес», выполненное в разных стилях:</p>
+                <ol>
+                    <li>
+                        Manzanilla. Сухой подвид Fino. Продукт выпускают только в городе Санлукар-де-Баррамеда. Напиток пахнет океаном, с акцентом на солености морских брызг. Сорт Manzanilla отличается цветочным шлейфом, который напоминает ромашку.
+                        Напиток подают как аперитив. Нежный и свежий вкус выгодно раскрывается в охлажденном виде, особенно — в компании рыбных блюд. Потенциал к старению — низкий. Вино Jerez, выдержанное свыше семи лет, маркируют как Manzanilla
+                        Pasada.
+                    </li>
+                    <li>
+                        Pedro Ximenez. Подвид Oloroso. Цвет — темный. В составе — одноименный виноград. Ягоды сушат на открытом воздухе, повышая концентрацию сахара. Это самый сладкий сорт крепленых вин «Херес». Вкус — насыщенный, с аккордами патоки,
+                        изюма, инжира. Его подают в чистом виде. По желанию сопровождают мороженым.
+                    </li>
+                    <li>
+                        Amontillado. Переходный сорт. Производство напоминает херес Fino, который выдерживают 4–6 лет. Затем его обогащают до более высокого содержания алкоголя, что убивает флор. Вино переносят в другую систему «солера», запуская
+                        окислительную выдержку. Это придает темно-янтарный оттенок, а также нотки жареных орехов, табака, специй и сухофруктов. Крепость составляет 16–22%.
+                    </li>
+                    <li>
+                        Palo Cortado. Гибридный сорт, который нередко называют «случайным» или «загадочным». Встречается крайне редко. Содержание алкоголя — 17–22%. Сорт зарождается под флором. Изначально его готовят как Fino. Постепенно он теряет цвет
+                        и развивается как Oloroso. Конечный результат — элегантное вино «Херес», которое раскрывается насыщенным вкусо-ароматическим букетом.
+                    </li>
+                </ol>
+                <h2>Как выбрать вино Jerez</h2>
+                <p>Чтобы скорее определиться, обратите внимание на:</p>
+                <ul>
+                    <li>показатели сладости;</li>
+                    <li>крепость;</li>
+                    <li>объем бутылки;</li>
+                    <li>сорт винограда.</li>
+                </ul>
+                <p>Ниже — несколько вариантов крепленых вин «Херес», заслуживающих внимания:</p>
+                <ol>
+                    <li>Valdespino Pedro Ximenez El Candado. Крепость — 17%. Эксклюзивный красный сладкий херес. Вкус — насыщенный, но в то же время сливочный. Аромат раскрывается тонкими аккордами изюма, инжира, кофе, шоколада.</li>
+                    <li>Harveys Bristol Cream. Сладкий вариант, который окутывает мягкими нотками миндаля. Финиш — пряный. Главный акцент — карамелизированный чернослив. Процент алкоголя составляет 17,5.</li>
+                    <li>Sandeman Fino Sherry. Стандартный белый сладкий херес, выдержанный в дубовых бочках. Вкус — легкий, с акцентом на фруктовости. Ненавязчивый цитрусовый запах завершает композицию.</li>
+                </ol>
+                <h2>Почему выгодно купить вино «Херес» в интернет-магазине MAUDAU</h2>
+                <p>
+                    В онлайн-каталоге — продукция крупных производителей, а также маленьких семейных предприятий. Собственный импорт — гарантия оригинального происхождения. Для оформления заказа достаточно выбрать крепленое вино Jerez, а потом —
+                    вариант оплаты и доставки. Если в корзине соберется товар на определенную сумму, доставка бесплатна.
+                </p>
+                <p>В маркете алкогольных штук MAUDAU цена на херес конкурентная. Это объясняется скидкой на малый опт и регулярно обновляющимися акциями.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Малиновый брамбл" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Raspberry_Bramble.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Малиновый брамбл</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонский сухой джин</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Малина</li><li>Бальзамический уксус</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насыщенный многокомпонентный коктейль на базе джина и хереса. Отличается свежим ягодным вкусом с нотками можжевельника в послевкусии.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Малиновый брамбл</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл лондонского сухого джина</li><li>10 мл хереса</li><li>15 мл сахарного сиропа</li><li>20 мл лимонного сока</li><li>25 г малины</li><li>2 мл бальзамического уксуса</li><li>1 г сахарной пудры</li><li>200 г дробленого льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Уложите на дно стакана-коллинза 25 г малины и придавите мадлером.</li><li>Наполните стакан доверху дробленым льдом.</li><li>Налейте 20 мл лимонного сока и 15 мл сахарного сиропа.</li><li>Добавьте 40 мл лондонского сухого джина и 10 мл хереса.</li><li>Напоследок плесните 2 дэша бальзамического уксуса.</li><li>Перемешайте все ингредиенты высокой барной ложкой.</li><li>Декорируйте коктейль ягодой малины, присыпанной сахарной пудрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сломан, но не сломлен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Strong_but_crack.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сломан, но не сломлен</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=aperol">Апероль</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li>Домашний апельсиновый сироп с хреном</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Хрен</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Интересный слабоалкогольный коктейль на хересе и апероле. Цитрусовую остринку и пикантность придает апельсиновый сироп с хреном.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Сломан, но не сломлен</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл апероля</li><li>30 мл хереса Педро Хименес</li><li>20 мл домашнего апельсинового сиропа с хреном</li><li>25 мл лимонного сока</li><li>5 г хрена</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в шейкер 20 мл апельсинового сиропа с хреном и 25 мл лимонного сока.</li><li>Добавьте 30 мл хереса Педро Хименес и 25 мл апероля.</li><li>Насыпьте 200 г льда в кубиках и интенсивно взбейте.</li><li>Перелейте через барное сито в охлажденный бокал.</li><li>Декорируйте коктейль кусочком хрена на прищепке.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Sherry Flip" src="https://photo.maudau.com.ua/Landing/cocktails/incat/sherry-flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Sherry Flip</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яйцо</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li>Сливки</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Sherry Flip — сладкий коктейль на хересе, со сливочным нотками и красивой белковой пенкой. Тонкий мускатный аромат придает ему изысканности.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Sherry Flip</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 яйцо</li><li>15 мл сахарного сиропа</li><li>60 мл хереса</li><li>30 мл сливок</li><li>Мускатный орех</li><li>Кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер кубиками льда.</li><li>Налейте 15 мл сахарного сиропа и белок 1 яйца.</li><li>Добавьте 30 мл сливок и влейте 60 мл хереса.</li><li>Хорошенько встряхните шейкер до образования пенки.</li><li>Процедите напиток через сито-стрейнер в бокал для подачи.</li><li>Присыпьте коктейль тертым мускатным орехом и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Brazil" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brazil.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Brazil</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Анисовая настойка</li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=kokteilnyi-biter">Биттер</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тандем вермута и хереса создает интересный неповторимый вкус. Крепкие напитки прекрасно уравновешивают друг друга. В послевкусии остается еле уловимая нотка аниса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Brazil</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 капли анисовой настойки</li><li>1 капля биттера</li><li>30 мл сухого вермута</li><li>30 мл хереса</li><li>Кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в емкость для смешивания кубики льда.</li><li>Налейте 30 мл сухого вермута и 30 мл хереса.</li><li>Добавьте пару капель анисовой настойки и капельку биттера.</li><li>Деликатно перемешайте напиток коктейльной ложкой.</li><li>Перелейте коктейль через стрейнер в бокал для подачи.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Balm" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Balm.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Balm</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Ликер трипл-сек</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Несложный в приготовлении десертный коктейль на базе хереса. Ярко выраженный цитрусовый вкус ликера гармонично дополняет сладость вина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Balm</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 капля апельсинового сока</li><li>1 капля апельсинового биттера</li><li>40 мл хереса</li><li>10 мл ликера трипл-сек</li><li>Кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в стакан для смешивания 40 мл хереса и 10 мл ликера трипл-сек.</li><li>Добавьте по капле апельсинового сока и биттера.</li><li>Наполните стакан доверху кубиками льда.</li><li>Аккуратно размешайте коктейльной ложечкой.</li><li>Процедите через стрейнер в охлажденное шампанское блюдце.</li><li>По желанию декорируйте бокал цедрой апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Morning Star" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Morning_Star.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Morning Star</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яичный желток</li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Morning Star — довольно крепкий, но сбалансированный коктейль на базе рома и хереса. Яичный желток делает напиток более густым и плотным, а сироп немного приглушает ромовый градус.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Morning Star</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 целый яичный желток</li><li>40 мл светлого рома</li><li>5 мл сахарного сиропа</li><li>20 мл хереса</li><li>Кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в шейкер кубики льда.</li><li>Налейте 20 мл хереса и 5 мл сахарного сиропа.</li><li>Добавьте 40 мл светлого рома и 1 яичный желток.</li><li>Интенсивно перемешайте ингредиенты до однородной смеси.</li><li>Отфильтруйте напиток через барное сито в коктейльный бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Barcelona" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Barcelona.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Barcelona</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=brendi">Бренди</a></li><li>Сливки</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Ликер трипл-сек</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Многосложный коктейль Barcelona удивляет богатством вкусов и оттенков. Все компоненты берутся в равных долях, поэтому их легко увеличивать до необходимых пропорций.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Barcelona</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл бренди</li><li>20 мл сливок</li><li>20 мл апельсинового сока</li><li>20 мл сахарного сиропа</li><li>20 мл хереса</li><li>20 мл ликера трипл-сек</li><li>Кубики Льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните блендер льдом и по очереди закладывайте ингредиенты.</li><li>Сначала налейте по 20 мл апельсинового сока и сахарного сиропа.</li><li>Долейте 20 мл ликера трипл-сек, 20 мл бренди и 20 мл хереса.</li><li>Напоследок добавьте 20 мл сливок и взбейте напиток в блендере.</li><li>Перелейте коктейль через стрейнер в винный бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">126 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
