@@ -1,0 +1,817 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Jameson — торгова марка, під якою випускають купажований ірландський віскі. Бренд належить французькій компанії Pernod Ricard. Лікеро-горілчаний завод New Midleton Distillery функціонує у графстві Корк (Ірландія). Віскі «Джемесон» —
+                    найбільш продаваний у світі. Щорічно у 130 країнах реалізують близько 8 мільйонів ящиків міцного спиртного напою.
+                </p>
+                <h2>Терниста історія віскі Jameson</h2>
+                <p>Біля витоків -— Джон Джемесон. Четверо синів свого часу підтримали батька, керуючи відкритою у 1780 році сімейною винокурнею.</p>
+                <p>
+                    У 1785–1825 роках лікеро-горілчаний завод, розташований у Дубліні, платив мито як за солод, так і за спирт. Джон Джемесон зважився на експеримент із затором із суміші солодового та несолодового ячменю, знижуючи витрати на
+                    виробництво. Міцний спиртний напій настільки сподобався місцевим, що незабаром віскі «Джеймсон» перевершив односолодовий шотландський скотч.
+                </p>
+                <p>
+                    1804 року винокурня перейшла до сина засновника — Джона III. У 1851 року до нього приєднався ще один Джон, який уособлює четверте покоління сім'ї Джемесон. До 1870 винокурню називали «містом у місті». У стінах лікеро-горілчаного
+                    заводу працювали бондарі, теслярі, ковалі, художники, муляри і навіть мешкали кішки.
+                </p>
+                <p>
+                    Період між 1916–1919 роками виявився найскладнішим в історії віскі Jameson. Винокурню тимчасово закрили через брак сировини. Першу партію міцного спиртного розлили по скляних пляшках 1963 року. До цього продукцію зберігали виключно
+                    в бочках.
+                </p>
+                <p>
+                    У 1972 році виробництво переїхало з Боу-стріт до Мідлтона (графство Корк). Через 18 років на гуральні сталася масштабна пожежа. Реконструкцію лікеро-горілчаного заводу, де зараз випускають віскі «Джеймсон», завершили лише 2007 року.
+                    Натомість представили оновлену етикетку.
+                </p>
+                <h2>Як виробляють віскі Jameson</h2>
+                <p>Технологія сягає 1780 року. Процес виготовлення виглядає так:</p>
+                <ol>
+                    <li>
+                        Підготовка сировини Затор для перегонки культового ірландського віскі Jameson складається із зерен солодового та несолодового ячменю. Рецептуру доповнюють кукурудзою. Ячмінь вирощують на місцевих фермах. Кукурудзу постачають із
+                        Франції. Вода надходить із річки Дангурні, яка протікає через територію гуральні.
+                    </li>
+                    <li>
+                        Склад. Ячмінь промивають, замочують у воді приблизно на 40 годин, потім залишають на кілька днів. Як тільки з'являться маленькі паростки, процес зупиняють, вдаючись до сушіння на пару. Солод змішують із зеленим ячменем і
+                        подрібнюють на борошно.
+                    </li>
+                    <li>Ферментація. Зернове сусло, змішане із дріжджами, проводить 60–80 годин у закритих резервуарах.</li>
+                    <li>Дистиляція. Віскі «Джеймсон» переганяють тричі. Для цього використовують стандартний мідний куб. Кукурудзяний спирт дистилюють у вертикальних ергономічних колонах.</li>
+                    <li>Витримка. Спирт витримують щонайменше три роки в дубових бочках з-під кріплених вин чи бурбону.</li>
+                    <li>Купажування. Щойно дві складові віскі Jameson досягають потрібного віку, їх змішують. Готову продукцію розливають, маркують, упаковують і відправляють у продаж.</li>
+                </ol>
+                <h3>Який на смак віскі «Джеймсон»</h3>
+                <p>
+                    Класичний міцний спиртний напій розкривається відтінками меду, ванілі, цитрусових. Солод формує насичену смако-ароматичну палітру, зберігаючи сухість і тривалий зігрівальниц фініш. Кукурудза додає складності, одночасно привносячи
+                    солодкий шлейф.
+                </p>
+                <h2>Різновиди віскі «Джеймсон»</h2>
+                <p>Флагман — Jameson Irish Whiskey. Міцність становить 40%. Легкий квітковий аромат змінюється пікантними деревними мотивами. Смак — збалансований, з акцентом на горіхово-ванільній солодкості. Фініш — стійкий і гладкий.</p>
+                <p>
+                    Також в інтернет-магазині MAUDAU можна купити віскі «Джеймсон» з особливих лінійок, наприклад, для шанувальників пива. Хороший варіант — Caskmates Stout Edition. Дистилят витримують у бочках з-під крафтового пива. Початковий аромат
+                    свіжоскошеного сіна доповнюється легкими фруктовими нотками — зеленими яблуками та грушами. У смаку відчуваються прянощі, що заглиблюються від зеленого чаю до фундуку та молочного шоколаду. На особливу увагу заслуговує Jameson
+                    Caskmates IPA Edition. Легкий фруктовий аромат, який пояснюється вмістом хмелю, переплітається з відтінками деревної стружки. Смак – хмільно-цитрусовий.
+                </p>
+                <p>
+                    Якщо вирішили внести новинку до особистої колекції або шукаєте варіант на подарунок, варто купити Jameson Limited Reserve 18 Years. Це м'який і гладкий міцний спиртний напій, повний складних смаків: іриски, спецій, відтінків дерева
+                    та шкіри, ніжних горіхових і ванільних ноток.
+                </p>
+                <p>В окрему лінійку винесли віскі Jameson Black Barrel. Бочку повторно обпалюють, що надає інтенсивного димного характеру. Також компанія пропонує Crested — віскі, який компанія вперше розлила у скляну пляшку.</p>
+                <p>Новинка — Cold Brew. Міцність становить 30%. Це самостійний напій, в якому м'який віскі поєднується з кавовими зернами. Подавайте Jameson Cold Brew охолодженим. За бажанням змішуйте із газованкою або апельсиновим соком.</p>
+                <h2>Як правильно пити віскі Jameson</h2>
+                <p>
+                    Для знайомства із міцним спиртним напоєм подавайте його в чистому вигляді. Щоб підтримувати температуру, використовуйте каміння з вулканічних порід. Такий спосіб дозволяє розкриватися смако-ароматичному букету. Додайте кубик льоду
+                    або трохи прохолодної води, якщо віскі «Джеймсон» здасться занадто обпікаючим. Дистилят підходить для змішування в коктейлях: Whiskey Sour, Manhattan, Old Fashioned.
+                </p>
+                <h2>Як вибрати віскі Jameson</h2>
+                <p>
+                    Вибір залежить від особистих уподобань, а також від конкретної події. Дистилят реалізують у різних обсягах: від 50 мл до 4,5 літра. Якщо плануєте вечірку, вибір за віскі «Джемесон» на гойдалках. Хороший презент — комплект,
+                    доповнений флягою або келихами.
+                </p>
+                <p>Також не забувайте про показники міцності. Стандартний відсоток алкоголю – відмінний варіант для повільного потягування. Продукція зі зниженим градусом гармонійно впишеться в рецепт коктейлю.</p>
+                <h3>Скільки коштує віскі «Джеймсон»</h3>
+                <p>
+                    Ціна залежить від лінійки, а також від ємності. Найвигідніше замовляти продукцію у великих пляшках — тоді на віскі Jameson ціна знижується, що пояснюється зниженням витрат для виробника. Мініпляшка обійдеться від 79 грн, особливо з
+                    урахуванням знижки на малий гурт і акцій, що регулярно оновлюються.
+                </p>
+                <h3>Як відрізнити справжній ірландський віскі Jameson від підробки</h3>
+                <p>
+                    В інтернет-магазині MAUDAU — 100% оригінал. Пляшки рівномірно заповнені алкоголем. Внизу видно маркування на склі, яке відчувається під пальцями. Етикетка наклеєна рівно. На ній обов'язково міститься ключова інформація: міцність,
+                    сорт, місце виготовлення. Пластикових накладок на кришці немає.
+                </p>
+                <h2>Чому вигідно купити віскі Jameson у маркеті алкогольних штук MAUDAU</h2>
+                <p>
+                    Інтернет-магазин пропонує не лише класичну продукцію, а й доступ до ексклюзивних пропозицій. Це повʼязане із власним налагодженим імпортом. При цьому на віскі «Джеймсон» встановлені конкурентні ціни. Для оформлення замовлення
+                    вистачить 5–7 хвилин. Це можливо завдяки структурованому каталогу, а також зручним фільтрам.
+                </p>
+                <p>Доставку здійснюють у різний спосіб — кур'єром або поштовою службою. Якщо в кошику виявиться товар на певну суму, за доставку не потрібно платити. Розрахуватись можна на сайті або в момент отримання.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ірландська кава" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Irish_Coffee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ірландська кава</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                            <li>Кава американо</li>
+                            <li>Жирні вершки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кавово-вершковий коктейль на базі віскі вважається традиційним ірландським напоєм. Келих міцної гарячої Ірландської кави — чудовий варіант для прохолодної погоди.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ірландська кава</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл ірландського віскі</li><li>15 мл цукрового сиропу</li><li>120 мл кави американо</li><li>45 мл жирних вершків</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Зваріть американо будь-яким зручним способом.</li><li>Налийте в ємність 45 мл жирних вершків і добре збийте вінчиком.</li><li>У келих для ірландської кави налийте 120 мл гарячого американо.</li><li>Додайте 15 мл цукрового сиропу і 45 мл ірландського віскі.</li><li>Перемішайте коктейль барною ложкою.</li><li>Акуратно викладіть шар збитих вершків на поверхню напою.</li><li>Подавайте, не перемішуючи!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Match Point" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Match_Point.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Match Point</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/product/bezalkoholne-pyvo-volynski-browar-ginger-ale-serednohazovanyi-035-l">Імбирне пиво</a></li>
+                            <li>Лайм</li>
+                            <li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Матч пойнт — це оригінальний мікс віскі та пряного імбирного пива. Лайм залишає освіжальний цитрусовий післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Match Point</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл ірландського віскі</li><li>10 мл лаймового соку</li><li>140 мл імбирного пива</li><li>20 г лайма</li><li>180 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-хайбол доверху льодом у кубиках.</li><li>Налийте 10 мл лаймового соку і 50 мл ірландського віскі.</li><li>До країв долийте 140 мл імбирного пива.</li><li>Акуратно перемішайте напій коктейльною ложкою.</li><li>Прикрасьте келих скибочками лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Red Devil" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Red_Devil.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Red Devil</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li>
+                            <li>Соус Ворчестер</li>
+                            <li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Red Devil — незвичайний і пікантний кисло-солоний лонг. Це твіст на класичну Bloody Mary, з характерними нотками ірландського віскі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Red Devil</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл ірландського віскі</li><li>15 мл лимонного соку</li><li>15 мл томатного соку</li><li>2 краплі соусу Ворчестер</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в келих-хайбол доверху кубики льоду.</li><li>Налийте 15 мл лимонного соку і 15 мл томатного соку.</li><li>Додайте 45 мл ірландського віскі та 2 краплі соусу Ворчестер.</li><li>Розмішайте коктейль барною ложкою і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Caramel Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Caramel_Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Caramel Manhattan</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li>
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li>
+                            <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=karamel-8">Карамельний сироп</a></li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=solodkyi-sweet">Солодкий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=kokteilnyi-biter">Бітер</a></li>
+                            <li>Ананас</li>
+                            <li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цікавий солодкий коктейль, з гармонійним поєднанням міцного віскі, вермуту та карамельного сиропу. Ананас надає напою легких тропічних ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Caramel Manhattan</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл ірландського віскі</li><li>20 мл ананасового соку</li><li>15 мл карамельного сиропу</li><li>10 мл солодкого вермуту</li><li>1 крапля бітеру</li><li>1 скибочка ананаса</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер кубиками льоду.</li><li>Налийте 20 мл ананасового соку, 15 мл карамельного сиропу та 1 краплю бітеру.</li><li>Додайте 10 мл солодкого вермуту та 45 мл ірландського віскі.</li><li>Гарненько збийте інгредієнти.</li><li>Перелийте напій через сито-стрейнер в охолоджений коктейльний келих.</li><li>Прикрасьте коктейль слайсом ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Old Potato" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Old_Potato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Old Potato</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яблучний бренді</li>
+                            <li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li>
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li>
+                            <li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Міцний коктейль на базі віскі, має характерний аромат яблучного бренді. Попри пристойний градус у нього м'який делікатний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Old Potato</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл яблучного бренді</li><li>15 мл сухого вермуту</li><li>60 мл ірландського віскі</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть коктейльний келих.</li><li>У склянку для змішування покладіть кубики льоду майже до верху.</li><li>Налийте 15 мл яблучного бренді та 15 мл сухого вермуту.</li><li>Додайте 60 мл ірландського віскі та перемішайте барною ложкою.</li><li>Процідіть коктейль через сито-стрейнер в охолоджений келих.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
