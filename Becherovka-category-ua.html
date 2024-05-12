@@ -1,0 +1,976 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Becherovka — настоянка на травах, яку виробляють у Карлових Варах (Чехія). Міцність становить 38%. Лікер &nbsp;«Бехеровка» можна купити в добре впізнаваних плоских пляшках із темно-зеленого скла.</p>
+                <p>Настоянку виробляє винокурня Jan Becher. Бренд входить до портфоліо корпорації Pernod Ricard.</p>
+                <h3>Яка на смак Becherovka</h3>
+                <p>Смак — збалансований, з помірною гіркотою на фініші. Композиція розкривається пікантними відтінками імбиру і кориці, в які вплітається медовий акцент і свіжість цитрусових.</p>
+                <h2>Короткий екскурс в історію «Бехеровки»</h2>
+                <p>
+                    Рецепт належить аптекарю Йозефу Вітусу Бехеру. 1805 року травник володів торговою крамницею «Дім трьох жайворонків», де збував спеції. Настоянку виготовили на замовлення доктора Крістіана Фробріга 1807 року, який приїхав до Чехії
+                    разом із пацієнтом — принцом Максиміліаном Фрідріхом фон Плеттенбергом. Фармацевт і лікар разом експериментували над алкогольними зіллями. Коли прийшов час повертатися додому, Крістіан Форбріг залишив колезі рецепт шлункової
+                    настоянки. Приблизно два роки травник витратив на доопрацювання, перш ніж випустив її під назвою Becher's English Bitter.
+                </p>
+                <p>Через 34 роки син Йозефа Густав Бехер запустив виробництво «Бехеровки» на постійній основі. У 1890 році зареєстрували торгову марку «Йоган Бехер».</p>
+                <p>Після 1945 року компанія перейшла до держави, а сім'ю Бехер вислали з країни. Тоді назву змінили на «Бехеровка». Напій також вивезли.</p>
+                <h2>Як виробляють настоянку «Бехеровка»</h2>
+                <p>
+                    Рецепт заснований на комбінації двадцяти трав і спецій. У складі немає штучних барвників і ароматизаторів. Компанія стверджує, що тільки дві людини знають точну рецептуру. Вони залучені до процесу виготовлення бальзаму Becherovka, а
+                    також мають доступ до приміщення «Дрогікамр», де раз на тиждень змішують трави і спеції.
+                </p>
+                <p>Частину сировини постачають з-за кордону, а точніше — з Китаю, Індонезії, Марокко, Іспанії, Албанії, Словаччини та Польщі. Решту — вирощують і збирають у межах Карлових Вар. Відомі компоненти лікеру «Бехеровка»:</p>
+                <ul>
+                    <li>кориця;</li>
+                    <li>гвоздика;</li>
+                    <li>гісоп;</li>
+                    <li>деревій.</li>
+                </ul>
+                <p>
+                    Основа Becherovka Original — нейтральний спирт. Трави і спеції поміщають у мішок, виготовлений із натурального полотна. Його занурюють у спирт, залишаючи на 5-7 днів у закритих металевих резервуарах. Потім вливають винний дистилят і
+                    апельсинову олію, а також додають цукор. Усе це змішують із водою, яку постачають із місцевого джерела.
+                </p>
+                <p>
+                    Концентрат настоюється шість тижнів. Готову рідину повторно змішують зі спиртом, водою і цукром. Після цього «Бехеровку» відправляють на багатоступеневу фільтрацію, щоб уникнути утворення осаду. Результат — характерний золотистий
+                    колір.
+                </p>
+                <p>Нарешті, трав'яний лікер готовий до розливу, який здійснюють на повністю автоматизованих лініях.</p>
+                <h2>Різновиди бальзаму Becherovka</h2>
+                <p>Лідер продажів — оригінальна настоянка, вироблена за рецептом від 1807 року. Під торговою маркою також випускають кілька альтернативних варіантів «Бехеровки», які можна купити в Україні:</p>
+                <ol>
+                    <li>
+                        Lemond. Лікер зі зниженим відсотком алкоголю — 20. Це пояснює, чому на ароматизовану версію Becherovka ціна знижується. Смак — чистий і свіжий, огортає ментоловими акордами. Напій розкривається вишуканим лимонним ароматом.
+                        Прекрасний варіант для коктейлю, особливо в літню пору.
+                    </li>
+                    <li>
+                        Unfiltered. Варіант «Бехеровки», який виробляють лімітованими партіями. Міцність стандартна — 38%. Напій довше настоюється, що надає насиченості кольору і смаку. На дні видніється каламутний осад. Пляшку рекомендують струшувати
+                        перед кожним розливом.
+                    </li>
+                </ol>
+                <h3>Яка користь від «Бехеровки»</h3>
+                <p>
+                    Спочатку настоянку позиціонували як ліки. Гіркі трави сприяють виділенню шлункового соку, тому лікер Becherovka подають як дижестив. Порція становить 20–50 мл. Витримуйте паузу 20–30 хвилин між прийомами. Ефект на ШКТ проявляється
+                    через 30–40 хвилин.
+                </p>
+                <p>
+                    Настоянка, випита перед трапезою, посилить апетит, а також позбавить від печії. Бітер Becherovka варто купити в разі ГРВІ, особливо — за сухого кашлю. Ложка бальзаму обволікає слизову, знімаючи подразнення і зменшуючи запалення.
+                    Джерельна вода, яку використовують у процесі виготовлення, зміцнює імунітет. Вона містить вітамін B12, а також безліч корисних мінералів, включно з кальцієм, калієм, фосфором, магнієм.
+                </p>
+                <h2>Як правильно пити лікер «Бехеровка»</h2>
+                <p>
+                    Настоянка — універсальний напій. Якщо п'єте її без добавок, подавайте в маленьких стопках. Попередньо охолодіть пляшку до +5–7 ⁰C. Для цього помістіть бальзам Becherovka в холодильник на 40–60 хвилин. Не заморожуйте пляшку. На
+                    батьківщині трав'яний лікер п'ють так: роблять ковток, тримають вміст у роті 30–40 секунд, а тільки потім ковтають.
+                </p>
+                <p>За бажанням змішайте настоянку з пивом або фруктовим соком. Не менш гармонійно лікер поєднується з кавою.</p>
+                <p>
+                    Також можна приготувати мікс, який називають Beton. Рецепт розробили для презентації Чехії на всесвітній виставці «Експо-67», яка проходила в Монреалі 1967 року. Назва утворюється з перших літер використовуваних інгредієнтів.
+                    Коктейль складається з «Бехеровки», змішаної з тоніком. Завершують подачу лимон і лід.
+                </p>
+                <p>Хороший варіант — Old Fashioned, в якому класичну солодкість приправляє гіркота трав і спецій. На фініші очікуйте пікантний горіховий шлейф.</p>
+                <h2>Чому вигідно купити бальзам Becherovka в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU пропонує оригінальну продукцію. Асортимент регулярно поповнюється ексклюзивними пропозиціями, що пояснюється власним імпортом. При оформленні замовлення достатньо вказати метод оплати та доставки — і
+                    бальзам «Бехеровка» привезуть в обумовлений час кур'єр або поштова служба. При досягненні певної суми за доставку не потрібно платити. Попри те, що в інтернет-магазині MAUDAU на лікер «Бехеровка» ціна залишається доступною, покупцям
+                    пропонують постійну знижку на малий гурт і акції.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Цікавість" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Curiosity.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Цікавість</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=woodford-reserve">Житнє віскі Woodford Reserve</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li>Червоний вермут</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol">Апероль</a></li><li>Малина</li><li>Чорниця</li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=malyna-16">Малиновий джем</a></li><li>Лимонна цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Неординарний коктейль на житньому віскі з легким присмаком малини. Гірчинка апероля непогано поєднується з димком Woodford Reserve.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Цікавість</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл житнього віскі Woodford Reserve</li><li>1 мл абсенту</li><li>10 мл червоного вермуту</li><li>5 мл бехеровки</li><li>20 мл апероля</li><li>5 г малини</li><li>2 г чорниці</li><li>5 г малинового джему</li><li>Лимонна цедра</li><li>420 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть рокс догори льодом у кубиках.</li><li>Налийте в ємність для змішування 5 мл бехеровки, 10 мл червоного вермуту і 20 мл апероля.</li><li>До них додайте 40 мл житнього віскі Woodford Reserve, 1 деш абсенту та 5 г малинового джему.</li><li>Насипте в напій лід і розмішайте коктейльною ложкою.</li><li>Перелийте через сито-стрейнер у келих-рокс.</li><li>Прикрасьте ягодами малини, чорниці та цедрою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бетон" src="https://photo.maudau.com.ua/Landing/cocktails/incat/beton.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бетон</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нескладний у приготуванні, смачний і підбадьорливий лонг-дрінк. Придуманий у Чехії та став популярним способом пити легендарну настоянку. Назва складається з перших літер інгредієнтів — тоніка і Бехеровки. Запам'ятовується легкою терпкістю і трав'яними нотками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бетон</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл Бехеровки</li><li>200 мл тоніка</li><li>10 мл лимонного соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть льодом високий келих-хайбол.</li><li>Налийте 40 мл Бехеровки та 10 мл лимонного соку.</li><li>Акуратно додайте 200 мл тоніка.</li><li>Перемішайте напій барною ложкою.</li><li>За бажанням прикрасьте келих лимонною цедрою.</li><li>Подавайте з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хуліган" src="https://photo.maudau.com.ua/Landing/cocktails/incat/hooligan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хуліган</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль на основі трьох міцних напоїв із «хуліганським» характером. Рівні пропорції алкоголю гармонійно змішуються, а кола врівноважує композицію солодко-карамельним присмаком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хуліган</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл абсенту</li><li>30 мл горілки</li><li>30 мл Бехеровки</li><li>150 мл коли</li><li>Лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Високий келих наповніть льодом, не доходячи до краю.</li><li>Налийте 30 мл горілки та 30 мл Бехеровки.</li><li>Додайте 30 мл абсенту.</li><li>Акуратно влийте 150 мл коли — напій може пінитися.</li><li>Помішайте барною ложкою і прикрасьте кружечком апельсина.</li><li>Подавайте до коктейлю трубочку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Алхімік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/alchemist.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Алхімік</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2">Самбука</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Білий ром</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=jagermeister">Єгермейстер</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Мелена кориця</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Особливий коктейль Алхімік — це справжнє таїнство середньовіччя. Основні компоненти — абсент і самбука. Оригінальна подача додає напою ореол загадковості та ексклюзивності.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Алхімік</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл самбуки</li><li>10 мл абсенту</li><li>5 мл білого рому</li><li>5 мл Єгермейстера</li><li>5 мл Бехеровки</li><li>2 щіпки меленої корицф</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У коньячний келих налийте 15 мл самбуки і 10 мл абсенту.</li><li>Додайте по 5 мл білого рому, Єгермейстера і Бехеровки.</li><li>Інтенсивно прокрутіть келих у руках, щоб змочити стінки.</li><li>Проколіть серветку посередині коктейльною трубочкою.</li><li>Підпаліть суміш у келиху на 10 секунд і вкиньте в полум'я 2 щіпки меленої кориці.</li><li>Акуратно перелийте напій у келих для віскі, накрийте зверху коньячним.</li><li>Через 10 секунд поставте коньячний келих на серветку з трубочкою.</li><li>Випийте коктейль залпом і тут же вдихніть пари.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чеський йорж" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Czech_ruff.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чеський йорж</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/pyvo/country_of_origin=chehija">Чеське світле пиво</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Варіація класичного йоржа — у цьому рецепті з Бехеровкою. Коктейль легко готується, п'ється і так само легко п'янить. Трав'яна основа настоянки в тандемі з хмільним пивом дає оригінальний смаковий ефект.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чеський йорж</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл Бехеровки</li><li>90 мл чеського світлого пива</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У пивний келих налийте 90 мл охолодженого світлого пива.</li><li>Додайте 45 мл Бехеровки і дбайливо перемішайте ложкою. Контролюйте піну.</li><li>Пийте невеликими ковтками.</li><li>В іншому варіанті: спершу випийте чарку Бехеровки.</li><li>Потім запейте келихом чеського світлого пива.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Яблучний Слінг" src="https://photo.maudau.com.ua/Landing/cocktails/incat/apple-sling.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблучний Слінг</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний тонізуючий коктейль на Бехеровці з яблучним післясмаком. Сік і тонік роблять напій слабоалкогольним та ідеально підходить для літніх вечірок. Подається в слінгу, звідси й пішла його назва.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Яблучний Слінг</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл Бехеровки</li><li>45 мл яблучного соку</li><li>45 мл тоніку</li><li>Лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в слінг-келих лід до верхнього краю.</li><li>Налийте 45 мл Бехеровки та 45 мл яблучного соку.</li><li>Додайте 45 мл тоніку і перемішайте барною ложкою.</li><li>За бажанням прикрасьте коктейль тонкими слайсами зеленого яблука.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б'янка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/bianca.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б'янка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile">Білий вермут</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/solodkist_3=sukhe-3">Сухе шампанське</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кисло-солодкий коктейль із рівноцінною пропорцією настоянки, вермуту і шампанського. Запам'ятовується м'яким трав'яним присмаком і бадьорими бульбашками ігристого.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Б'янка</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл Бехеровки</li><li>30 мл білого вермуту</li><li>30 мл сухого шампанського</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Високий келих наповніть льодом у кубиках.</li><li>Налийте 30 мл Бехеровки та 30 мл білого вермуту.</li><li>Трохи перемішайте два інгредієнти барною ложкою.</li><li>Влийте 30 мл сухого шампанського.</li><li>Декоруйте коктейль ягодами або фруктами.</li><li>Подавайте та пийте через соломинку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лавина" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Avalanche.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лавина</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=chervone">Червоне вино</a></li><li><a href="https://maudau.com.ua/category/med">Рідкий мед</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Лавина — це твіст на глінтвейн, де Бехеровка органічно замінює спеції. Поєднання вина, меду та настоянки виходить неймовірно смачним і пікантним. Цитрусовий сік додає кислинки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лавина</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл Бехеровки</li><li>120 мл червоного вина</li><li>20 мл рідкого меду</li><li>10 мл лимонного соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в пітчер 120 мл червоного вина.</li><li>Додайте 45 мл Бехеровки та 20 мл рідкого меду.</li><li>Наприкінці додайте 10 мл лимонного соку.</li><li>Нагрійте пітчер до 70°C, але не кип'ятіть напій.</li><li>Помішайте і розлийте по келихах.</li><li>Перед подачею можна додати скибочку апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чеський Співробітник" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Czech_Employee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чеський Співробітник</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li>Шнапс</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нехитрий, але приємний шот із цікавим поєднанням шнапсу і настоянки Бехеровки. Зазвичай змішується в рівних пропорціях. За легендою, простий коктейль придумав чеський співробітник американської компанії, і з часом уся фірма перейняла цей алкогольний ритуал.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чеський Співробітник</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл Бехеровки</li><li>25 мл шнапсу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь сильно охолодіть Бехеровку і невелику чарку об'ємом до 60 мл.</li><li>Налийте в чарку 25 мл Бехеровки і 25 мл шнапсу.</li><li>Шот готовий — випийте його залпом і робіть наступний!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Малюк Бехер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Baby_Becher.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Малюк Бехер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=becherovka">Бехеровка</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Інтерпретація коктейлю Бетон із додаванням горілки, яка підвищує градус, але зменшує гіркий присмак настоянки. Тонік додає солодкувато-свіжі енергійні ноти.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Малюк Бехер</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл горілки</li><li>30 мл Бехеровки</li><li>120 мл тоніку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте кубики льоду в келих олд-фешн до краю.</li><li>Налийте 30 мл горілки і 30 мл Бехеровки.</li><li>Акуратно влийте 120 мл тоніку.</li><li>Прикрасьте келих цедрою лимона.</li><li>Пийте маленькими ковтками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">40 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">10 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
