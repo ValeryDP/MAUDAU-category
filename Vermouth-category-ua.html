@@ -1,0 +1,943 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Вермут — варіант ароматизованого вина. Його приправляють рослинними компонентами: корінням, корою, квітами, насінням, травами, спеціями.</p>
+                <p>Спочатку вермути позиціонували як ліки. Зараз їх здебільшого подають як аперитив. Також вони підходять для змішування в коктейлях або використання в кулінарії.</p>
+                <h3>Чим вермут відрізняється від вина</h3>
+                <p>
+                    Різниця полягає в тому, що вермут — варіант алкоголю, який пройшов додаткову ароматизацію. Смако-ароматична композиція вин, особливо червоних, формується в процесі витримки в дубових бочках. У складі немає нічого, крім винограду.
+                    Рецептуру вермутів збагачують рослинними компонентами, що повністю змінює смак і аромат.
+                </p>
+                <h2>Як виник вермут</h2>
+                <p>
+                    Історія сягає часів стародавніх індійських, китайських і грецьких цивілізацій, які збагачували настоянки рослинними компонентами, найчастіше — з профілактичною метою. У напій під назвою «вермут» обов'язково входив полин. Вважалося,
+                    що рослина виліковує хвороби шлунка. Полин поклав сучасну назву вермутам — від німецького слова «wermut».
+                </p>
+                <p>
+                    У середині XVI століття лікувальний тонік поступово перейшов у розряд вишуканих алкогольних напоїв. Центром виробництва обрали П'ємонт, що на північному заході Італії, а також Савойю у Франції. Причина — у мальовничих альпійських
+                    лугах, вкритих полином.
+                </p>
+                <p>
+                    Перший комерційний рецепт належав аптекарю і травнику Антоніо Бенедетто Карпано. У 1786 році він виробив вермут в околицях Турина (Італія). В основі — місцевий виноград «москато». Незабаром напій перетворився на культовий
+                    італійський аперитив.
+                </p>
+                <p>У Франції в основному виробляли сухий варіант, тоді як в Італії — солодкий. Першу французьку торгову марку Noilly Prat зареєстрували 1813 року.</p>
+                <p>
+                    Міжнародний успіх до ароматизованого вина під назвою «вермут» прийшов наприкінці XIX століття. У той час бармени активно використовували його в коктейлях, включно зі знаменитим Milano Torino. Рецепт на основі солодкого вермуту Punt
+                    e Mes і лікеру Campari припав до смаку американським солдатам. Тепер ароматизоване кріплене вино додають до складу Negroni, Manhattan, Martini.
+                </p>
+                <h2>Погляд на виробництво вермутів</h2>
+                <p>Ключовим компонентом виступає нейтральне слабоалкогольне вино або неферментоване виноградне сусло. Основу готують із винограду сортів «пікпуль», «клерет бланш», «требіано», «катарато».</p>
+                <p>Додатково вермут зміцнюють нейтральним спиртом і ароматизують натуральними рослинними компонентами, які додають у сухому вигляді. Ботанічна комбінація формує унікальний смак.</p>
+                <p>За бажанням після ароматизації напій підсолоджують цукром. Міцність на виході становить 12–18%.</p>
+                <h3>Що відомо про склад вермутів</h3>
+                <p>Виробники тримають рецепт у суворій таємниці. Класичний ботанічний букет нерідко містить:</p>
+                <ul>
+                    <li>ялівець;</li>
+                    <li>кардамон;</li>
+                    <li>корицю;</li>
+                    <li>гвоздику;</li>
+                    <li>коріандр;</li>
+                    <li>ромашку;</li>
+                    <li>хінін;</li>
+                    <li>гісоп;</li>
+                    <li>імбир.</li>
+                </ul>
+                <h2>Класифікація вермутів за кольором і цукром</h2>
+                <p>На ринку переважають два стилі — червоний італійський Rosso і білий французький сухий. Перша категорія вказує на солодкий вермут. Вміст цукру — 10–15%. Червоний колір — результат фарбування карамеллю.</p>
+                <p>
+                    Французьку продукцію легко впізнати за блідим відтінком. Вино вермут — сухе і гірке, що пояснюється додаванням мускатного горіха і цедри апельсина. Концентрація цукру низька — до 4%. Якщо напій виготовили в солодкому стилі, його
+                    маркують як Bianco. Також в інтернет-магазині MAUDAU можна замовити вермут, виконаний у рожевому або помаранчевому кольорі.
+                </p>
+                <p>
+                    Додатково продукцію класифікують залежно від вмісту цукру. Найсухіший вермут, який можна купити, відносять до класу Extra Dry. Концентрація цукру становить до 30 г/л. Далі йде категорія Dry. Вміст цукру — до 50 г/л. Солодкий
+                    варіант, який маркують як Sweet, містить від 130 г/л.
+                </p>
+                <h2>Культові виробники вермутів</h2>
+                <p>Важливу роль при виборі відводять іменитості торгової марки. Вермути, які можна знайти в Україні, найчастіше виготовляють в Італії та Франції. Виробники:</p>
+                <ol>
+                    <li>Martini. Відомий італійський бренд. Білий вермут містить полин, який перебивають цитрусові нотки.</li>
+                    <li>Cinzano. Культова компанія з Італії. Вермут за конкурентною вартістю підходить тим, хто шукає насичену смакову композицію. Букет розкривається фруктовими акордами, що змінюються ботанічною гіркотою.</li>
+                    <li>
+                        Dolin. Французька торгова марка, представлена на ринку з 1821 року. У складі — близько 30 компонентів. Їх вводять у нейтральне вино за допомогою мацерації. Білий вермут Dolin огортає тонами соснового лісу і лікеру «Женепі».
+                        Червоний розкривається нотками фіалок, орегано, тютюну.
+                    </li>
+                </ol>
+                <p>
+                    Від іноземних колег не відстають виробники з України. При цьому на вермут ціна знижується, оскільки продукцію не доводиться далеко везти. На особливу увагу заслуговує Marengo Di Fiore. Рецепт доповнено червоними апельсинами.
+                    Компанія Fratelli пропонує унікальну продукцію, ароматизовану лимонами, полуницею, м'ятою.
+                </p>
+                <h2>Як пити вермут</h2>
+                <p>Спочатку розглядайте напій як вино. Подавайте вермут охолодженим, комбінуючи з льодом або мінеральною водою. Вибір — за хайболом. Завершіть подачу м'ятою, чебрецем або розмарином.</p>
+                <p>
+                    Вермут — варіант алкоголю, ціна якого доволі доступна. Тому ароматизоване вино нерідко використовують у коктейлях. Відправна точка — «Американо». Потім переходьте до «Мартінезу». Поєднуйте сухий французький вермут із джином і
+                    текілою. Солодкий — із фруктовими лікерами та настоянками.
+                </p>
+                <h2>Чому вигідно купити вермут в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В асортименті — 100% оригінальна продукція. Вибір і оформлення замовлення забере 5–7 хвилин. Найвигідніше — купити вермут гуртом або за акцією. Звертайте увагу на позиції, які доставляють безкоштовно. Також опція діє при досягненні
+                    певної суми замовлення. Доставку здійснить кур'єр або поштовий оператор. У Києві передбачено самовивіз. Оплата можлива банківською карткою на сайті або готівкою в момент отримання.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чача з вермутом" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chacha_with_vermouth.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чача з вермутом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=chacha">Чача</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li>Цитрусова наливка</li><li>Цедра лимона</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нестандартний тандем чачі та вермуту запам'ятовується міцністю і легким ароматом винограду. У післясмаку відчуваються цитрусові нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чача з вермутом</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл чачі</li><li>50 мл червоного вермуту</li><li>50 мл цитрусової наливки</li><li>Цедра лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охолодіть заздалегідь креманку або келих для мартіні.</li><li>Покладіть на дно келиха кілька кубиків льоду.</li><li>Налийте 50 мл червоного вермуту і 50 мл цитрусової наливки.</li><li>Додайте 100 мл чачі й акуратно перемішайте барною ложкою.</li><li>Прикрасьте коктейль лимонною цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні Рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Royale_lemon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні Рояль</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile">Білий вермут</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Лимон</li><li>Мʼята</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний фіз із літнім цитрусовим смаком і м'ятними нотками. Білий вермут і шампанське ідеально поєднуються в цьому класичному коктейлі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні Рояль</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл білого вермуту</li><li>75 мл шампанського</li><li>1 четвертинка лимона</li><li>1 г м'яти</li><li>160 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть кулястий келих для вина догори кубиками льоду.</li><li>Налийте 75 мл білого вермуту та 75 мл шампанського.</li><li>Акуратно розмішайте напій коктейльною ложкою — він може пінитися.</li><li>Прикрасьте коктейль четвертинкою лимона та листям м'яти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Brazil" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Brazil.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Brazil</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Анісова настоянка</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=kokteilnyi-biter">Бітер</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li><a href="https://maudau.com.ua/category/vyno/typ_vyna_2=kheres-jerez">Херес</a></li><li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тандем вермуту та хересу створює цікавий неповторний смак. Міцні напої чудово врівноважують один одного. У післясмаку залишається ледве вловима нотка анісу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Brazil</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 краплі анісової настоянки</li><li>1 крапля бітеру</li><li>30 мл сухого вермуту</li><li>30 мл хересу</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в ємність для змішування кубики льоду.</li><li>Налийте 30 мл сухого вермуту і 30 мл хересу.</li><li>Додайте кілька крапель анісової настоянки і крапельку бітеру.</li><li>Делікатно перемішайте напій коктейльною ложкою.</li><li>Перелийте коктейль через стрейнер у келих для подачі.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кров і пісок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Blood-and-Sand.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кров і пісок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=vyshnevyi">Вишневий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li>Апельсинова цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Натхненням для коктейлю «Кров і пісок» стало однойменне німе кіно. Поєднання віскі, червоного вермуту та апельсинового соку символізує пісок арени після кориди. Напій має солодкий фруктовий присмак із нотами віскі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кров і пісок</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл шотландського віскі</li><li>25 мл червоного вермуту</li><li>25 мл вишневого лікеру</li><li>25 мл апельсинового соку</li><li>цедра апельсина</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 25 мл апельсинового соку та стільки ж вишневого лікеру.</li><li>Додайте 25 мл червоного вермуту та влийте 25 мл віскі.</li><li>Заповніть шейкер кубиками льоду та збийте всі інгредієнти.</li><li>Налийте через стрейнер в охолоджений келих типу «шампанське блюдце».</li><li>Прикрасьте за бажанням апельсиновою цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Caramel Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Caramel_Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Caramel Manhattan</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=karamel-8">Карамельний сироп</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=solodkyi-sweet">Солодкий вермут</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=kokteilnyi-biter">Бітер</a></li><li>Ананас</li><li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цікавий солодкий коктейль, з гармонійним поєднанням міцного віскі, вермуту та карамельного сиропу. Ананас надає напою легких тропічних ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Caramel Manhattan</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл ірландського віскі</li><li>20 мл ананасового соку</li><li>15 мл карамельного сиропу</li><li>10 мл солодкого вермуту</li><li>1 крапля бітеру</li><li>1 скибочка ананаса</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер кубиками льоду.</li><li>Налийте 20 мл ананасового соку, 15 мл карамельного сиропу та 1 краплю бітеру.</li><li>Додайте 10 мл солодкого вермуту та 45 мл ірландського віскі.</li><li>Гарненько збийте інгредієнти.</li><li>Перелийте напій через сито-стрейнер в охолоджений коктейльний келих.</li><li>Прикрасьте коктейль слайсом ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Old Potato" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Old_Potato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Old Potato</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яблучний брендв</li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландське віскі</a></li><li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Міцний коктейль на базі віскі, має характерний аромат яблучного бренді. Попри пристойний градус у нього м'який делікатний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Old Potato</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл яблучного бренді</li><li>15 мл сухого вермуту</li><li>60 мл ірландського віскі</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть коктейльний келих.</li><li>У склянку для змішування покладіть кубики льоду майже до верху.</li><li>Налийте 15 мл яблучного бренді та 15 мл сухого вермуту.</li><li>Додайте 60 мл ірландського віскі та перемішайте барною ложкою.</li><li>Процідіть коктейль через сито-стрейнер в охолоджений келих.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Горілка мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Vodka_Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Горілка мартіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Оливки</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Той самий найулюбленіший коктейль Джеймса Бонда. Аромат полину із сухого вермуту чудово поєднується з високим градусом гірко-солодкої горілки. Обов'язково додайте оливку!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Горілка мартіні</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл горілки</li><li>15 мл сухого вермуту</li><li>9 г оливок</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в ємність для змішування 15 мл сухого вермуту та 75 мл горілки.</li><li>Насипте 300 г льоду в кубиках і обережно розмішайте високою барною ложкою.</li><li>Перелийте через сито-стрейнер у заздалегідь охолоджений келих.</li><li>Прикрасьте коктейль трьома оливками на шпажці. Бондіана починається!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бульвардьє #3" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Boulevardier_3.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бульвардьє #3</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Шотландський віскі</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li>Червоний бітер</li><li>Апельсинова цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бульвардьє #3 — яскрава вишукана варіація на основі віскі та вермуту. Додавання бітеру надає характерної гіркуватості, а солодкий смак вермуту врівноважує композицію.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бульвардьє #3</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл шотландського віскі</li><li>30 мл червоного вермуту</li><li>30 мл червоного бітеру</li><li>апельсинова цедра</li><li>кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-рокс кубиками льоду.</li><li>Налийте в келих 30 мл червоного вермуту та 30 мл бітеру.</li><li>Додайте 45 мл шотландського віскі та ретельно перемішайте високою барною ложкою.</li><li>Прикрасьте апельсиновою цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Манхеттен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Манхеттен</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Ангостура бітер</a></li><li>Коктейльна вишня червона</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легендарний міцний і солодкий Манхеттен — зразок бурбонних коктейлів. За легендою, його вигадала Леді Рандольф — мати Вінстона Черчилля. Справа була в барі «Manhattan Club», звідси й пішла назва напою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Манхеттен</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл бурбону</li><li>25 мл червоного вермуту</li><li>1 мл бітеру Ангостура</li><li>5 г червоної коктейльної вишні</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в склянку для змішування 25 мл червоного вермуту і 50 мл бурбону.</li><li>Додайте 1 деш бітеру Ангостура та 300 г льоду в кубиках.</li><li>Добре розмішайте інгредієнти коктейльною ложкою.</li><li>Перелийте напій через сито-стрейнер в охолоджений келих.</li><li>Декоруйте коктейльною вишнею на шпажці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">145 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">17 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
