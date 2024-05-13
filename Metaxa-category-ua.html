@@ -1,0 +1,777 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Metaxa — колекція міцних спиртних напоїв, яка походить із Греції. Кожен продукт складається зі спиртів, змішаних із мускатним вином. Готовий напій витримують у дубових бочках. Нарешті, грецький коньяк «Метакса» розливають у скляні
+                    пляшки, які зовні нагадують амфору. Попри складний виробничий процес, на коньяк «Метакса» ціна залишається конкурентною.
+                </p>
+                <h3>Що відомо про міцність</h3>
+                <p>Градус залежить від лінійки. Бренді «Метакса», виконаний в ароматизованих стилях, можна купити з вмістом алкоголю близько 30%. Стандартний варіант розливають при міцності 38–40%.</p>
+                <h3>Чим Metaxa відрізняється від коньяку</h3>
+                <p>Спочатку алкогольну продукцію маркували як коньяк. Однак міцний спиртний напій виробляють виключно у Франції у відповідному регіоні. Пізніше «Метаксу» позиціонували як бренді.</p>
+                <p>
+                    Зараз купити Metaxa в Україні можна як самостійний продукт у категорії міцних спиртних напоїв. Якщо точніше, це варіант алкоголю, виготовленого за допомогою поєднання виноградного бренді, солодкого вина з острова Самос і еліксиру
+                    середземноморських рослин.
+                </p>
+                <h2>Як виник коньяк «Метакса»</h2>
+                <p>
+                    Біля витоків — Спірос Метакса. Його батьки — відомі торговці шовком. Тож Спірос багато подорожував світом, аж поки не відкрив таверну 1888 року. Там він виробив першу партію бренді «Метакса». У дизайні скляних пляшок досі
+                    використовують медальйон Salamina Warrior, який Спірос знайшов на місці винокурні, побудованої в Піреї 1888 року.
+                </p>
+                <p>Через 80 років виробництво перенесли в Кіфісію. Бренд залишався в приватних руках, поки 1989 року торгову марку не продали корпорації Grand Metropolitan. Через 11 років бренд перейшов до Remy Cointreau.</p>
+                <h2>Як і де виробляють Metaxa</h2>
+                <p>
+                    Міцний спиртний напій виготовляють із суміші винних спиртів, виноград для виробництва яких вирощують у різних регіонах Греції. Переважно — в Аттиці, Корінфі та на Криті. Використовувані сорти винограду включають «саватьяно» і
+                    «султаніну».
+                </p>
+                <p>Metaxa — коньяк, який також містить бренді, привезений з Італії та Іспанії. Його переганяють виключно у вертикальних колонах безперервної дії.</p>
+                <p>Спирти витримують окремо. Після цього їх змішують у дубових бочках з-під французького лімузенського дуба. Грубозерниста дубильна деревина забезпечує хорошу екстракцію і прискорює дозрівання.</p>
+                <p>
+                    Далі готують марьяж. Спирт об'єднують із мускатними винами, які постачають з островів Самос і Лемнос. Їх виробляють на основі сорту «мускат блан а пті грейнс». Це дрібноягідний ароматний виноград грецького походження. Багато хто
+                    вважає його першим винним сортом. Раніше компанія Metaxa закуповувала вина у незалежних виноробів, але зараз налагодила культивацію винограду і виробництво власної сировини.
+                </p>
+                <p>Під час купажування також додають комбінацію екстрактів середземноморських трав, включно з травневою трояндою — такий самий компонент міститься в культових парфумах Chanel №5.</p>
+                <p>Мар'яж відправляють на повторну витримку. Готовий грецький коньяк «Метакса» розливають і маркують зірками.</p>
+                <h2>Поради щодо вибору Metaxa</h2>
+                <p>
+                    Перш за все — враховуйте кількість зірок. За однією з версій, вони вказують на вік спиртів у складі коньяку «Метакса». Ще один варіант — кількість використаних мускатних вин. Правильний варіант — орієнтуватися на зірочки, як на
+                    показники якості, які самі по собі відображають вік. Відповідно, на 12-зіркову «Метаксу» ціна буде найвищою. Основними продуктами в портфоліо компанії вважають:
+                </p>
+                <ol>
+                    <li>Бренді «Метакса» 5 зірок. Молода Metaxa за конкурентною вартістю. Дистилят огортає свіжими фруктовими тонами.</li>
+                    <li>Бренді «Метакса» 7 зірок. У складі — найвищий відсоток мускатних вин у лінійці Stars. Це надає напою солодкість і приємний округлий фруктовий шлейф.</li>
+                    <li>
+                        Бренді «Метакса» 12 зірок. Смаковий букет — насичений, з інтенсивними відтінками шоколаду, ванілі, тютюну, спецій. Аромат розкривається акордами сушених трав і квітів. Витримка в сильно обпалених дубових бочках надає характерний
+                        мигдально-димний шлейф, а також додає ноток сухофруктів.
+                    </li>
+                </ol>
+                <p>Кілька ексклюзивних варіантів Metaxa, купити які можна в інтернет-магазині MAUDAU:</p>
+                <ol>
+                    <li>Private Reserve. Продукт, до створення якого доклала руку тільки команда Metaxa. Автор — Константінос Раптіс. Виноград вирощений на пишних гірських терасах Самоса.</li>
+                    <li>Grande Fine. Бренді, який відображає грецьку культуру. До створення етикетки долучився вуличний художник Cacao Rocks.</li>
+                    <li>Honey Shot. Ароматизована версія класичного бренді, яка розкривається медово-квітковими відтінками. Післясмак — багатий, з акцентом на цитрусовій свіжості.</li>
+                </ol>
+                <h2>Як правильно подавати «Метаксу»</h2>
+                <p>
+                    Міцний спиртний напій смачний сам по собі. Подавайте його в широких склянках, заповнюючи їх на половину. За бажанням вкиньте лід. Якщо віддаєте перевагу охолодженій «Метаксі», залиште пляшку в холодильнику перед подачею на 2–4
+                    години.
+                </p>
+                <p>Також особливий варіант бренді можна піднести як шот. Змішайте 30 мл напою з шоколадним лікером.</p>
+                <p>
+                    На грецький коньяк Metaxa ціна доступна, але, як і будь-який інший міцний спиртний напій, його не хочеться зіпсувати, особливо під час змішування коктейлів. Комбінуйте бренді з соком апельсина або лайма. Не менш гармонійно
+                    смако-ароматична палітра розкривається у складі «Сангрії».
+                </p>
+                <p>Що стосується закусок, зупиніться на свіжих фруктах і ягодах. Також можна подати твердий сир, морепродукти, червону рибу або запечену птицю. Як десерт виберіть молочний шоколад.</p>
+                <h2>Чому вигідно купити бренді Metaxa в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU пропонує оригінальну алкогольну продукцію із сонячної Греції. Оформлення замовлення забере 5–7 хвилин. Доставкою в Києві займається кур'єр. Також можливий самовивіз. Покупці в інших містах України
+                    можуть скористатися послугами поштових служб. Однозначної відповіді на запитання, скільки коштує «Метакса», немає. Це пов'язано з акціями, що постійно оновлюються, а також знижкою на малий гурт.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Грецький Мохіто" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Greek_Mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Грецький Мохіто</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мʼята</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=metaxa">Метакса</a></li><li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li><li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Твіст на класичний Мохіто, в якому ром замінюється на Метаксу, що надає коктейлю оригінального смаку. Тандем м'яти і лайма залишає характерний впізнаваний післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Грецький Мохіто</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3-4 листочки м'яти</li><li>2 чайні ложки цукру</li><li>1 лайм</li><li>50 мл Метакси</li><li>100 мл содової</li><li>кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У склянку-хайбол покладіть листочки м'яти і 2 чайні ложки цукру.</li><li>Видавіть туди ж свіжий сік одного лайма і перемішайте високою ложкою.</li><li>Додайте кілька кубиків льоду і 50 мл Метакси.</li><li>Доверху долийте 100 мл содової.</li><li>Добре розмішайте коктейль і прикрасьте гілочкою м'яти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Метакса сауер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Metaxa_sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Метакса сауер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=metaxa">Метакса</a></li><li><a href="https://maudau.com.ua/category/solodka-voda">Газована вода</a></li><li>Кубики льоду</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            В основі коктейлю лежить благородний смак Метакси. Суміш цитрусових соків надає напою екзотичної кислинки, а газована вода розбавляє міцність до потрібної норми. Кажуть, що коктейль придумав особисто Спірос Метаксас.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Метакса сауер</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл апельсинового соку</li><li>20 мл лимонного соку</li><li>50 мл Метакси</li><li>100 мл газованої води</li><li>Кубики льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер кубиками льоду до половини.</li><li>Налийте 30 мл апельсинового та 20 мл лимонного соків.</li><li>Додайте 50 мл Метакси.</li><li>Протягом хвилини збивайте інгредієнти в шейкері.</li><li>Через барне сито процідіть напій в охолоджений високий хайбол.</li><li>Заповніть келих доверху 100 мл газованої води і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Олександра" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Alexandra.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Олександра</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=metaxa">Бренді Метакса</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=shokoladnyi-2">Шоколадний лікер</a></li><li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишуканий десертний коктейль на бренді. Поєднання лікеру та вершків маскує присмак міцного алкоголю та робить напій оксамитовим і приємним.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Олександра</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл бренді Метакси</li><li>30 мл шоколадного лікеру</li><li>30 мл вершків</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 30 мл шоколадного лікеру.</li><li>Додайте 30 мл вершків і 30 мл бренді Метакса.</li><li>Насипте в шейкер кубики льоду і збийте.</li><li>Процідіть суміш через сито-стрейнер в охолоджене шампанське блюдце.</li><li>Посипте зверху коктейль меленим мускатним горіхом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Earresistible Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Earresistible_Spritz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Earresistible Spritz</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=metaxa">Метакса 7 зірок</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просеко</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Різновид сімейства Spritz — у цій версії з 7-зірковою Метаксою. Доволі міцний коктейль з підбадьорливими бульбашками просеко і тоніку. Залишає свіжий післясмак і святковий настрій.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Earresistible Spritz</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл Метакси 7 зірок</li><li>40 мл просеко</li><li>20 мл тоніку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У заздалегідь охолоджений високий келих насипте трохи льоду.</li><li>Налийте 40 мл Метакси 7 зірок і 20 мл тоніку.</li><li>Трохи помішайте високою коктейльною ложкою.</li><li>Не збовтуючи долийте доверху 40 мл просеко.</li><li>Коктейль готовий — подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="METAXA Orange Paloma" src="https://photo.maudau.com.ua/Landing/cocktails/incat/METAXA_Orange_Paloma.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">METAXA Orange Paloma</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/brendi-metaxa-orange-5-yo-38-07-l">METAXA 5 Stars апельсин</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=hreipfrut-8">Грейпфрутова газована вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кисло-солодкий слабоалкогольний лонг на базі пікантного апельсинового METAXA 5 Stars. Коктейль ідеально збалансований завдяки поєднанню напою на основі бренді, цитрусового соку та сиропу. Кількість газованої води можна змінювати і варіювати міцність Orange Paloma.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати METAXA Orange Paloma</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл METAXA 5 Stars апельсин</li><li>10 мл лаймового соку</li><li>10 мл цукрового сиропу</li><li>Грейпфрутова газована вода</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть високий хайбол льодом доверху.</li><li>Налийте 50 мл METAXA 5 Stars апельсин.</li><li>Додайте по 10 мл цукрового сиропу та лаймового соку.</li><li>Обережно перемішайте ці інгредієнти.</li><li>Влийте грейпфрутову газовану воду на свій смак.</li><li>За бажанням декоруйте коктейль скибочкою апельсина та розмарином.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">222 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">2.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
