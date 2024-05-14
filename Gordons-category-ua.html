@@ -1,0 +1,789 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Джин Gordon's — міцний спиртний напій, який виробляють в Англії. Дистилят традиційно настоюють на ягодах ялівцю. Бренд належить корпорації Diageo. Продукт відносять до категорії London Dry Gin. Це означає, що в процесі виготовлення
+                    не використовують цукор.
+                </p>
+                <p>Джин «Гордонс» — найбільш продаваний у світі. Високу позицію на ринку торгова марка зберігає з XIX століття.</p>
+                <h2>Як з'явився джин Gordon's</h2>
+                <p>Біля витоків — лондонець шотландського походження Александр Гордон. У 1769 році він запустив крихітну винокурню в Саутуарке (Лондон). Через 17 років виробництво перенесли в Кларкенвелл.</p>
+                <p>
+                    На кришці джину Gordon's видніється голова кабана. Це відсилання до легенди, яка свідчить, що одного разу член клану Гордонів врятував короля Шотландії від дикого звіра під час полювання. Відтоді предки Олександра Гордона зображують
+                    голову кабана на сімейному гербі.
+                </p>
+                <p>До 1800 року джин «Гордонс» можна було купити не тільки в Англії, а й в інших європейських країнах. Поширенню міцного спиртного напою світом сприяв Королівський військово-морський флот Великої Британії.</p>
+                <p>
+                    1898 року компанія Gordon's &amp; Co увійшла до складу Charles Tanqueray &amp; Co. Виробництво переїхало на Госуелл-Роуд. Через 10 місяців помер Чарльз Гордон, поклавши край зв'язку сім'ї з торговою маркою. Компанія перейшла під
+                    контроль Distillers.
+                </p>
+                <p>
+                    У 1924 році під торговою маркою «Гордонс» випустили лінійку готових коктейлів-шейкерів. Незабаром Георг V нагородив компанію першим королівським ордером. З 1929 року портфоліо торгової марки поповнилося ароматизованими джинами
+                    Gordon's.
+                </p>
+                <p>Зараз компанія володіє винокурнею в Ліндені, що в штаті Нью-Джерсі (США). Європейську версію напою виготовляють у Файфі (Шотландія).</p>
+                <h2>Що входить до складу джину «Гордонс»</h2>
+                <p>Рецепт не змінювали з моменту випуску першої партії. Gordon's — джин, який виробляють за стандартною технологією. Основу становить нейтральний зерновий спирт. Для зниження міцності використовують попередньо підготовлену воду.</p>
+                <p>Міцний спиртний напій піддають потрійній перегонці. Головний компонент — ялівець. Також як натуральні ароматизатори використовують:</p>
+                <ul>
+                    <li>коріандр;</li>
+                    <li>коріння дягелю та ірису;</li>
+                    <li>солодку;</li>
+                    <li>цедру лимона й апельсина.</li>
+                </ul>
+                <h3>Міцність джину Gordon's</h3>
+                <p>
+                    Відсоток алкоголю не залежить від стилю. Міцність становить 37,5% як для London Dry Gin, так і для ароматизованих лінійок. Це дає змогу виробнику економити на акцизних зборах. Отже, на джин «Гордонс» ціна знижується і для кінцевого
+                    споживача.
+                </p>
+                <h2>Як правильно пити джин Gordon's</h2>
+                <p>Усе залежить від обраного стилю:</p>
+                <ol>
+                    <li>
+                        London Dry Gin. Флагман, який огортає вибуховими тонами ялівцю, апельсинів, коріандру і лакриці. Смак — яскравий і сухий. Класичний джин Gordon's подають як самостійний напій. Він також входить до складу культового коктейлю
+                        G&amp;T.
+                    </li>
+                    <li>
+                        Premium Pink. Ароматизована версія, яка розкривається акордами полуниці та малини. В ароматі відчувається шлейф червоної смородини. Цей варіант джина «Гордонс» можна подавати без добавок. Також вигідно впишеться в рецепт літніх
+                        освіжальних коктейлів.
+                    </li>
+                    <li>Sicilian Lemon. Пікантна версія оригінального рецепта. У смако-ароматичній палітрі нотки ялівцю переплітаються з приємною кислинкою сицилійських лимонів.</li>
+                    <li>
+                        Mediterranean Orange. Один із найароматніших варіантів джину Gordon's, призначений для змішування в коктейлях. Дистилят додає пікантно-солодкої нотки. Яскраво-помаранчевий колір вигідно доповнить подачу. Смаковий букет —
+                        гармонійний, з відтінками апельсинової цедри та екзотичних спецій.
+                    </li>
+                </ol>
+                <p>
+                    На особливу увагу заслуговує категорія напоїв на основі джину Gordon's. Хороший приклад — Tropical Passionfruit. Родзинка — шлейф стиглої маракуї, який гармонійно переплітається з пікантністю рослинних компонентів. Цей варіант
+                    підходить для приготування авторських коктейлів.
+                </p>
+                <p>Подавайте джин «Гордонс» за +5–10 ⁰C. За бажанням доповніть льодом. Якщо готуєте Gin&amp;Tonic, використовуйте хайбол. Завершіть подачу скибочкою лайма або гілкою розмарину.</p>
+                <p>Не менш гармонійно сухий лондонський джин поєднується з вермутом. Це основа класичного міксу Dry Martini. Хороший варіант для літнього відпочинку — «Мохіто». Просто замініть ром на стандартний джин Gordon's.</p>
+                <p>Що стосується альтернативних поєднань, то міцний спиртний напій вигідно розкривається при змішуванні з ігристими винами, гіркими лікерами, імбирним елем, фруктовими соками.</p>
+                <h3>Скільки коштує джин «Гордонс»</h3>
+                <p>
+                    Продукцію активно реалізують у Європі, США та Австралії. Цікаво, що в межах Великої Британії джин Gordon's можна купити в ємностях, виконаних виключно з темно-зеленого скла. Фірмову пляшку розробили 1902 року. Експортну продукцію
+                    розливають у прозорі ємності.
+                </p>
+                <p>На джин Gordon's ціна визначається виходячи зі стилю та обраного об'єму. Наприклад, стандартний London Dry Gin у форматі 0,35 літра коштує 269 грн. Літрова пляшка обійдеться в 609 грн.</p>
+                <p>Лінійка ароматизованих напоїв падає в ціні, що пояснюється використанням менших концентрацій алкоголю. Наприклад, рожева версія джину «Гордонс» коштує 629 грн за 1 літр.</p>
+                <p>Найвигідніше — замовляти за акцією. Список доступних пропозицій постійно змінюється. Також маркет алкогольних штук MAUDAU пропонує знижку на гуртову покупку.</p>
+                <h2>Чому вигідно купити джин Gordon's в інтернет-магазині MAUDAU</h2>
+                <p>Продукція потрапляє в каталог напряму, що гарантує оригінальне походження. Власний імпорт також надає покупцям доступ до новинок і ексклюзивних випусків.</p>
+                <p>Для оформлення замовлення вистачить 5–7 хвилин. Оплатити покупку можна безпосередньо на сайті. За бажанням оформляйте післяплату.</p>
+                <p>
+                    Інтернет-магазин MAUDAU пропонує кілька варіантів доставки джину «Гордонс» — кур'єром по Києву або поштовими службами по Україні. Також доступний самовивіз із фізичних точок продажів, якщо товар у наявності. При досягненні певної
+                    суми замовлення за доставку не потрібно платити.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Негроні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Negroni-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Негроні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li>Червоний бітер</li><li>Апельсинова цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Негроні — коктейльна класика на основі джину, вермуту та бітеру. Має насичений солодко-гіркий смак. Складається з трьох інгредієнтів у рівних пропорціях і легко готується в домашніх умовах.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Негроні</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл лондонського сухого джину</li><li>30 мл червоного вермуту</li><li>30 мл червоного бітеру</li><li>Апельсинова цедра</li><li>120 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-рокс кубиками льоду до країв.</li><li>Налийте в келих 30 мл червоного вермуту та 30 мл червоного бітеру.</li><li>Додайте 30 мл лондонського сухого джину й акуратно розмішайте барною ложкою.</li><li>Прикрасьте коктейль апельсиновою цедрою і подавайте гостям.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Джин тонік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/gin-and-tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Джин тонік</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Лайм</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легендарний лонг із гіркуватістю — простий і освіжальний. Рецепт придумали у XVIII столітті британські офіцери за часів Ост-Індської компанії. Відтоді Джин-тонік набув популярності на кожному континенті.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Джин тонік</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл лондонського сухого джину</li><li>150 мл тоніку</li><li>20 г лайма</li><li>180 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку-хайбол льодом у кубиках майже доверху.</li><li>Налийте 50 мл лондонського сухого джину і почекайте, поки не закінчиться потріскування льоду.</li><li>Додайте 150 мл тоніку й акуратно перемішайте напій коктейльною ложкою.</li><li>Прикрасьте напій кружечком лайма або огірка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лонг айленд ай сті" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Long-Island-Ice-Tea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лонг айленд ай сті</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Білий ром</a></li><li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li>Трипл сек Fruko Schulz</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лимон</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Складний міцний лонг, карколомний у повному сенсі цього слова. Попри назву, коктейль не містить холодного чаю, а названий так за свій насичений бурштиновий відтінок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лонг айленд ай сті</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл горілки Царська</li><li>30 мл білого рому</li><li>30 мл срібної текілі</li><li>30 мл лондонського сухого джину</li><li>30 мл трипл сек Fruko Schulz</li><li>30 мл цукрового сиропу</li><li>30 мл лимонного соку</li><li>100 мл коли</li><li>40 г лимона</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в хайбол кубики льоду до країв.</li><li>Налийте в склянку по 30 мл лимонного соку, цукрового сиропу та лікеру трипл сек Fruko Schulz.</li><li>Додайте 30 мл горілки Царська, і по стільки ж білого рому, срібної текіли та лондонського сухого джину.</li><li>Долийте доверху 100 мл коли й акуратно розмішайте коктейльною ложкою</li><li>Прикрасьте хайбол скибочкою лимона. Коктейль готовий!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Базиліковий удар" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Basil-Smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Базиліковий удар</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Лимон</li><li>Зелений базилік</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Трав'яний шорт-дрінк на сухому джині з характерним смаком базиліка. Цукровий сироп згладжує і кислий смак лимона, і гірчинку джину.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Базиліковий удар</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл лондонського сухого джину</li><li>20 мл цукрового сиропу</li><li>80 г лимона</li><li>5 г зеленого базиліку</li><li>320 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть рокс-бокал кубиками льоду практично доверху.</li><li>Покладіть у шейкер 5 г зеленого базиліку і кілька четвертинок лимона. Акуратно подавіть товкачем-мадлером.</li><li>Налийте 20 мл цукрового сиропу і 60 мл лондонського сухого джину.</li><li>Засипте в шейкер кубики льоду та інтенсивно збийте напій.</li><li>Перелийте через ситечко-стрейнер у келих і прикрасьте листочками базиліку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Том Колінз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Tom-Collins.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Том Колінз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li><li>Апельсин</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей збалансований кисло-солодкий лонг - визнана коктейльна класика на джині. З Тома Коллінза почалася лінійка коктейлів на базі міцного алкоголю з додаванням газованої води та лимонного соку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Том Колінз</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл лондонського сухого джину</li><li>25 мл цукрового сиропу</li><li>25 мл лимонного соку</li><li>100 мл содової</li><li>30 г апельсина</li><li>380 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у склянку-колінз кубики льоду до самого верху.</li><li>Налийте в шейкер 25 мл лимонного соку та 25 мл цукрового сиропу.</li><li>Додайте 50 мл лондонського сухого джину.</li><li>Наповніть шейкер кубиками льоду та енергійно збийте.</li><li>Перелийте через сито-стрейнер у колінз.</li><li>Долийте доверху 100 мл содової та розмішайте барною ложкою.</li><li>Прикрасьте склянку кружечком апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">222 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
