@@ -1,0 +1,809 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Лагер — сорт пива, який варять і витримують за низьких температур. Метод низового бродіння, який застосовують у процесі виготовлення, призводить до створення легкого й освіжального пінного напою.</p>
+                <p>Світлий лагер — найпоширеніший варіант на ринку. Також випускають бурштинову і темну версії. Міцність найчастіше становить 5–13%. Показники гіркоти — 5–45 IBU.</p>
+                <h2>Як з'явився лагер</h2>
+                <p>Пиво низового бродіння виникло в Середньовіччі. Його варили і зберігали в темних і вологих печерах.</p>
+                <p>
+                    Виникнення сучасного лагера відносять до XV століття, коли налагодили культивацію дріжджів. Відомо, що 1420 року пиво низового бродіння активно виробляли в Німеччині. Рецептура включала дріжджі, які осідали на дно пивоварної
+                    посудини. До цього використовували штам, що сприяє верховому бродінню. Такому пиву дозволяли перелитися через край, а піну знімали вручну.
+                </p>
+                <p>
+                    Лагер виробляли взимку, а влітку для охолодження використовували лід, який постачали з річок і озер. Звідси й назва — від німецького слова lager, що в перекладі означає «зберігати». Щоб захистити імпровізований льох від сонця, по
+                    сусідству садили каштани. Таку ідею вважають прототипом пивного саду — відкритого майданчика, де подають пиво і закуски.
+                </p>
+                <p>Щойно в XIX столітті винайшли холодильник, випуск лагера налагодили в спекотну пору. Перший резервуар для охолодження розробив Карл фон Лінде 1870 року на замовлення пивоварні Spaten-Franziskaner-Brau GmbH.</p>
+                <h2>Як виробляють лагер</h2>
+                <p>
+                    Ключовий компонент — дріжджі Saccharomyces Pastorianus. Вони ніколи не підіймаються, перебувають посередині резервуара для бродіння, а потім повільно опускаються. Другий інгредієнт — солод. Найчастіше вибирають сорт Pils. Воду
+                    постачають із місцевих джерел, попередньо досягаючи певних хіміко-фізичних показників.
+                </p>
+                <p>
+                    Перший етап виготовлення лагера — затирання. Найчастіше використовують солодовий ячмінь, який подрібнюють і змішують із теплою водою. У процесі виділяється крохмаль. Він поступово перетворюється на цукор. Після цього зерно
+                    відокремлюють від рідини, здійснюючи так звану «промивку».
+                </p>
+                <p>Зібране сусло перекачують у мідний котел. Там його кип'ятять, поступово додаючи хміль. Після кип'ятіння сусло охолоджують. Нарешті, настає важливий момент — ферментація. Лагер зброджують при +5-12 ºC.</p>
+                <p>
+                    Потім проводять фільтрацію. Проходження через фільтр позбавляє напій від твердих частинок і залишків дріжджів. Рідше лагер розливають без фільтрації. Іноді до пива додають цукор, який сприяє виділенню потрібної кількості
+                    вуглекислого газу.
+                </p>
+                <h2>Короткий огляд ключових різновидів лагера</h2>
+                <p>Класифікація в основному спирається на колір. Відтінок залежить від типу і кількості зерна, а також ступеня обсмаження солоду. Пиво лагер можна купити в таких стилях:</p>
+                <ol>
+                    <li>
+                        Світлий. Колір варіюється від світло-жовтого до золотистого. Перший світлий лагер приготували в стінах Spaten у середині XIX століття. Незабаром інновацію підхопила пивоварня Pilsner. Також до світлих лагерів відносять Hell —
+                        пиво, вироблене в Мюнхені. Хмелевий шлейф не такий виражений, як у пільзнеру. Смак — м'який, в міру солодкий.
+                    </li>
+                    <li>
+                        Бурштиновий. Цей лагер темніший за кольором. Відсоток алкоголю становить близько 5–7. Серед поширених варіантів — Märzen, який готують у Баварії для святкування «Октоберфесту». Другий варіант — Bock. Це бурштиновий лагер із
+                        підвищеною міцністю. Його випускають в Айнбаку, що в центральній Німеччині. Місцеві воліють насолоджуватися пінним напоєм у холодну пору, оскільки він добре зігріває. До категорії також входить Vienna lager, колір якого
+                        варіюється від мідного до червонувато-коричневого.
+                    </li>
+                    <li>
+                        Темний. Пінний напій зустрічається під назвами Dunkel, Tmave і Schwarzbier. Перший варіант — класичний лагер із Баварії, виготовлений із темного обсмаженого солоду. Це додає смако-ароматичній композиції ноток хліба, кави,
+                        шоколаду. Schwarzbier — унікальний чорний німецький напій. На цей лагер ціна висока, оскільки його вважають рідкісним. Складний смак розкривається нотами гіркого шоколаду і лакриці. Післясмак — сухий і гладкий.
+                    </li>
+                </ol>
+                <h3>У чому різниця між лагером, пільзнером і крафтом</h3>
+                <p>Пільзнер — світлий лагер. Це найбільш широко споживаний і комерційно доступний варіант пива низового бродіння. У складі — світлий солод, вода і жатецький хміль. Пінний напій впізнають за інтенсивною хмелевою гіркотою.</p>
+                <p>
+                    Крафтове пиво — термін, який використовують для позначення продукції, виробленої маленькими партіями. Такий напій часто виготовляють за класичною технологією, але акцент зміщений на якість компонентів. Хоча лагер також виробляють на
+                    крафтових пивоварнях, його відносять до особливого методу пивоваріння.
+                </p>
+                <p>Відповідно, крафтове пиво — термін, що охоплює широкий спектр пивних стилів, вироблених незалежними пивоварнями. Lager відносять до конкретного типу, що характеризується процесом ферментації та унікальним смаковим профілем.</p>
+                <h3>Що краще — ель чи лагер</h3>
+                <p>
+                    У другому варіанті дріжджі флокулюють (збираються) на дні, тому на етапі ферментації виділяється менше побічних продуктів. Лагер відносять до чистих і легких сортів. Смак — м'який і гладкий. Через це пиво низового бродіння
+                    подобається новачкам. Лагер також добре зберігається.
+                </p>
+                <p>
+                    Елі, тобто пиво верхового бродіння, готують за високих температур. Це додає характерної гіркоти. Категорія елів об'єднує сотні варіацій. Водночас лагер — вузька група, у рамках якої виділяють лише кілька стилів. Тому однозначної
+                    відповіді на запитання, яке пиво краще, немає. Усе залежить від випадку й особистих уподобань.
+                </p>
+                <h2>Як зберігати лагер</h2>
+                <p>Щоб запобігти втраті смакових якостей, пиво низового бродіння радять зберігати в темному і прохолодному місці. Наприклад — у холодильнику. Також підходить полиця в шафі або ніша під ліжком.</p>
+                <p>Якщо обрали нефільтрований лагер, зберігайте пляшки вертикально. Це запобігає скупченню твердих частинок на стінках.</p>
+                <h2>Як і з чим пити лагер</h2>
+                <p>
+                    Пиво низового бродіння вигідно розкривається при подачі в охолодженому вигляді. Єдиний лагер, який радять подавати за кімнатної температури, — Bock. Темну продукцію заведено наливати в масивний кухоль. Для пільзнерів використовують
+                    спеціальну склянку. Дотримуйтесь кута нахилу і наливайте пиво повільно — на виході має утворитися шапка заввишки приблизно у два пальці.
+                </p>
+                <p>
+                    Що стосується гастрономічного супроводу, то бурштиновий лагер — найуніверсальніший варіант. Пінний напій вигідно розкривається при подачі з піцою, бургерами, смаженою куркою. Легкий світлий лагер підходить до закусок, салатів,
+                    пасти. Бок доповнить гостру їжу, а також шоколадний десерт.
+                </p>
+                <h2>Як вибрати лагер</h2>
+                <p>В інтернет-магазині MAUDAU представлено понад 600 варіантів. Щоб швидше визначитися, проаналізуйте важливі критерії:</p>
+                <ol>
+                    <li>Бренд. Якісну продукцію виробляють не тільки Німеччина та Чехія, а й Австрія, Велика Британія, Україна. Вибір — за лідерами продажів, серед яких Zibert, Carlsberg, Krombacher, Spaten Munchen.</li>
+                    <li>Колір. Світлий лагер — легкий і освіжальний, підходить для знайомства з сортом. Темний — насичений, віддає гіркотою.</li>
+                    <li>Фільтрація. Якщо пиво не пройшло фільтрацію, розвивається насичений зерновий шлейф. Смак — яскравий, з виразною гіркуватістю.</li>
+                    <li>
+                        Ємність. Лагер доступний як у стандартних пляшках зі скла, так і в металевих бляшанках. Стандартний об'єм — 0,33 або 0,5 л. Також можна замовити продукцію в ПЕТ-пляшках, що комфортно для відпочинку на природі або великої
+                        компанії. Крафтові пивоварні пропонують подарункові бокси, куди входять різні варіації лагера.
+                    </li>
+                </ol>
+                <p>За бажанням можна замовити безалкогольну продукцію. Лагер, купити який можна в маркеті алкогольних штук MAUDAU, проходить пастеризацію. Це подовжує термін придатності, що важливо при замовленні гуртом.</p>
+                <h2>Чому вигідно купити лагер в інтернет-магазині MAUDAU</h2>
+                <p>В асортименті — 100% оригінал. Цей факт пояснюється власним імпортом. Завдяки прямим постачанням покупці отримують доступ до ексклюзивних пропозицій від іноземних торгових марок.</p>
+                <p>
+                    На пиво лагер ціна залежить від ємності, а також іменитості виробника. Найвигідніше — скористатися знижкою на малий гурт. Не забувайте відстежувати товари по акції. Також в онлайн-каталозі MAUDAU можна знайти продукцію, яку
+                    доставляють безкоштовно. Доставку здійснюють різними способами:
+                </p>
+                <ul>
+                    <li>кур'єром по Києву;</li>
+                    <li>поштовими службами по Україні.</li>
+                </ul>
+                <p>Забрати замовлення можна самостійно. Найкомфортніше — оплатити покупку на сайті. Також можна оформити післяплату.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Золотий Оксамит" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Golden_Velvet.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Золотий Оксамит</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Незвичайний лонг із суперечливим поєднанням пива та шампанського. При цьому коктейль має гарний вигляд та оригінальний рідкісний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Золотий Оксамит</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>100 мл шампанського</li><li>25 мл ананасового соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь охолодіть шампанське.</li><li>Налийте у великий пивний келих 100 мл холодного шампанського.</li><li>Додайте 25 мл ананасового соку та 100 мл світлого пива.</li><li>Змішайте інгредієнти коктейльною ложкою. Не додавайте кригу.</li><li>Коктейль готовий — подавайте його з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарячий лікар Пеппер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Dr-Pepper.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий лікар Пеппер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=overpruf-overproof-2">Надміцний ром</a></li><li>Лікер амаретто Fruko Schulz</li><li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Палаючий оригінальний коктейль для гарячих вечірок. До складу обов'язково входить надміцний ром — для незвичайної подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий лікар Пеппер</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл надміцного рому</li><li>25 мл лікеру амаретто Fruko Schulz</li><li>200 мл світлого пива</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть на 2/3 склянки-хайбол 200 мл світлого пива.</li><li>Налийте в стопку 25 мл лікеру амаретто Fruko Schulz.</li><li>Зверху обережно долийте 25 мл надміцного рому. Використовуйте коктейльну ложку.</li><li>Підпаліть ром і опустіть стопку в хайбол із пивом.</li><li>Швидко випийте «палаючий» коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Літній бриз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Summer-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Літній бриз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=roza">Сироп троянди</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=mandaryn-4">Мандариновий сироп</a></li><li>Лайм</li><li>Апельсин</li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Літній бриз — пікантний квітковий коктейль із нетиповим поєднанням пива та сиропу троянди. Має яскраво виражені цитрусові нотки та післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Літній бриз</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>10 мл сиропу троянди</li><li>20 мл мандаринового сиропу</li><li>40 г лайма</li><li>115 г апельсина</li><li>5 г фізалісу</li><li>200 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-харрікейн нарізані на чверті лайм і апельсин. Подавіть барним товкачем.</li><li>Наповніть харрікейн подрібненим льодом до верхнього краю.</li><li>Налийте 10 мл сиропу троянди та 20 мл мандаринового сиропу.</li><li>Долийте 100 мл світлого пива й акуратно розмішайте коктейльною ложечкою.</li><li>За бажанням досипте трохи подрібненого льоду.</li><li>Прикрасьте напій фізалісом і скибочками цитрусових.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зимова маракуйя" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Physalis.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зимова маракуйя</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=marakuia-3">Сироп маракуї</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Солодкий тропічний шорт-дрінк із незвичайним дуетом світлого пива і сиропу маракуї. Простий і швидкий у приготуванні, красивий у подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Зимова маракуйя</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл світлого пива</li><li>45 мл сиропу маракуї</li><li>10 мл лимонного соку</li><li>5 г фізалісу</li><li>60 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в блендер 10 мл лимонного соку і 45 мл сиропу маракуї.</li><li>Додайте 90 мл світлого пива та насипте совок подрібненого льоду.</li><li>Гарненько збийте всі складові коктейлю.</li><li>Перелийте напій в охолоджене шампанське блюдце.</li><li>Прикрасьте келих фізалісом і подавайте з чайною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бір бері рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/beer_berry_royal.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бір бері рояль</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=chorna-smorodyna-4">Чорносмородиновий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Брусниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ягідний ароматний коктейль на основі світлого пива, з додаванням смородинового сиропу. «Пивна королівська ягода» сподобається поціновувачам солодких лонгів. Брусницю можна замінити червоною смородиною.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бір бері рояль</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл світлого пива</li><li>25 мл чорносмородинового сиропу</li><li>10 мл лаймового соку</li><li>15 г брусниці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в охолоджений слінг-бокал 25 мл чорносмородинового сиропу.</li><li>Покладіть у келих 15 г брусниці. В одній барній ложці поміщається 5 г ягід.</li><li>Додайте 10 мл лаймового соку.</li><li>Використовуючи високу барну ложку, долийте доверху 250 мл світлого пива. Не змішуйте інгредієнти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">48 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
