@@ -1,0 +1,975 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Ликер — напиток, который готовят на спиртовой основе с различными ароматными добавками. Название происходит от латинского слова «liquefacere», что в переводе означает «создавать жидкость».</p>
+                <p>Первую подобную продукцию изготавливали монахи, а преподносили ее под разными названиями: бальзам, крем, эликсир, масло. В то время так называемый liqueur использовали в качестве лекарства или тонизирующего средства.</p>
+                <h3>Что входит в состав ликеров</h3>
+                <p>Рецептуру дополняют ягодами, фруктами, орехами, кофе, шоколадом, сливками, травами, специями.</p>
+                <h3>Какая крепость ликеров</h3>
+                <p>Процент алкоголя колеблется в пределах 11–70%. Крепость зависит от начального содержания алкоголя, а также использованных методов изготовления.</p>
+                <h2>Как производят ликеры</h2>
+                <p>
+                    Основной ингредиент — спирт, приготовленный из патоки, винограда или зерновых культур. Его смешивают с фруктами или травами, после чего подслащивают с помощью простого сахарного сиропа. Технологию выбирают исходя из класса
+                    производимой продукции:
+                </p>
+                <ol>
+                    <li>
+                        Перегонка. Во время повторной дистилляции базовый спирт помещают в нижний отсек, а сверху раскладывают растительные компоненты. Спирт нагревается и поднимается, впитывая вкус и аромат. Этот метод подходит для обработки кожицы,
+                        листьев, семян, корней. После ароматизации спирт смешивают с сахарным сиропом и фильтруют. По желанию производителя напиток отправляют на выдержку. Ликеры на растительных компонентах разрешено окрашивать.
+                    </li>
+                    <li>
+                        Настаивание (мацерация). Если решили купить ликеры в Украине — это самая распространенная категория. По такому принципу готовят фруктовую настойку. Спирт смешивают с фруктами или ягодами в закрытых емкостях. Процесс длится 2–12
+                        месяцев. Фруктово-ягодные добавки постепенно размягчаются и превращаются в пюре, окрашивая дистиллят. Иногда спирт немного подогревают.
+                    </li>
+                </ol>
+                <p>
+                    Менее распространенная техника приготовления ликера — перколяция. Вспомогательные добавки отправляют в фильтр, через который проходит спирт. Внешне аппарат похож на кофеварку. На выходе получают темный напиток с отчетливой
+                    горчинкой.
+                </p>
+                <p>Бюджетную продукцию готовят посредством холодного компаундирования. Нейтральный спирт смешивают с жидкими эссенциями. Это простой и быстрый метод, поэтому на такой ликер стоимость снижается. Ему также не хватает насыщенности.</p>
+                <h2>Какие бывают ликеры</h2>
+                <p>Помимо разницы в методах производства, продукцию классифицируют в зависимости от вкусо-ароматических характеристик:</p>
+                <ol>
+                    <li>Крем-ликер. Категорию внедрила торговая марка Baileys в 1975 году. Секретный ингредиент — сливки. Они способствуют объединению алкоголя с шоколадом, кофе, ванилью, карамелью, яичными желтками.</li>
+                    <li>
+                        Фруктово-ягодный ликер. Сюда относят продукцию, дистиллированную с кожицы (Triple Sec) или концентрированного сока. Для изготовления используют как натуральную фруктовую основу, когда вкус извлекается из самих плодов, так и
+                        ароматизаторы. Если ищете базу для коктейля, остановитесь на цитрусовых ликерах. Они бывают не только свежими и сладкими, но и сухими, если производятся из кожицы. Например, Grand Marnier изготавливают посредством дистилляции
+                        коньяка, свекловичного сахара и замачиваемых в спирте корок горьких апельсинов.
+                    </li>
+                    <li>Ореховый ликер. Традиционные варианты: миндаль («Амаретто»), фундук («Франжелико»), грецкий орех («Ночино»).</li>
+                    <li>
+                        Травяной ликер. Огромная категория, представленная различными вкусами — от мятной свежести до горечи полыни. Нередко растительные компоненты пересекаются с ингредиентами джина. Внутри категории выделяется анисовая настойка, а
+                        также биттеры по типу Amari и Aperol с интенсивной горчинкой.
+                    </li>
+                </ol>
+                <h3>В чем разница между ликером и настойкой</h3>
+                <p>Первый напиток содержит повышенную концентрацию сахара. Его также в основном используют в коктейлях, тогда как настойку подают без добавок. Классический liqueur отличается вязкой густой консистенцией. Настойка напоминает водку.</p>
+                <h2>Как правильно пить ликер</h2>
+                <p>Зачастую напиток подают как дижестив без добавок. По желанию его смешивают со льдом.</p>
+                <p>
+                    Ликеры входят в рецепт множества классических и региональных миксов. Из-за специфического вкуса их не советуют заменять альтернативными вариантами алкоголя. Например, Aperol Spritz, который повсеместно встречается в Италии, готовят
+                    из биттера и игристого вина.
+                </p>
+                <p>Также ликер широко применяется в кулинарии — как ароматизатор для десертов. Мягкий и сбалансированный крем-ликер чаще покупают женщины, тогда как мужчины предпочитают наслаждаться настойками вроде Jagermeister.</p>
+                <h2>Как выбрать ликер</h2>
+                <p>Во время покупки обращайте внимание на:</p>
+                <ol>
+                    <li>Бренд. Торговые марки «на слуху» предлагают неизменно качественную продукцию. Это Baileys, Sheridans, De Kuyper, Vana Tallinn, Cointreau, Canari, Jim Beam.</li>
+                    <li>
+                        Емкость. На ликер цена во многом формируется исходя из выбранного формата. Стандартный объем стеклянной бутылки составляет 0,5 или 0,7 литра. В интернет-магазине MAUDAU ликер также можно купить в мини-бутылочках. Это оправданно
+                        при заказе травяных настоек. Напиток может показаться слишком интенсивным, особенно при первой дегустации. Бутылочки по 50–350 мл также подходят для экспериментов с коктейлями.
+                    </li>
+                    <li>Тип упаковки. Ликер — прекрасный вариант подарка. В интернет-магазине MAUDAU можно найти продукцию, упакованную в фирменный подарочную коробку. Иногда комплект дополняется бокалами.</li>
+                </ol>
+                <p>
+                    Всегда обращайте внимание на рекомендации по хранению и употреблению. Ликер можно купить про запас, так как он хорошо хранится. Рецепт Jägermeister разработан для заморозки в морозильной камере. Напиток пьют ледяным как шот, поэтому
+                    он не подходит для отдыха на природе. Насыщенный вариант со вкусом дыни советуют подавать при комнатной температуре.
+                </p>
+                <h2>Почему выгодно купить ликер в интернет-магазине MAUDAU</h2>
+                <p>
+                    Шопинг в маркете алкогольных штук MAUDAU — залог 100% оригинальности. Собственный импорт открывает доступ к новинкам и эксклюзивным предложениям. Ликер можно заказать с доставкой курьером по Киеву или почтовыми службами по Украине.
+                    Если соберете товар на определенную сумму, доставку оплатит интернет-магазин MAUDAU. Для дополнительной экономии отслеживайте список товаров, которые доставляют бесплатно. На покупку от трех штук действует оптовая скидка. Оплатить
+                    заказ можно сразу на сайте или позже при получении товара на почте.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б-52" src="https://photo.maudau.com.ua/Landing/cocktails/incat/B-52.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б-52</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кофейный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys">Айриш крим Baileys</a></li><li>Трипл сек Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Б-52 — это модный коктейль с насыщенным кофейно-сливочным вкусом и цитрусовым послевкусием. По одной из версий, название получил в честь американского стратегического бомбардировщика Boeing B-52.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Б-52</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл кофейного ликера</li><li>15 мл Айриш крима</li><li>15 мл трипл сека Fruko Schulz</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в коктейльную стопку 15 мл кофейного ликера.</li><li>Используйте барную ложку и уложите слоем 15 мл Айриш крима.</li><li>Завершите коктейль слоем 15 мл трипл сека Fruko Schulz.</li><li>Подожгите верхний слой и подавайте напиток с трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зеленая фея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/green_fairy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зеленая фея</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li>Ликер блю кюрасао Fruko Schulz</li><li>Дынный ликер Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi">Энергетик</a></li><li>Коктейльная вишня красная</li><li>Лимонная цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Знаменитый коктейль Зеленая Фея — это сумасшедший микс алкогольных напитков и энергетика. Поэтому он так популярен на дискотеках и вечеринках.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Зеленая фея</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл серебряной текили</li><li>15 мл абсента</li><li>15 мл водки</li><li>15 мл белого рома</li><li>10 мл ликера блю кюрасао Fruko Schulz</li><li>30 мл дынного ликера Fruko Schulz</li><li>30 мл лимонного сока</li><li>100 мл энергетика</li><li>10 г красной коктейльной вишни</li><li>Лимонная цедра</li><li>150 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-слинг доверху кубиками льда.</li><li>Сперва налейте 30 мл лимонного сока, 10 мл ликера блю кюрасао Fruko Schulz и 30 мл дынного ликера Fruko Schulz.</li><li>Добавьте в равных пропорциях по 15 мл серебряной текилы, абсента, водки и белого рома.</li><li>Сверху долейте 100 мл энергетика и размешайте барной ложкой.</li><li>Украсьте бокал лимонной цедрой и двумя коктейльными вишнями.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Скользкий сосок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/slippery-nipple.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Скользкий сосок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=sambuka-2">Самбука</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys">Айриш крим</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригинальный коктейль, одновременно крепкий и сладко-сливочный. Придуман фанатами рок-группы «Sex Pistols» и получил эпатажное название из-за характерного внешнего вида.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Скользкий сосок</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл классической самбуки</li><li>25 мл ликера айриш крим</li><li>1 мл гренадина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в маленькую стопку 25 мл классической самбуки.</li><li>Используйте коктейльную ложку или нож и выложите следующими слоем 25 мл ликера айриш крим.</li><li>Возьмите трубочку и аккуратно капните в центр шота 1 каплю гренадина.</li><li>Выпейте залпом!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Медуза" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Jellyfish.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Медуза</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=shokoladnyi-2">Какао-ликер</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл сек</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys">Айриш крим</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Экстравагантный коктейль Медуза с оригинальным вкусом и видом. Имеет среднюю крепость и сливочно-травяное послевкусие. Даже в домашних условиях делается за 3 минуты.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Медуза</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>10 мл абсента</li><li>20 мл какао-ликера</li><li>20 мл трипл сека Fruko Schulz</li><li>5 мл айриш крима</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в стопку 20 мл какао-ликера.</li><li>Используйте коктейльную ложку и выложите слой трипл сека Fruko Schulz 20 мл.</li><li>Последним слоем уложите 10 мл абсента.</li><li>Через трубочку аккуратно добавьте 5 мл айриш крима.</li><li>Красивый слоистый коктейль готов!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Маргарита" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Margarita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Маргарита</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li><li>Трипл сек Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легендарный классический коктейль Маргарита с узнаваемым характерным вкусом. Сочетание резкой кислоты лайма, сладости цитрусового ликера и крепости текилы гарантирует незабываемые впечатления.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Маргарита</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл серебряной текилы</li><li>25 мл трипл сека Fruko Schulz</li><li>10 мл сахарного сиропа</li><li>30 мл лаймового сока</li><li>10 г лайма</li><li>2 г соли</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сделайте на специальном бокале для Маргариты соленую окаемку.</li><li>Налейте в шейкер 30 мл лаймового сока и 10 мл сахарного сиропа.</li><li>Добавьте 25 мл трипл сека Fruko Schulz и 50 мл серебряной текилы.</li><li>Насыпьте в шейкер 200 г льда в кубиках и взбейте.</li><li>Процедите напиток через стрейнер в бокал для Маргариты с соленой окаемкой.</li><li>Прикрепите на ободок бокала кружок лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Рафаэлло" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Raffaello.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рафаэлло</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys">Айриш крим</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kokosovyi-2">Кокосовый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14">Ванильный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=kokosova-struzhka-2">Кокосовая стружка</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Воздушный сладкий коктейль з тропическим привкусом кокоса и сладостью ванили. Айриш крим придает композиции приятные сливочные нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рафаэлло</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл айриш крима</li><li>15 мл кокосового ликера</li><li>15 мл ванильного сиропа</li><li>5 г кокосовой стружки</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сделайте по верхнему краю стопки окаемку из кокосовой стружки.</li><li>Налейте в шейкер 15 мл ванильного сиропа и 15 мл кокосового ликера.</li><li>Добавьте 15 мл айриш крима и 200 г льда в кубиках.</li><li>Взбейте все составляющие и перелейте через стрейнер в стопку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Крестный отец" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Godfather.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Крестный отец</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3">Ликер Амаретто</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль на базе виски с добавлением амаретто. Названием обязан легендарному произведению «Крестный отец». Имеет миндальный аромат и приятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Крестный отец</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландского виски</li><li>25 мл ликера Амаретто</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните рокс (или любой бокал олд-фешн) кубиками льда до самого верха.</li><li>Налейте в бокал 25 мл ликера Амаретто и 50 мл шотландского виски.</li><li>Перемешайте барной ложкой. Желательно не дробить лед — это снижает крепость напитка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Голубая лагуна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/blue-lagoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Голубая лагуна</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-blue-curacao-20-07-l-76086">Ликер блю кюрасао</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Ананас</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Популярный освежающий коктейль небесно-голубого цвета с тропической ноткой. Легкий и кисловатый, поэтому идеально подходит для летних вечеринок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Голубая лагуна</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки</li><li>20 мл ликера блю кюрасао Fruko Schulz</li><li>150 мл Спрайта</li><li>30 г ананаса</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-харрикейн доверху льдом в кубиках.</li><li>Налейте 20 мл ликера блю кюрасао Fruko Schulz и 50 мл водки.</li><li>Осторожно долейте доверху 150 мл Спрайта — напиток может вспениться.</li><li>Аккуратно размешайте напиток коктейльной ложкой.</li><li>Украсьте бокал долькой ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Космополитен" src="https://photo.maudau.com.ua/Landing/cocktails/incat/cosmopolitan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Космополитен</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Куантро</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический кисло-сладкий Космополитен имеет долгую историю и огромную популярность. Засветившись в сериале Sex and the City, коктейль стал любимым женским напитком целого поколения. В этом заслуга приятного ягодного вкуса и цитрусовых ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Космополитен</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл водки</li><li>15 мл ликера Куантро</li><li>10 мл сока лайма</li><li>30 мл клюквенный сока</li><li>лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер кубиками льда доверху.</li><li>Налейте 10 мл лаймового и 30 мл клюквенного сока.</li><li>Добавьте 45 мл водки и 15 мл ликера Куантро.</li><li>Интенсивно взбейте напиток.</li><li>Процедите через сито-стрейнер в коктейльный бокал.</li><li>По желанию декорируйте апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Радуга" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Rainbow.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Радуга</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=malibu">Ликер Малибу</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-blue-curacao-20-07-l-76086">Ликер Блю Кюрасао</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий радужный коктейль поднимает настроение даже в пасмурный день. Баланс алкоголя выдержан, а крепость напитка снижает внушительная доля цитрусового сока.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Радуга</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки</li><li>30 мл ликера Малибу</li><li>20 мл ликера Блю Кюрасао</li><li>20 мл гренадина</li><li>150 мл апельсинового сока</li><li>лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Уложите колотый лед на дно высокого бокала.</li><li>Добавьте 20 мл гренадина — это будет красный слой.</li><li>Следующим слоем аккуратно влейте 150 мл апельсинового сока.</li><li>Смешайте в шейкере лед, 50 мл водки, 30 мл ликера Малибу и 20 мл Блю Кюрасао.</li><li>Медленно перелейте смесь через ситечко в бокал. Получится верхний голубой слой.</li><li>Украсьте коктейль вишней или апельсиновой долькой.</li><li>Не перемешивайте и подавайте с трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">314 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">14 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">22 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
