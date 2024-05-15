@@ -1,0 +1,774 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Віскі Chivas Regal — міцний спиртний напій, який виробляють у Шотландії на потужностях Strathisla. Під торговою маркою випускають купажований скотч. Бренд входить до складу корпорації Pernod Ricard.</p>
+                <h2>Як виникло віскі Chivas Regal</h2>
+                <p>
+                    Біля витоків — Джон і Джеймс Чіваси. Батьки очікували, що сини займуться сімейною фермою, але брати переїхали в невелике містечко Абердин. Джеймс влаштувався на роботу в продуктовий магазин. Коли покупці шукали скотч із м'яким
+                    смаком, він пропонував їм дистилят, приготований у погребі Emporium. Незабаром виникла компанія Chivas Brothers. 1843 року брати Чівас отримали перший ордер на постачання від королеви Вікторії.
+                </p>
+                <p>Датою народження віскі Chivas Regal вважають 1909 рік. У той час майстер-купажист Чарльз Говард і Александр Сміт створили купаж 25-річної витримки. Його позиціонували як розкішний продукт, який продавали навіть у Нью-Йорку.</p>
+                <p>Виробництво шотландського віскі Chivas Regal призупинили в період між 1920 і 1938 роками. У той час у США ввели сухий закон. Успіх повернувся до виробника з виходом купажу 12-річної витримки.</p>
+                <p>Віскі «Чівас Рігал» — четвертий у світі за популярністю купажований скотч. Торгову марку вважають лідером ринку в Європі, а також в Азійсько-Тихоокеанському регіоні.</p>
+                <p>Будинком для Chivas Regal обрали винокурню Strathisla, засновану 1786 року. Це найстаріший завод із виробництва зернових і солодових спиртів у високогір'ях Шотландії. Солод постачають із кількох винокурень, включно з:</p>
+                <ul>
+                    <li>Longmorn;</li>
+                    <li>The Glenlivet;</li>
+                    <li>Allt-a-Bhainne;</li>
+                    <li>Miltonduff Distillery;</li>
+                    <li>Braeval.</li>
+                </ul>
+                <h2>Як виготовляють віскі Chivas Regal</h2>
+                <p>Виробництво зосереджене на таких етапах:</p>
+                <ol>
+                    <li>
+                        Підготовка сировини. Основний компонент віскі «Чівас» — ячмінний солод. Зерно вирощують на сонячних пагорбах Спейсайда. Затор готують у містечку Бакі. Після збору зерно надходить на завод, де його замочують з метою вивільнення
+                        ферментів, які перетворюють крохмаль на цукор. Щойно ячмінь проростає, процес солодження зупиняють сушінням. Готовий солод відвозять на винокурню Strathisla.
+                    </li>
+                    <li>
+                        Затирання. Перше місце, куди потрапляє ячмінний солод, — млин Porteus. Зерно подрібнюють до стану борошна. Потім готують зернове пюре, в якому використовують другу важливу складову віскі Chivas Regal — джерельну воду з джерела
+                        Брумхілл. Після затирання тверді залишки переробляють на корм для рогатої худоби. Прозору рідину, яку називають «суслом», відправляють на ферментацію.
+                    </li>
+                    <li>Бродіння. Промивання віскі «Чівас Рігал» здійснюють у дерев'яних ємностях, а не металевих резервуарах. Ферментація триває 48 годин.</li>
+                    <li>
+                        Перегонка. Спирт нагрівають, через що він починає випаровуватися. Алкогольну пару повторно конденсують у рідку есенцію. Кожен цикл перегонки підвищує відсоток алкоголю, поки він не досягне 65–70%. Також у процесі дистиляції
+                        відсікають «голову» і «хвіст» — частини, у яких накопичуються небажані домішки.
+                    </li>
+                    <li>
+                        Витримка. Далі віскі «Чівас Рігал» відправляють на дозрівання. Бренд експериментує з ємностями, в основному використовуючи американський дуб, який додає інтенсивного аромату ванілі. Якщо раніше в дубових бочках зберігали херес,
+                        розвивається солодкий фруктовий шлейф.
+                    </li>
+                    <li>Змішування. Нарешті, до справи приступає майстер-купажист. Спирти з різних бочок об'єднують, створюючи фірмову смако-ароматичну композицію.</li>
+                </ol>
+                <h3>Яка міцність віскі Chivas Regal</h3>
+                <p>Перед витримкою дистилят розбавляють водою, знижуючи відсоток алкоголю до 40 — стандарту в категорії.</p>
+                <h2>Різновиди віскі «Чівас Рігал»</h2>
+                <p>
+                    Асортимент торгової марки об'єднує понад п'ять лінійок. Для першої дегустації варто купити Chivas Regal 12-річної витримки. Флагман розкривається тонами диких трав, меду, верескового торфу і садових фруктів. Смак — м'який і
+                    вершковий. Фініш — стійкий. Серед інших лінійок віскі «Чівас Рігал» виділяються:
+                </p>
+                <ol>
+                    <li>
+                        Mizunara. Перший у світі скотч, що пройшов селективну витримку в дубових бочках, виготовлених з японського дуба Мізунара. Міцний спиртний напій огортає насиченими фруктовими акордами, в яких на перший план виходять груша і
+                        апельсин. Смак — м'який і насичений, з відтінками меду і фундука. Завершує композицію шлейф пряних спецій.
+                    </li>
+                    <li>XV. Розкішний варіант колекційного віскі «Чівас», ціна якого залишається конкурентною. Фруктовий дистилят сповнений виразних нот родзинок і кориці. Текстура — ніжна й оксамитова.</li>
+                    <li>
+                        Gold Signature. Рецепт 18-річного купажу належить майстру-блендеру Сенді Хіслопу. Спочатку міцний спиртний напій огортає багатошаровим ароматом сухофруктів і темного шоколаду. У роті він змінюється яскравими квітковими нотами і
+                        м'якою димністю. Фініш — тривалий і зігрівальний.
+                    </li>
+                </ol>
+                <p>
+                    Унікальна колекція Chivas Regal — Extra. Кожен купаж витримують у різних типах дубових бочок, де раніше зберігали бурбон, житнє віскі, херес, ром, текілу. Приклад — Tequila Cask Selection. У композиції ванільна солодкість
+                    переплітається з яскравими цитрусовими акордами. Смак — солодкий, з відтінками ванілі, грейпфрута, ананаса. Післясмак — гладкий і округлий. Другий варіант — Sherry Cask Selection. Витримка в ємностях з-під хересу додає шлейфу
+                    солодких стиглих груш, запечених у сиропі.
+                </p>
+                <p>
+                    Якщо хочете купити «Чівас» на подарунок, придивіться до суміші 25-річної витримки. Цей відроджений купаж, що став знаменитим у Нью-Йорку у XX столітті, зберігає ніжну інтенсивність і тонку текстуру, які спочатку підкорили місто.
+                    Солодкий апельсиновий аромат, змішаний з марципанами і горіхами, плавно перетікає в насичений шоколадний присмак з вершковими тонами.
+                </p>
+                <h3>Скільки коштує віскі Chivas Regal</h3>
+                <p>
+                    Ціна залежить від колекції, а також обраного об'єму. Наприклад, скотч на гойдалці обійдеться в 7 999 грн за 4,5 л. Ексклюзивний 25-річний купаж коштує 15 329 грн за 0,7 л. На класичне віскі Chivas Regal ціна найдоступніша — від 1
+                    099 грн за 0,7 л. Конкурентний варіант — лінійка Extra.
+                </p>
+                <p>Щоб заощадити, замовляйте віскі «Чівас Рігал» гуртом або за акцією. Список доступних пропозицій оновлюється щодня. Гуртова знижка діє при купівлі від трьох штук.</p>
+                <h2>Як відрізнити підробку віскі «Чівас Рігал»</h2>
+                <p>Дизайн пляшки стандартний, тож купуйте міцний спиртний напій у перевірених місцях, щоб уникнути негативних наслідків. Перевірити Chivas Regal на справжність можна за:</p>
+                <ol>
+                    <li>Відсутністю осаду. Каламутний колір або видимі тверді частинки сигналізують про порушення в технології виготовлення. На винокурні Strathisla здійснюють суворий контроль, тому такий момент виключений.</li>
+                    <li>Рівному склу. На пляшці не повинно бути відколів або видимих механічних пошкоджень. Усе це негативно впливає на смако-ароматичну палітру віскі «Чівас Рігал».</li>
+                    <li>Опуклому горлечку. Таку основу ще називають «пузатою». Під горлечко наносять герб.</li>
+                    <li>Захисною плівкою. Пробку покривають тонкою плівкою, на якій видніється назва торгової марки.</li>
+                </ol>
+                <h2>Як правильно пити віскі Chivas Regal</h2>
+                <p>
+                    Шанувальники вишуканого міцного алкоголю віддають перевагу подачі без нічого. Використовуйте стандартну широку склянку. Влийте 50–70 мл віскі «Чівас Рігал». Подавайте за +18–20 ⁰C. Якщо віддаєте перевагу холодному напою,
+                    використовуйте камені з вулканічних порід або лід. В ідеалі — один великий кубик. Спочатку смак може здатися занадто інтенсивним — просто розбавте дистилят кількома краплями прохолодної води.
+                </p>
+                <p>
+                    Також віскі Chivas Regal доповнить класику — коктейлі на кшталт Old Fashioned або Manhattan. Спробуйте подачу у високих хайболах — змішайте порцію купажованого скотчу з газованою водою на кшталт Coca-Cola. Також дистилят можна
+                    змішувати з імбирним пивом, вермутом, ігристим вином. Як безалкогольне доповнення використовуйте фруктовий сік або фреш.
+                </p>
+                <h2>Чому вигідно купити віскі «Чівас Рігал» в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У маркеті алкогольних штук MAUDAU представлено оригінальну продукцію, яку постачають безпосередньо за допомогою власного імпорту. Відповідно, покупці отримують не тільки конкурентну ціну, а й доступ до новинок та унікальних
+                    пропозицій. Близько 90% продукції Chivas Regal реалізують у подарункових коробках. Іноді комплект доповнюють келихами.
+                </p>
+                <p>
+                    Оформити замовлення можна за 5–7 хвилин — просто виберіть товар, а потім вкажіть варіант оплати та доставки. По Києву віскі «Чівас Рігал» доставить кур'єр. Товар можна забрати самостійно з фізичних точок продажів. Для доставки в
+                    інше місто скористайтеся послугами поштових служб.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Morning Glory Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/incat/morning-glory-fizz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Morning Glory Fizz</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=chivas-regal">Віскі Чівас</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Сік лимона</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li>Яєчний білок</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=pernod">Абсент Pernod</a></li><li>Колотий лід</li><li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Підбадьорливий фізз Morning Glory на базі віскі відрізняється від класичної Ранкової слави, але не менш хороший. Білкова піна надає коктейлю оригінального вигляду під час подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Morning Glory Fizz</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл віскі Чівас</li><li>15 г цукру</li><li>5 мл соку лимона</li><li>15 мл соку лайма</li><li>25 мл яєчного білка</li><li>третина чайної ложки абсенту Pernod</li><li>колотий лід</li><li>содова</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 25 мл яєчного білка і 15 мл соку лайма.</li><li>Влийте 50 мл віскі Чівас і насипте 15 г цукру.</li><li>Додайте 5 мл лимонного соку та 1/3 ложечки абсенту Pernod.</li><li>Перемішайте інгредієнти.</li><li>Всипте в шейкер колотий лід і збийте ще раз.</li><li>У келих для подачі покладіть лід, налийте содову і збитий напій.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Chivas Old Fashioned" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Chivas_Old_Fashioned.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Chivas Old Fashioned</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=chivas-regal">Віскі Chivas Regal</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Бітер Angostura</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/vyd_61=trostnykovyi">Тростинний цукор</a></li><li>Апельсин</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Елегантний міцний коктейль на базі віскі. Простий і стильний, він довгі роки не втрачає популярності у поціновувачів класики.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Chivas Old Fashioned</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл віскі Chivas Regal</li><li>трохи бітеру Angostura</li><li>1 чайна ложка тростинного цукру</li><li>кілька півкілець апельсина</li><li>лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-рокс ложку тростинного цукру.</li><li>Просочіть цукор крапелькою бітеру Angostura.</li><li>Наповніть келих кубиками льоду.</li><li>Налийте 60 мл віскі Chivas Regal і акуратно розмішайте барною ложкою.</li><li>Прикрасьте рокс апельсиновими півкільцями.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rob Roy" src="https://photo.maudau.com.ua/Landing/cocktails/incat/rob-roy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rob Roy</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=chivas-regal">Віскі Chivas Regal</a></li><li>Аперитив Lillet Rouge</li><li><a href="https://maudau.com.ua/product/aperytyv-lillet-blanc-na-osnovi-vyna-17-075-l-668889">Аперитив Lillet Blanc</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Бітер Ангостура</a></li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Rob Roy понад 100 років відомий гурманам і любителям віскі Chivas. Названий на честь національного героя Шотландії — Роб Роя МакГрегора. Напій міцний і нескладний у приготуванні.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Rob Roy</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл віскі Chivas Regal</li><li>12,5 мл аперитиву Lillet Rouge</li><li>12,5 мл аперитиву Lillet Blanc</li><li>чайна ложка бітеру Ангостура</li><li>скибочка апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У склянку для змішування налийте по 12,5 мл аперитивів Lillet Rouge і Lillet Blanc.</li><li>Додайте 50 мл віскі Chivas Regal і ложечку бітеру Ангостура.</li><li>Розмішайте високою ложкою і перелийте в охолоджений келих для подачі.</li><li>Декоруйте напій скибочкою апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Chivas Сollins" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Сhivas-Сollins.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Chivas Сollins</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=chivas-regal">Віскі Chivas Regal</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li><a href="https://maudau.com.ua/category/solodka-voda">Содова</a></li><li>Зелене яблуко</li><li>Лайм</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейльний довгожитель Chivas Сollins уже відсвяткував 200-річний ювілей. Лимонад трохи пом'якшує міцність віскі, але залишає фірмовий смак і аромат Chivas Regal.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Chivas Сollins</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл віскі Chivas Regal</li><li>100 мл лимонаду</li><li>содова</li><li>2 скибочки зеленого яблука</li><li>скибочка лайма для прикраси</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть на дно склянки-хайбол скибочки зеленого яблука.</li><li>Налийте 50 мл віскі Chivas Regal і залиште на кілька хвилин.</li><li>Додайте лід і влийте 100 мл лимонаду.</li><li>Акуратно збовтайте кілька разів.</li><li>Налийте доверху содову і не перемішуйте.</li><li>Прикрасьте скибочкою лайма</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">224 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
