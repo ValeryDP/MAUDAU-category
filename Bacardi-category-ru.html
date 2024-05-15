@@ -1,0 +1,791 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Bacardi Limited — крупная частная семейная корпорация по производству спиртных напитков. Компания предлагает не только ром «Бакарди», но и около 200 альтернативных вариантов алкоголя, производимых под собственными торговыми марками.
+                    Продукцию реализуют в 170 странах.
+                </p>
+                <h2>Краткий экскурс в историю «Бакарди»</h2>
+                <p>
+                    Компанию Bacardi Rum основали в 1862 году на Кубе. У истоков — Факундо Бакарди Массо. Вместе с братом Хосе он выкупил заброшенную винокурню в Сантьяго-де-Куба. В стропилах жили летучие мыши — животные вдохновили жену Факундо Бакарди
+                    Массо донью Амалию на создание фирменного логотипа.
+                </p>
+                <p>
+                    Сложный период в истории Bacardi Rum пришелся на времена Кубинской войны за независимость. Старшего сына Факундо Бакарди Массо дважды помещали под арест. После смерти мужа донья Амалия переехала на Ямайку, где вскоре представили
+                    коктейли Cuba Libre и Daiquiri с добавлением белого кубинского рома «Бакарди».
+                </p>
+                <p>
+                    В 1910 году производство расширили на Испанию, а спустя 6 лет — на Нью-Йорк. Последний завод вскоре закрыли из-за введения сухого закона, зато Куба стала горячей точкой для туристов из США. В 1922 году семья Бакарди завершила
+                    реконструкцию винокурни в Сантьяго-де-Куба. Спустя 5 лет компания вышла за рамки изготовления рома.
+                </p>
+                <p>После революции на Кубе семья Бакарди выехала в США. Кубинское правительство конфисковало активы компании без компенсации. В то время производство наладили в США, Мексике, Пуэрто-Рико и на Багамских островах.</p>
+                <p>Корпорацию Bacardi Limited сформировали в 1992 году в результате слияния пяти компаний. Постепенно команда расширила портфолио, выкупив множество торговых марок, среди которых:</p>
+                <ul>
+                    <li>Martini &amp; Rossi;</li>
+                    <li>General Beverage;</li>
+                    <li>Dewar’s;</li>
+                    <li>Bombay Sapphire;</li>
+                    <li>Grey Goose;</li>
+                    <li>Patron;</li>
+                    <li>Ilegal Mezcal;</li>
+                    <li>Teeling.</li>
+                </ul>
+                <p>
+                    Сейчас штат Bacardi Limited насчитывает около 8000 сотрудников. Совет директоров состоит из 16 человек. Каждый из них отвечает за поставку производимого алкоголя в конкретный регион, например, в Европу или Африку. Во главе совета
+                    директоров — праправнук Факундо Бакарди Массо. Соответственно, компания Bacardi Limited на протяжении семи поколений находится в семейном подчинении. Главный офис расположен в Гамильтоне на Бермудских островах.
+                </p>
+                <h2>Как производят ром «Бакарди»</h2>
+                <p>
+                    Когда испанский торговец вином приехал на Кубу, дистиллят выпускали маленькими партиями. Ром считали дешевым вариантом алкоголя и никогда не подавали в тавернах. Вскоре Факундо Бакарди Массо внес в рецептуру несколько важных
+                    инноваций:
+                </p>
+                <ol>
+                    <li>Выделил и запатентовал штамм дрожжей, собранных из местного сахарного тростника. Именно они придают кубинскому рому «Бакарди» фирменную вкусо-ароматическую палитру.</li>
+                    <li>Применил фильтрацию с помощью древесных углей, таким образом удалив нежелательные примеси.</li>
+                    <li>Объединил два дистиллята — Aguardiente и Redestillado. Первый — крепкий и ароматный, который отвечает за интенсивный фруктовый шлейф. Спирт Redestillado — нежный и рафинированный, что привносит сухой и легкий вкус.</li>
+                </ol>
+                <p>Ром Bacardi готовят из патоки сахарного тростника. Это вязкий и темный сироп, который остается после производства сахара. Сырье импортируют из близлежащих карибских островов.</p>
+                <p>
+                    Патоку разбавляют фильтрованной родниковой водой и смешивают с дрожжами. Винокурня владеет 20 емкостями для брожения, в которых ром «Бакарди» проходит ферментацию. В процессе дрожжи поглощают сахар, выделяя спирт. Брожение занимает
+                    20–30 часов.
+                </p>
+                <p>
+                    После ферментации запускают дистилляцию, в ходе которой спирт постепенно испаряется. Собранный алкогольный пар повторно конденсируют в жидкую эссенцию. Спирт Aguardiente производят в традиционных медных перегонных кубах, тогда как
+                    Redestillado проходит через вертикальную колонну непрерывного действия из нержавеющей стали.
+                </p>
+                <p>После смешивания ром «Бакарди» отправляют на фильтрацию и выдержку. Для удаления посторонних примесей применяют 13 видов древесного угля.</p>
+                <p>
+                    Созревание рома Bacardi проходит в штате Флорида (США). Дистиллят помещают в обугленную дубовую бочку из-под белого американского дуба. Нередко перед этим внутри хранили бурбон. Выдержка длится как минимум 12 месяцев, способствуя
+                    развитию новых вкусовых акцентов: ванили, карамели, табака, орехов, шоколада, кофе. За сложными ароматами следуют мягкие, включая кокос, миндаль, ананас, банан.
+                </p>
+                <p>
+                    Последний штрих — смешивание. Мастер-купажист объединяет спирты из разных бочек. Конечный купаж обязательно проходит через напорный фильтр, также известный как «полирующий», что подчеркивает чистоту рома «Бакарди» и придает
+                    характерный блеск.
+                </p>
+                <h3>Крепость продукции Bacardi</h3>
+                <p>Стандартный процент алкоголя составляет 40. Если производят ромовый напиток или ароматизированную линейку, крепость снижают до 35%.</p>
+                <h2>Разновидности рома «Бакарди»</h2>
+                <p>Продукцию классифицируют по цвету, что указывает на срок выдержки, а также на вкус. Купить ром «Бакарди» в Украине можно в таких вариантах:</p>
+                <ol>
+                    <li>Carta Blanca. Цветочно-фруктовый вариант, в котором переплетаются нотки апельсиновых цветов, лаванды, абрикоса, банана, кокоса, лайма. Финиш — сухой и свежий.</li>
+                    <li>Carta Negra. На первом плане — шлейф сладких тропических фруктов. Постепенно он сменяется маслянистой карамелью и заканчивается дымной сладостью лакрицы и патоки.</li>
+                </ol>
+                <p>Белый ром зачастую тонкий, легкий и освежающий. Золотой — насыщенный, отдает сладостью. Темный — яркий, нередко с выразительными дымными аккордами. К последнему также относят красный ром «Бакарди».</p>
+                <p>Выдержанную продукцию маркируют как Añejo. Хороший пример — Añejo Cuatro. Этот ром Bacardi выдерживают четыре года. Результат — аккорды темного меда и гвоздики, которые сочетаются с мягким послевкусием.</p>
+                <p>
+                    Особого внимания заслуживает линейка выдержанных ромов «Бакарди». Первый вариант — Gran Reserva Ocho. Это золотой ром, выдержанный восемь лет. Вкус — многослойный, с оттенками карамели, ванили, специй. На финише развивается привкус
+                    кураги и бананового листа. Второй вариант — Bacardi Gran Reserva Diez. Выдержка в дубовых бочках свыше десяти лет привносит в напиток нотки ярких косточковых фруктов, сбалансированных корицей и ананасом.
+                </p>
+                <p>
+                    Также к заказу доступен пряный ром «Бакарди». В состав входят специи и натуральные ароматизаторы, которые придают уникальности вкусу и аромату, а также смягчают напиток. Цвет — результат окрашивания карамелью. В носу отчетливо
+                    ощущаются оттенки ванили и корицы. На первом плане — сладкий и приятный вкус, постепенно сменяющийся нотами черного перца.
+                </p>
+                <p>
+                    В 2011 году компания выкупила торговую марку OakHeart. С тех пор Bacardi Limited производит Oakheart Original — ромовый напиток со сниженным градусом. Вкус — легкий и сладкий, с приятными аккордами меда, ванили, кленового сиропа.
+                    Послевкусие — средней продолжительности.
+                </p>
+                <h2>Как правильно пить ром Bacardi</h2>
+                <p>Дистиллятом можно наслаждаться как в чистом виде, так и в составе коктейлей. Его смешивают абсолютно со всем — от сладкой газировки до свежих фруктовых соков.</p>
+                <p>
+                    На ром Bacardi из линейки Gran Reserva цена достаточно высокая, что объясняется продолжительной выдержкой. Это хороший вариант для подачи без добавок. Влейте 50–70 мл алкоголя в стакан по типу «Олд Фэшн». Подавайте при +17–20 ⁰C. По
+                    желанию разбавьте напиток льдом. Если такой вариант покажется слишком интенсивным, остановитесь на ароматизированных версиях.
+                </p>
+                <p>
+                    Если решили купить «Бакарди» в качестве дополнения к коктейлю, выбор — за светлым ромом. Дистиллят не доминирует над остальными вкусами, при этом не исчезает при смешивании. Не менее выгодно в миксах на основе фруктовых ликеров
+                    раскрывается Carta Negra.
+                </p>
+                <p>
+                    Утолить жажду можно ромом с колой. Также дистиллят можно смешать с имбирным пивом или игристым вином. Он не менее гармонично сочетается с газировками вроде Sprite и Dr. Pepper. Несколько хороших вариантов коктейлей на основе
+                    подобных сочетаний:
+                </p>
+                <ol>
+                    <li>«Пина Колада». Сладкий микс на основе алкоголя, ананасового сока, кокосовой воды и сахарного сиропа.</li>
+                    <li>
+                        «Карибский пунш». В этом рецепте вкусо-ароматическую палитру рома «Бакарди» дополняют сок лайма, ананаса и апельсина. Финальный штрих — гранатовый сироп. Также можно добавить свежие фрукты и ягоды. По желанию посыпьте микс
+                        мускатным орехом.
+                    </li>
+                    <li>«Мохито». Классика жанра, которая прекрасно освежает в летнюю пору. Используйте любимый вариант рома Bacardi, нейтральную газировку и немного мятных листьев.</li>
+                </ol>
+                <p>Любители вязких по консистенции напитков могут экспериментировать с «Дайкири», добавляя пюре из банана. На ром «Бакарди» цена во многом зависит от стиля. Поэтому для смешивания в коктейлях можно выбрать бюджетный вариант.</p>
+                <h2>Почему выгодно купить ром «Бакарди» в интернет-магазине MAUDAU</h2>
+                <p>В маркете алкогольных штук MAUDAU доступна к заказу только оригинальная продукция, которая попадает в каталог напрямую. Доставка возможна разными способами:</p>
+                <ul>
+                    <li>курьером по Киеву;</li>
+                    <li>почтовыми службами по Украине.</li>
+                </ul>
+                <p>Также предусмотрен самовывоз из физических точек продаж, если товар в наличии. Если сумма заказа достигнет определенной суммы, его доставят бесплатно.</p>
+                <p>
+                    На вопрос, сколько стоит ром «Бакарди», нет однозначного ответа. Цена зависит от стиля и выбранной емкости. Распространенный вариант — 1 литр. Также можно выбрать комплект в подарочной упаковке, куда помимо алкоголя, также входят
+                    фирменные стаканы. Стоимость снижается, если заказывать ром Bacardi оптом. Скидка распространяется на покупку от трех штук. Регулярно просматривайте акции — список доступных предложений постоянно меняется.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пина колада" src="https://photo.maudau.com.ua/Landing/cocktails/incat/pina-colada.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пина колада</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi">Темный ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=kokos-9">Кокосовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Ананас</li><li>Ананасовые листья</li><li>Коктейльная вишня красная</li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пина колада — традиционный карибский лонгдринк, с необычным молочно-кокосовым вкусом и сладковатым фруктовым послевкусием.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Пина колада</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл белого рома</li><li>15 мл темного рома</li><li>40 мл кокосового сиропа</li><li>20 мл лаймового сока</li><li>1 кг ананаса</li><li>ананасовый лист</li><li>коктейльная красная вишня</li><li>дробленый лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Слайсером вырежьте мякоть ананаса и выжмите из нее сок.</li><li>Налейте в блендер 20 мл лаймового сока и 100 мл свежевыжатого ананасового сока.</li><li>Добавьте туда же 40 мл кокосового сиропа, 15 мл темного и 60 мл белого рома.</li><li>Насыпьте в блендер один барный совок дробленого льда и взбейте.</li><li>Перелейте полученный напиток в бокал-харрикейн.</li><li>Украсьте коктейльной вишней на шпажке и ананасовым листом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мохито" src="https://photo.maudau.com.ua/Landing/cocktails/incat/mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мохито</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая</a></li><li>Лайм</li><li>Мята</li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мохито — классический ромовый коктейль с ярко выраженным кисло-сладким мятным вкусом и цитрусовым послевкусием. Стал символом релакса и беззаботности.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мохито</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл белого рома</li><li>15 мл сахарного сиропа</li><li>100 мл содовой</li><li>80 г лайма</li><li>5 г мяты (несколько веточек)</li><li>дробленый лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в хайбол 3 дольки лайма и подавите толкушкой-мадлером.</li><li>Возьмите 10 листиков мяты между ладонями и встряхните. Можно хлопнуть одной рукой по другой.</li><li>Уложите мяту в бокал и наполните его доверху дробленым льдом.</li><li>Добавьте 15 мл сахарного сиропа и 50 мл белого рома.</li><li>Долейте до краев содовой и аккуратно размешайте барной ложкой.</li><li>Досыпьте еще немного дробленого льда.</li><li>Украсьте напиток веточкой мяты и ломтиком лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Куба Либре" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cuba-Libre.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Куба Либре</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=zolotyi-6">Золотой ром</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лайм</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легендарный «Куба Либре» — простой и оригинальный коктейль. Его любят за уравновешенное сочетание рома и колы. Лайм отвечает за цитрусовую кислинку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Куба Либре</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл золотого рома</li><li>140 мл колы</li><li>10 мл лаймового сока</li><li>20 г лайма</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал хайбол кубиками льда до верхнего края.</li><li>Налейте 10 мл лаймового сока и 50 мл золотого рома.</li><li>Долейте 140 мл колы и аккуратно размешайте коктейльной ложкой с длинной ручкой.</li><li>Украсьте кружочками лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Дайкири" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Daiquiri.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Дайкири</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дайкири — бодрящий вкусный напиток, с нежным сочетанием белого рома, сахарного сиропа и лайма. Коктейль освежает и одновременно приятно опьяняет — за счет крепости рома.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Дайкири</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл белого рома</li><li>30 мл лаймового сока</li><li>15 мл сахарного сиропа</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в шейкер 30 мл лаймового сока и 15 мл сахарного сиропа.</li><li>Добавьте 60 мл белого рома и встряхните.</li><li>Наполните шейкер кубиками льда и хорошенько все взбейте.</li><li>Перелейте коктейль через ситечко-стрейнер в охлажденное шампанское блюдце.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">220 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
