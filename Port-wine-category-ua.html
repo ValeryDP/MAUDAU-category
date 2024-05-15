@@ -1,0 +1,862 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Портвейн — кріплене вино, яке виробляють у Дору, що на півночі Португалії. Здебільшого напій виконують у солодкому стилі. Рідше зустрічається сухий варіант.</p>
+                <p>
+                    Портвейн, який скорочено називають порто, відносять до алкоголю з назвою, контрольованою за походженням — Regiao Demarcada do Douro. Якщо напій виготовлено відповідно до стандартів, на шийку клеять марку, випущену Інститутом вин
+                    Дору і Порту.
+                </p>
+                <h3>Портвейн: особливості смаку й аромату</h3>
+                <p>
+                    На кінцеву композицію впливають сорт винограду і термін дозрівання. Класичний португальський портвейн — червоне вино середньої танинності з нотами стиглих ягід, таких як малина й ожина. Завершують палітру відтінки гіркого шоколаду і
+                    горіхової карамелі.
+                </p>
+                <p>Молодий портвейн вирізняється свіжим фруктово-ягідним ароматом. Згодом він змінюється пікантним шлейфом сухофруктів — акцентом, характерним для витриманих напоїв.</p>
+                <h3>Скільки градусів у портвейні</h3>
+                <p>Напій містить підвищену концентрацію алкоголю. У процесі виготовлення до соку вливають виноградний бренді, таким чином зупиняючи ферментацію. На виході отримують солодке вино міцністю 19-20%.</p>
+                <h2>Як з'явився портвейн</h2>
+                <p>Виноробний регіон Дору — один із найстаріших у світі. Його історія сягає 1756 року. У той час маркіз Помбал заснував Винну компанію Дору.</p>
+                <p>
+                    При цьому перший випуск портвейну відбувся в XI столітті, після того, як Генріх II Бургундський одружився з донькою короля Кастилії та Леона. Молодій сім'ї виділили графство Портукале. У його околицях граф висадив безліч виноградних
+                    лоз, привезених із Франції.
+                </p>
+                <p>
+                    Успіх до портвейну прийшов після підписання Метуенського торгового договору 1703 року. Війна позбавила Англію культових французьких вин. Тому місцевим торговцям дозволили ввозити солодке вино з Португалії за низьким митом. Продукція
+                    погано переносила транспортування морем, поки моряки випадково не вирішили стабілізувати поставки за допомогою виноградного бренді.
+                </p>
+                <p>Спочатку портвейн готували за допомогою вливання виноградного спирту до сухого вина. Сучасний варіант виник після 1820 року. Тоді у виробництво внесли ключові зміни, взявши за основу технологію переривання бродіння.</p>
+                <p>Назва напою — відсилання до міста в гирлі річки Дору. У середині XVII століття там функціонував найбільший порт. Продукція, яку поставляли на експорт до Європи, обов'язково проходила через Порту.</p>
+                <h2>Як виробляють портвейн</h2>
+                <p>Процес складається з таких етапів:</p>
+                <ol>
+                    <li>
+                        Вибір і підготовка сировини. Ягоди вирощують і переробляють тільки в межах Дору. Виділяють близько 100 дозволених виноградних сортів. Водночас портвейн, купити який можна в маркеті алкогольних штук MAUDAU, найчастіше
+                        виготовляють із місцевих сортів, таких як «торіга насіонал», «торіга франка» і «тінта роріш». Виноград росте на крутих терасах, тому його збирають вручну. Після відділення гребенів ягоди подрібнюють для вилучення соку. Раніше
+                        виноград топтали в гранітних кам'яних лагарах. Зараз використовують сучасний пневматичний прес.
+                    </li>
+                    <li>Бродіння. Процес проходить природним чином із використанням диких дріжджів, що містяться на виноградних гронах.</li>
+                    <li>Кріплення. Коли вино досягає потрібного рівня солодкості, шкірку відокремлюють, а до виноградного сусла додають спирт. Цей крок підвищує вміст алкоголю і зберігає натуральний цукор у вині.</li>
+                    <li>Витримка. Портвейн витримують у дубових бочках із нейтральних порід не менше двох років. Термін дозрівання залежить від виробленого стилю.</li>
+                </ol>
+                <h3>Де виготовляють портвейн</h3>
+                <p>Регіон розділений на три зони:</p>
+                <ol>
+                    <li>Baixo Corgo. Вологий західний район, розташований нижче за течією від річки Корго. Центр — Пезу-да-Регуа. Виноград — кислий, тому його спрямовують на виробництво недорогого портвейну «Рубі» або «Тоні».</li>
+                    <li>Cima Corgo. Зона, яка простягається вище за течією від річки Корго. Випуск портвейну зосереджений у муніципалітеті Аліха-дель-Інфантадо. Виноград — більш якісний, тому входить до складу вінтажних і резервних напоїв.</li>
+                    <li>Douro Superior. Найсхідніша зона, яка практично досягає кордонів Іспанії. Це найсухіший і найтепліший регіон Дору, де культивують переважно червоний виноград.</li>
+                </ol>
+                <h3>У чому різниця між вином і портвейном</h3>
+                <p>Другий напій часто являє собою купаж. Це означає, що в складі присутні вина різного віку. Портвейн проходить складну і довгу витримку без ризику зіпсуватися. Водночас біле вино часто постачають на ринок молодим.</p>
+                <p>Вміст цукру в портвейні підвищений — коливається в межах 80–140 г/л. Червоне або біле вино нерідко виконують у сухому стилі, що нехарактерно для кріплених позицій.</p>
+                <h2>Як класифікують портвейн</h2>
+                <p>
+                    Продукцію ділять залежно від витримки. Перша категорія — португальський портвейн, який витримують у дубових бочках. Кисень поступово проникає в пори, запускаючи оксидативний тип старіння. Відсоток алкоголю поступово знижується.
+                    Консистенція — густа.
+                </p>
+                <p>Другий варіант — портвейн, витриманий у закоркованих скляних пляшках. Повітря не надходить зовсім. Це призводить до повільної зміни кольору. Смак стає гладким і маслянистим.</p>
+                <h2>Ключові різновиди портвейну</h2>
+                <p>Стилі напоїв, що дозрівають у дубових бочках:</p>
+                <ol>
+                    <li>
+                        Tawny. Портвейн жовто-коричневого кольору. Його готують із червоних ягід. Вплив кисню надає характерного горіхового шлейфу. Також розвиваються відтінки карамелі, ванілі, сухофруктів. Базовий варіант витримують не менше двох
+                        років. Вищий за рангом — портвейн «Тоні», на етикетці якого вказано точний термін дозрівання.
+                    </li>
+                    <li>
+                        Colheita. Друга назва — Old Tawny. Так називають темно-коричневий портвейн, витриманий від семи років. Замість віку на етикетці вказують рік випуску. Часто після 10–12 років витримки портвейн «Колейта» на смак і аромат нагадує
+                        20-річний Tawny.
+                    </li>
+                    <li>
+                        Garrafeira. Унікальний напій, який створюють з урожаю одного року. Вино дозріває в дубових бочках 3–6 років. Потім витримка триває в скляних пляшках. Мінімальний вік — 8 років. Купити цей португальський портвейн в Україні вкрай
+                        складно через його рідкість.
+                    </li>
+                </ol>
+                <p>Окремо стоїть категорія Branco. Це класичний білий портвейн, який виробляють із сортів «мальвазія фіно», «кодега до Лоріньо», «гувейо». Його витримують у ємностях об'ємом від 20 000 л.</p>
+                <p>Португальський портвейн, що дозріває в закоркованих скляних пляшках, ділять на:</p>
+                <ol>
+                    <li>
+                        Ruby. Молодий купажований портвейн. Назва пов'язана з яскраво-червоним кольором, який зберігається в процесі витримки. Смак — інтенсивний, з акцентом на свіжих фруктах. Дозрівання триває 2-3 роки. Напій із низьким потенціалом до
+                        зберігання. Додатково виділяють категорію Ruby Reserve. На такий портвейн ціна вища, оскільки його відносять до сегмента преміум.
+                    </li>
+                    <li>Late Bottled Vintage. Портвейн LBV виробляють з урожаю одного року. Витримка займає 4-5 років у дубових бочках. По закінченню його розливають по пляшках. Родзинка — інтенсивний фруктовий аромат і бархатиста текстура.</li>
+                    <li>
+                        Crusted. Також категорію називають Unfiltered. Це підвид LBV, який розливають без фільтрації, тому на дні видніється каламутний осад. Мінімальний термін дозрівання становить три роки. Цей тип портвейну обов'язково піддають
+                        декантації перед розливом.
+                    </li>
+                </ol>
+                <p>
+                    На особливу увагу заслуговує категорія Vintage. Спочатку вина витримують до 2,5 років у дерев'яних ємностях. Перш ніж портвейн стане придатним для пиття, він дозріває в склі ще 20–50 років. Вінтажну продукцію виготовляють повністю з
+                    винограду оголошеного року збору. Такий портвейн можна замовити як подарунок справжньому шанувальнику кріплених вин.
+                </p>
+                <p>Також виділяють клас Single Quinta Vintage. Це продукція, яку виробляють у межах одного маєтку — кінти. Цікавий і цінний екземпляр, який повністю відображає теруар.</p>
+                <h2>Як і з чим пити портвейн</h2>
+                <p>
+                    Перший крок до насолоди — правильні показники температури. Червоний портвейн подають при +15-20 ºC. Смако-ароматична палітра білого вигідніше розкривається після охолодження. Для подачі використовуйте келих, який за формою нагадує
+                    тюльпан.
+                </p>
+                <p>Портвейн Tawny часто подають як аперитив. Клас Ruby — хороша основа для коктейлю. Вінтажний варіант прекрасно підходить для вживання в чистому вигляді.</p>
+                <p>
+                    Супроводжуйте напій легкими закусками, включно з твердим сиром, оливками, крекерами, світлими фруктами (груші, персики, абрикоси). Також підходять горіхи та шоколад. Логічна компанія — десерт, особливо приготований на основі свіжих
+                    ягід.
+                </p>
+                <p>
+                    Якщо вирішили піднести гостям вінтажну продукцію, використовуйте щипці. Їх нагрівають над вогнем і прикладають до горлечка. Потім його швидко охолоджують водою, сприяючи вивільненню корка. Таким чином не потрібно використовувати
+                    штопор, який може пошкодити стару пробку.
+                </p>
+                <p>Кріплене вино, включно з портвейном, добре зберігається. Пляшку рідко повторно закривають корком. Продукцію Crusted зовсім залишають на 24 години в графині для декантації.</p>
+                <p>Білий портвейн — важливий компонент Porto Tonico. Це освіжальний мікс, який подають із лимоном і м'ятою. Рожевий варіант, який зустрічається вкрай рідко, п'ють без добавок. За бажанням — супроводжують скибочкою апельсина.</p>
+                <h2>Чому вигідно купити портвейн в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В асортименті — 100% оригінальна продукція. Завдяки налагодженому імпорту покупці можуть замовити як бюджетний портвейн на вечір, так і ексклюзивний варіант на подарунок. Зберіть замовлення на певну суму, щоб не платити за доставку.
+                    По Києву товар привезе кур'єр. Також можливий самовивіз. Для замовлення в інше місто скористайтеся пропозиціями поштових служб.
+                </p>
+                <p>
+                    Однозначної відповіді на запитання, скільки коштує портвейн, немає. Ціна залежить від стилю. Шопінг стає вигіднішим, якщо замовляти гуртом або за акцією. Також зверніть увагу на позиції, які інтернет-магазин MAUDAU доставляє
+                    безкоштовно.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Нью-Йоркський сауер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/New-York-sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Нью-Йоркський сауер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/product/portvein-messias-porto-ruby-chervonyi-solodkyi-195-075-l">Портвейн рубі</a></li><li><a href="https://maudau.com.ua/product/bitter-fee-brothers-plum-12-015-l">Сливовий бітер</a></li><li>Домашній лавандово-кленовий сироп</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Білок перепелиного яйця</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насичений цитрусовий сауер на бурбоні, з кислинкою лимона та делікатесною нотою лавандово-кленового сиропу. Яєчний білок дає стійку піну, а портвейн надає терпкості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Нью-Йоркський сауер</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл бурбону</li><li>15 мл портвейну рубі</li><li>2 мл сливового бітерц</li><li>15 мл домашнього лавандово-кленового сиропу</li><li>20 мл лимонного соку</li><li>30 мл білка перепелиного яйця</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 20 мл лимонного соку і 15 мл лавандово-кленового сиропу.</li><li>Додайте білок перепелиного яйця і 15 мл портвейну рубі.</li><li>Насамкінець влийте 45 мл бурбону і 2 деша сливового бітеру.</li><li>Ретельно перемішайте в шейкері суміш без льоду.</li><li>Додайте 200 г льоду в кубиках і збийте напій ще раз.</li><li>Перелийте через стрейнер у шампанське блюдце. Готово!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Негроні на районі" src="https://photo.maudau.com.ua/Landing/cocktails/incat/negroni-from-bronx.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Негроні на районі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=drambuie">Драмбуї</a></li><li>Червоний бітер</li><li><a href="https://maudau.com.ua/product/portvein-messias-porto-tawny-chervonyi-solodkyi-195-075-l">Портвейн тоні</a></li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2">Червоне сухе вино</a></li><li><a href="https://maudau.com.ua/product/bitter-fee-brothers-plum-12-015-l">Сливовий бітер</a></li><li><a href="https://maudau.com.ua/product/bitter-fee-brothers-peach-17-015-l">Персиковий бітер</a></li><li>Апельсинова цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Напій із насиченим ароматом і гармонійним поєднанням усіх інгредієнтів. Доволі міцний, але м'який коктейль.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Негроні на районі</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл лікеру Драмбуї</li><li>30 мл червоного бітеру</li><li>15 мл портвейну тоні</li><li>40 мл червоне сухого вина</li><li>3 мл сливового бітеру</li><li>3 мл персикового бітеру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-рокс кубиками льоду до країв.</li><li>Налийте в склянку для змішування 15 мл портвейну тоні та 40 мл червоного сухого вина.</li><li>Додайте 30 мл червоного бітеру, 15 мл лікеру Драмбуї та по 3 мл бітерів: сливового і персикового.</li><li>Насипте кубики льоду і розмішайте барною ложкою.</li><li>Перелийте напій через сито-стрейнер у келих-рокс.</li><li>Прикрасьте коктейль апельсиновою цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шотландський фліп" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Scottish_flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шотландський фліп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski">Віскі</a></li><li><a href="https://maudau.com.ua/product/portvein-porto-cruz-ruby-do-19-075-l-837686">Портвейн рубі</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Жовток перепелиного яйця</li><li>Корень імбиру</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатний горіх мелений</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фліп — це пряний сауер на базі віскі та портвейну рубі. Додавання збитого яйця залишає на поверхні коктейлю легку пінку. Аромат мускатного горіха надає пікантних ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шотландський фліп</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл віскі</li><li>40 мл портвейну рубі</li><li>10 мл цукрового сиропу</li><li>5 жовтків перепелиного яйця</li><li>5 г кореня імбиру</li><li>1 г мускатних горіхів мелених</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у шейкер імбир і придушіть товкачем-мадлером.</li><li>Додайте 5 жовтків перепелиного яйця і збийте.</li><li>Налийте 10 мл цукрового сиропу і 40 мл портвейну рубі.</li><li>Влийте 40 мл віскі та наповніть шейкер льодом.</li><li>Збийте напій і перелийте через ситечко в келих.</li><li>Посипте коктейль меленим мускатним горіхом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Гарячий ромовий пунш" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Hot-Rum-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий ромовий пунш</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi">Темний ром</a></li><li><a href="https://maudau.com.ua/product/portvein-porto-cruz-tawny-do-19-075-l">Портвейн тоні</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/product/sik-casa-rinaldi-laimu-250-ml-915957">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/category/chai-2/typ_83=chornyi-22">Чорний чай</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/product/korytsia-banka-spetsii-palychky-55-h-915319">Кориця в паличках</a></li><li>Апельсинова цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насичений гарячий пунш має солодкі медові та пікантні лаймові нотки. Рівні пропорції рому та портвейну створюють гармонійний букет.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий ромовий пунш</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл темного рому</li><li>40 мл портвейну тоні</li><li>20 мл медового сиропу</li><li>15 мл цукрового сиропу</li><li>15 мл лаймового соку</li><li>120 мл чорного чаю</li><li>2 г гвоздики</li><li>5 г кориці в паличках</li><li>1 шт апельсинової цедри</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у пітчер пару штучок гвоздики.</li><li>Налийте 15 мл лаймового соку і 120 мл чорного чаю.</li><li>Додайте сиропи — 20 мл медового і 15 мл цукрового.</li><li>Влийте 40 мл темного рому і 40 мл портвейну тоні.</li><li>Нагрійте пітчер, не доводячи напій до кипіння.</li><li>Перелийте через барне сито в товстостінний келих-кубок.</li><li>Декоруйте паличкою кориці та цедрою апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лейзі Мен Фліп" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Lazy-Man-Flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лейзі Мен Фліп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li><li><a href="https://maudau.com.ua/product/portvein-porto-cruz-tawny-do-19-075-l">Портвейн тоні</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Жовток перепелиного яйця</li><li>Жирні вершки</li><li><a href="https://maudau.com.ua/product/korytsia-mriia-melena15-h">Мелена кориця</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальний різновид фліпу на кальвадосі та портвейні. Запам'ятовується приємними яблучними нотками та вершковим післясмаком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лейзі Мен Фліп</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл кальвадосу</li><li>20 мл портвейну тоні</li><li>15 мл цукрового сиропу</li><li>5 шт жовтків перепелиного яйця</li><li>20 мл жирних вершків</li><li>1 г меленої кориці</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 5 жовтків перепелиного яйця і 20 мл вершків.</li><li>Додайте 15 мл цукрового сиропу, 20 мл портвейну тоні та 30 мл кальвадосу.</li><li>Насипте 200 г льоду в кубиках та інтенсивно збийте.</li><li>Процідіть через сито-стрейнер в охолоджений келих.</li><li>Прикрасьте коктейль меленою корицею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Димний глінтвейн" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Smoked-Mulled-Wine.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Димний глінтвейн</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/portvein-porto-cruz-tawny-do-19-075-l">Портвейн тоні</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vyshnia-10">Вишневий сироп</a></li><li>Копчений чай</li><li>Яблуко</li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/product/korytsia-mriia-melena15-h">Мелена кориця</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматний глінтвейн, з характерним димком копченого чаю і терпкістю портвейну. Яблука та мед надають напою затишних домашніх ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Димний глінтвейн</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>110 мл портвейну тоні</li><li>20 мл вишневого сиропу</li><li>40 мл копченого чаю</li><li>40 г яблука</li><li>10 мл меду</li><li>3 г гвоздики</li><li>1 г меленої кориці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в пітчер 40 мл копченого чаю і 20 мл вишневого сиропу.</li><li>Додайте 110 мл портвейну тоні, 10 мл меду і спеції.</li><li>Акуратно нагрівайте пітчер, не кип'ятіть напій.</li><li>Перелийте через стрейнер у келих для подачі ірландської кави.</li><li>Декоруйте коктейль яблучними слайсами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">135 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">12 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
