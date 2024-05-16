@@ -1,0 +1,724 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Граппа — міцний спиртний напій, який виробляють в Італії. У процесі використовують вичавки — залишки винограду після винного виробництва. Вони включають кісточки, шкірку, стебла. Нерідко напій називають виноградною горілкою.
+                    Насправді — це варіант ароматного бренді.
+                </p>
+                <p>
+                    Колір напою — прозорий. Після дозрівання відтінок стає світло-золотистим. Смаковий букет багато в чому залежить від виноградного сорту і застосовуваних технологій. Граппа розкривається як свіжими акордами зелених яблук, так і
+                    виразними тонами лісових горіхів і темного шоколаду.
+                </p>
+                <h2>Граппа: що відомо про походження</h2>
+                <p>Напій традиційно виробляють у Північній Італії. За легендою, перший рецепт належав римському солдату, який перегнав виноградну горілку в містечку Бассано-дель-Граппа. Дистилятор він незаконно привіз із Єгипту.</p>
+                <p>За іншою версією, граппу виробляють приблизно з X століття. Перегонку відкрили тільки у VIII столітті. На те, щоб технологія перекочувала в Італію маршрутом хрестових походів, пішло близько двохсот років.</p>
+                <h2>Як виготовляють граппу</h2>
+                <p>Виробництво строго регламентоване. Процес починається з підготовки сировини. Вичавки з червоного винограду не обробляють, тоді як з білого піддають ферментації.</p>
+                <p>
+                    Далі — перегонка. Вичавки перетворюються на спирт, після того як змішуються з водяною парою. Граппу переганяють як у колонах безперервної дії, так і в стандартних мідних кубах. Перший варіант використовують у промислових масштабах,
+                    другий — на крихітних сімейних винокурнях.
+                </p>
+                <p>Нарешті, прозорий концентрований дистилят розбавляють водою до потрібної міцності. Відсоток алкоголю коливається в межах 35–60.</p>
+                <p>
+                    Молоду граппу, купити яку можна в маркеті алкогольних штук MAUDAU, одразу розливають у скляні пляшки. За бажанням виробника напій витримують у металевих ємностях або дубових бочках від кількох днів до 18 місяців. Якщо готують
+                    колекційний продукт, спирт дозріває 6–20 років.
+                </p>
+                <p>Найчастіше використовують стандартні ємності. Граппа, ціни на яку перевищують 1500 грн за літр, нерідко дозріває в нових бочках з акації, ясена або вишні. Останній варіант — інновація, представлена винокурнею Marzadro.</p>
+                <h3>Граппа і чача: у чому полягає різниця</h3>
+                <p>Grappa — напій, захищений сертифікатом PGI. Це означає, що:</p>
+                <ol>
+                    <li>Граппу виготовляють в Італії. Рідше — в італійських регіонах Швейцарії або в Сан-Марино.</li>
+                    <li>У складі — тільки вичавки, які на батьківщині називають «мезгою». Їх обробляють гарячою парою, вбиваючи залишки диких дріжджів.</li>
+                    <li>Ферментація і дистиляція проходять по твердих речовинах. Змішування з водою заборонено.</li>
+                </ol>
+                <p>Чачу виготовляють у Грузії. У 2011 країні видали патент на виробництво, подібно до коньяку у Франції.</p>
+                <p>
+                    Грузинську виноградну горілку нерідко виготовляють із недостиглого винограду. Граппу практично ніколи не виробляють із цільних ягід. Чачу ферментують під впливом диких дріжджів після змішування з холодною водою. У процесі дистиляції
+                    «голову» і «хвіст» не відсікають. Чачу не завжди витримують. Дозрівання проходить у дубових бочках, виготовлених із місцевих порід.
+                </p>
+                <h2>Як класифікують граппу</h2>
+                <p>В основу лягає вік спиртів у складі купажу:</p>
+                <ol>
+                    <li>Giovane. Молодий варіант, який не проходить витримку. Таку італійську граппу також можна купити під назвою «bianca».</li>
+                    <li>Affinata in Legno. Дистилят, витриманий не менше шести місяців у дубових бочках.</li>
+                    <li>Invecchiata. Також називають Vecchia. Граппа, яка дозрівала в дереві від 12 місяців.</li>
+                    <li>Stravecchia. Друга назва — Riserva. Найстаріший сорт, витриманий не менше ніж 18 місяців.</li>
+                </ol>
+                <h3>Інші різновиди граппи</h3>
+                <p>Залежно від складу виділяють категорію Aromatica. Так називають напій, який готують з ароматних сортів винограду:</p>
+                <ul>
+                    <li>«москато»;</li>
+                    <li>«мюллер-тургау»;</li>
+                    <li>«гевюрцтрамінер».</li>
+                </ul>
+                <p>
+                    Другий варіант — Grappa Aromatizzata. Це варіант італійського ароматного бренді, приправленого натуральними ягодами, фруктами, спеціями. Здебільшого використовують ожину, червону або чорну смородину, суницю, грушу, руту, корицю,
+                    мускатний горіх.
+                </p>
+                <p>Коли замовляєте граппу в Україні, звертайте увагу на сортовий склад. Якщо в купажі міститься 85% певного сорту, такий напій відносять до класу Monovitigno. Багатосортовий варіант маркують як Polivitigno.</p>
+                <p>Також виділяють вісім офіційно визнаних географічних регіонів, згідно з якими класифікують продукт:</p>
+                <ul>
+                    <li>Бароло;</li>
+                    <li>П'ємонт;</li>
+                    <li>Трентіно;</li>
+                    <li>Альто-Адідже;</li>
+                    <li>Фріулі-Венеція-Джулія;</li>
+                    <li>Венето;</li>
+                    <li>Сицилія;</li>
+                    <li>Марсала.</li>
+                </ul>
+                <h2>Як пити граппу</h2>
+                <p>
+                    На батьківщині дистилят подають після прийому їжі. Якщо вміст алкоголю підвищений, подавайте виноградну горілку з льодом або розбавляйте охолодженою водою. За бажанням приготуйте каву «Коретто». До еспресо додайте 3–5 крапель
+                    алкоголю.
+                </p>
+                <h2>Як вибрати граппу</h2>
+                <p>
+                    В інтернет-магазині MAUDAU можна знайти продукцію Berta, Caffo, Crude, Nonino, Poli Distillerie. Смак і аромат відрізняються залежно від регіону виготовлення. Для порівняння замовте продукт із різних куточків Італії, таких як
+                    П'ємонт, Венето, Емілія-Романья. Також можна купити граппу українську, вироблену в сонячних південних областях.
+                </p>
+                <p>Міцний спиртний напій реалізують у різних об'ємах — від 50 мл до 1,5 л. Стандартна міцність — 40%. На особливу увагу заслуговує продукція в подарункових коробках.</p>
+                <h3>Скільки коштує граппа</h3>
+                <p>
+                    Ціна залежить від обраної ємності, а також від рідкості. Наприклад, витримана Grappa Caffo Stravecchia обійдеться в 1360 грн за 0,7 л. Дешевший варіант — Diletta White. Напій виготовлений на основі різних виноградних сортів, тому
+                    коштує 639 грн за літр.
+                </p>
+                <h2>Чому вигідно купити граппу в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Асортимент об'єднує оригінальну продукцію за конкурентною вартістю, яку закуповують завдяки ефективно організованому імпорту. Для оформлення замовлення достатньо вибрати відповідний напій, а також вказати зручний варіант оплати і
+                    доставки. Попри доступну ціну, команда інтернет-магазину MAUDAU пропонує постійну знижку на малий гурт, яка діє при замовленні від трьох штук. Також в онлайн-каталозі регулярно оновлюються акції.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Італійська дружина" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Italian_wife.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Італійська дружина</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=grappa">Граппа</a></li><li><a href="https://maudau.com.ua/product/liker-de-kuyper-blue-curacao-20-07-l-76086">Лікер Blue Curacao</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий підбадьорливий коктейль на базі грапи. Лимонний сік залишає цитрусову кислинку в післясмаку. Blue Curacao надає напою екзотичного блакитного відтінку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Італійська дружина</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>10 мл лимонного соку</li><li>40 мл граппи</li><li>5 мл лікеру Blue Curacao</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 10 мл лимонного соку і 40 мл граппи.</li><li>Додайте 5 мл лікеру Blue Curacao та лід.</li><li>Інтенсивно струсіть шейкер.</li><li>Процідіть напій через стрейнер у коктейльний келих.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Конюшина" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Clover.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Конюшина</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=grappa">Граппа</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=polunytsia-12">Полуничний сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Яєчний білок</li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Конюшина — коктейль із незвичайним поєднанням граппи та полуничного сиропу. Для утворення характерної піни додається яєчний білок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Конюшина</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл граппи</li><li>10 мл полуничного сиропу</li><li>20 мл лимонного соку</li><li>яєчний білок</li><li>полуниця</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер яєчний білок і 20 мл лимонного соку.</li><li>Додайте 30 мл граппи та 10 мл полуничного сиропу.</li><li>Наповніть шейкер кубиками льоду і збийте.</li><li>Перелийте через барне сито в охолоджений коктейльний келих.</li><li>Прикрасьте коктейль полуницею на шпажці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Цитрус" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Citrus.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Цитрус</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9">Грейпфрутовий сік</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=grappa">Граппа</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Невигадливий лаконічний коктейль складається з рівних пропорцій граппи та цитрусових соків. Іноді його називають «Викрутка по-італійськи», але він набагато ароматніший і насиченіший за базовий варіант.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Цитрус</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл апельсинового соку</li><li>50 мл грейпфрутового соку</li><li>50 мл граппи</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 50 мл граппи.</li><li>Додайте по 50 мл апельсинового та грейпфрутового соків.</li><li>Насипте лід і струсіть кілька разів.</li><li>Процідіть через стрейнер в охолоджений коктейльний келих.</li><li>За бажанням прикрасьте слайсом апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">220 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
