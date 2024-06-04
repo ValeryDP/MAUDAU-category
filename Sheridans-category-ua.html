@@ -1,0 +1,791 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Sheridan's — крем-лікер, який випускають в Ірландії на потужностях винокурні Thomas Sheridan &amp; Sons. Бренд належить британському алкогольному гіганту Diageo.</p>
+                <h2>Історія становлення лікеру «Шеріданс»</h2>
+                <p>
+                    Торговельну марку зареєстрували 1994 року, хоча виробництво запустили в 1980-х. Ідея і рецепт належали Пету Рігні — директору з досліджень і розробок Bailey's. Першу партію високо оцінили на виставці у Франції, нагородивши її
+                    золотою медаллю. Незабаром рецептуру похвалили експерти з Бельгії.
+                </p>
+                <p>
+                    За свою коротку історію лікер Sheridan's перетворився на один із найзнаменитіших напоїв. Секрет популярності криється в унікальній пляшці, яка складається з двох посудин, що не перетинаються. Форма дає змогу дотримуватися
+                    рекомендованих порцій під час розливу лікеру «Шерідан». Напій завжди змішується в пропорції 1:2, де один — вершки, а два — шоколад. Дизайн флакона належить PA Consulting Group. Спочатку місткості замовляли в Італії. Сучасну тару
+                    виконують на потужностях французьких і англійських компаній, оскільки в Ірландії ніхто не зміг повторити фірмову обтічну форму.
+                </p>
+                <p>Пляшка закривається кришкою з різним діаметром шийок. До цього рішення дійшли не відразу, тому лікер у фірмовій чорно-білій палітрі надійшов у продаж із затримкою в чотири місяці з моменту схвалення рецепта.</p>
+                <p>Назва Sheridan's — відсилання до ірландського бармена. Саме Джо Шерідан винайшов рецепт класичного напою — кави з віскі, змішаної зі збитими вершками.</p>
+                <h2>Що входить до складу лікеру «Шеріданс»</h2>
+                <p>Солодкий напій складається з двох компонентів — вершково-ванільного та шоколадно-кавового. Ними можна насолоджуватися окремо. У складі:</p>
+                <ul>
+                    <li>віскі;</li>
+                    <li>вершки;</li>
+                    <li>джерельна вода;</li>
+                    <li>натуральний ванільний ароматизатор;</li>
+                    <li>палений цукор;</li>
+                    <li>кавовий екстракт;</li>
+                    <li>шоколад.</li>
+                </ul>
+                <p>Рецепт не містить штучних барвників, консервантів, ароматизаторів. Пропорції ключових інгредієнтів зберігають у секреті.</p>
+                <h2>Як виробляють лікер Sheridan's</h2>
+                <p>
+                    Технологія максимально проста. Лікер Sheridan's, купити який можна на MAUDAU, виробляють за допомогою настоювання твердих компонентів на алкогольній основі. Молочну та алкогольну частини об'єднують за допомогою нагрівання. Потім
+                    крем-лікер охолоджують. Для стабілізації смако-ароматичної композиції солодкий напій «Шеріданс» відправляють настоюватися. Після цього продукт готовий до розливу та нанесення маркування.
+                </p>
+                <p>Справжній лікер «Шеріданс», купити який можна в інтернет-магазині MAUDAU, не розшаровується. Правильний колір світлої частини — молочний, а темної — насичений шоколадний.</p>
+                <p>
+                    Стандартний відсоток алкоголю в солодкому напої «Шеріданс» становить 15,5%. Градус підвищується завдяки віскі. При цьому шоколадно-кавова складова — міцніша. Тож не можна повністю спрогнозувати кінцевий градус у келиху. На фініші
+                    присутня легка спиртуозна нотка.
+                </p>
+                <h2>Смак і аромат класичного лікеру «Шеріданс»</h2>
+                <p>Біла частина розкривається ніжним присмаком ванілі, цукру, вершків. Чітко відчувається ненав'язливий молочний аромат. Темний компонент — більш насичений на смак, з тонами підсмажених горіхів, гіркого шоколаду, терпкої кави.</p>
+                <h2>Різновиди лікерів Sheridan's</h2>
+                <p>
+                    Компанія не прагне до розширення асортименту. Крім традиційного варіанту, в портфоліо представлений тільки сезонний продукт — Sheridan's Berries. Кавовий лікер замінили на ягідний еліксир, який надає напою характерної кислинки. Він
+                    складається з суміші стиглих ягід, включно з полуницею, малиною, червоною смородиною, чорницею і вишнею. На фініші розвивається солодко-кислий шлейф ожини. Аромат віскі практично не відчувається. На смак алкогольна складова нагадує
+                    червоне вино. Цей крем-лікер особливо підходить для спекотних літніх днів.
+                </p>
+                <h2>Як правильно наливати і пити крем-лікер Sheridan's</h2>
+                <p>Лікер Sheridan's подають за +22–24 ºC, розливаючи по маленьких стопках — 40–60 мл. Також підходить стандартний широкий келих. Важливо, щоб дизайн не містив декору. Наприклад, рифлене скло приховує привабливу візуальну складову.</p>
+                <p>
+                    Якщо потрібно зберегти структуру, напій наливають під кутом 45º — спершу вершкову частину, а потім кавову. При такому сервіруванні лікеру «Шеріданс» шари не змішуються. Для зручності тримайте одну з шийок пляшки закритою. За
+                    бажанням перемішайте вміст склянки коктейльною ложкою — шари поступово об'єднаються, набуваючи приємного коричневого відтінку.
+                </p>
+                <p>
+                    Пийте маленькими ковтками, затримуючи напій у роті. Потягуйте через соломинку. Оскільки темна частина осідає на дні, спочатку розкривається пікантний алкогольний смак, який на завершення змінюється ніжним горіховим шлейфом. Також
+                    спробуйте подачу лікеру «Шеріданс» як шота — випийте вміст залпом.
+                </p>
+                <p>
+                    Продукт дозволено комбінувати з льодом. Його п'ють як дижестив у чистому вигляді або міксують у коктейлях. Хороший приклад — White Russian або B-52. Найбільш алкогольний варіант — мікс «Бостонський чай». Рецепт об'єднує світлий ром,
+                    лондонський сухий джин, горілку, текілу Silver, лікер «Тріпл-Сек» і наостанок — лікер Sheridan's. Доповнюють композицію Coca-Cola і свіжий лимонний сік. Усе це подають із льодом.
+                </p>
+                <p>
+                    Кремовий напій повністю замінює десерт. За бажанням подавайте його з фруктово-ягідним асорті, повітряними тістечками, морозивом. Також можна купити лікер «Шеріданс» для змішування з кавою, какао, гарячим шоколадом, коньяком. Не менш
+                    гармонійно солодкий напій поєднується з іншими варіантами алкоголю, включно із самбукою або горілкою. Не змішуйте крем-лікер «Шеріданс» із фруктовими соками або газованими напоями — вони псують текстуру.
+                </p>
+                <p>
+                    Закриту пляшку зберігають 18 місяців. Відкриту — 6 місяців за +5–25 ºC. Оскільки термін зберігання не надто тривалий, а вартість «Шеріданс» висока, враховуйте сценарій використання. Наприклад, для рідкісного вживання підходить
+                    варіант обсягом 0,5 л. Якщо організовуєте вечірку, зупиніться на форматі 0,7 л.
+                </p>
+                <h2>Скільки коштує лікер Sheridan's</h2>
+                <p>
+                    Вартість залежить від обсягу. Сезонний продукт обійдеться дорожче, ніж класичний варіант. На лікер «Шеріданс» ціна стартує від 650 грн. Це з урахуванням акції від інтернет-магазину MAUDAU. Найвигідніше — замовляти гуртом. Вартість
+                    знижується при замовленні на певну суму — тоді не потрібно платити за доставку. Якщо шукаєте варіант на подарунок, зверніть увагу на набір із шоколадними цукерками.
+                </p>
+                <h2>Чому вигідно купити «Шеріданс» в Україні в інтернет-магазині MAUDAU</h2>
+                <p>На сторінках маркету алкогольних штук MAUDAU — оригінальна продукція. Походження лікеру «Шеріданс» підтверджено сертифікатами, а якість — відгуками покупців, які можна знайти на сторінці конкретного товару.</p>
+                <p>Інтернет-магазин MAUDAU пропонує різні варіанти доставки: кур'єром у великих містах, включно з Києвом, або популярними поштовими службами. Також доступний самовивіз.</p>
+                <p>
+                    Оплатити покупку лікеру Sheridan's можна безпосередньо на сайті за допомогою банківської карти. При відправленні на пошту передбачено розрахунок готівкою. Слідкуйте за знижками, які регулярно оновлюються, особливо напередодні свят.
+                    Якщо виникнуть запитання, звертайтеся до менеджера.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Б-52" src="https://photo.maudau.com.ua/Landing/cocktails/incat/B-52.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Б-52</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li><li>Трипл сек Fruko Schulz</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Б-52 — це модний коктейль із насиченим кавово-вершковим смаком і цитрусовим післясмаком. За однією з версій, назву отримав на честь американського стратегічного бомбардувальника Boeing B-52.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Б-52</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл кавового лікеру</li><li>15 мл Айріш кріму</li><li>15 мл трипл секу Fruko Schulz</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в коктейльну стопку 15 мл кавового лікеру.</li><li>Використовуйте барну ложку і покладіть шаром 15 мл Айріш кріму.</li><li>Завершіть коктейль шаром 15 мл трипл секу Fruko Schulz.</li><li>Підпаліть верхній шар і подавайте напій із трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Срібна куля" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Silver_Bullet.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Срібна куля</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li>Лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            За легендою, коктейль Срібна куля вигадали мисливці на перевертнів. А може, це просто фільм за творами Стівена Кінга. У будь-якому випадку виходить смачний міцний шот на текілі з присмаком кави.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Срібна куля</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл срібної текіли</li><li>20 мл кавового лікеру</li><li>10 г лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в чарку-стопку 20 мл кавового лікеру.</li><li>Акуратно покладіть маленький шматочок лимона.</li><li>За допомогою коктейльної ложки покладіть верхнім шаром 30 мл срібної текіли.</li><li>Оригінальний шот готовий!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Еспресо мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Espresso-Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Еспресо мартіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний сироп</a></li><li>Кава еспресо</li><li><a href="https://maudau.com.ua/category/kava/typ_86=u-zernakh">Кава в зернах</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальний коктейль для кавоманів на базі горілки. Міцний алкоголь пом'якшується кавовим лікером. У результаті виходить солодкий і пряний коктейль, красиво прикрашений кавовими зернами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Еспресо мартіні</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл горілки</li><li>15 мл кавового лікеру</li><li>5 мл ванільногого сиропу</li><li>50 мл кави еспресо</li><li>4 г кави в зернах</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заздалегідь приготуйте та охолодіть каву-еспресо.</li><li>Налийте в шейкер 50 мл холодного еспресо, 5 мл ванільного сиропу та 15 мл кавового лікеру.</li><li>Додайте до складу 30 мл горілки.</li><li>Наповніть шейкер 200 г льоду в кубиках і збийте.</li><li>Перелийте через барне сито в охолоджений келих.</li><li>Прикрасьте напій кавовими зернами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Таракан" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cockroach.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Таракан</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=sambuka-2">Самбука</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            В основі коктейлю Таракан лежить тандем самбуки та абсенту, але з обов'язковим додаванням кавового лікеру. Напій виходить міцним, з виразними трав'яними та пряними нотками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Таракан</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл самбуки</li><li>15 мл абсенту</li><li>20 мл кавового лікеру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в коктейльну чарку 20 мл кавового лікеру.</li><li>Використовуйте коктейльну ложку або лезо ножа і покладіть 15 мл самбуки.</li><li>Верхнім шаром покладіть 15 мл абсенту. Шари не повинні змішуватись!</li><li>Підпаліть абсент і швидко випийте коктейль через трубочку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Аравіка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Arabica.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Аравіка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li>Гренадин</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Десертний солодкий шот на текілі. Гармонійна комбінація міцного алкоголю та кавового лікеру. Полуничний присмак надає свіжості та легкості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Аравіка</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>срібної текіли</li><li>кавового лікеру</li><li>гренадину</li><li>лимонного соку</li><li>полуниця</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в коктейльну чарку 15 мл гренадину.</li><li>Використовуйте високу коктейльну ложку і покладіть шар кавового лікеру 15 мл.</li><li>Продовжуйте викладати шарами 15 мл лимонного соку та 15 мл срібної текіли.</li><li>Випийте шот залпом і закусіть полуничкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">311 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">39 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
