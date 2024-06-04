@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Bell's — купажированный шотландский виски, который выпускают на мощностях Diageo в Глазго. Бренд занимает второе место на рынке Великобритании, уступая только торговой марке The Famous Grouse.</p>
+                <h2>История становления виски Bell's Original</h2>
+                <p>
+                    Поначалу скотч производили в стенах винокурни Arthur Bell &amp; Sons LTD. Предприятие официально зарегистрировали в 1897 году. У истоков — Артур Белл, работавший с 1845 года в крохотной лавке в городе Перт, где продавали чай и
+                    купажированный виски. Сам магазин открыли в 1825 году — именно эту дату указывают на бутылках с виски «Беллс».
+                </p>
+                <p>
+                    Первую партию выпустили в 1863 году. В то время купажированный скотч практически не выдерживали. Артур Белл рискнул, смешав несколько односолодовых спиртов из старых бочек. Купить виски Bell's можно было по доступной стоимости, при
+                    этом напиток обладал насыщенной вкусо-ароматической палитрой, характерной для категории Single Malt.
+                </p>
+                <p>
+                    Артур Белл скончался в 1900 году. Дело перешло к его сыновьям. Вскоре бразды правления перебрал Артур Кинмонд. Отмена сухого закона в США привела к всплеску спроса на виски «Беллс». Для расширения компания постепенно поглощала
+                    местные винокурни, включая Blair Athol, Dufftown, Inchgower. Каждая из них расположена в разных регионах Шотландии, что влияет на итоговую вкусо-ароматическую композицию.
+                </p>
+                <p>
+                    Название Bell's прикрепили к продукту только в 1902 году. Скромный и религиозный основатель не решился сделать это при жизни. После смерти братьев Белл в 1942 году бизнес перешел к главному бухгалтеру компании — Уильяму Говану
+                    Фаркухарсону. Он сместил акцент на рекламу. К 1954 году виски Bell's Original экспортировали в 130 стран.
+                </p>
+                <p>
+                    Чтобы конкурировать с ведущими игроками на рынке, компания в 1970-х годах наладила выпуск готовых миксов на основе купажированного скотча. Это повысило продажи среди женщин. В 1984 году компания выкупила Gleneagles Hotels, а спустя
+                    12 месяцев ее поглотил алкогольный холдинг Diageo.
+                </p>
+                <h2>Как производят виски Bell's</h2>
+                <p>
+                    Крепкий спиртной напиток изготавливают из смеси 40 отборных дистиллятов, поставляемых из первоклассных винокуренных заводов. Основу купажа составляет золотистый спирт Blair Athol, окутывающий нежными нотками карамели. Рецептуру
+                    виски «Беллс» дополняют дистиллятами из:
+                </p>
+                <ul>
+                    <li>Dufftown;</li>
+                    <li>Inchgower;</li>
+                    <li>Glenkinchie;</li>
+                    <li>Caol Ila.</li>
+                </ul>
+                <p>
+                    Спирт готовят по стандартной схеме. Зерно проращивают, смешивая с водой, а затем сушат в закрытых печах. Далее его измельчают и запускают процесс брожения. Следующий шаг — перегонка, в ходе которой повышают процент алкоголя, а также
+                    отсекают части, содержащие нежелательные примеси. Наконец спирт отправляют выдерживаться в дубовых бочках.
+                </p>
+                <p>По окончанию созревания виски «Беллс» смешивают на мощностях Diageo Shieldhall. Продукт отправляют повторно настаиваться. После этого крепкий спиртной напиток готов к розливу.</p>
+                <h3>Сколько градусов в виски Bell's</h3>
+                <p>Купить виски «Беллс» в интернет-магазине MAUDAU можно со стандартной крепостью — 40%. Процент алкоголя в ароматизированной продукции снижают до 35. На рынке Великобритании скотч реализуют с повышенной крепостью — 43%.</p>
+                <h2>Разновидности виски Bell's</h2>
+                <p>
+                    Компания не гонится за количеством позиций, смещая акцент на качество. Основу ассортимента составляет классический скотч — виски «Беллс». Раньше его маркировали как Originals. Это крепкий спиртной напиток трехлетней выдержки, в ходе
+                    которой он приобретает светло-золотистый цвет. Его реализуют в разных объемах — от 0,2 до 1 л. Аромат раскрывается нежными фруктово-цветочными оттенками. Вкус — мягкий, с превалирующими нотками зеленых яблок, миндаля, имбиря.
+                    Композицию завершает ненавязчивый дымный шлейф с солоноватыми нотками пикантных специй.
+                </p>
+                <p>В портфолио торговой марки также представлен Bell's Spiced. Скотч темно-янтарного цвета выдерживают пять лет. В носу ощущаются нотки ванили. Во рту они сменяются сладковатым шлейфом сливочных ирисок. Финиш — стойкий и пряный.</p>
+                <h2>Как правильно пить виски «Беллс»</h2>
+                <p>Разливайте скотч при +18–20 ºC. Его подают как аперитив или дижестив — строгих ограничений нет. Напиток можно пить в чистом виде или смешивать в коктейлях — стоимость виски «Беллс» это позволяет.</p>
+                <p>
+                    Остановитесь на классических бокалах, которые называются роксами. Наполняйте стакан алкоголем на треть. Прежде чем сделать глоток, вдохните, чтобы насладиться изысканным ароматом. Смакуйте купажированный скотч «Беллс» маленькими
+                    глотками.
+                </p>
+                <h2>С чем подавать скотч Bell's</h2>
+                <p>
+                    По стандарту закуску к крепкому спиртному напитку не подают. Дегустацию нередко сопровождают сигарами. Несмотря на мягкий и сбалансированный вкус, молодой напиток может обладать спиртуозным шлейфом. Чтобы снизить крепость, вкиньте
+                    лед или влейте несколько капель прохладной воды. Если организовываете вечеринку, предложите гостям рыбу, морепродукты, сырно-мясную нарезку или тарелку свежих фруктов.
+                </p>
+                <h2>Как отличить оригинал виски Bell's от подделки</h2>
+                <p>В маркете алкогольных штук MAUDAU представлена оригинальная продукция. Чтобы убедиться в этом, проверьте:</p>
+                <ol>
+                    <li>
+                        Бутылку. Емкости отличаются цилиндрической формой. Горлышко отличается сложной линией, при этом углы остаются мягкими. У его основания виднеется рельефная надпись — «Established 1825». На задней части бутылки также проставляют
+                        отметку «Distilled, Blended &amp; Bottled in Scotland». На дне ощущается характерная выемка.
+                    </li>
+                    <li>Крышку. Бутылку виски Bell's закрывают металлической завинчивающейся крышкой. На ней проставляют герб, а также наносят автограф основателя и девиз торговой марки.</li>
+                    <li>Этикетку. Клеят ровно. Под пальцами ощущаются шероховатости. Принты отпечатаны качественно. В информации нет ошибок, особенно — в названии производителя.</li>
+                </ol>
+                <h3>Сколько стоит виски «Беллс»</h3>
+                <p>
+                    Bell's — виски из бюджетного сегмента, что объясняет низкую цену. Это хорошая отправная точка для новичков, которые хотят познакомиться с качественным купажированным скотчем. Классический дистиллят и ароматизированную версию продают
+                    по одинаковой стоимости. На виски «Беллс» цена снижается, если заказывать его оптом — предложение распространяется на отдельные позиции из онлайн-каталога MAUDAU. Для экономии отслеживайте акции.
+                </p>
+                <p>Если ищете вариант виски Bell's на подарок, выбор — за комплектами в подарочных упаковках. Их цена немного выше, но набор состоит из двух бутылок.</p>
+                <h2>Почему выгодно купить виски Bell's в интернет-магазине MAUDAU</h2>
+                <p>Маркет алкогольных штук MAUDAU поставляет продукцию напрямую, сотрудничая с проверенными поставщиками. Доставку осуществляют разными способами:</p>
+                <ul>
+                    <li>курьером;</li>
+                    <li>почтовыми службами — «Новой Почтой» или «Укрпочтой».</li>
+                </ul>
+                <p>
+                    Также доступен самовывоз после уточнения наличия в физических точках продаж. Если товар в корзине достигнет определенной суммы — доставку оплатит интернет-магазин MAUDAU. Бесплатная доставка также распространяется на определенные
+                    позиции из онлайн-каталога — список постоянно меняется.
+                </p>
+                <p>
+                    Оплатить покупку виски «Беллс» можно сразу на сайте, используя банковскую карту. При получении можно рассчитаться наличными. Также предусмотрен наложенный платеж, который позволяет оценить товар на почте. Если останутся вопросы,
+                    задавайте их менеджеру в окне внизу страницы.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пенициллин" src="https://photo.maudau.com.ua/Landing/cocktails/incat/penicillin.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пенициллин</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=islay">Односолодовый виски с острова Айла</a></li><li>Домашний медово-имбирный сироп</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Апельсиновая цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пенициллин — оригинальный коктейль на основе односолодового виски. Это пряный имбирный напиток с дымными нотками скотча и привкусом медового сиропа.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Пенициллин</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл шотландского виски</li><li>7 мл односолодового виски с острова Айла</li><li>25 мл домашнего медово-имбирного сиропа</li><li>25 мл лимонного сока</li><li>апельсиновая цедра</li><li>кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Приготовьте медовый сироп: смешайте воду и мед 1:3, доведите до кипения и проварите 5 минут, снимая пену. Перед добавлением в коктейль охладите до комнатной температуры. Добавьте 10 мл сока из корня имбиря.</li><li>Налейте в шейкер 25 мл лимонного сока и 25 мл медово-имбирного сиропа.</li><li>Добавьте 60 мл шотландского виски.</li><li>Наполните шейкер кубиками льда и взбейте все ингредиенты.</li><li>Перелейте напиток через сито-стрейнер в охлажденный бокал типа рокс.</li><li>Долейте 7 мл односолодового виски с острова Айла. Не перемешивайте.</li><li>Украсьте бокал апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Крестный отец" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Godfather.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Крестный отец</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3">Ликер Амаретто</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль на базе виски с добавлением амаретто. Названием обязан легендарному произведению «Крестный отец». Имеет миндальный аромат и приятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Крестный отец</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландского виски</li><li>25 мл ликера Амаретто</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните рокс (или любой бокал олд-фешн) кубиками льда до самого верха.</li><li>Налейте в бокал 25 мл ликера Амаретто и 50 мл шотландского виски.</li><li>Перемешайте барной ложкой. Желательно не дробить лед — это снижает крепость напитка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Виски с вишней" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Bells_Whiskey_with_cherry.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Виски с вишней</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=vyshnia-21">Вишневый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Лимон</li><li>Коктейльная вишня красная</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Популярный и узнаваемый коктейль с необычным сочетанием вишни и виски. Ягодные нотки прекрасно дополняют крепкий шотландский напиток и сглаживают его горчинку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Виски с вишней</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландского виски</li><li>130 мл вишневого сока</li><li>20 мл лимонного сока</li><li>20 г лимона (кружок)</li><li>коктейльная красная вишня</li><li>кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал хайбол кубиками льда почти до верха.</li><li>Налейте 20 мл лимонного сока и 50 мл шотландского виски.</li><li>Аккуратно влейте доверху 130 мл вишневого сока и перемешайте коктейльной ложкой.</li><li>Украсьте бокал ломтиком лимона и коктейльной вишней.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ржавый гвоздь" src="https://photo.maudau.com.ua/Landing/cocktails/incat/rusty_nail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ржавый гвоздь</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски (скотч)</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=drambuie">Ликер Драмбуи</a></li><li>Кубики льда</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Приятный классический коктейль с крепким, но мягким вкусом. Изюминка напитка — медовый насыщенный ликер Драмбуи. Названием «ржавый» напиток обязан золотистому цвету. А гвоздем, выдернутым из барной стойки, по легенде смешали первый коктейль.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Ржавый гвоздь</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландского виски (скотч)</li><li>25 мл ликера Драмбуи</li><li>кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-рокс кубиками льда до верхнего края.</li><li>Налейте в бокал 25 мл ликера Драмбуи.</li><li>Добавьте 50 мл шотландского виски (скотч).</li><li>Аккуратно перемешайте ингредиенты барной ложкой.</li><li>По желанию украсьте коктейль цедрой лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Роб Рой" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Rob_Roy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Роб Рой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Martini Rosso</a></li><li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850">Биттер Ангостура</a></li><li>Апельсин</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Название Роб Рой коктейль получил в честь одноименной оперы, популярной на нью-йоркском Бродвее в конце XIX века. Дерзкий и оригинальный коктейль запоминается нотками луговых трав и дымкой шотландского виски. Вермут придает легкую сладость.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Роб Рой</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл Martini Rosso</li><li>60 мл шотландского виски</li><li>1 мл биттера Ангостура</li><li>3 г апельсина</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в стакан для смешивания 40 мл Martini Rosso.</li><li>Добавьте 60 мл шотландского виски и 1 дэш биттера Ангостура.</li><li>Насыпьте 200 г льда в кубиках и размешайте высокой ложкой.</li><li>Перелейте через барное ситечко в охлажденный бокал.</li><li>Украсьте коктейль цедрой апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">230 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
