@@ -1,0 +1,801 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Ламбруско — сімейство сортів винограду з темною шкіркою, який вирощують на півночі Італії. Найменування також використовують для червоних ігристих вин, виготовлених із цих сортів.</p>
+                <h2>Історія появи та географія виробництва вин Lambrusco</h2>
+                <p>Знахідки підтверджують, що виноград вирощували ще за часів етрусків. Римський історик Катон Старший писав, що з ягід, зібраних на двох третинах акра, можна приготувати вино для заповнення 300 амфор.</p>
+                <p>Назву сортів пов'язують із латинським словом «labrusca», що в перекладі означає «дикий виноград». Лозу нерідко прищеплюють високо над землею, щоб запобігти розвитку цвілі. Наприклад, іноді виноград підіймається вгору по тополях.</p>
+                <p>
+                    Сплеск популярності на ігристий напій припав на кінець 1970-х років. У той час ламбруско нерідко позиціонували як шампанське. Його активно продавали в Європі та США. Якщо зараз категорія представлена переважно червоними винами, то
+                    раніше нарівні виробляли білу і рожеву версії.
+                </p>
+                <p>Виробництво ігристих вин Lambrusco зосереджене в чотирьох зонах Емілії-Романьї та одній у Ломбардії, здебільшого — навколо міст Модена, Парма, Реджо-Емілія та Мантуя.</p>
+                <h3>Чим ламбруско відрізняється від просеко</h3>
+                <p>
+                    Різниця полягає у винограді, а відповідно — і в смакових нюансах. Просеко виробляють з однойменного сорту, який по-іншому називають «глера». Відрізняється також місце виготовлення. Ключовий регіон при випуску Prosecco — Венето. Смак
+                    — свіжий і фруктовий, оскільки напій не витримують на дріжджовому осаді. Домінантні акценти:
+                </p>
+                <ul>
+                    <li>зелене яблуко;</li>
+                    <li>диня;</li>
+                    <li>груша;</li>
+                    <li>жимолость;</li>
+                    <li>акація.</li>
+                </ul>
+                <h2>Смак і аромат шампанського Lambrusco</h2>
+                <p>
+                    Оскільки ігристе вино виробляють за танковим методом, його нерідко порівнюють із шампанським. При цьому вартість вина ламбруско набагато нижча. Це пов'язано з тим, що вторинна ферментація відбувається в закритих металевих
+                    місткостях, а не закоркованих пляшках, спрощуючи виробництво. Технологія багато в чому впливає на смако-ароматичну композицію ігристих вин ламбруско, як і сорт винограду.
+                </p>
+                <p>Сімейство об'єднує близько 60 сортів. Часто використовуваних — всього шість. Кожен із них відрізняється за кольором, смаком, ароматом. Наприклад:</p>
+                <ul>
+                    <li>Di Sorbara — легкий квітковий варіант, який в основному використовують для виготовлення білих ігристих вин;</li>
+                    <li>Salamino — інтенсивний на смак сорт, що додає напою глибокого червоно-фіолетового відтінку;</li>
+                    <li>Grasparossa — міцний і повнотілий варіант із підвищеною кислотністю і насиченим шлейфом червоних ягід;</li>
+                    <li>Reggiano — сухий і насичений сорт, який добре піддається витримці.</li>
+                </ul>
+                <p>
+                    Солодке вино ламбруско огортає тонами вишні, суниці, малини. Нерідко відчуваються нюанси журавлини або кавуна. На фініші розвивається ненав'язливий квітковий шлейф, який у сухих версіях змінюється пікантними нотами мінералів і
+                    грибів.
+                </p>
+                <h2>Основні сорти ігристих вин Lambrusco</h2>
+                <p>Класифікація спирається на вісім виробничих зон в Емілії-Романьї, захищених статусом DOC. Докладніше про деякі з них:</p>
+                <ol>
+                    <li>
+                        Lambrusco di Sorbara. В основі — виноград із коротким періодом цвітіння. Це призводить до концентрації смакових якостей. Категорія представлена білими, рожевими та червоними позиціями. На фініші завжди розвивається приємна
+                        кислинка. Аромат огортає квітковими тонами, серед яких виділяється фіалка.
+                    </li>
+                    <li>Lambrusco Grasparossa di Castelvetro. Найменший регіон недалеко від Модени, в якому народжується ігристе вино з високою концентрацією танінів. Родзинка — малиново-кремова піна, яка утворюється під час розливу.</li>
+                    <li>Lambrusco Mantovano. Єдиний виробничий регіон за межами Емілії-Романьї. Провінція випускає червону версію. Смак порадує солодкими нотками вишні та малини.</li>
+                    <li>
+                        Lambrusco Salamino. Композицію доповнюють виноградом «анчелотта». Ігристе вино, як правило, — світле і легке за тілом. Його виконують як у напівсолодкому, так і в сухому стилі. Смакова палітра — яскрава. Відтінки садових фруктів
+                        і ягід переплітаються з пікантністю спецій.
+                    </li>
+                    <li>Lambrusco Reggiano. Регіон, у якому народжується близько 85% продукції, що відправляється на експорт. У складі — чотири різновиди винограду, включно з «маестрі», «марані», «монтерікко» і «саламіно».</li>
+                </ol>
+                <h2>Як вибрати ігристе вино Lambrusco</h2>
+                <p>Важливо спиратися на особисті вподобання і характер вживання, але також враховуйте:</p>
+                <ol>
+                    <li>Бренд. Культові виробники на кшталт Riunite пропонують незмінно якісну продукцію, тоді як крихітні сімейні підприємства — версії з цікавими смаковими нюансами.</li>
+                    <li>Колір. Купити біле вино Lambrusco можна переважно в сухому стилі. Смак — освіжальний, з акордами сушених трав. Червона продукція огортає інтенсивними ягідними відтінками, а рожева розкривається помірною солодкістю.</li>
+                    <li>Солодкість. Шанувальникам концентрованих ароматів можна зупинитися на сухих позиціях. Якщо шукаєте варіант для змішування в коктейлях, вибір — за напівсолодкими або солодкими винами ламбруско.</li>
+                    <li>Міцність. Найчастіше становить 7–12%. Що вищий відсоток алкоголю, то сухіші відчуття в роті.</li>
+                    <li>Місткість. Купити шампанське Lambrusco можна в різних обсягах, але найпоширеніший — 0,75 л. Ігристий напій розливають у традиційні скляні пляшки, покриті мюзле.</li>
+                </ol>
+                <h3>Скільки коштує вино Lambrusco</h3>
+                <p>
+                    Ціна залежить не стільки від сортового складу і місця виготовлення, скільки від іменитості виробника. Наприклад, торгова марка Sizarini пропонує бюджетну продукцію. Водночас на Lambrusco Vigneto Saetti ціна стартує від 799 грн за
+                    0,75 л. Якщо хочете заощадити, замовляйте ігристе вино з гуртовою знижкою від інтернет-магазину MAUDAU.
+                </p>
+                <h2>Як і з чим пити ігристе вино ламбруско</h2>
+                <p>
+                    Для подачі підходить стандартний келих для шампанського. Подавайте ігристий напій охолодженим — при +6–8 ⁰C. Його можна піднести як аперитив — строгих обмежень немає. На ламбруско ціна доступна, що робить ігристий напій прекрасною
+                    основою для коктейлів.
+                </p>
+                <p>Що стосується гастрономічного супроводу, то враховуйте колір і показники солодкості. Наприклад, червоне ігристе вино Lambrusco з виразною кислинкою чудово підходить до м'яса.</p>
+                <p>
+                    Білі позиції не рекомендують витримувати — їх подають молодими безпосередньо після розливу. Поєднуйте їх із класичними італійськими стравами, такими як паста або ризотто. Також біле ігристе вино ламбруско підходить для подачі з
+                    твердими сирами, легкими салатами та закусками, свіжими фруктами та ягодами.
+                </p>
+                <p>Солодку продукцію комбінуйте з десертами. Цукор також сприяє очищенню слизових оболонок від жиру, наприклад, при подачі з дичиною.</p>
+                <h2>Чому вигідно купити вино ламбруско в Україні в інтернет-магазині MAUDAU</h2>
+                <p>На сторінках каталогу представлена тільки оригінальна продукція, яку постачають безпосередньо з Італії. Завдяки цьому покупці отримують доступ до ексклюзивних пропозицій і новинок.</p>
+                <p>
+                    У маркеті алкогольних штук MAUDAU ламбруско можна купити за акцією. Це вигідно, якщо готуєтеся до вечірки або плануєте романтичну вечерю. За доставку не потрібно платити, якщо в кошику виявиться товар на певну суму. Доставлення
+                    можливе різними способами, включно з кур'єрським по Києву та поштовими службами по Україні.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+ 
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Беліні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Belini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Беліні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/fruktove-piure-monin-persyk-1-l">Персикове пюре</a></li><li>Персик</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Белліні — це м'який солодкий коктейль з ігристого вина, сиропу та персикового пюре. Вживати напій краще відразу після приготування.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Беліні</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл просекко</li><li>10 мл цукрового сиропу</li><li>10 мл лимонного соку</li><li>20 г персикового пюре</li><li>10 г персика</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть в ємність для змішування 4 коктейльні ложки персикового пюре.</li><li>Додайте лимонний сік, цукровий сироп і половину просекко (50 мл).</li><li>Наповніть ємність кубиками льоду та розмішайте коктейльною ложечкою.</li><li>Перелийте напій через коктейльне ситечко у високий келих для шампанського.</li><li>Долийте другу половину просекко (50 мл) догори.</li><li>Прикрасьте келих часточкою персика.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мімоза" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Mimosa.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мімоза</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий цитрусовий коктейль на основі ігристого вина. Назва «Мімоза» навіяна золотисто-жовтим відтінком напою, що нагадує цю квітку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мімоза</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл просекко</li><li>50 мл апельсинового соку</li><li>1-2 часточки апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охолодіть високий келих льодом або в морозильній камері.</li><li>Налийте в охолоджену ємність 50 мл апельсинового соку.</li><li>Додайте 50 мл просекко до верху флюте.</li><li>Обережно перемішайте ложечкою із довгою ручкою.</li><li>Прикрасьте келих цедрою або часточками апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Північне сяйво" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Northern_Lights.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Північне сяйво</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li><a href="https://maudau.com.ua/category/horilka/smak_5=hreipfrut-2">Грейпфрутова горілка</a></li><li>Розмарин</li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li>Лимонна цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Північне сяйво — напій з оригінальною назвою та смаком. Був новорічним варіантом, але зараз його п'ють незалежно від пори року. Жорстких пропорцій немає, проте найчастіше горілку та ігристе міксують у співвідношенні 1/3 або 1/4.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Північне сяйво</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл просекко</li><li>40 мл грейпфрутової горілки</li><li>5 г розмарину</li><li>15 мл меду</li><li>лимонна цедра</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у склянку для змішування гілочку розмарину і подавіть барною ступкою.</li><li>Додайте 15 мл меду та 40 мл грейпфрутової горілки.</li><li>Наповніть склянку кубиками льоду та обережно розмішайте.</li><li>Перелийте напій через барний стрейнер в охолоджений келих.</li><li>Постійно помішуючи коктейльною ложкою, влийте тонким струмком 100 мл просекко.</li><li>Прикрасьте коктейль лимонною цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мартіні Рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Martini_Royale.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мартіні Рояль</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile">Білий вермут</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Лимон</li><li>Мʼята</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний фіз із літнім цитрусовим смаком і м'ятними нотками. Білий вермут і шампанське ідеально поєднуються в цьому класичному коктейлі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні Рояль</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл білого вермуту</li><li>75 мл шампанського</li><li>1 четвертинка лимона</li><li>1 г м'яти</li><li>160 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть кулястий келих для вина догори кубиками льоду.</li><li>Налийте 75 мл білого вермуту та 75 мл шампанського.</li><li>Акуратно розмішайте напій коктейльною ложкою — він може пінитися.</li><li>Прикрасьте коктейль четвертинкою лимона та листям м'яти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шампань айс" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Champagne_Ice.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шампань айс</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Морозиво</li><li>Полуниця</li><li>Мʼята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шампань айс — щось середнє між коктейлем і десертом. Кисластий брют ідеально підходить до солодкого пломбіру. Завершують композицію нотки свіжої полуниці.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шампань айс</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шампанського (брют або сухе)</li><li>100 г морозива (пломбір)</li><li>50 г полуниці</li><li>2-3 листочки м'яти</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте полуницю великими шматочками, а м'яту подрібніть.</li><li>Змішайте в коктейльному келиху полуницю, м'яту та 100 г морозива (пломбір).</li><li>Обережно влийте 50 мл шампанського (брют або сухе).</li><li>Подавайте коктейль із трубочкою та ложкою. Ложка стане в пригоді для полуниці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">80 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">1.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
