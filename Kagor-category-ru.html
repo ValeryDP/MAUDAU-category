@@ -1,0 +1,847 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Кагор — крепленое красное вино, которое активно производят в постсоветских государствах. Родиной напитка считают Францию, а точнее — город Каор. Отсюда происходит название.</p>
+                <p>Для изготовления вывели формулу — 16/16. Настоящий кагор содержит 16% алкоголя, а концентрация сахара составляет 160 г/л. На практике крепость напитка колеблется в пределах 11–17%, а количество сахара нередко достигает 195 г/л.</p>
+                <h2>История популярности кагора</h2>
+                <p>Купить настоящий кагор можно во Франции. Его изготавливают в городе Каор (Кагор), который представляет департамент Ло. Важные коммуны:</p>
+                <ul>
+                    <li>Парнак;</li>
+                    <li>Лузех;</li>
+                    <li>Прессак;</li>
+                    <li>Вир-сюр-Ло.</li>
+                </ul>
+                <p>
+                    Красное вино защищено статусом AOC. История виноделия в регионе восходит к 50 г до н.э., то есть к эпохе Древнего Рима. Массовое производство кагорских вин наладили в XIII веке. В то время продукцию активно распространяли по Англии.
+                    Вскоре так называемое «черное вино» попало в Россию.
+                </p>
+                <h3>Как кагор связан с церковью</h3>
+                <p>В 1733 году Священный синод признал красное вино подходящим для церковных нужд. С того времени кагор считают неотъемлемой составляющей проведения обряда причастия. Историки выделяют несколько причин такого решения:</p>
+                <ol>
+                    <li>Папа Иоанн XXII, который вскоре стал понтификом, выбрал красное вино кагор из-за его характерного цвета. Оттенок, как и вязкая консистенция, вызывают ассоциацию с кровью Иисуса Христа.</li>
+                    <li>Город Каор расположен на Пути святого Иакова. Так называют паломническую дорогу, ведущую к предполагаемому месту захоронения апостола. Следовательно, Каор ежегодно посещают тысячи верующих, подкрепляя силы красным вином.</li>
+                    <li>
+                        Кагор, купить который можно и сейчас, богат витаминами и микроэлементами, так что его действительно можно назвать «чудодейственным». По одной из версий, напиток «навязал» церкви Петр I. Ему прописал красное вино врач, который
+                        считал его хорошим лекарством для ЖКТ.
+                    </li>
+                    <li>Основной критерий — дешевизна. На кагор цена оставалась крайне низкой, пока эпидемия филлоксеры в 1883–1885 годах не уничтожила виноградники. Производство возобновили только в 1902 году.</li>
+                </ol>
+                <h2>Как производят кагор</h2>
+                <p>Настоящий кагор изготавливают из винограда «мальбек». На родине сорт известен как «кот». Минимальное содержание ягод составляет 70%. Сусло также дополняют сортами «мерло» и «таннат».</p>
+                <p>На территории постсоветских государств вино кагор производят по авторской технологии, используя сорта «каберне совиньон», «мерло», «саперави». В основе — метод тепловой обработки. Этапы:</p>
+                <ol>
+                    <li>
+                        Подготовка сырья. Виноград собирают на пике зрелости. Производители предпочитают ручную сборку. Гребни отделяют от мякоти. Ягоды промывают и прессуют, превращая их в мезгу. Массу из раздавленных ягод подогревают до 65 ⁰C — это
+                        способствует выделению естественного красителя. Даже после разбавления водой вино кагор остается кроваво-красным.
+                    </li>
+                    <li>Брожение. Мезгу смешивают с культивируемыми штаммами дрожжей в огромных металлических резервуарах. Дрожжи питаются сахаром, выделяя спирт.</li>
+                    <li>Крепление. По окончанию ферментации жидкую часть отделяют от твердых остатков. Постепенно вводят ректификованный спирт, пока не достигнут оптимальных показателей крепости.</li>
+                    <li>Выдержка. По желанию кагор отправляют настаиваться в герметично закрытых емкостях. Процесс занимает 12–24 месяца.</li>
+                </ol>
+                <p>
+                    Сорт винограда, как и технология изготовления, определяют, сколько стоит кагор. На цену также влияет срок выдержки. Важную роль играет именитость производителя. Чем насыщеннее продукт по сладости, тем выше на вино кагор цена. Это
+                    объясняется высоким потенциалом к продолжительному хранению.
+                </p>
+                <h3>Разница между кагором и вином</h3>
+                <p>Напиток относят к разновидностям красных крепленых вин. Отличия от стандартных позиций:</p>
+                <ol>
+                    <li>Способ изготовления. В процессе производства классических вин виноградный сок не нагревают.</li>
+                    <li>Состав. Настоящий кагор готовят из темнокожих сортов винограда с высоким содержанием сахара и танинов.</li>
+                    <li>Цвет. Всегда кроваво-красный. Розоватый подтон не допускается. В категорию не входит белая продукция.</li>
+                    <li>Выдержка. Кагор выдерживают 1–3 года, но его можно пить сразу после приготовления. Этот факт отличает его от других красных вин.</li>
+                </ol>
+                <h2>Как правильно пить вино кагор</h2>
+                <p>
+                    Кагор относят к десертным винам. Его подают как дижестив, не разбавляя льдом или водой. За пределами церкви его подают во время праздников, например, Пасхи. Пьют красное вино маленькими глотками, чтобы насладиться вкусовыми
+                    нюансами.
+                </p>
+                <p>
+                    Напиток отличается густой, но бархатистой консистенцией. Вкус — насыщенный, с ярко выраженными нотками малины и карамели. Постепенно палитру дополняют оттенки спелой вишни и черной смородины. На финише ощущается нежный шоколадный
+                    шлейф. Послевкусие — стойкое, с терпкими нюансами.
+                </p>
+                <p>Красное вино кагор подают при +16–18 ⁰C. Сладкий напиток нередко подогревают. Разливайте вино по тюльпанообразным бокалам — форма способствует равномерному высвобождению ароматических соединений.</p>
+                <h3>С какими продуктами сочетается кагор</h3>
+                <p>
+                    Кагор — универсальный напиток. Он выгодно подчеркнет десерт: мороженое, тирамису, шоколадный торт. Его можно преподнести с легкими закусками на основе свежих фруктов или ягод, а также твердых сыров и копченых колбас. Насыщенный вкус
+                    гармонично переплетается с жирностью некоторых видов красного мяса, таких как баранина или оленина. Купить вино кагор стоит и потому, что он способствует расщеплению плохого холестерина. Это важно, когда в рационе преобладает жирная
+                    пища.
+                </p>
+                <p>Не стоит подавать кагор с овощными салатами, заправленными уксусом. Если в блюде содержатся орехи, они подчеркивают горький привкус, который многим не нравится.</p>
+                <h2>Кому нельзя пить кагор</h2>
+                <p>
+                    Умеренное потребление красных вин способствует укреплению сердечно-сосудистой системы. Напиток содержит антиоксиданты, которые положительно влияют на ЦНС, а также уменьшают последствия стресса и тревоги. Считается, что кагор
+                    нормализует микрофлору кишечника. Оптимальная ежедневная порция красного вина составляет 150–200 мл. Если ищете, где купить кагор, остановитесь на маркете алкогольных штук MAUDAU. Это гарантия качественного напитка.
+                </p>
+                <p>
+                    Отказаться от идеи потребления красного десертного вина стоит беременным женщинам и кормящим мамам. Напиток противопоказан при проблемах с печенью и почками. Продукт также несет угрозу здоровью при наличии определенных заболеваний:
+                </p>
+                <ul>
+                    <li>онкологии;</li>
+                    <li>аритмии;</li>
+                    <li>гипертонии;</li>
+                    <li>панкреатита;</li>
+                    <li>сахарного диабета;</li>
+                    <li>психических расстройств.</li>
+                </ul>
+                <h2>Почему выгодно купить кагор в Украине в интернет-магазине MAUDAU</h2>
+                <p>
+                    В ассортименте представлена оригинальная продукция по доступной стоимости. Шопинг становится выгоднее, если воспользоваться оптовой скидкой. Не забывайте о постоянно обновляющихся акциях и распродажах. Кагор поставляют из разных
+                    стран, включая Францию и Молдову. Команда сотрудничает с проверенными поставщиками.
+                </p>
+                <p>
+                    Интернет-магазин MAUDAU предусмотрел доставку курьером по Киеву, а также почтовыми службами по Украине. При достижении определенной суммы заказа — услугу предоставляют бесплатно. Оплата возможна после получения и осмотра на почте.
+                    По желанию товар можно забрать самостоятельно в одном из магазинов «Сільпо». Если останутся вопросы, задавайте их менеджеру в соответствующем окне на странице.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+            <div id="cocktail-item-1" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Глинтвейн" src="https://photo.maudau.com.ua/Landing/cocktails/incat/glinwein.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Глинтвейн</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi" target="_blank">Сахарный песок</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht" target="_blank">Корица в палочках</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3" target="_blank">Гвоздика</a></li>
+                            <li>Лимонная цедра</li>
+                            <li>Апельсиновая цедра</li>
+                        </ul>
+                        <div class="description-text">
+                            Ароматный горячий глинтвейн давно стал символом уютных зимних вечеров. Его основу составляет красное вино с добавлением сахара и пряностей. 
+                        </div>
+                        <a class="pop-button" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-3" class="anchor-wrapper">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img alt="Негрони из Бронкса" src="https://photo.maudau.com.ua/Landing/cocktails/incat/negroni-from-bronx.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Негрони из Бронкса</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=drambuie" target="_blank">Драмбуи</a></li>
+                            <li>Красный биттер</li>
+                            <li><a href="https://maudau.com.ua/ru/product/portvein-messias-porto-tawny-chervonyi-solodkyi-195-075-l" target="_blank">Портвейн тони</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-fee-brothers-plum-12-015-l" target="_blank">Сливовый биттер</a></li>
+                            <li><a href="https://maudau.com.ua/ru/product/bitter-fee-brothers-peach-17-015-l" target="_blank">Персиковый биттер</a></li>
+                            <li>Апельсиновая цедра</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Напиток с насыщенным ароматом и гармоничным сочетанием всех ингредиентов. Довольно крепкий, но мягкий коктейль. 
+                        </div>
+                        <a class="pop-button" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-4" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Сангрия" src="https://photo.maudau.com.ua/Landing/cocktails/incat/sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Сангрия</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone" target="_blank">Красное вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=bez-hazu" target="_blank">Вода без газа</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi" target="_blank">Сахар</a></li>
+                            <li>Апельсины</li>
+                            <li>Лимон</li>
+                            <li>Свежая мята</li>
+                        </ul>
+                        <div class="description-text">
+                            Сангрия — визитная карточка Испании и самый известный прохладительный напиток на основе красного вина и воды. Легкий и прекрасно утоляет жажду. Традиционно подается в прозрачном кувшине или вместительной чаше. 
+                        </div>
+                        <a class="pop-button" href="#popup4">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-5" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Калимочо" src="https://photo.maudau.com.ua/Landing/cocktails/incat/calimocho.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Калимочо</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola" target="_blank">Кола</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone" target="_blank">Красное вино</a></li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Простой тонизирующий коктейль всего из двух компонентов. Считается атрибутом вечеринок, так как бодрит и вызывает прилив сил. Хорошо сочетается с мороженым. 
+                        </div>
+                        <a class="pop-button" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="cocktail-item-6" class="anchor-wrapper">
+                <div class="cocktail-card ">
+                    <div class="cocktail-card__img">
+                        <img alt="Красный сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/incat/red-sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name">Красный сауэр</h2>
+                        <ul class="description-ingredients">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch" target="_blank">Шотландский виски</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=chervone;solodkist_2=sukhe-2" target="_blank">Красное сухое вино</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor" target="_blank">Сахарный сироп</a></li>
+                            <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14" target="_blank">Медовый сироп</a></li>
+                            <li>Дробленый лед</li>
+                            <li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text">
+                            Насыщенный разноцветный коктейль с необычным сочетанием вина и виски. Сиропы приглушают крепость и оставляют сладкое послевкусие. 
+                        </div>
+                        <a class="pop-button" href="#popup6">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">160 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">16 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<div id="popup1" class="overlay">
+    <a href="#cocktail-item-1" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Глинтвейн</h2>
+                <a class="close" href="#cocktail-item-1">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>150 мл красного сухого вина</li> 
+                    <li>10 г сахарного песка</li>
+                    <li>5 г корицы в палочках</li>
+                    <li>1 г гвоздики</li>
+                    <li>Лимонная цедра</li>
+                    <li>Апельсиновая цедра</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Налейте в чайничек-питчер 150 мл красного сухого вина. <br>
+                2. Добавьте в вино 10 г сахарного песка, палочку корицы и 3 шт гвоздики. <br>
+                3. Киньте туда цедру лимона и апельсина. <br>
+                4. Нагревайте, помешивая и не доводя до кипения. <br>
+                5. Перелейте глинтвейн в бокал для ирландского кофе с ручкой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-1">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup3" class="overlay">
+    <a href="#cocktail-item-3" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Негрони из Бронкса</h2>
+                <a class="close" href="#cocktail-item-3">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>15 мл ликера Драмбуи</li>
+                    <li>30 мл красного биттера</li>
+                    <li>15 мл портвейна тони</li>
+                    <li>40 мл красного сухого вина</li>
+                    <li>3 мл сливового биттера</li>
+                    <li>3 мл персикового биттера</li>
+                    <li>Апельсиновая цедра</li>
+                    <li>420 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните бокал-рокс кубиками льда до краев. <br>
+                2. Налейте в стакан для смешивания 15 мл портвейна тони и 40 мл красного сухого вина. <br>
+                3. Добавьте 30 мл красного биттера, 15 мл ликера Драмбуи и по 3 мл биттеров: сливового и персикового. <br>
+                4. Насыпьте кубики льда и размешайте барной ложкой.<br> 
+                5. Перелейте напиток через сито-стрейнер в бокал-рокс. <br>
+                6. Украсьте коктейль апельсиновой цедрой.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-3">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup4" class="overlay">
+    <a href="#cocktail-item-4" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Сангрия</h2>
+                <a class="close" href="#cocktail-item-4">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>500 мл красное вино</li>
+                    <li>500 мл вода без газа</li>
+                    <li>2 апельсина</li>
+                    <li>1 лимон</li>
+                    <li>1 столовая ложка сахара</li>
+                    <li>свежая мята</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Нарежьте апельсины и лимон тонкими дольками и выложите в кувшин. Посыпьте сахаром. <br>
+                2. В отдельной емкости смешайте 500 мл красного вина и 500 мл воды без газа. <br>
+                3. Смесью залейте цитрусовые. По желанию добавьте пряности.<br> 
+                4. Настаивайте напиток в холодильнике от 3 до 12 часов. <br>
+                5. Перед подачей добавьте в кувшин лед и свежую мяту.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-4">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup5" class="overlay">
+    <a href="#cocktail-item-5" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Калимочо</h2>
+                <a class="close" href="#cocktail-item-5">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>100 мл колы</li>
+                    <li>100 мл красного вина</li>
+                    <li>лед в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните охлажденный бокал кубиками льда.<br>
+                2. Добавьте 100 мл красного вина и 100 мл колы. <br>
+                3. Аккуратно перемешайте коктейльной ложечкой. <br>
+                4. Украсьте напиток долькой лимона и добавьте трубочку. <br>
+                5. По желанию подавайте с ванильным мороженым.
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-5">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+<div id="popup6" class="overlay">
+    <a href="#cocktail-item-6" class="popup-area-close"></a>
+        <div class="popup">
+                <h2 class="popup-cocktail-header">Как приготовить Красный сауэр</h2>
+                <a class="close" href="#cocktail-item-6">&times;</a>
+                <div class="popup-cocktail-content">
+                <ul>
+                    <li>40 мл шотландского виски</li>
+                    <li>30 мл красного сухого вина</li>
+                    <li>30 мл сахарного сиропа</li>
+                    <li>20 мл медового сиропа</li>
+                    <li>150 г дробленого льда</li>
+                    <li>200 г льда в кубиках</li>
+                </ul>
+            <p>
+                <span class="cocktail-accent">Приготовление:</span><br>
+                1. Наполните рокс-бокал доверху дробленым льдом. <br>
+                2. Налейте в шейкер 20 мл медового и 30 мл сахарного сиропов. <br>
+                3. Добавьте 40 мл шотландского виски.<br>
+                4. Наполните шейкер кубиками льда и взбейте напиток.<br>
+                5. Перелейте напиток через сито-стрейнер в бокал.<br> 
+                6. Аккуратно влейте 30 мл красного сухого вина. Коктейль готов! 
+            </p>
+            <a class="close-popbtn" href="#cocktail-item-6">Закрыть</a>
+                </div>
+        </div>
+</div>
+
+</div>
