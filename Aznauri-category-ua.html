@@ -1,0 +1,787 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Коньяк Aznauri — міцний спиртний напій, який виробляють за допомогою ферментації та перегонки виноградного соку. Торгову марку відносять до середнього цінового сегмента. Дистилят реалізують у стандартних скляних пляшках різного
+                    об'єму.
+                </p>
+                <h3>Смако-ароматична палітра коньяку «Азнаурі»</h3>
+                <p>
+                    Смак — м'який і збалансований. Молодий напій огортає свіжими фруктовими тонами. Нерідко присутній ніжний медовий шлейф. Витриманий Aznauri — коньяк із насиченим деревним шлейфом. У процесі дозрівання також проявляються нотки ванілі,
+                    карамелі, шоколаду, сухофруктів, прянощів.
+                </p>
+                <h2>Коротка історія коньяку Aznauri</h2>
+                <p>
+                    Бренд презентували 2013 року. У той час запустили лікеро-горілчаний завод Akkerman Distillery, який функціонує в Одеській області. Назва пов'язана з містом Білгород-Дністровський, де розташована винокурня. Якщо точніше, з його
+                    старовинною назвою — Аккерман.
+                </p>
+                <p>Виноград вирощують в екологічно чистому регіоні на власних горбистих плантаціях, розташованих по сусідству. Останню реконструкцію винокурні провели 2019 року, паралельно випустивши оновлену колекцію коньячних спиртів.</p>
+                <p>Зараз коньяк «Азнаурі» виробляють на інноваційних потужностях Akkerman Distillery з використанням сучасного обладнання, яке постачають європейські компанії Arol, Bertolaso, Borelli.</p>
+                <p>Коньячну продукцію Aznauri експортують у 20 країн, включно з Польщею та Великою Британією. Назва торгової марки — відсилання до шанованого грузинського титулу.</p>
+                <h2>Як виробляють коньяк «Азнаурі»</h2>
+                <p>У складі — виноград добірних сортів. Компанія дотримується класичної технології виготовлення. Ключові етапи:</p>
+                <ol>
+                    <li>Підготовка сировини. Ягоди збирають у жовтні вручну. Грона відправляють у первинний цех, де їх миють і очищають.</li>
+                    <li>Пресування. Пневматичний прес забезпечує екстракцію під низьким тиском. На виході отримують виноградне сусло з невисоким вмістом твердих речовин і фенольних сполук.</li>
+                    <li>Бродіння. Концентрований сік перекачують у закритий металевий резервуар. Головну складову коньяків Aznauri змішують із дріжджами. Вони поступово перетворюють цукор на спирт.</li>
+                    <li>Дистиляція. Коньяк «Азнаурі» проходить подвійну перегонку. Дистиляцію завершують 31 березня.</li>
+                    <li>Витримка. Щойно новий дистилят залишає мідний перегінний куб, його поміщають у дубову бочку. Від тривалості старіння залежать смак і аромат.</li>
+                </ol>
+                <p>
+                    Коли витримка завершена, настає час купажування. Спирти різного віку змішують, формуючи унікальний смако-ароматичний букет. Вік наймолодшого спирту в купажі «Азнаурі» вказують на етикетці. Для цього використовують буквену систему.
+                    Також на якість алкоголю вказує кількість зірок.
+                </p>
+                <h3>Скільки градусів у коньяках Aznauri</h3>
+                <p>
+                    Вміст алкоголю стандартний для всіх позицій — 40%. Градус знижують, якщо готують напій на основі коньячних спиртів, наприклад, Aznauri Espresso. Це смаковий продукт, рецептуру якого доповнюють натуральними ароматизаторами. У складі
+                    — 60–70% коньячних спиртів.
+                </p>
+                <h2>Різновиди коньяків «Азнаурі»</h2>
+                <p>В інтернет-магазині MAUDAU представлений основний асортимент виробника:</p>
+                <ol>
+                    <li>«Три зірки». Базовий коньяк Aznauri, який розкривається ніжними тонами винограду і квітів. В ароматі відчуваються відтінки цукатів і сухофруктів. Міцний спиртний напій доступний в об'ємах від 0,1 до 0,7 л.</li>
+                    <li>«Чотири зірки». Коньяк «Азнаурі» за середньою ціною, що пояснюється нетривалою витримкою. Смак — вишуканий, розкривається акордами ванілі, мармеладу, цитрусових. Цей варіант випускають у форматах 0,25 і 0,5 л.</li>
+                    <li>«П'ять зірок». Складний і динамічний варіант коньяку Aznauri, в якому проявляються нотки сандалового дерева і східних спецій. Хороший варіант на подарунок — напій, поміщений у бляшаний тубус.</li>
+                </ol>
+                <p>
+                    Також до замовлення доступний коньяк Aznauri Black Barrel. Продукт із лімітованої колекції належить до класу VVSOP. Дистилят розкривається глибокими нотками карамелі, тютюну, дуба. Це пояснюється 10-річною витримкою в сильно
+                    обпалених дубових бочках.
+                </p>
+                <p>Не менш цікавий варіант — коньяк Aznauri Gold Reserve. Це м'який на смак напій з яскраво вираженою солодкістю чорного шоколаду. Аромат наповнений ванільно-деревними нотками. Мінімальний вік спиртів у складі купажу — 12 років.</p>
+                <p>
+                    Смакова лінійка коньяків «Азнаурі» представлена ексклюзивними позиціями Wild Cherry і Espresso. Перший напій вирізняється багатим смаком із насиченими вишневими акордами. Фініш — з легкою кислинкою. Аромат — яскравий і стійкий.
+                    Варіант Espresso огортає шоколадно-вершковими нюансами.
+                </p>
+                <h3>Скільки коштує коньяк «Азнаурі»</h3>
+                <p>Ціна залежить від лінійки, а також обраного обсягу. Можна купити коньяк «Азнаурі» трирічної витримки за ціною 149 грн за 0,5 л. Водночас витриманий напій коштує 172 грн за той самий обсяг у склі без подарункового пакування.</p>
+                <p>Aznauri — коньяк із середнього цінового сегмента, тому ціна залишається доступною. При цьому інтернет-магазин MAUDAU пропонує акції та знижку на гуртове замовлення.</p>
+                <h2>Як і з чим пити коньяк Aznauri</h2>
+                <p>Міцний спиртний напій подають за +18–20 ºC. Його розливають по сніфтерах — стандартних коньячних келихах. Вони сприяють рівномірному вивільненню смаку й аромату.</p>
+                <p>
+                    Коньяк «Азнаурі» — хороший дижестив. Подавайте його після основного прийому їжі, супроводжуючи свіжими фруктами або десертами на основі вершків і шоколаду. Його також можна піднести з червоним м'ясом, приготованим на грилі, особливо
+                    дичиною.
+                </p>
+                <p>Насичений ванільно-деревний аромат і солодкуватий смак гармонійно доповнять каву або міцну сигару. Дистилят також можна використовувати в коктейлях як основний алкогольний компонент.</p>
+                <h2>Чому вигідно купити коньяк Aznauri в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет алкогольних штук MAUDAU пропонує оригінальну продукцію за конкурентною вартістю. Постачання коньяків «Азнаурі» безпосередньо від виробника дає можливість покупцям першими отримувати доступ до новинок. Швидку доставку
+                    забезпечує кур'єр або компанія-перевізник. Розрахуватися можна на сайті або в момент отримання замовлення.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Карлос" src="https://photo.maudau.com.ua/Landing/cocktails/incat/carlos.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Карлос</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Білий ром</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк (бренді)</a></li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=bile">Біле вино</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Карлос — збалансований коктейль з оригінальним поєднанням рому, бренді та вина. Його не складно приготувати в домашніх умовах або на пікніку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Карлос</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл світлого рому</li><li>15 мл коньяку (бренді)</li><li>25 мл білого вина</li><li>10 мл лимонного соку</li><li>Лід</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку-колінз кубиками льоду догори.</li><li>Налийте 50 мл світлого рому і 15 мл коньяку (бренді).</li><li>Акуратно додайте 25 мл білого вина та 10 мл лимонного соку.</li><li>Трохи перемішайте коктейльною ложкою.</li><li>Прикрасьте напій цедрою лимона та подавайте з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Саратога" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Saratoga.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Саратога</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/product_brand=hankey-bannister">Віскі</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/category/vermuty">Вермут</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Бітер Ангостура</a></li><li>Лимонна цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Збалансований коктейль на базі віскі представляє оригінальне поєднання компонентів, а сироп трохи згладжує міцність алкоголю. За однією з версій напій отримав назву на честь подій Саратозької військової кампанії в США.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Саратога</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл віскі</li><li>20 мл коньяку</li><li>20 мл вермуту</li><li>5 мл цукрового сиропу</li><li>3 мл бітеру Ангостура</li><li>Лимонна цедра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку для змішування льодом.</li><li>Влийте 20 мл коньяку та 20 мл вермуту.</li><li>Додайте 40 мл віскі та 5 мл цукрового сиропу.</li><li>Наостанок додайте 3 мл бітеру Ангостура.</li><li>Ретельно перемішайте інгредієнти коктейльною ложкою.</li><li>Процідіть суміш через барне сито в коктейльний келих.</li><li>Прикрасьте завитком лимонної цедри.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Персиковий серпанок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Peach_haze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Персиковий серпанок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Персик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шампанське та персики — безпрограшний варіант. А якщо до них додати коньяк, то вийде вишуканий, в міру міцний і солодкий коктейль. Персикова димка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Персиковий серпанок</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл коньяку</li><li>25 мл апельсинового соку</li><li>50 мл шампанського</li><li>Персик</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у блендер м'якоть 1 персика і влийте 25 мл апельсинового соку.</li><li>Додайте 25 мл коньяку та збийте до однорідного стану.</li><li>Перекладіть отримане пюре в келих.</li><li>Акуратно долийте в келих 50 мл шампанського та подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарячий острів" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Hot_Island.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий острів</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li>Взбиті вершки</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=amareto-3">Амарето</a></li><li><a href="https://maudau.com.ua/category/kava">Кава</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Гарячий острів — дивовижне поєднання кави, коньяку та мигдалевого лікеру. Вершки надають оксамитового кремового післясмаку. Коктейль подається в келиху з товстими стінками і ручкою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий острів</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл коньяку</li><li>30 мл збитих вершків</li><li>50 мл амарето</li><li>200 мл кави</li><li>Цукор</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Будь-яким способом заваріть міцну каву, за потреби відфільтруйте.</li><li>Збийте вершки — у міксері або вінчиком.</li><li>Налийте в келих 200 мл гарячої кави і влийте в нього 20 мл коньяку.</li><li>Потім досипте цукор на смак.</li><li>Додайте в напій 50 мл амарето і перемішайте барною ложкою.</li><li>Верхнім шаром викладіть приблизно 30 мл збитих вершків.</li><li>Подавайте коктейль із трубочкою та ложечкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ей-Бі-Сі" src="https://photo.maudau.com.ua/Landing/cocktails/incat/ABC-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ей-Бі-Сі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=baileys">Айріш крім Baileys</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=amareto-3">Лікер амарето</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ей-Бі-Сі — м'який гармонійний коктейль із приємним післясмаком мигдалю. Укладається шарами та виглядає оригінально. Усі інгредієнти беруться в рівних пропорціях.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ей-Бі-Сі</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл коньяку</li><li>20 мл айріш кріму</li><li>20 мл лікеру амарето Fruko Schulz</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть чарку для шотів і налийте 20 мл лікеру амарето Fruko Schulz.</li><li>Використовуйте коктейльну ложку та викладіть шар айріш кріму 20 мл.</li><li>Завершіть оформлення шаром 20 мл коньяку Hennessy.</li><li>Не перемішуйте коктейль — так вийде послідовне надходження смаків.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">239 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">1.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">65 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
