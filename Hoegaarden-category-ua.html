@@ -1,0 +1,814 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Пиво Hoegaarden — світлий вітбір, який виробляють у Бельгії. Його також називають білим. Європейський варіант найменування — Blanch. Назва напою пов'язана з маленьким містечком у фламандському регіоні Бельгії, яке відоме
+                    відродженням світлого пшеничного елю.
+                </p>
+                <h2>Що особливого в пиві Hoegaarden</h2>
+                <p>
+                    Пінний напій, який доступний у десятках країн по всьому світу, вважають еталоном бельгійського пивоваріння. Пиво «Хугарден» складається з солодового ячменю, несолодженої пшениці та хмелю. Останній компонент не надто виражений, як в
+                    інших стилях. Також використовують культивовані дріжджі. Воду постачають із місцевих джерел.
+                </p>
+                <p>
+                    Пиво Hoegaarden не фільтрують, тому в готовому напої з'являється каламутний осад. Колір — блідо-солом'яний. Пінна шапка — кремова і стійка. Рецептура обов'язково включає коріандр і сушену апельсинову цедру Кюрасао, більш відому як
+                    Лараха.
+                </p>
+                <h3>Смако-ароматична композиція пива «Хугарден»</h3>
+                <p>У носі напій розкривається насиченим ароматом з інтенсивними пшеничними відтінками. Смак — фруктовий, із приємними цитрусовими нотками. Післясмак — освіжальний, з ненав'язливим пряно-гострим шлейфом.</p>
+                <h3>Скільки градусів у пиві «Хугарден»</h3>
+                <p>Пінний напій — м'який і збалансований. Міцність становить 4,9%. Також пиво Hoegaarden можна купити в безалкогольному виконанні.</p>
+                <h2>Коротка історія торгової марки Hoegaarden</h2>
+                <p>Пиво виробляють у маленькому селищі Хугарден, що у Фландрії. Село славиться вітбірами з часів Середньовіччя.</p>
+                <p>
+                    У XIX столітті в містечку працювали 13 пивоварень і 9 винокурень. Останнє підприємство закрили 1957 року. Тоді місцевий молочник П'єр Селіс, який виріс по сусідству з пивоварнею Tomsin, вирішив відродити забутий стиль. Виробництво
+                    він налагодив на сіннику, використовуючи традиційний набір інгредієнтів.
+                </p>
+                <p>
+                    Попит на пиво «Хугарден» поступово зростав. П'єр Селіс викупив фабрику з виробництва лимонаду Hougardia, розширивши потужності. Пивоварня серйозно постраждала після пожежі 1985 року. На допомогу місцевому підприємцю прийшла
+                    корпорація InterBrew.
+                </p>
+                <p>
+                    Згодом П'єр Селіс зіткнувся з думкою, що кредит, виданий на реконструкцію, насправді примушував його до зміни рецепта. Він продав корпорації пивоварню, а сам вирушив до Техасу (США). Там він продовжив випуск пива Hoegaarden.
+                    Незабаром американський бізнес перейшов до Miller Brewing, яку згодом поглинув концерн Michigan Brewing Company.
+                </p>
+                <p>
+                    У 2004 році компанія InterBrew увійшла до складу AmBev. Корпорація отримала нову назву — InBev. Пивоварню в Хугардені планували закрити, а виробництво — перенести в місто Жюпіль. Місцеві жителі, яких засмутила втрата ключового
+                    роботодавця, відвоювали завод. У 2007 році компанія InBev ухвалила рішення, що пиво Hoegaarden продовжать випускати в рідному селищі. На модернізацію пивоварні виділили 60 мільйонів євро.
+                </p>
+                <h2>Як виготовляють пиво Hoegaarden</h2>
+                <p>Пінний напій варять за особливою технологією. Етапи:</p>
+                <ol>
+                    <li>
+                        Підготовка сировини. Солод готують із ячменю за допомогою замочування і викладання в солодовнях. Як тільки видніються паростки, солодження зупиняють сушінням. Готовий солод подрібнюють. У середньому процес підготовки до
+                        виробництва пива "Хугарден" займає 8–10 днів.
+                    </li>
+                    <li>
+                        Варіння зернового затору. Ячмінний солод і несолоджену пшеницю змішують, заливаючи водою. Суміш нагрівають до +75 ⁰C і проварюють 2,5 години. Готовий зерновий затор відправляють на фільтрацію, в процесі якої видаляють тверді
+                        домішки. На виході отримують чисте напівпрозоре сусло.
+                    </li>
+                    <li>Варка. Пиво Hoegaarden варять близько 60 хвилин. У процесі додають хміль, а також коріандр і сушену апельсинову цедру. Усе це відбувається за температури +103 ⁰C.</li>
+                    <li>Охолодження. Залишки натуральних добавок відокремлюють від рідкої частини, яку охолоджують до 19 ⁰C.</li>
+                    <li>Бродіння. Пиво «Хугарден» проходить подвійну ферментацію. У процесі до сусла додають дріжджі, залишаючи пінний напій у герметично закритих ємностях.</li>
+                    <li>Підготовка до розливу. Пиво повторно охолоджують, а залишки дріжджів видаляють за допомогою центрифуги. Далі його пастеризують, подовжуючи термін придатності.</li>
+                    <li>Розлив. Готовий продукт потрапляє в скляну пляшку, куди також додають суміш цукру і дріжджів. Вторинна ферментація нагадує виробництво шампанського. Процес природним чином завершується через 7–14 днів.</li>
+                </ol>
+                <h2>Різновиди пива «Хугарден»</h2>
+                <p>В інтернет-магазині MAUDAU доступно два сорти:</p>
+                <ol>
+                    <li>
+                        Wit. Пиво за класичним рецептом, який придумали ченці в XV столітті. Колір — світло-золотистий. Легку освіжальну композицію доповнюють свіжозмелений коріандр і сушена апельсинова цедра. Фініш — стійкий і пряний. Показники
+                        гіркоти вкрай низькі, а в смаку відчуваються солодкуваті нотки. На класичний «Хугарден» ціна залишається доступною, при цьому пиво можна купити за акцією або з гуртовою знижкою.
+                    </li>
+                    <li>
+                        Rosee. Рожево-помаранчевий відтінок — результат змішування пшеничного пива з малиновим соком. Впізнавану смако-ароматичну композицію доповнили вибуховими акордами полуниці та ожини. Відсоток алкоголю зменшено до 3, що робить
+                        продукт сесійним. Через низьку міцність на пиво «Хугарден» знижується ціна.
+                    </li>
+                </ol>
+                <p>Кожен із представлених варіантів можна замовити у версії з мінімальним вмістом алкоголю. На європейському ринку доступно кілька альтернативних версій пива Hoegaarden:</p>
+                <ul>
+                    <li>Citron — містить додаткову цитрусову есенцію, яка чудово освіжає в літню пору;</li>
+                    <li>Speciale — сезонний продукт, який випускають в осінньо-зимовий період;</li>
+                    <li>Julius — світлий варіант пива «Хугарден» за вищою вартістю, яка пояснюється технікою потрійного охміління;</li>
+                    <li>Forbidden Fruit — темний сорт, наповнений складною сумішшю екзотичних прянощів.</li>
+                </ul>
+                <h2>Як пити пиво Hoegaarden</h2>
+                <p>Пінний напій подають охолодженим при +2-3 ⁰C. Низька температура сприяє плавному розкриттю смако-ароматичних характеристик. Бренд описує процедуру подачі так:</p>
+                <ul>
+                    <li>охолодіть пиво «Хугарден» у холодильнику;</li>
+                    <li>наповніть келих на дві третини;</li>
+                    <li>збовтайте залишок у банці, сприяючи рівномірному розподілу дріжджового осаду;</li>
+                    <li>заповніть склянку доверху.</li>
+                </ul>
+                <p>
+                    Традиційно пиво Hoegaarden подають у масивних шестигранних склянках, які протягом тривалого часу підтримують низьку температуру. Бельгійці змішують пінний напій з апельсиновим або лимонним соком, видавлюючи його зі скибочки прямо в
+                    келих. До нього нерідко подають смажене насіння. Альтернативні варіанти:
+                </p>
+                <ul>
+                    <li>салат із кисло-солодкою заправкою;</li>
+                    <li>морська риба, приготована на грилі;</li>
+                    <li>тости з авокадо;</li>
+                    <li>пікантний тофу.</li>
+                </ul>
+                <h2>Чому вигідно купити пиво «Хугарден» у маркеті алкогольних штук MAUDAU</h2>
+                <p>
+                    Інтернет-магазин MAUDAU імпортує продукцію безпосередньо з Бельгії, гарантуючи оригінальне походження. При цьому на Hoegaarden ціна залишається конкурентною, а в каталозі регулярно оновлюється список акційних пропозицій. За доставку
+                    не потрібно хвилюватися — її забезпечує кур'єр по Києву або одна з поштових служб по Україні. Якщо товар у наявності в магазинах «Сільпо», його можна забрати самостійно.
+                </p>
+                <p>Пиво «Хугарден» можна купити в компактних бляшанках по 0,33 або 0,5 л. Стандартний варіант — скло. Також до замовлення доступний подарунковий набір, куди входить фірмовий шестигранний стакан.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Літній бриз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Summer-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Літній бриз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=roza">Сироп троянди</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=mandaryn-4">Мандариновий сироп</a></li><li>Лайм</li><li>Апельсин</li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Літній бриз — пікантний квітковий коктейль із нетиповим поєднанням пива та сиропу троянди. Має яскраво виражені цитрусові нотки та післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Літній бриз</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>10 мл сиропу троянди</li><li>20 мл мандаринового сиропу</li><li>40 г лайма</li><li>115 г апельсина</li><li>5 г фізалісу</li><li>200 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-харрікейн нарізані на чверті лайм і апельсин. Подавіть барним товкачем.</li><li>Наповніть харрікейн подрібненим льодом до верхнього краю.</li><li>Налийте 10 мл сиропу троянди та 20 мл мандаринового сиропу.</li><li>Долийте 100 мл світлого пива й акуратно розмішайте коктейльною ложечкою.</li><li>За бажанням досипте трохи подрібненого льоду.</li><li>Прикрасьте напій фізалісом і скибочками цитрусових.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зимова маракуйя" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Physalis.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зимова маракуйя</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=marakuia-3">Сироп маракуї</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Солодкий тропічний шорт-дрінк із незвичайним дуетом світлого пива і сиропу маракуї. Простий і швидкий у приготуванні, красивий у подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Зимова маракуйя</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл світлого пива</li><li>45 мл сиропу маракуї</li><li>10 мл лимонного соку</li><li>5 г фізалісу</li><li>60 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в блендер 10 мл лимонного соку і 45 мл сиропу маракуї.</li><li>Додайте 90 мл світлого пива та насипте совок подрібненого льоду.</li><li>Гарненько збийте всі складові коктейлю.</li><li>Перелийте напій в охолоджене шампанське блюдце.</li><li>Прикрасьте келих фізалісом і подавайте з чайною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img ">
+                        <img class="add-photo" alt="Бір бері рояль" src="https://photo.maudau.com.ua/Landing/cocktails/incat/beer_berry_royal.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бір бері рояль</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=chorna-smorodyna-4">Чорносмородиновий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Брусниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ягідний ароматний коктейль на основі світлого пива, з додаванням смородинового сиропу. «Пивна королівська ягода» сподобається поціновувачам солодких лонгів. Брусницю можна замінити червоною смородиною.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бір бері рояль</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл світлого пива</li><li>25 мл чорносмородинового сиропу</li><li>10 мл лаймового соку</li><li>15 г брусниці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в охолоджений слінг-бокал 25 мл чорносмородинового сиропу.</li><li>Покладіть у келих 15 г брусниці. В одній барній ложці поміщається 5 г ягід.</li><li>Додайте 10 мл лаймового соку.</li><li>Використовуючи високу барну ложку, долийте доверху 250 мл світлого пива. Не змішуйте інгредієнти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Зимове яблуко" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Apple.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зимове яблуко</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=karamel-8">Карамельний сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=zelene-yabluko">Зелений яблучний сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Яблоко</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Зимове яблуко — смачний карамельний коктейль на пиві. Тон напою задає запашний яблучний сироп. Для приготування знадобиться блендер.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Зимове яблуко</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл світлого пива</li><li>10 мл карамельного сиропу</li><li>35 мл зеленого яблучного сиропу</li><li>10 мл лимонного соку</li><li>20 г яблука</li><li>60 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в блендер по 10 мл лимонного соку та карамельного сиропу.</li><li>Додайте 35 мл зеленого яблучного сиропу та 50 мл світлого пива.</li><li>Насипте в блендер совок подрібненого льоду та інтенсивно збийте.</li><li>Перелийте коктейль у заздалегідь охолоджене шампанське блюдце.</li><li>Прикрасьте келих тонкими слайсами зеленого яблука. Подавайте з чайною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Карловарська осінь" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Carlsbad-Falls.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Карловарська осінь</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=myhdal-5">Мигдальний сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2">Кленовий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Кориця в паличках</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Затишний гарячий коктейль на пиві, названий на честь чеського музичного фестивалю. Аромат мигдалю, кориці та меду зачаровує з першого ковтка.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Карловарська осінь</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл світлого пива</li><li>15 мл мигдалевого сиропу</li><li>15 мл медового сиропу</li><li>5 мл кленового сиропу</li><li>100 мл апельсинового соку</li><li>10 мл лимонного соку</li><li>40 г апельсина</li><li>10 г кориці в паличках</li><li>3 г гвоздики</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в пітчер 10 мл лимонного та 100 мл апельсинового соку.</li><li>Додайте сиропи: 15 мл мигдалевого, 5 мл кленового та 15 мл медового.</li><li>Влийте 50 мл світлого пива, покладіть паличку кориці та 3 штучки гвоздики.</li><li>Нагрівайте пітчер, але не кип'ятіть напій. У процесі регулярно помішуйте.</li><li>Перелийте через барне ситечко в келих для ірландської кави.</li><li>Прикрасьте коктейль скибочкою апельсина і паличкою кориці</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">43 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.46 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.55 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">92 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
