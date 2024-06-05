@@ -1,0 +1,802 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Nemiroff — культовая украинская торговая марка, под которой выпускают пшеничную водку. Крепкий спиртной напиток экспортируют в 81 страну. Главный дистрибьютор в Польше, Чехии, Молдове и Словакии — Coca-Cola.</p>
+                <p>
+                    На водку «Немирофф» можно наткнуться в клипе Леди Гаги на песню Bad Romance. Бренд подписал соглашение о сотрудничестве с фестивалем хэви-металла Bloodstock Open Air. Он также причастен к спонсированию лунной миссии Spacebit.
+                    Компания возглавляет тройку мировых лидеров по поставкам алкоголя в магазины Duty Free.
+                </p>
+                <h2>История водки Nemiroff</h2>
+                <p>
+                    Современный производственный комплекс расположен в городке Немиров, что в Винницкой области. Компания принадлежит Якову и Белле Финкельштейнам, а также Анатолию Кипишу. Бренд Nemiroff активно спонсирует Ultimate Fighting
+                    Championship в США. Часть, которую компания занимает на внутреннем рынке, составляет около 40%.
+                </p>
+                <p>
+                    Название компании связано с «немировской водкой», которую производят с 1752 года. Винокурню в поселке основали в 1872 году. У истоков — граф Григорий Строганов. Вскоре дело перешло к его дочери — княгине Марии Щербатовой. В то время
+                    в стенах предприятия ежедневно производили около 5000 бутылок. Это первая винокурня, которая предложила купить водку «Немиров», приготовленную из пшеницы, а не из сырого картофеля.
+                </p>
+                <p>В 1920 году винокурня перешла под контроль СССР. Торговую марку зарегистрировали в 1992. Этот год считают датой рождения водки «Немирофф». Спустя два года продукцию активно экспортировали в Европу.</p>
+                <p>
+                    В 1997 производственную линию открыли в Германии, а сейчас дистиллят доступен даже на Багамских островах. Через 10 месяцев представили первую ароматизированную линейку водки Nemiroff, которую позиционировали как сувенирную
+                    продукцию.
+                </p>
+                <p>В 2002 году внедрили лазерную защиту, которая подтверждает оригинальное происхождение продукции. В 2005 компанию приняли в престижную Международную ассоциацию барменов — IBA.</p>
+                <h3>Немного о наградах водки Nemiroff</h3>
+                <p>
+                    Несмотря на непродолжительную историю, продукт отмечен множеством наград. При этом на водку Nemiroff цена остается доступной, хотя ее позиционируют как премиальную. Например, в 2006 году компанию признали водочным брендом №2 в мире
+                    по версии IWSR Drinks Record. Чтобы перебраться на первое место на местном рынке, бренд упорно трудился 15 лет.
+                </p>
+                <p>С того времени компания завоевала свыше 70 наград. Самые важные из них — от The Vodka Masters, San Francisco World Spirits Competition, Global Spirits Masters.</p>
+                <p>В 2010 году торговая марка Nemiroff вошла в рейтинг ТОП-100 производителей алкоголя в Украине, а спустя 10 лет переместилась в 25 лучших.</p>
+                <h2>Как изготавливают водку «Немирофф»</h2>
+                <p>
+                    Рецептура состоит на 100% из натуральных ингредиентов. Например, для ароматизации используют мед или свежие травы. Также в процессе применяют настойки и фруктовые соки. Производство опирается на классическую технологию. Ключевые
+                    этапы:
+                </p>
+                <ol>
+                    <li>Подготовка воды. Воду поставляют из подземных артезианских источников, где она проходит естественную очистку.</li>
+                    <li>
+                        Подготовка спирта-ректификата. Его готовят из пшеницы. Для этого зерно измельчают и смешивают с водой, запуская процесс брожения. Далее следует дистилляция, в ходе которой спирт-сырец отделяют от спирта-ректификата. Перегонка
+                        проходит в медных перегонных кубах или вертикальных колоннах. Крепость на выходе составляет 95–97%.
+                    </li>
+                    <li>Смешивание. Этот этап также называют сортировкой. Спирт разбавляют предварительно подготовленной водой. При необходимости проводят ароматизацию.</li>
+                    <li>Фильтрация. Классический дистиллят проходит 9-ступенчатую очистку. Дополнительную фильтрацию с помощью серебра и платины проводят при изготовлении версий De Luxe и The Inked Collection.</li>
+                    <li>Отстаивание. «Немиров» — водка, которая настаивается несколько суток для стабилизации. Продукцию из коллекции Rested in Barrel выдерживают в дубовых бочках.</li>
+                </ol>
+                <p>После этого напиток готов к розливу. Процедуру осуществляют на автоматизированных линиях.</p>
+                <h2>Разновидности водки Nemiroff</h2>
+                <p>Портфолио компании объединяет свыше 60 продуктов в разных ценовых сегментах. Лидеры продаж:</p>
+                <ol>
+                    <li>Originals. Первый авторский рецепт, воспроизведенный командой Nemiroff. Вкусовую композицию характеризует ненавязчивый аромат тмина. На финише развивается шлейф медовых сот.</li>
+                    <li>Lex. Вариант с мягким вкусом, в котором отчетливо ощущаются пшеничные акценты. Аромат — нейтральный. Уникальный дизайн бутылок принадлежит французу Филиппу Се. На эту водку «Немиров» — самая высокая цена.</li>
+                    <li>
+                        De Luxe. Линейка, которая проходит дополнительную фильтрацию. Изюминка — настой липовых цветков, входящий в состав. Во вкусе ощущаются нотки перцовой мяты, приправленной освежающей лимонной цедрой. Если ищете вариант
+                        поинтереснее — можно купить водку «Немирофф», выдержанную в дубовых бочках. Премиальный продукт окутывает сладкими нотками, смешанными с древесной терпкостью.
+                    </li>
+                </ol>
+                <p>
+                    Ароматизированную водку Nemiroff компания позиционирует как настойку. Крепость каждого продукта составляет 40%. Ассортимент объединяет позиции Wild Cranberry, Burning Pear и Bold Orange. Первый вариант содержит концентрированный
+                    клюквенный морс, придающий кислинку. Вторая версия — самая жгучая. Сладкую грушу дополнили травяной настойкой. Последний продукт — терпкий и пряный. Это заслуга экстракта перца чили.
+                </p>
+                <h3>Сколько стоит водка «Немирофф»</h3>
+                <p>
+                    Ценник зависит от линейки, использованного сырья, применяемых технологий. Доступный по стоимости вариант — Originals. За 0,7 литра достаточно отдать около 150 грн. На водку «Немирофф» из лимитированных коллекций цена повышается.
+                    Пример — Moon Edition.
+                </p>
+                <h2>Советы по выбору водки Nemiroff</h2>
+                <p>Учитывая огромный ассортимент, можно опираться на основные критерии:</p>
+                <ol>
+                    <li>Вкус. Традиционный дистиллят подходит для наслаждения в чистом виде. Ароматизированная продукция выгодно дополнит рецепт коктейлей.</li>
+                    <li>Крепость. Дистиллят разбавляют до стандартного содержания алкоголя — 40%.</li>
+                    <li>
+                        Объем. Крепкий спиртной напиток выпускают в разных емкостях. Это зависит от конкретной линейки. Объем непосредственно влияет на то, сколько стоит водка «Немиров». Самый маленький формат — 100 мл. Подходит для миксологии, а также
+                        для знакомства со стилем. Стандартный вариант — 0,5 или 0,7 л. Хороший выбор для застолья или заказа про запас.
+                    </li>
+                    <li>Тип упаковки. Если ищете вариант на подарок, присмотритесь к подарочным комплектам. В набор входят рюмки с фирменным логотипом.</li>
+                </ol>
+                <h2>Почему выгодно купить водку «Немиров» в Украине в интернет-магазине MAUDAU</h2>
+                <p>
+                    В списке представлена оригинальная продукция. На нее регулярно действуют акции, что делает алкогольный шопинг максимально выгодным. Маркет алкогольных штук MAUDAU также предлагает скидку на оптовый заказ — купить ящик водки
+                    «Немиров» можно по сниженной стоимости, что важно при планировании вечеринки или другого мероприятия.
+                </p>
+                <p>
+                    Товар доставит курьер по Киеву. При желании его можно забрать самостоятельно в физических магазинах. Также предусмотрена доставка почтовыми службами — «Новой Почтой» или «Укрпочтой». При достижении определенной суммы заказа — она
+                    бесплатная.
+                </p>
+                <p>Рассчитаться можно после получения и осмотра. Быстрее всего — оплатить покупку на сайте.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Водка тоник" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Водка тоник</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Лимон</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Базовый лонг с водкой и тоником. Освежающий, с горчинкой и кислинкой. Для приготовления лучше брать классический светлый тоник без красителей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Водка тоник</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки</li><li>15 мл лимонного сока</li><li>135 мл тоника</li><li>40 г лимона</li><li>80 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните стакан-хайбол кубиками льда до верхнего края.</li><li>Налейте 15 мл лимонного сока и добавьте 50 мл водки.</li><li>Долейте доверху 135 мл тоника и перемешайте ингредиенты коктейльной ложкой.</li><li>Украсьте коктейль ломтиком лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Водка мартини" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Водка мартини</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Оливки</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тот самый любимый коктейль Джеймса Бонда. Аромат полыни из сухого вермута прекрасно сочетается с высоким градусом горько-сладкой водки. Обязательно добавьте оливочку!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Водка мартини</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл водки</li><li>15 мл сухого вермута</li><li>9 г оливок</li><li>300 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в емкость для смешивания 15 мл сухого вермута и 75 мл водки.</li><li>Насыпьте 300 г льда в кубиках и аккуратно размешайте высокой барной ложкой.</li><li>Перелейте через сито-стрейнер в заранее охлажденный коктейльный бокал.</li><li>Украсьте коктейль тремя оливками на шпажке. Бондиана начинается!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зеленая фея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/green_fairy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зеленая фея</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li>Ликер блю кюрасао Fruko Schulz</li><li>Дынный ликер Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi">Энергетик</a></li><li>Коктейльная вишня красная</li><li>Лимонная цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Знаменитый коктейль Зеленая Фея — это сумасшедший микс алкогольных напитков и энергетика. Поэтому он так популярен на дискотеках и вечеринках.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Зеленая фея</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл серебряной текили</li><li>15 мл абсента</li><li>15 мл водки</li><li>15 мл белого рома</li><li>10 мл ликера блю кюрасао Fruko Schulz</li><li>30 мл дынного ликера Fruko Schulz</li><li>30 мл лимонного сока</li><li>100 мл энергетика</li><li>10 г красной коктейльной вишни</li><li>Лимонная цедра</li><li>150 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-слинг доверху кубиками льда.</li><li>Сперва налейте 30 мл лимонного сока, 10 мл ликера блю кюрасао Fruko Schulz и 30 мл дынного ликера Fruko Schulz.</li><li>Добавьте в равных пропорциях по 15 мл серебряной текилы, абсента, водки и белого рома.</li><li>Сверху долейте 100 мл энергетика и размешайте барной ложкой.</li><li>Украсьте бокал лимонной цедрой и двумя коктейльными вишнями.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лонг айленд айс ти" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Long-Island-Ice-Tea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лонг айленд айс ти</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонский сухой джин</a></li><li>Трипл сек Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лимон</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сложный крепкий лонг, сногсшибательный в полном смысле этого слова. Несмотря на название, коктейль не содержит холодного чая, а назван так за свой насыщенный янтарный оттенок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Лонг айленд айс ти</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл водки Царская</li><li>30 мл белого рома</li><li>30 мл серебряной текили</li><li>30 мл лондонского сухого джина</li><li>30 мл трипл сек Fruko Schulz</li><li>30 мл сахарного сиропа</li><li>30 мл лимонного сока</li><li>100 мл колы</li><li>40 г лимона</li><li>300 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насыпьте в хайбол кубики льда до краев.</li><li>Налейте в стакан по 30 мл лимонного сока, сахарного сиропа и ликера трипл сек Fruko Schulz.</li><li>Добавьте 30 мл водки Царская, и по столько же белого рома, серебряной текилы и лондонского сухого джина.</li><li>Долейте доверху 100 мл колы и аккуратно размешайте коктейльной ложкой</li><li>Украсьте хайбол долькой лимона. Коктейль готов!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Голубая лагуна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/blue-lagoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Голубая лагуна</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li>Ликер блю кюрасао Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Ананас</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Популярный освежающий коктейль небесно-голубого цвета с тропической ноткой. Легкий и кисловатый, поэтому идеально подходит для летних вечеринок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Голубая лагуна</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки</li><li>20 мл ликера блю кюрасао Fruko Schulz</li><li>150 мл Спрайта</li><li>30 г ананаса</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-харрикейн доверху льдом в кубиках.</li><li>Налейте 20 мл ликера блю кюрасао Fruko Schulz и 50 мл водки.</li><li>Осторожно долейте доверху 150 мл Спрайта — напиток может вспениться.</li><li>Аккуратно размешайте напиток коктейльной ложкой.</li><li>Украсьте бокал долькой ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">171 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">8.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

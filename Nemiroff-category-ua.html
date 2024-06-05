@@ -1,0 +1,798 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Nemiroff — культова українська торгова марка, під якою випускають пшеничну горілку. Міцний спиртний напій експортують у 81 країну. Головний дистриб'ютор у Польщі, Чехії, Молдові та Словаччині — Coca-Cola.</p>
+                <p>
+                    На горілку «Немірофф» можна натрапити в кліпі Леді Гаги на пісню Bad Romance. Бренд підписав угоду про співпрацю з фестивалем хеві-металу Bloodstock Open Air. Він також причетний до спонсорування місячної місії Spacebit. Компанія
+                    очолює трійку світових лідерів з постачання алкоголю в магазини Duty Free.
+                </p>
+                <h2>Історія горілки Nemiroff</h2>
+                <p>
+                    Сучасний виробничий комплекс розташований у містечку Немирів, що у Вінницькій області. Компанія належить Якову та Беллі Фінкельштейнам, а також Анатолію Кіпішу. Бренд Nemiroff активно спонсорує Ultimate Fighting Championship у США.
+                    Частка, яку компанія займає на внутрішньому ринку, становить близько 40%.
+                </p>
+                <p>
+                    Назва компанії пов'язана з «немирівською горілкою», яку виробляють із 1752 року. Винокурню в селищі заснували 1872 року. Біля витоків — граф Григорій Строганов. Невдовзі справа перейшла до його доньки — княгині Марії Щербатової. На
+                    той час у стінах підприємства щодня виробляли близько 5000 пляшок. Це перша винокурня, яка запропонувала купити горілку «Немирів», приготовану з пшениці, а не з сирої картоплі.
+                </p>
+                <p>У 1920 році винокурня перейшла під контроль СРСР. Торгову марку зареєстрували в 1992. Цей рік вважають датою народження горілки «Немирофф». Через два роки продукцію активно експортували в Європу.</p>
+                <p>У 1997 виробничу лінію відкрили в Німеччині, а зараз дистилят доступний навіть на Багамських островах. Через 10 місяців представили першу ароматизовану лінійку горілки Nemiroff, яку позиціонували як сувенірну продукцію.</p>
+                <p>У 2002 році впровадили лазерний захист, який підтверджує оригінальне походження продукції. У 2005 компанію прийняли до престижної Міжнародної асоціації барменів — IBA.</p>
+                <h3>Трохи про нагороди горілки Nemiroff</h3>
+                <p>
+                    Попри нетривалу історію, продукт відзначений безліччю нагород. Водночас на горілку Nemiroff ціна залишається доступною, хоча її позиціонують як преміальну. Наприклад, 2006 року компанію визнали горілчаним брендом №2 у світі за
+                    версією IWSR Drinks Record. Щоб перебратися на перше місце на місцевому ринку, бренд наполегливо працював 15 років.
+                </p>
+                <p>З того часу компанія завоювала понад 70 нагород. Найважливіші з них — від The Vodka Masters, San Francisco World Spirits Competition, Global Spirits Masters.</p>
+                <p>У 2010 році торгова марка Nemiroff увійшла до рейтингу 100 кращих виробників алкоголю в Україні, а через 10 років перемістилася до 25 найкращих.</p>
+                <h2>Як виготовляють горілку «Немірофф»</h2>
+                <p>
+                    Рецептура складається на 100% з натуральних інгредієнтів. Наприклад, для ароматизації використовують мед або свіжі трави. Також у процесі застосовують настоянки та фруктові соки. Виробництво спирається на класичну технологію.
+                    Ключові етапи:
+                </p>
+                <ol>
+                    <li>Підготовка води. Воду постачають із підземних артезіанських джерел, де вона проходить природне очищення.</li>
+                    <li>
+                        Підготовка спирту-ректифікату. Його готують із пшениці. Для цього зерно подрібнюють і змішують із водою, запускаючи процес бродіння. Далі йде дистиляція, під час якої спирт-сирець відокремлюють від спирту-ректифікату. Перегонка
+                        проходить у мідних перегінних кубах або вертикальних колонах. Міцність на виході становить 95–97%.
+                    </li>
+                    <li>Змішування. Цей етап також називають сортуванням. Спирт розбавляють попередньо підготовленою водою. За необхідності проводять ароматизацію.</li>
+                    <li>Фільтрація. Класичний дистилят проходить 9-ступеневе очищення. Додаткову фільтрацію за допомогою срібла і платини проводять при виготовленні версій De Luxe і The Inked Collection.</li>
+                    <li>Відстоювання. «Немирів» — горілка, яка настоюється кілька діб для стабілізації. Продукцію з колекції Rested in Barrel витримують у дубових бочках.</li>
+                </ol>
+                <p>Після цього напій готовий до розливу. Процедуру здійснюють на автоматизованих лініях.</p>
+                <h2>Різновиди горілки Nemiroff</h2>
+                <p>Портфоліо компанії об'єднує понад 60 продуктів у різних цінових сегментах. Лідери продажів:</p>
+                <ol>
+                    <li>Originals. Перший авторський рецепт, відтворений командою Nemiroff. Смакову композицію характеризує ненав'язливий аромат кмину. На фініші розвивається шлейф медових стільників.</li>
+                    <li>Lex. Варіант із м'яким смаком, у якому чітко відчуваються пшеничні акценти. Аромат — нейтральний. Унікальний дизайн пляшок належить французу Філіпу Се. На цю горілку «Немирів» — найвища ціна.</li>
+                    <li>
+                        De Luxe. Лінійка, яка проходить додаткову фільтрацію. Родзинка — настій липових квіток, що входить до складу. У смаку відчуваються нотки перцевої м'яти, приправленої освіжальною лимонною цедрою. Якщо шукаєте цікавіший варіант —
+                        можна купити горілку «Немірофф», витриману в дубових бочках. Преміальний продукт огортає солодкими нотками, змішаними з деревною терпкістю.
+                    </li>
+                </ol>
+                <p>
+                    Ароматизовану горілку Nemiroff компанія позиціонує як настоянку. Міцність кожного продукту становить 40%. Асортимент об'єднує позиції Wild Cranberry, Burning Pear і Bold Orange. Перший варіант містить концентрований журавлинний
+                    морс, що надає кислинки. Друга версія — найпекучіша. Солодку грушу доповнили трав'яною настоянкою. Останній продукт — терпкий і пряний. Це заслуга екстракту перцю чилі.
+                </p>
+                <h3>Скільки коштує горілка «Немірофф»</h3>
+                <p>
+                    Цінник залежить від лінійки, використаної сировини, застосовуваних технологій. Доступний за вартістю варіант — Originals. За 0,7 літра достатньо віддати близько 150 грн. На горілку «Немірофф» із лімітованих колекцій ціна
+                    підвищується. Приклад — Moon Edition.
+                </p>
+                <h2>Поради щодо вибору горілки Nemiroff</h2>
+                <p>З огляду на величезний асортимент, можна спиратися на основні критерії:</p>
+                <ol>
+                    <li>Смак. Традиційний дистилят підходить для насолоди в чистому вигляді. Ароматизована продукція вигідно доповнить рецепт коктейлів.</li>
+                    <li>Міцність. Дистилят розбавляють до стандартного вмісту алкоголю — 40%.</li>
+                    <li>
+                        Обсяг. Міцний спиртний напій випускають у різних ємностях. Це залежить від конкретної лінійки. Обсяг безпосередньо впливає на те, скільки коштує горілка «Немирів». Найменший формат — 100 мл. Підходить для міксології, а також для
+                        знайомства зі стилем. Стандартний варіант — 0,5 або 0,7 л. Хороший вибір для застілля або замовлення про запас.
+                    </li>
+                    <li>Тип упаковки. Якщо шукаєте варіант на подарунок, придивіться до подарункових комплектів. У набір входять чарки з фірмовим логотипом.</li>
+                </ol>
+                <h2>Чому вигідно купити горілку «Немирів» в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У списку представлена оригінальна продукція. На неї регулярно діють акції, що робить алкогольний шопінг максимально вигідним. Маркет алкогольних штук MAUDAU також пропонує знижку на гуртове замовлення — купити ящик горілки «Немирів»
+                    можна за зниженою вартістю, що важливо під час планування вечірки або іншого заходу.
+                </p>
+                <p>
+                    Товар доставить кур'єр по Києву. За бажання його можна забрати самостійно у фізичних магазинах. Також передбачена доставка поштовими службами — «Новою Поштою» або «Укрпоштою». При досягненні певної суми замовлення — вона
+                    безкоштовна.
+                </p>
+                <p>Розрахуватися можна після отримання та огляду. Найшвидше — оплатити покупку на сайті.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Горілка тонік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Горілка тонік</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Лимон</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Базовий лонг з горілкою та тоніком. Освіжальний, із гіркуватістю та кислинкою. Для приготування краще купувати класичний світлий тонік без барвників.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Горілка тонік</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки</li><li>15 мл лимонного соку</li><li>135 мл тоніку</li><li>40 г лимона</li><li>80 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку-хайбол кубиками льоду до верхнього краю.</li><li>Налийте 15 мл лимонного соку та додайте 50 мл горілки.</li><li>Долийте догори 135 мл тоніку та перемішайте інгредієнти коктейльною ложкою.</li><li>Прикрасьте коктейль скибочкою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Горілка мартіні" src="https://photo.maudau.com.ua/Landing/cocktails/incat/vodka-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Горілка мартіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Оливки</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Той самий найулюбленіший коктейль Джеймса Бонда. Аромат полину із сухого вермуту чудово поєднується з високим градусом гірко-солодкої горілки. Обов'язково додайте оливку!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Горілка мартіні</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл горілки</li><li>15 мл сухого вермуту</li><li>9 г оливок</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в ємність для змішування 15 мл сухого вермуту та 75 мл горілки.</li><li>Насипте 300 г льоду в кубиках і обережно розмішайте високою барною ложкою.</li><li>Перелийте через сито-стрейнер у заздалегідь охолоджений келих.</li><li>Прикрасьте коктейль трьома оливками на шпажці. Бондіана починається!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зелена фея" src="https://photo.maudau.com.ua/Landing/cocktails/incat/green_fairy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зелена фея</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Білий ром</a></li><li>Лікер блю кюрасао Fruko Schulz</li><li>Динний лікер Fruko Schulz</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/enerhetychni-napoi">Енергетик</a></li><li>Коктейльна вишня червона</li><li>Лимонна цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Знаменитий коктейль Зелена Фея - це шалений мікс алкогольних напоїв та енергетика. Тому він такий популярний на дискотеках і вечірках.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Зелена фея</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл срібної текілі</li><li>15 мл абсенту</li><li>15 мл горілки</li><li>15 мл білого рому</li><li>10 мл лікеру блю кюрасао Fruko Schulz</li><li>30 мл динного лікеру Fruko Schulz</li><li>30 мл лимонного соку</li><li>100 мл енергетику</li><li>10 г червоної коктейльної вишні</li><li>Лимонна цедра</li><li>150 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-слінг догори кубиками льоду.</li><li>Спочатку налийте 30 мл лимонного соку, 10 мл лікеру блю кюрасао Fruko Schulz і 30 мл лікеру Fruko Schulz.</li><li>Додайте в рівних пропорціях по 15 мл срібної текіли, абсенту, горілки та білого рому.</li><li>Зверху долийте 100 мл енергетику та розмішайте барною ложкою.</li><li>Прикрасьте келих лимонною цедрою та двома коктейльними вишнями.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лонг айленд ай сті" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Long-Island-Ice-Tea.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лонг айленд ай сті</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Білий ром</a></li><li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li>Трипл сек Fruko Schulz</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лимон</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Складний міцний лонг, карколомний у повному сенсі цього слова. Попри назву, коктейль не містить холодного чаю, а названий так за свій насичений бурштиновий відтінок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лонг айленд ай сті</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл горілки Царська</li><li>30 мл білого рому</li><li>30 мл срібної текілі</li><li>30 мл лондонського сухого джину</li><li>30 мл трипл сек Fruko Schulz</li><li>30 мл цукрового сиропу</li><li>30 мл лимонного соку</li><li>100 мл коли</li><li>40 г лимона</li><li>300 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в хайбол кубики льоду до країв.</li><li>Налийте в склянку по 30 мл лимонного соку, цукрового сиропу та лікеру трипл сек Fruko Schulz.</li><li>Додайте 30 мл горілки Царська, і по стільки ж білого рому, срібної текіли та лондонського сухого джину.</li><li>Долийте доверху 100 мл коли й акуратно розмішайте коктейльною ложкою</li><li>Прикрасьте хайбол скибочкою лимона. Коктейль готовий!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Блакитна лагуна" src="https://photo.maudau.com.ua/Landing/cocktails/incat/blue-lagoon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Блакитна лагуна</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li>Лікер блю кюрасао Fruko Schulz</li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Ананас</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Популярний освіжальний коктейль небесно-блакитного кольору із тропічною ноткою. Легкий і кислуватий, тому ідеально підходить для літніх вечірок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Блакитна лагуна</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки</li><li>20 мл лікеру блю кюрасао Fruko Schulz</li><li>150 мл Спрайту</li><li>30 г ананасу</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-харікейн догори льодом у кубиках.</li><li>Налийте 20 мл лікеру блю кюрасао Fruko Schulz і 50 мл горілки.</li><li>Обережно долийте догори 150 мл Спрайту — напій може спінитися.</li><li>Акуратно розмішайте напій коктейльною ложкою.</li><li>Прикрасьте келих скибочкою ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">171 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">8.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
