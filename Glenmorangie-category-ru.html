@@ -1,0 +1,806 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейли</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Glenmorangie — винокурня, расположенная в городе Тейн, что в графстве Россшир в Шотландии. В ее стенах производят знаменитый односолодовый шотландский скотч. Логотип повторяет орнамент, найденный на историческом камне в Кадболле.
+                    Название происходит от кельтского словосочетания, что в переводе означает «долина глубокого спокойствия».
+                </p>
+                <p>
+                    Завод принадлежит корпорации The Glenmorangie Company LTD, которая входит в состав культового холдинга LVMH. Винокурня может похвастаться самыми высокими медными перегонными кубами в Шотландии. Она также является одной из самых
+                    маленьких. Завод представляет Хайленд — один из пяти ключевых регионов, специализирующихся на выпуске виски в стране.
+                </p>
+                <h2>История виски Glenmorangie</h2>
+                <p>Производство алкоголя в графстве запустили в Средневековье. Самый ранний документ, который подтверждает перегонку на ферме Моранжи, датирован 1703 годом.</p>
+                <p>
+                    В 1730-х над подземным источником Тарлоги возвели пивоварню, которую в 1843 году выкупил Уильям Мэтисон. Постепенно пивной завод превратился в винокурню, оснащенную двухсекундными перегонными кубами. Именно Уильям Мэтисон присвоил
+                    заводу современное название.
+                </p>
+                <p>
+                    В 1918 году винокурню Glenmorangie выкупила компания Macdonald and Muir. Семья МакДональда сохраняла контроль над компанией почти 90 лет. Завод сильно пострадал в период между 1920 и 1950. Количество медных перегонных кубов удвоили
+                    в 1977 году. Сейчас их насчитывается 12.
+                </p>
+                <p>Виски Glenmorangie Original остается самым продаваемым односолодовым скотчем на рынке Великобритании с 1983 года. Ежегодный объем производства составляет 10 миллионов бутылок.</p>
+                <h2>Особенности производства виски «Гленморанж»</h2>
+                <p>
+                    Воду поставляют из подземных источников Тарлоги, расположенных на склонах по соседству с винокурней. Там она естественным образом фильтруется, проходя через известняк и песок. Ячмень для выпуска односолодового виски «Гленморанж»
+                    закупают у компании Highland Grain LTD, которая представляет собой кооператив местных фермеров.
+                </p>
+                <p>
+                    За дистилляцию отвечает команда из 24 человек. Раньше их было 16, поэтому группу называли «Шестнадцать мужчин из Тейна». Они работали круглый год, за исключением Рождества и периодов, когда медные кубы отправляли на техническое
+                    обслуживание.
+                </p>
+                <p>
+                    Важный этап при изготовлении виски «Гленморанж» — выдержка. Емкости изготавливают из белого дуба, который произрастает в лесах Озарк, что в штате Миссури (США). Новые бочки высыхают на открытом воздухе около 24 месяцев, а потом их
+                    арендуют Jack Daniel's и Heaven Hill, которые выдерживают в них бурбон. Только после этого емкости возвращаются на винокурню, где их наполняют молодыми спиртами. Виски «Гленморанджи Ориджинал» выдерживают только в бочках из-под
+                    бурбона. Серия Extra Matured также проводит время в емкостях, где ранее созревало крепленое вино.
+                </p>
+                <p>Розлив продукции осуществляют в стенах отдельного предприятия. Завод расположен в Ливингстоне, что недалеко от Эдинбурга.</p>
+                <h2>Разновидности виски Glenmorangie</h2>
+                <p>Классическая линейка представлена позициями:</p>
+                <ol>
+                    <li>
+                        Original. Виски «Гленморанж Оригинал» производят по классическому рецепту. Процент алкоголя стандартный — 40. Вкусовая композиция обволакивает аккордами свежих фруктов, включая апельсин. Завершает опыт выразительный медовый
+                        шлейф.
+                    </li>
+                    <li>
+                        Lasanta. Дистиллят 12-летней выдержки. Крепость составляет 43%. Вкус — сливочный, с выразительными тонами ванили, поджаренных тостов, изюма. Аромат окутывает нотами сухофруктов, смешанных со шлейфом мускатного ореха. Финальная
+                        выдержка проходит в емкостях из-под хереса.
+                    </li>
+                    <li>
+                        Quinta Ruban. Виски Glenmorangie насыщенного золотисто-коричневого цвета с красными бликами. Во вкусе ощущаются нотки красных ягод, которые перетекают в послевкусие с нюансами темного шоколада и сладких апельсинов. В аромате
+                        присутствует легкий табачный аккорд.
+                    </li>
+                    <li>
+                        Nectar d'Or. Для разбавления не используют воду, а градус снижают естественным образом посредством старения. Процент алкоголя — 46. Купить этот вариант виски Glenmorangie стоит тем, кто ищет насыщенную шоколадно-карамельную
+                        палитру. Сопровождает опыт ненавязчивый древесный аромат.
+                    </li>
+                </ol>
+                <p>
+                    Престижная линейка включает позиции Single Malt 18 Years Old и Signet. Первый вариант демонстрирует изысканный мармеладный вкус, дополненный оттенкам меда и инжира. В носу виски «Гленморанж» раскрывается сложным букетом с нотками
+                    лимона, груши, кумквата и айвы. Второй продукт — коллекционный вариант. За темно-янтарным цветом скрывается густая кремовая консистенция, в которую вплетаются нотки кофе, шоколада и пряностей. Аромат — глубокий, с цветочными
+                    мотивами.
+                </p>
+                <p>Если цель — купить Glenmorangie с легким и освежающим фруктовым букетом, остановитесь на Elementa 1. Несмотря на внушительную выдержку, напиток порадует мягким вкусом.</p>
+                <p>Периодически компания выпускает линейку виски «Гленморанж», разлитого из отдельных бочонков. Также на рынке можно найти варианты с солидной выдержкой и специальные выпуски.</p>
+                <h3>Сколько стоит виски Glenmorangie</h3>
+                <p>
+                    Цена зависит от выбранного объема, срока выдержки и конкретной серии. Поскольку компания производит изысканный скотч Single Malt, ценник соответствует статусу. Самая доступная по стоимости — базовая линейка. Дороже всего обойдется
+                    виски Glenmorangie Signet — за бутылку объемом 0,7 литра придется отдать около 11 500 грн.
+                </p>
+                <h2>Как правильно выбрать виски Glenmorangie</h2>
+                <p>В каталоге интернет-магазина MAUDAU представлен основной ассортимент производителя. Чтобы быстрее определиться, учитывайте:</p>
+                <ol>
+                    <li>Крепость. Чем выше процент алкоголя, тем суше ощущения во рту. Для знакомства с торговой маркой выбирайте продукцию со стандартной крепостью, только потом переходите к более насыщенным вариантам.</li>
+                    <li>
+                        Выдержку. Продолжительный срок созревания не только способствует формированию сбалансированного вкуса, но и усиливает древесный аромат. Виски «Гленморанджи Ориджинал» также отличается дымным шлейфом, который становится
+                        выразительнее со временем.
+                    </li>
+                    <li>Емкость. Стандартный объем — 0,7 л. Хороший вариант для компании из 3–5 человек. Вариант поменьше — 0,5 л. От выбранного объема виски Glenmorangie зависит цена.</li>
+                    <li>Тип упаковки. Продукцию поставляют в стекле. Часто ее дополняют картонными коробками, что пригодится при подготовке подарка.</li>
+                </ol>
+                <h2>Почему выгодно купить виски Glenmorangie в интернет-магазине MAUDAU</h2>
+                <p>
+                    Чтобы не сомневаться в подлинности, заказывайте продукцию в маркете алкогольных штук MAUDAU. На страницах онлайн-каталога — 100% оригинал, подтвержденный сертификатом. Прямые поставки также позволяют покупателям первыми получать
+                    доступ к новинкам и эксклюзивным выпускам.
+                </p>
+                <p>
+                    Поскольку цена на виски «Гленморанджи» достаточно высокая, оптимальнее всего покупать крепкий спиртной напиток по акции. На некоторые позиции распространяется оптовая скидка, которая активируется при заказе от трех штук. Чтобы
+                    сэкономить, соберите заказ на определенную сумму и получите бесплатную доставку.
+                </p>
+                <p>Товар доставляет курьер по Киеву. Также можно воспользоваться услугами почтовых служб или забрать виски Glenmorangie в одной из физических точек продаж после подтверждения наличия.</p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Виски кола" src="https://photo.maudau.com.ua/Landing/cocktails/incat/whiskey-cola.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Виски кола</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski">Виски</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простой и приятный коктейль, с узнаваемым сладким вкусом газировки и нотками виски в послевкусии. Напиток легко приготовить в домашних условиях.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Виски кола</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл виски Jack Daniel’s</li><li>150 мл колы</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните высокий стакан типа хайбол крупными кубиками льда доверху.</li><li>Налейте 50 мл Jack Daniel’s (или аналогичного американского виски).</li><li>Долейте колу доверху и аккуратно размешайте коктейльной ложечкой. Кола должна быть только что открытой и охлажденной.</li><li>По желанию добавьте в бокал лимонный слайс для цитрусового аромата.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кровь и песок" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Blood-and-Sand.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кровь и песок</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski">Виски</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=vyshnevyi">Вишневый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Апельсиновая цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вдохновением для коктейля «Кровь и песок» послужило одноименное немое кино. Сочетание виски, красного вермута и апельсинового сока символизирует песок арены после корриды. Напиток имеет сладкий фруктовый привкус с нотами виски.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кровь и песок</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл шотландского виски</li><li>25 мл красного вермута</li><li>25 мл вишневого ликера</li><li>25 мл апельсинового сока</li><li>цедра апельсина</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в шейкер 25 мл апельсинового сока и столько же вишневого ликера.</li><li>Добавьте 25 мл красного вермута и влейте 25 мл виски.</li><li>Заполните шейкер кубиками льда и взбейте все ингредиенты.</li><li>Налейте через стрейнер в охлажденный бокал типа «шампанское блюдце».</li><li>Украсьте по желанию апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шотландский флип" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Scottish_flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шотландский флип</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski">Виски</a></li><li><a href="https://maudau.com.ua/ru/product/portvein-porto-cruz-ruby-do-19-075-l-837686">Портвейн руби</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Желток перепелиного яйца</li><li>Корень имбиря</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех молотый</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Флип — это пряный сауэр на базе виски и портвейна руби. Добавление взбитого яйца оставляет на поверхности коктейля легкую пенку. Аромат мускатного ореха придает пикантные нотки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Шотландский флип</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл виски</li><li>40 мл портвейна руби</li><li>10 мл сахарного сиропа</li><li>5 желтков перепелиного яйца</li><li>5 г корня имбиря</li><li>1 г мускатных орехов молотых</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Уложите в шейкер имбирь и подавите пестиком-мадлером.</li><li>Добавьте 5 желтков перепелиного яйца и взбейте.</li><li>Налейте 10 мл сахарного сиропа и 40 мл портвейна руби.</li><li>Влейте 40 мл виски и наполните шейкер льдом.</li><li>Взбейте напиток и перелейте через ситечко в бокал.</li><li>Посыпьте коктейль молотым мускатным орехом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пенициллин" src="https://photo.maudau.com.ua/Landing/cocktails/incat/penicillin.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пенициллин</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=hankey-bannister">Виски</a></li><li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=islay">Односолодовый виски с острова Айла</a></li><li>Домашний медово-имбирный сироп</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Апельсиновая цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пенициллин — оригинальный коктейль на основе односолодового виски. Это пряный имбирный напиток с дымными нотками скотча и привкусом медового сиропа.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Пенициллин</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл шотландского виски</li><li>7 мл односолодового виски с острова Айла</li><li>25 мл домашнего медово-имбирного сиропа</li><li>25 мл лимонного сока</li><li>апельсиновая цедра</li><li>кубики льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Приготовьте медовый сироп: смешайте воду и мед 1:3, доведите до кипения и проварите 5 минут, снимая пену. Перед добавлением в коктейль охладите до комнатной температуры. Добавьте 10 мл сока из корня имбиря.</li><li>Налейте в шейкер 25 мл лимонного сока и 25 мл медово-имбирного сиропа.</li><li>Добавьте 60 мл шотландского виски.</li><li>Наполните шейкер кубиками льда и взбейте все ингредиенты.</li><li>Перелейте напиток через сито-стрейнер в охлажденный бокал типа рокс.</li><li>Долейте 7 мл односолодового виски с острова Айла. Не перемешивайте.</li><li>Украсьте бокал апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Крестный отец" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Godfather.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Крестный отец</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=hankey-bannister">Виски</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3">Ликер Амаретто</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль на базе виски с добавлением амаретто. Названием обязан легендарному произведению «Крестный отец». Имеет миндальный аромат и приятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Крестный отец</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл шотландского виски</li><li>25 мл ликера Амаретто</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните рокс (или любой бокал олд-фешн) кубиками льда до самого верха.</li><li>Налейте в бокал 25 мл ликера Амаретто и 50 мл шотландского виски.</li><li>Перемешайте барной ложкой. Желательно не дробить лед — это снижает крепость напитка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">240 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
