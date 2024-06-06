@@ -1,0 +1,828 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Індійський пейл-ель (IPA) — один з основних сортів пива, який входить до категорії пейл-ель. Важлива риса — високий вміст хмелю. Відсоток алкоголю коливається в межах 4–20. Індійське пиво виробляють як у промислових масштабах, так і
+                    на крафтових пивоварнях.
+                </p>
+                <p>Спочатку пінний напій повсюдно виготовляли в Англії. Пік популярності припав на 1815 рік. Незабаром виробники налагодили експорт пива ІПА в Індію, яку в той час контролювала Британська Ост-Індська компанія. Звідси і назва.</p>
+                <h2>Короткий екскурс в історію пива IPA</h2>
+                <p>
+                    Походження пінного напою пов'язують із періодом Британської імперії. Британці, які населяли Індію, відокремлену від рідної землі принаймні шістьма місяцями плавання, мріяли про прохолодне пиво. Темний портер, який вони звикли пити,
+                    погано переносив морське транспортування. Рішення запропонував лондонський пивовар Джордж Ходжсон, запустивши в продаж продукт, зварений зі свіжозібраного хмелю. Його витримували роками, тому він продовжував удосконалюватися під час
+                    подорожей. Так виник IPA — міцне світле пиво з освіжальними акордами, що доповнює клімат Індії.
+                </p>
+                <p>
+                    Коли наприкінці XIX століття винайшли метод комерційного охолодження, пінний напій став менш популярним. Через 200 років виробництво пива IPA відновили в США, використовуючи сорт хмелю Cascade з характерним присмаком цитрусових.
+                    Ажіотаж швидко поширився по всьому Атлантичному океану, а також дістався до рідної Великобританії.
+                </p>
+                <h2>Як виробляють сорт пива ІПА</h2>
+                <p>Процес пивоваріння стандартизований. Спершу зерно солодять, подрібнюють і затирають. У результаті вивільняється крохмаль, який перетворюється на цукор. Під впливом дріжджів верхового бродіння він розщеплюється на спирт.</p>
+                <p>
+                    Спочатку хміль варять разом із солодом. Протягом останніх 15 хвилин варіння пива ІПА відбувається «хмелевий вибух» — додавання високої концентрації хмелю до зернового сусла. Так формується інтенсивний хмільний смак і аромат, але без
+                    різкої гіркоти. Далі напій охолоджують і аерують. Наступний етап — ферментація. Готову продукцію витримують і розливають по пляшках. Нарешті, пиво IPA надходить у продаж.
+                </p>
+                <p>
+                    Головна складова — хміль. Компонент підбирають залежно від стилю і смакового профілю. Наприклад, класичний гіркий сорт пива IPA в Англії готують із сортів Maris Otter, Fuggle, East Kent Golding. Продукція зі США заснована на
+                    яскравих цитрусових сортах, таких як Citra, Amarillo, Chinook. Кожен із представлених варіантів — гібрид на основі стандартного хмелю Cascade.
+                </p>
+                <h3>Смак і аромат ІПА</h3>
+                <p>
+                    Пінний напій готують за допомогою сухого охміління. Другу порцію хмелю впроваджують після закінчення зброджування. Саме тому пиво IPA — сухе, гірке і свіже. У носі відчувається інтенсивний аромат, який варіюється від соснової смоли
+                    до трав'янистої землистості. Поступово розвивається квітково-фруктовий шлейф, який змінюється насиченими мінеральними нотками.
+                </p>
+                <h2>Різновиди пива IPA</h2>
+                <p>Важливий критерій при виборі — країна походження. Склад і пропорції основних компонентів багато разів змінювали, що призвело до формування різних стилів пива ІПА. Виділяють:</p>
+                <ol>
+                    <li>
+                        American IPA. Продукт світло-золотистого або світло-бурштинового кольору. Напій явно охмілений і гіркий. Середній відсоток алкоголю становить 4–8. Післясмак — сухуватий. Солодовий смак не відчувається через підвищену гіркоту.
+                        Культові торгові марки: Stone, Firestone Walker, Saugatuck Brewing Co.
+                    </li>
+                    <li>
+                        English IPA. Крафтову продукцію, як і раніше, охміляють, проте дріжджі перетворюють напій, надаючи квітково-землистого відтінку. Також відчуваються хмелеві нотки з вираженим фруктовим шлейфом. Пиво IPA з Англії варто купити,
+                        якщо подобається округлий і м'який смак із помірною солодкістю. Бренди: BrewDog, Thornbridge, Samuel Smith.
+                    </li>
+                </ol>
+                <p>Кожен із них відносять до традиційних стилів. Також виділяють кілька регіональних:</p>
+                <ol>
+                    <li>West Coast IPA. Варіант, який виник у Південній Каліфорнії в 1950-х роках. В основі — APA. Смак — гіркий, з ніжними карамельними нотками. Фініш — хвойний і смолистий.</li>
+                    <li>East Coast IPA. Варіант, у якому акцент зміщений на солод, а не на хміль. Показники гіркоти знижені.</li>
+                    <li>Vermont IPA. Відносять до категорії New England. Смак — багатий, з яскраво вираженими відтінками грейпфрута, мандарина, ананаса, манго. Родзинка — мутний осад. Кажуть, що в рецептуру додають борошно.</li>
+                    <li>Belgian IPA. Напій нагадує темний і солодкий місцевий Triple з насиченим солодовим шлейфом, але з урахуванням особливостей англійського стилю. Виробники: Cornelissen, Goose Island, Mikkeller, Paranoia.</li>
+                    <li>Black IPA. Альтернативні назви — IBA і Cascadian Dark Ales. У складі — темний солод, який надає шоколадний нюанс.</li>
+                </ol>
+                <p>
+                    Також на ринку представлено кілька альтернативних стилів. Один із них визначають міцністю пінного напою. Session IPA — варіант зі зниженим градусом (3–5%). Назва походить від «сесій», у рамках яких заводським працівникам у Британії
+                    дозволяли пити пиво. Сучасним пінним напоєм можна насолоджуватися протягом 3–5 годин без страху прокинутися з головним болем. Інші варіанти ІПА:
+                </p>
+                <ol>
+                    <li>
+                        White. Версія бельгійського Witbier, приготованого за допомогою сухого охміління. Каламутний напій нерідко розкривається приємними нотками апельсинової цедри і коріандру, що робить його хорошим варіантом для літнього відпочинку.
+                    </li>
+                    <li>Milkshake. Подвійний IPA з цікавим доповненням — лактозою. Молочний цукор надає густої та кремової текстури.</li>
+                    <li>Citrus. Напій виник 2014 року, коли в стінах пивоварні Ballast Point Brewing &amp; Spirits використали ефірну олію. Відтоді грейпфрут часто додають у рецептуру ІПА.</li>
+                    <li>Fresh Hop. Індійське пиво, зварене на основі зеленого хмелю. Його не сушать, а одразу додають до зернового сусла. Така техніка зберігає природну смолисту палітру.</li>
+                    <li>Brut. Рецепт належить Кіму Стурдаванту. У процесі використовують амілоглюкозидазу — фермент, який розщеплює залишки цукру і робить пиво ІПА максимально сухим.</li>
+                    <li>Cold. Технічно, це не справжній IPA. Його варять на табірних дріжджах. Однак він включає хміль традиційних сортів.</li>
+                </ol>
+                <h3>Що означає подвійний ІПА</h3>
+                <p>
+                    Double IPA вказує на підвищений вміст алкоголю. Це один із класичних стилів. Міцність становить 8–10%. Домінантним смаком є хміль, який переплітається з нотками фруктів, хвої, квітів, землі. Нерідко пінний напій маркують як
+                    Imperial.
+                </p>
+                <h2>Чим ІПА відрізняється від звичайного пива</h2>
+                <p>
+                    Якщо підсумувати, то головна визначальна характеристика — виразний хмелевий смак. Гірка речовина, яка вивільняється в процесі варіння, міститься у квітах Humulus Lupulus. При виготовленні звичайного пива хміль використовують як
+                    консервант, тоді як в IPA він становить основу, формуючи смако-ароматичний букет.
+                </p>
+                <p>Пиво IPA, купити яке можна в маркеті алкогольних штук MAUDAU, містить підвищену концентрацію алкоголю. Міцність стандартних позицій стартує від 4-5%, а індійського пейл-ель — від 6-7%.</p>
+                <p>Категорія також пропонує внутрішнє розмаїття, об'єднуючи близько 10 підвидів ІПА. Колір коливається від золотистого до бурштинового, але з появою альтернативних стилів також можна знайти червоний або білий варіанти.</p>
+                <p>Високий вміст хмелю призводить до підвищення калорійності. Натомість у складі індійського пива переважають антиоксиданти.</p>
+                <h3>Відмінності між IPA та APA</h3>
+                <p>
+                    Насамперед важливо розібратися з абревіатурами. Якщо IPA — індійський пейл-ель, то APA — американський світлий ель. Перший варіант відносять до класичних, а другий — до його інтерпретацій. В основі поділу лежить кілька сімей, які
+                    відправляли покоління нащадків у віддалені місця, включно з Індією, Новою Зеландією і США.
+                </p>
+                <p>Американський світлий ель — пінний напій, який викликав фурор на іншому боці океану. Це пиво верхового бродіння зі світло-золотистим кольором.</p>
+                <p>
+                    Головна відмінність між IPA і APA криється в хмелевих сортах. Перший напій готують із насичених англійських сортів, підвищуючи показники IBU. При виробництві APA використовують легкий американський хміль з виразними цитрусовими
+                    нюансами. Це призводить до легшого профілю.
+                </p>
+                <h2>Що подати до пива ІПА</h2>
+                <p>
+                    Одна з причин, через яку пінний напій високо цінували в Індії, — поєднання з місцевою кухнею. Багатство топленого масла надає самсі та смаженим овочам приголомшливого смаку, врівноважуючи показники гіркоти і вміст алкоголю в IPA. Те
+                    ж саме із солодкими чатні, в яких манго, маракуя й ананас створюють гармонію з ароматами хмелю.
+                </p>
+                <p>
+                    На пиво ІПА ціна залежить від багатьох факторів, але найчастіше вона вища за середню. Щоб не зіпсувати враження, не подавайте пінний напій із жирною морською рибою. Така комбінація призводить до розвитку неприємного «металевого»
+                    присмаку.
+                </p>
+                <p>Вибір — за птицею та червоним м'ясом. Також напій можна піднести з пастою, піцою, бургерами.</p>
+                <h2>Чому вигідно купити пиво IPA в інтернет-магазині MAUDAU</h2>
+                <p>Маркет алкогольних штук MAUDAU пропонує безліч переваг для покупця:</p>
+                <ul>
+                    <li>простий механізм оформлення замовлення;</li>
+                    <li>швидкий пошук за каталогом;</li>
+                    <li>систему знижок і акцій;</li>
+                    <li>доставку кур'єром або компаніями-перевізниками;</li>
+                    <li>оплату карткою і готівкою.</li>
+                </ul>
+                <p>
+                    Головна причина, чому IPA вигідно купити в інтернет-магазині MAUDAU, — 100% оригінальний товар. Продукцію постачають із різних країн, включно з Великобританією, Німеччиною, Ірландією, Нідерландами. Власний налагоджений імпорт
+                    відкриває доступ до локальних виробників і ексклюзивних новинок.
+                </p>
+                <p>
+                    Пиво можна замовити в різних обсягах — від нього на IPA залежить ціна. Поширений варіант — у склі по 0,33 або 0,5 л. Бляшанки ефективно захищають вміст від контакту з киснем. Вони підходять для подорожей, пікніків, фестивалів. В
+                    онлайн-каталозі MAUDAU також доступна продукція у форматі «bag-in-box». Якщо шукаєте подарунок, зверніть увагу на індійське пиво в подарункових коробках.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Cold In The Shadows" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cold-in-the-Shadows.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Cold In The Shadows</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Кампарі</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=malyna-9">Малиновий сироп</a></li><li><a href="https://maudau.com.ua/category/pyvo/typ_pyva_2=ipa-2">Пиво IPA</a></li><li>Лайм</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пікантний коктейль із подвоєною гіркуватістю кампарі та пива IPA. Мед і сироп підсолоджують і згладжують композицію, а лайм додає цитрусової кислинки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Cold In The Shadows</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл Кампарі</li><li>50 мл соку лайма</li><li>25 мл медового сиропу</li><li>25 мл малинового сиропу</li><li>100 мл пива IPA</li><li>Кільце лайма</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 50 мл Кампарі та 50 мл соку лайма.</li><li>Додайте по 25 мл медового та малинового сиропів.</li><li>Збийте компоненти в шейкері три рази (whip shake).</li><li>Долийте 100 мл пива IPA й акуратно перемішайте барною ложкою.</li><li>Перелийте коктейль в охолоджений келих-хайбол.</li><li>Прикрасьте колечком лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="IPA Піна Колада" src="https://photo.maudau.com.ua/Landing/cocktails/incat/IPA-Pina-Colada.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">IPA Піна Колада</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/typ_pyva_2=ipa-2">Пиво IPA</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li><a href="https://maudau.com.ua/category/vershky/osnova_16=kokos-16">Кокосові вершки</a></li><li><a href="https://maudau.com.ua/category/rom">Ром</a></li><li>Скибочка ананаса</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нестандартний твіст на класичну Піну Коладу на основі пива IPA. Сподобається любителям оригінальних поєднань і тропічної екзотики.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати IPA Піна Колада</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл пива IPA</li><li>50 мл ананасового соку</li><li>50 мл кокосових вершків</li><li>30 мл рому</li><li>Скибочка ананаса для прикращання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 50 мл ананасового соку і 30 мл рому.</li><li>Влийте 50 мл кокосових вершків та інтенсивно збийте.</li><li>Додайте 100 мл пива IPA і розмішайте коктейльною ложкою.</li><li>Перелийте в охолоджений келих-гоблет або харікейн.</li><li>Декоруйте ананасовим слайсом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарячий лікар Пеппер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Dr-Pepper.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий лікар Пеппер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=overpruf-overproof-2">Надміцний ром</a></li><li>Лікер амаретто Fruko Schulz</li><li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Палаючий оригінальний коктейль для гарячих вечірок. До складу обов'язково входить надміцний ром — для незвичайної подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий лікар Пеппер</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл надміцного рому</li><li>25 мл лікеру амаретто Fruko Schulz</li><li>200 мл світлого пива</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть на 2/3 склянки-хайбол 200 мл світлого пива.</li><li>Налийте в стопку 25 мл лікеру амаретто Fruko Schulz.</li><li>Зверху обережно долийте 25 мл надміцного рому. Використовуйте коктейльну ложку.</li><li>Підпаліть ром і опустіть стопку в хайбол із пивом.</li><li>Швидко випийте «палаючий» коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Літній бриз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Summer-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Літній бриз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=roza">Сироп троянди</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=mandaryn-4">Мандариновий сироп</a></li><li>Лайм</li><li>Апельсин</li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Літній бриз — пікантний квітковий коктейль із нетиповим поєднанням пива та сиропу троянди. Має яскраво виражені цитрусові нотки та післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Літній бриз</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>10 мл сиропу троянди</li><li>20 мл мандаринового сиропу</li><li>40 г лайма</li><li>115 г апельсина</li><li>5 г фізалісу</li><li>200 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-харрікейн нарізані на чверті лайм і апельсин. Подавіть барним товкачем.</li><li>Наповніть харрікейн подрібненим льодом до верхнього краю.</li><li>Налийте 10 мл сиропу троянди та 20 мл мандаринового сиропу.</li><li>Долийте 100 мл світлого пива й акуратно розмішайте коктейльною ложечкою.</li><li>За бажанням досипте трохи подрібненого льоду.</li><li>Прикрасьте напій фізалісом і скибочками цитрусових.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зимова маракуйя" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Frozen-Physalis.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зимова маракуйя</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=marakuia-3">Сироп маракуї</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Солодкий тропічний шорт-дрінк із незвичайним дуетом світлого пива і сиропу маракуї. Простий і швидкий у приготуванні, красивий у подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Зимова маракуйя</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл світлого пива</li><li>45 мл сиропу маракуї</li><li>10 мл лимонного соку</li><li>5 г фізалісу</li><li>60 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в блендер 10 мл лимонного соку і 45 мл сиропу маракуї.</li><li>Додайте 90 мл світлого пива та насипте совок подрібненого льоду.</li><li>Гарненько збийте всі складові коктейлю.</li><li>Перелийте напій в охолоджене шампанське блюдце.</li><li>Прикрасьте келих фізалісом і подавайте з чайною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">43 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.46 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.55 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">92 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
