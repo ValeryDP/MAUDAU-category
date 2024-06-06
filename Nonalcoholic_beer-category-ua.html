@@ -1,0 +1,809 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Безалкогольне пиво — продукт, який на зовнішній вигляд, смак і аромат відповідає стандартному пінному напою, але містить практично нульову концентрацію алкоголю. Важливо: спирт видаляють не повністю, а знижують до мінімально
+                    можливого рівня — 0,05%.
+                </p>
+                <h2>У чому сенс пити пиво-нульовку</h2>
+                <p>Такий продукт містить менше калорій, порівняно зі стандартним пінним напоєм. Це сприяє підтримці здорової ваги. Слабоалкогольне пиво також знижує інтоксикацію організму при надмірному вживанні. Продукт стане в пригоді:</p>
+                <ul>
+                    <li>непитущим людям;</li>
+                    <li>спортсменам;</li>
+                    <li>матерям, які годують груддю.</li>
+                </ul>
+                <p>Пити пиво 0% також можна під час відпочинку для зниження стресу. Вважається, що помірна кількість алкоголю сприяє міцному сну.</p>
+                <h3>Безалкогольне пиво та водіння авто: чи безпечно це</h3>
+                <p>
+                    Відповідь — звісно. Але не забувайте, що продукт все ж містить певну дозу алкоголю. Не вживайте більше ніж 2-3 бляшанки — тоді не виникає алкогольного запаху, який може насторожити поліцію і викликати підозри щодо тверезості водія.
+                    Вважається, що пиво, навіть без вмісту алкоголю, розслабляє. Тож уважно стежте за дорогою.
+                </p>
+                <h2>Хто і коли придумав безалкогольне пиво</h2>
+                <p>
+                    Найраніший відомий напій приготували в Стародавньому Єгипті близько 5 000 року до н. е. Якщо вірити шумерській міфології, рецепт належав богині на ім'я Нінкасі. Вона збирала зерно, коли почався дощ, що спровокував бродіння злаків.
+                </p>
+                <p>Безалкогольне пиво, яке в Стародавньому Єгипті називали «зітос», пили жінки і діти. Пінний напій готували за допомогою бродіння, вважаючи, що це робить його цілком безпечним.</p>
+                <p>За часів Середньовіччя пиво-нулівка заміняло забруднену воду. Ним поїли робітників. Не менш активно пінний напій вживали ченці, які тримали піст, а пиво вважали рідким хлібом.</p>
+                <p>Перший рецепт комерційного безалкогольного пива розробила пивоварня Clausthaler. Його випустили в масовий продаж 1974 року.</p>
+                <h2>Ключові технології виготовлення пива-нульовки</h2>
+                <p>
+                    Склад класичний: вода, солод, хміль, дріжджі. Виробництво починається з солодження ячменю, під час якого крохмаль перетворюється на цукор. Потім солод подрібнюють і затирають. Після екстракції зернове сусло варять із хмелем і
+                    відправляють на ферментацію. Дріжджі поглинають цукор, вивільняючи спирт. Нарешті, виробники використовують один із методів видалення алкоголю:
+                </p>
+                <ol>
+                    <li>
+                        Парову дистиляцію. Пінний напій нагрівають при зниженому тиску у вакуумних камерах, знижуючи температуру кипіння спирту. Такий спосіб дозволяє алкоголю випаровуватися швидше, зменшуючи негативний вплив на смак і аромат пива 0%.
+                    </li>
+                    <li>
+                        Зворотний осмос. Пінний напій проштовхують крізь напівпроникну мембрану (фільтр), яка захоплює великі молекули ароматизатора, пропускаючи воду і спирт. Потім спирто-водну суміш розділяють, видаляючи етанол. Воду повторно
+                        змішують із насиченим пивним концентратом. Це найпоширеніший спосіб виробництва безалкогольного пива, оскільки він мінімально впливає на смако-ароматичну композицію.
+                    </li>
+                    <li>
+                        Обертову конусну колону. У процесі використовують вертикальну колону, куди подають пиво і піддають його впливу відцентрової сили. Вміст поступово нагрівається. Центрифуга сприяє відділенню летких сполук, включно з етанолом, від
+                        рідини. Спирт видаляють, а рідину, що залишилася, рекомбінують.
+                    </li>
+                    <li>
+                        Імітацію рухомого шару (SMB). Рідкісний метод виготовлення безалкогольного пива 0.0. Акцент — на використанні технології адсорбції, за якої пінний напій проходить через низку адсорбційних колон. Спирт вибірково адсорбують,
+                        паралельно збираючи деалкоголізовану рідину. Технологію здебільшого використовують під час виробництва слабоалкогольного пива. Метод складний і дорогий у реалізації, тому його застосовують тільки на великих пивоварних концернах.
+                    </li>
+                </ol>
+                <p>Нульове пиво також можуть змішувати з допоміжними компонентами для зниження міцності. Наприклад, лимоном і газованою водою. Складніше випускати продукцію з використанням дріжджових штамів, що не ферментують.</p>
+                <h2>Різновиди пива за вмістом алкоголю</h2>
+                <p>Категорія включає безалкогольну і слабоалкогольну продукцію. Нормативні визначення залежать від місця виготовлення. Перший варіант містить менше ніж 0,05% алкоголю за обсягом. Безалкогольне пиво можна пити за кермом.</p>
+                <p>
+                    Міцність другої групи часто становить близько 3,5%. Нерідко слабоалкогольне пиво маркують як «сесійне». Це означає, що його можна пити протягом вечора без ризику похмілля на ранок. Слабоалкогольне пиво не можна вживати водіям і
+                    вагітним.
+                </p>
+                <h2>Як вибрати пиво-нульовку</h2>
+                <p>Якісну продукцію виготовляють в Україні, Нідерландах, Німеччині, Бельгії, Великій Британії, Чехії. Лідери продажів:</p>
+                <ul>
+                    <li>Bavaria;</li>
+                    <li>Stella Artois;</li>
+                    <li>Carlsberg;</li>
+                    <li>Zibert.</li>
+                </ul>
+                <p>
+                    Безалкогольне пиво найчастіше світле. Крафтові пивоварні не поступаються промисловим гігантам, адаптуючи рецепт під запит споживача. Смакова палітра від маленьких підприємств дивує нестандартними рішеннями. Наприклад, бренд
+                    Mikkeller пропонує пиво 0% з ароматом стиглих слив і медовою солодкістю. Коли шукаєте відповідний варіант, також звертайте увагу на:
+                </p>
+                <ol>
+                    <li>Тип. Основу асортименту становить лагер. Також у магазині безалкогольного пива можна знайти вітбір або радлер.</li>
+                    <li>Фільтрацію. Якщо пінний напій не піддавали фільтрації, на дні залишається каламутний дріжджовий осад. Він додає пікантної нотки, а також насиченого зернового шлейфу.</li>
+                    <li>
+                        Тип упаковки. Продукція в склі коштує дорожче через крихкість, вагу і складнощі під час перевезення. Водночас матеріал перешкоджає потраплянню світла, яке негативно позначається на смако-ароматичних характеристиках напою. Також
+                        пиво безалкогольне можна купити в компактних бляшанках — оптимальне рішення для подорожей, пікніка, концерту, фестивалю.
+                    </li>
+                    <li>Ємність. Стандартний обсяг становить 0,33 або 0,5 л. Це підхожий варіант на одного.</li>
+                </ol>
+                <h3>У якому пиві найменше алкоголю</h3>
+                <p>Кілька хороших варіантів:</p>
+                <ol>
+                    <li>Stella Artois. Світле пиво, що огортає тонкими хмелевими тонами, змішаними з солодкістю солоду і пікантною гіркуватістю. Ціна цього безалкогольного пива доступна, оскільки його відносять до варіантів масового виготовлення.</li>
+                    <li>Warsteiner Fresh. Пільзнер, який вигідно доповнить м'ясну або сирну тарілку.</li>
+                    <li>Clausthaler. Світле фруктово-цитрусове нульове пиво. Хороший варіант для літньої пори.</li>
+                </ol>
+                <h2>Чому вигідно купити безалкогольне пиво в Україні в інтернет-магазині MAUDAU</h2>
+                <p>У маркеті алкогольних штук MAUDAU зібрана оригінальна продукція за конкурентною вартістю, яку імпортують напряму. Це надає покупцям доступ до ексклюзивних товарів і новинок.</p>
+                <p>
+                    Оформлення замовлення забере 5–7 хвилин, якщо згрупувати продукцію за ключовими критеріями. За оперативну доставку у великих містах України відповідає кур'єр. За бажання скористайтеся послугами поштових служб. Оплатити замовлення
+                    безалкогольного пива можна на сайті за допомогою карток Visa або MasterCard. Також доступний розрахунок готівкою на пошті. На гуртову покупку діє додаткова знижка. Список акційних пропозицій регулярно оновлюється, що робить
+                    алкогольний шопінг вигідним і приємним.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Вишневе пиво" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Cherry-Beer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Вишневе пиво</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=temne-2">Темне пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vyshnia-10">Вишневий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=vyshnia-21">Вишневий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Кориця в паличках</a></li><li>Гвоздика</li><li>Апельсинова цедра</li><li>Лимонна цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пряний гарячий коктейль із дивовижним поєднанням кисло-солодкої вишні та темного пива. Дуже добре підходить для холодних зимових вечорів і весняних пікніків на дачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Вишневе пиво</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл темного пива</li><li>20 мл вишневого сиропу</li><li>75 мл вишневого соку</li><li>10 мл лимонного соку</li><li>5 г кориці в паличках</li><li>5 г гвоздики</li><li>Апельсинова цедра</li><li>Лимонна цедра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в чайничок-пітчер 10 мл лимонного соку, 75 мл вишневого соку і 20 мл вишневого сиропу.</li><li>Влийте 75 мл темного пива і перемішайте коктейльною ложкою.</li><li>Додайте в напій 5 г гвоздики, паличку кориці, цедру апельсина і лимона.</li><li>Нагрійте напій, але не доводьте до кипіння. Постійно помішуйте.</li><li>Дайте коктейлю настоятися кілька хвилин і перелийте в келих із ручкою (для ірландської кави).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарячий лікар Пеппер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Burning-Dr-Pepper.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий лікар Пеппер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/typ_napoiu_6=overpruf-overproof-2">Надміцний ром</a></li><li>Лікер амаретто Fruko Schulz</li><li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Палаючий оригінальний коктейль для гарячих вечірок. До складу обов'язково входить надміцний ром — для незвичайної подачі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий лікар Пеппер</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл надміцного рому</li><li>25 мл лікеру амаретто Fruko Schulz</li><li>200 мл світлого пива</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть на 2/3 склянки-хайбол 200 мл світлого пива.</li><li>Налийте в стопку 25 мл лікеру амаретто Fruko Schulz.</li><li>Зверху обережно долийте 25 мл надміцного рому. Використовуйте коктейльну ложку.</li><li>Підпаліть ром і опустіть стопку в хайбол із пивом.</li><li>Швидко випийте «палаючий» коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чорний фліп" src="https://photo.maudau.com.ua/Landing/cocktails/incat/black-flip.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чорний фліп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi">Темний ром</a></li><li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=temne-2">Темне пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Жовток перепелиного яйця</li><li><a href="https://maudau.com.ua/product/muskatnyi-horikh-melenyi-cannamela-25-h">Мускатний горіх мелений</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=chornyi-6">Чорний шоколад</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Чорний фліп — приємний солодкий коктейль з органічним поєднанням рому та пива. Сироп і шоколад пом'якшують міцність напою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чорний фліп</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл темного рому</li><li>60 мл темного пива</li><li>15 мл цукрового сиропу</li><li>5 жовтків перепелиного яйця</li><li>2 г меленого мускатного горіха</li><li>5 г чорного шоколаду</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 5 жовтків перепелиного яйця і 15 мл цукрового сиропу.</li><li>Додайте 45 мл темного рому та 60 мл темного пива.</li><li>Збийте всі інгредієнти методом драй шейк, тобто без льоду.</li><li>Наповніть шейкер кубиками льоду і ретельно збийте ще раз.</li><li>Перелийте через стрейнер в охолоджену склянку-хайбол.</li><li>Присипте пінку коктейлю меленим мускатним горіхом.</li><li>Подавайте напій на блюдечку, зі шматочком чорного шоколаду.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Літній бриз" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Summer-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Літній бриз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=svitle-2">Світле пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=roza">Сироп троянди</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=mandaryn-4">Мандариновий сироп</a></li><li>Лайм</li><li>Апельсин</li><li>Фізаліс</li><li>Подрібнений лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Літній бриз — пікантний квітковий коктейль із нетиповим поєднанням пива та сиропу троянди. Має яскраво виражені цитрусові нотки та післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Літній бриз</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл світлого пива</li><li>10 мл сиропу троянди</li><li>20 мл мандаринового сиропу</li><li>40 г лайма</li><li>115 г апельсина</li><li>5 г фізалісу</li><li>200 г подрібненого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-харрікейн нарізані на чверті лайм і апельсин. Подавіть барним товкачем.</li><li>Наповніть харрікейн подрібненим льодом до верхнього краю.</li><li>Налийте 10 мл сиропу троянди та 20 мл мандаринового сиропу.</li><li>Долийте 100 мл світлого пива й акуратно розмішайте коктейльною ложечкою.</li><li>За бажанням досипте трохи подрібненого льоду.</li><li>Прикрасьте напій фізалісом і скибочками цитрусових.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img white-img-bg">
+                        <img class="add-photo" alt="Бджілка" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The-Little-Bee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бджілка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi">Темний ром</a></li><li><a href="https://maudau.com.ua/product/liker-galliano-lauthentico-423-05-l">Гальяно л’автентіко</a></li><li><a href="https://maudau.com.ua/category/pyvo/kolir_pyva=temne-2">Темне пиво</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Кориця в паличках</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бджілка - незабутній пряний коктейль на базі темного рому і пива. Любителі оригінальних лонгів оцінять нотки лікеру Гальяно.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бджілка</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл темного рому</li><li>25 мл лікеру Гальяно л'автентико</li><li>300 мл темного пива</li><li>10 мл лаймового соку</li><li>10 г кориці в паличках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в заздалегідь охолоджений келих-слінг 25 мл лікеру Гальяно л'автентико і 10 мл лаймового соку.</li><li>Використовуйте високу коктейльну ложку і налийте шар темного рому 15 мл.</li><li>Акуратно долийте доверху 300 мл темного пива.</li><li>Прикрасьте келих паличками кориці. Бджілка готова до польоту!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">43 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.46 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.55 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">92 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
