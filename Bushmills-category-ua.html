@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Коктейлі</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Bushmills — найстаріша винокурня у світі, розташована в графстві Антрім (Північна Ірландія). Щорічно спиртзавод відвідують близько 120 000 туристів. У стінах винокурні виробляють віскі «Бушмілс».</p>
+                <h3>Кому належить торгова марка Bushmills</h3>
+                <p>
+                    Спочатку компанія входила до складу Proximo Spirits. Після Другої світової війни завод викупив Ісаак Вольфсон. 1972 року акції перейшли до Irish Distillery — компанії, яка повністю контролювала випуск міцного спиртного напою в
+                    Ірландії на той час. У 1988 році її поглинула французька корпорація Pernod Ricard. Нині компанія належить алкогольному гіганту Diageo.
+                </p>
+                <h2>Що відомо про історію Bushmills</h2>
+                <p>
+                    «Бушмілс» — не просто винокурня. Це ціле село, яке поступово звели співробітники навколо спиртзаводу. Назва складається з двох частин. Перша вказує на місцеву річку, а друга відсилає до валкових млинів, розкиданих берегом річки Буш.
+                    Раніше з їхньою допомогою подрібнювали солод.
+                </p>
+                <p>
+                    Офіційно винокурню запустили 1784 року за сприяння Г'ю Андерсона. При цьому ліцензію від короля на перегонку спирту англійському серу Томасу Філліпсу виписали 1608 року — саме цю дату проставляють на пляшках ірландського віскі
+                    «Бушмілс».
+                </p>
+                <p>У 1850-х роках уряд запровадив податок на ячмінний солод, а точніше — на виробництво віскі. Конкурентні підприємства швидко замінили ячмінь кукурудзою і житом. Ірландське віскі Bushmills залишилося вірним традиції.</p>
+                <p>У 1860 році винокурню викупив торговець Джейм МакКолган. Незабаром до нього приєднався Патрік Корріган.</p>
+                <p>1885 року старовинний завод повністю знищила пожежа. Реконструкцію провели швидко. Уже 1890 року пароплав, що належав компанії, здійснив рейс через Атлантику, розвозячи віскі Bushmills по США. Після цього він вирушив у Шанхай.</p>
+                <p>
+                    На початку XX століття США обрали ключовим майданчиком для збуту продукції. Вілсон Бойд, який на той час очолював винокурню, передбачив скасування сухого закону, зберігши сотні пляшок ірландського віскі «Бушмілс» для експорту.
+                    Золотими роками для компанії вважають 1950-ті, коли торгова марка фігурувала у всіляких фільмах, серіалах, рекламних кампаніях.
+                </p>
+                <h2>Як виробляють віскі Bushmills</h2>
+                <p>У 2023 році компанія запустила другу винокурню — Causeway Distillery. Тож зараз виробництво розділене між двома заводами.</p>
+                <p>
+                    Бренд випускає як односолодове, так і купажоване віскі «Бушмілс». Маркування Single Malt означає, що в складі — тільки ячмінний солод. Перегонку і розлив здійснюють на одному підприємстві. Купажоване ірландське віскі Bushmills
+                    готують із суміші солодових і зернових спиртів. Виробництво стандартизоване:
+                </p>
+                <ol>
+                    <li>
+                        Підготовка сировини. Зерно постачають із місцевих ферм. Його змішують із водою, залишаючи на підлозі солодовні. Щойно ячмінь проростає, процес зупиняють сушінням. Винокурня Bushmills давно відійшла від традиції обкурювання
+                        солоду вересовим торфом. Для цього використовують сучасні парові печі.
+                    </li>
+                    <li>
+                        Ферментація. Сухий солод перетворюють на зерновий затор — суміш ячмінного борошна та води. Для цього використовують Mash Tun із нержавійної сталі. Воду постачають із річки Святого Колумба — притоки річки Буш. Там вона природним
+                        чином очищується, проходячи через базальтову породу. Далі затор перекачують у так звану «мийку» — ємності для бродіння. Там дріжджі розщеплюють цукор, виділяючи спирт і вуглекислий газ. Останній виводиться назовні спеціальними
+                        трубками.
+                    </li>
+                    <li>
+                        Дистиляція. Віскі «Бушмілс» проходить потрійну перегонку в мідних перегінних кубах, що працюють 24/7. У процесі виділяють серцевину — спирт, який відправляють на подальше перероблення. Кожен цикл дистиляції підвищує вміст
+                        алкоголю.
+                    </li>
+                    <li>
+                        Витримка. Спирт розливають по дубових бочках. Нерідко перед цим у ємностях витримували бурбон або херес. Термін дозрівання ірландського віскі Bushmills залежить від стилю, що випускається, але мінімальна витримка становить три
+                        роки.
+                    </li>
+                    <li>Купажування. Далі до справи приступає майстер-купажист, який змішує спирти різного віку. Це гарантія однакового смаку напою з року в рік.</li>
+                </ol>
+                <p>Нарешті, віскі «Бушмілс» готове до розливу. До надходження в продаж продукцію зберігають на величезних складах.</p>
+                <h2>Різновиди віскі Bushmills</h2>
+                <p>
+                    Флагман — віскі Bushmills Original. Це купажований напій, виготовлений за старовинним рецептом. Смак — м'який і збалансований, з виразними тонами меду, ванілі, фруктів. Післясмак — з освіжальними цитрусовими нюансами. Версія з
+                    підвищеним вмістом солоду — Black Bush. Рецептура включає 80% солодових спиртів.
+                </p>
+                <p>Лінійка односолодового віскі «Бушмілс» об'єднує напої з різним терміном витримки:</p>
+                <ol>
+                    <li>10 років. Аромат — пікантний і свіжий. За ним слідує ніжний смак із нотками стиглих фруктів, вершкової ванілі, жимолості, м'якого дуба.</li>
+                    <li>16 років. Купити віскі «Бушмілс» 16-річної витримки варто тим, хто шукає напій із яскраво вираженими нотками запечених фруктів. Доповнює досвід міцний аромат з акордами ірисової патоки, кориці, мускатного горіха.</li>
+                    <li>21 рік. Солідна витримка додає композиції відтінки свіжого меду, какао, фундука. Смак — глибокий, з нотками темного шоколаду.</li>
+                </ol>
+                <p>
+                    Міцність кожної позиції становить 40%. Якщо хочете купити віскі Bushmills на подарунок, зверніть увагу на лінійку Finish Blended. Дистиляти витримують у різних типах бочок. Наприклад, ємності з-під бурбону додають солодкуватого
+                    шлейфу, а залишки хересу Oloroso — пікантного фінішу.
+                </p>
+                <h3>Скільки коштує віскі «Бушмілс»</h3>
+                <p>Ціна визначається виходячи з обсягу, терміну дозрівання, унікальності партії. Доступний за вартістю варіант — віскі Bushmills Оригінал. Один літр коштує приблизно 729 грн. Мініпляшечка обсягом 50 мл обійдеться в 149 грн.</p>
+                <p>Ціна зростає пропорційно до старіння. Наприклад, вартість віскі Bushmills 10-річної витримки становить 1 854 грн. Найдорожчий варіант серед запропонованих в інтернет-магазині MAUDAU — колекційний дистилят, витриманий 21 рік.</p>
+                <h2>Як відрізнити віскі Bushmills Original від підробки</h2>
+                <p>Маркет алкогольних штук MAUDAU гарантує оригінальне походження, що підтверджується:</p>
+                <ul>
+                    <li>фірмовою пляшкою з опуклим гравіюванням «1608» внизу;</li>
+                    <li>гравіюванням збоку, яке вказує на місце і спосіб виготовлення напою;</li>
+                    <li>тричі вказаною назвою винокурні на пробці;</li>
+                    <li>рівною й акуратною етикеткою.</li>
+                </ul>
+                <h2>Як і з чим пити ірландське віскі «Бушмілс»</h2>
+                <p>Купажований напій подають як без добавок, так і в складі коктейлів. Його розливають по роксах, заповнюючи склянку на третину.</p>
+                <p>Односолодове віскі «Бушмілс» п'ють у чистому вигляді. Лід не додають — замість цього використовують каміння з вулканічних порід. Рекомендована температура подачі становить +17–20 ⁰C.</p>
+                <p>Bushmills — віскі, ціна якого вища за середню. Щоб не зіпсувати напій, подавайте його зі свіжими фруктами, ягодами, шоколадними десертами. Від поєднання з жирною морською рибою варто відмовитися.</p>
+                <h2>Чому вигідно купити віскі Bushmills в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Завдяки власному налагодженому імпорту покупці отримують оригінальну продукцію, включно з новинками та лімітованими випусками. На «Бушмілс» віскі ціна знижується, якщо замовляти його гуртом або за акцією. При досягненні певної суми
+                    — за доставку кур'єром або поштовими службами не потрібно платити.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ірландська кава" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Irish_Coffee.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ірландська кава</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландський віскі</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Кава американо</li><li><a href="https://maudau.com.ua/category/vershky">Жирні вершки</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Гарячий оксамитовий напій із вершково-кавовим смаком на базі віскі. Придуманий у середині минулого століття шеф-кухарем із Дубліна Джозефом Шеріданом і став визнаною коктейльною класикою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ірландська кава</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл ірландського віскі</li><li>15 мл цукрового сиропу</li><li>120 мл кави американо</li><li>45 мл жирних вершків</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Зваріть будь-яким способом каву американо й охолодіть до 70–80 °C.</li><li>Налийте в миску 45 мл жирних охолоджених вершків і збийте вінчиком протягом кількох хвилин.</li><li>Влийте в келих для ірландської кави 120 мл американо.</li><li>Додайте 15 мл цукрового сиропу і 45 мл ірландського віскі.</li><li>Розмішайте напій високою коктейльною ложкою.</li><li>Верхнім шаром акуратно покладіть збиті вершки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Віскі яблучний сік" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Whiskey_and_Apple_Juice.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Віскі яблучний сік</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландський віскі</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li><li>Яблуко</li><li><a href="https://maudau.com.ua/product/korytsia-banka-spetsii-palychky-55-h-915319">Кориця в паличках</a></li><li><a href="https://maudau.com.ua/product/korytsia-mriia-melena15-h">Мелена кориця</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний приємний коктейль із вираженим яблучними післясмаком. Кислуватий сік органічно поєднується з міцним віскі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Віскі яблучний сік</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл ірландського віскі</li><li>150 мл яблучного соку</li><li>20 г яблук</li><li>5 г кориці в паличках</li><li>1 г меленої кориці</li><li>180 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте в келих-хайбол 180 г льоду в кубиках.</li><li>Налийте 50 мл ірландського віскі.</li><li>Додайте 150 мл яблучного соку і перемішайте барною ложкою.</li><li>Посипте напій меленою корицею.</li><li>Декоруйте келих скибочками зеленого яблука і паличкою кориці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ірландський імбірний ель" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Match_Point.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ірландський імбірний ель</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландський віскі</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Імбирне пиво</li><li>Лайм</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Збадьорливий лонгдринк з оригінальним поєднанням імбирного пива та віскі. Лаймовий сік надає цитрусові нотки, а імбир залишає характерний післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ірландський імбірний ель</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл ірландського віскі</li><li>10 мл лаймового соку</li><li>140 мл імбирного пива</li><li>20 г лайма</li><li>180 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-хайбол доверху кубиками льоду.</li><li>Налийте 50 мл ірландського віскі та 10 мл лаймового соку.</li><li>Долийте доверху 140 мл імбирного пива.</li><li>Акуратно перемішайте компоненти коктейльною ложечкою.</li><li>Прикрасьте келих слайсом лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Нью-Йоркер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/The_New_Yorker.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Нью-Йоркер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландський віскі</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Бітер Ангостура</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hrenadyn">Гренадин</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Апельсинова цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Помірно міцний шорт-дринк Нью-Йоркер — чудовий коктейль для вечірок. Має кисло-солодкий збалансований смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Нью-Йоркер</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл ірландського віскі</li><li>2 мл бітеру Ангостура</li><li>25 мл гренадину</li><li>30 мл лимонного соку</li><li>Апельсинова цедра</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 30 мл лимонного соку і 25 мл гренадину.</li><li>Додайте 50 мл ірландського віскі та 2 деша бітеру Ангостура.</li><li>Наповніть шейкер льодом у кубиках і збийте.</li><li>Процідіть напій через сито-стрейнер в охолоджений келих.</li><li>Прикрасьте коктейль апельсиновою цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Трюфельний сауер" src="https://photo.maudau.com.ua/Landing/cocktails/incat/Truffle_Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Трюфельний сауер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/viski/rehion_2=irish">Ірландський віскі</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Перепелине яйце</li><li>Трюфельна олія</li><li>Лимонна цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насичений оригінальний коктейль на базі віскі та трюфельної олії. Потребує певної підготовки — але смак і враження того варті.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Трюфельний сауер</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл ірландського віскі</li><li>10 мл цукрового сиропу</li><li>35 мл лимонного соку</li><li>10 перепелиних яєць</li><li>100 мл трюфельної олії</li><li>Лимонна цедра</li><li>200 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Залийте 10 перепелиних яєць у шкаралупі 100 мл трюфельної олії.</li><li>Перемішайте і настоюйте приблизно 5 годин.</li><li>Налийте в шейкер білок перепелиного яйця 10 мл і 35 мл лимонного соку.</li><li>Додайте 10 мл цукрового сиропу та 50 мл ірландського віскі.</li><li>Ретельно збийте інгредієнти до утворення пінки.</li><li>Наповніть шейкер 200 г льоду в кубиках і збийте ще раз.</li><li>Перелийте напій через барне сито в келих.</li><li>Декоруйте цедрою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
